@@ -7,13 +7,13 @@
     <link rel="icon" href="https://static.wikia.nocookie.net/minecraft_gamepedia/images/f/fe/Grass_Block_JE7_BE6.png" type="image/x-icon">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Press Start 2P', cursive;
             background: #1a1a1a;
@@ -21,7 +21,7 @@
             overflow-x: hidden;
             position: relative;
         }
-        
+
         /* Animated Particle Background */
         .particles {
             position: fixed;
@@ -32,7 +32,7 @@
             z-index: -2;
             pointer-events: none;
         }
-        
+
         .particle {
             position: absolute;
             width: 8px;
@@ -40,7 +40,7 @@
             background: rgba(255, 255, 255, 0.6);
             animation: float-particle linear infinite;
         }
-        
+
         @keyframes float-particle {
             0% {
                 transform: translateY(100vh) rotate(0deg);
@@ -57,17 +57,26 @@
                 opacity: 0;
             }
         }
-        
+
         /* Navbar - Transparent */
         nav {
-            position: fixed;
+            position: sticky;
             top: 0;
             width: 100%;
             background: transparent;
-            padding: 0 0 120px;
             z-index: 1000;
         }
-        
+
+        .nav-texture-bar {
+            width: 100%;
+            height: 14px;
+            background-image: url("https://lh3.googleusercontent.com/pw/AP1GczPSZFithNMgw3p0NfejCpVSDTcs4uBveqBbFIQhIYpNpQmHtH3hdvbLKfEVlYf08kgjmMfhrvW6q5gTzl0wiluQnke2OSErtyz9RDP-R6-5-4TiPN9xICRt3IDNc5uoaUlRfsRDFyLXIzQh5_3BlLUQ=w16-h16-s-no-gm?authuser=0");
+            background-repeat: repeat-x;
+            background-size: auto 100%;
+            background-position: center;
+            box-shadow: inset 0 -4px 6px rgba(0,0,0,0.5);
+        }
+
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -77,22 +86,22 @@
             padding: 0 40px;
             position: relative;
         }
-        
-        /* Lantern with chain - Pendulum swing */
+
+        /* Lantern with chain - Attached to nav bar */
         .lantern-container {
-            position: relative;
             width: 60px;
             transform-origin: top center;
             animation: pendulum-swing 4s ease-in-out infinite;
+            margin-top: -14px;
         }
-        
+
         @keyframes pendulum-swing {
             0%, 100% { transform: rotate(-8deg); }
             50% { transform: rotate(8deg); }
         }
-        
+
         .chain {
-            width: 8px;
+            width: 4px;
             height: 80px;
             background: repeating-linear-gradient(
                 0deg,
@@ -104,7 +113,7 @@
             margin: 0 auto 0;
             border-radius: 2px;
         }
-        
+
         .lantern {
             width: 50px;
             height: 70px;
@@ -116,12 +125,12 @@
             position: relative;
             animation: glow 2s ease-in-out infinite;
         }
-        
+
         @keyframes glow {
             0%, 100% { filter: brightness(1) drop-shadow(0 0 10px #FFA500); }
             50% { filter: brightness(1.3) drop-shadow(0 0 20px #FFD700); }
         }
-        
+
         .nav-links {
             display: flex;
             gap: 20px;
@@ -129,19 +138,32 @@
             scrollbar-width: none;
             padding-bottom: 80px;
         }
-        
+
         .nav-links::-webkit-scrollbar {
             display: none;
         }
-        
+
         .nav-sign-container {
             position: relative;
             min-width: 140px;
+            margin-top: -14px;
         }
-        
+
         .sign-chain {
             width: 4px;
             height: 40px;
+            background: transparent;
+            margin: 0 auto;
+            border-radius: 2px;
+            position: relative;
+        }
+
+        /* Add chains on left and right of sign */
+        .sign-chain::before{
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 46px;
             background: repeating-linear-gradient(
                 0deg,
                 #5C4033 0px,
@@ -149,10 +171,34 @@
                 #3E2723 6px,
                 #3E2723 12px
             );
-            margin: 0 auto;
             border-radius: 2px;
+            top: 0;
         }
-        
+
+        .sign-chain::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 46px;
+            background: repeating-linear-gradient(
+                0deg,
+                #5C4033 0px,
+                #5C4033 6px,
+                #3E2723 6px,
+                #3E2723 12px
+            );
+            border-radius: 2px;
+            top: 0;
+        }
+
+        .sign-chain::before {
+            left: -25px;
+        }
+
+        .sign-chain::after {
+            right: -25px;
+        }
+
         .nav-sign {
             background-image: url('https://lh3.googleusercontent.com/pw/AP1GczNw1Zvz9dY5v0NWEwVgFPylGSLJLyuUI7I2poyoDAbGLN5UCyDmbBamBzyn5SyFinjjVc2vfVc9UoUGLoMVrCdBfdJ089vubKPcA2JJP_cU4jvWKDD_O1mIZAz2VZTHl2BrvLBE07gIczPfUwe5Bmcs=w800-h450-s-no-gm?authuser=0');
             background-size: cover;
@@ -167,35 +213,60 @@
             transition: transform 0.3s;
             box-shadow: 0 4px 8px rgba(0,0,0,0.7);
         }
-        
+
         .nav-sign:hover {
             transform: translateY(5px);
         }
-        
+
         /* Hero Section */
         .hero {
-            margin-top: 180px;
-            padding: 100px 20px;
+            margin-top: -145px;
+            max-width: 1470px;
+            padding: 180px 20px 100px;
             text-align: center;
-            background-image: url('https://i.pinimg.com/originals/c8/c5/66/c8c56618c87e161ba7c67b85806f6044.gif');
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczMDt64O1LC2xmfarv0iZpsC2eMk3DwoeaTq6wo7fGiSZueu9OI60rrOzMgwBrM8FEGFKVU-AFAtlZYYjTAPubl4F8M012dGow66ll26T6yxW_ouN9UU-Rba36Rd18joqffWY9wE75tblXz-H8CGiYTO=w795-h420-s-no-gm?authuser=0');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            min-height: 90vh;
+            min-height: 95vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             position: relative;
         }
-        
+
+        /* Black fade overlay on hero */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.7) 0%,
+                rgba(0, 0, 0, 0.5) 50%,
+                rgba(0, 0, 0, 0.7) 100%
+            );
+            z-index: 0;
+        }
+
+        .hero > * {
+            position: relative;
+            z-index: 1;
+        }
+
         .hero-logo {
-            max-width: 600px;
+            max-width: 800px;
+            height: 300px;
             margin: 0 auto 100px;
             filter: drop-shadow(0 10px 20px rgba(0,0,0,0.9));
+            object-fit: contain;
         }
-        
+
         .countdown-card {
-            background-image: url('https://static.wikia.nocookie.net/minecraft_gamepedia/images/3/3d/Grass_Block_JE7_BE6.png');
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczOyeNXygoJ0R6ejdrUgwsUd0pTCo5kI6zmd1AOQSSbS-fyYfwuXmEeFQ05a7OmFOtm7SgghK-sAEpjiMwKlBHTkPe6nftA1CCokpRloPR7L4cKDwyPmcdgCICDPdrD6ULQ0cK6Gp9BkFX9dHOEyNgcv=w815-h405-s-no-gm?authuser=0');
             background-size: cover;
             max-width: 700px;
             margin: 60px auto;
@@ -203,7 +274,7 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.9);
             position: relative;
         }
-        
+
         .countdown-card::before {
             content: '';
             position: absolute;
@@ -214,25 +285,25 @@
             background: rgba(0, 0, 0, 0.5);
             z-index: 0;
         }
-        
+
         .countdown-card > * {
             position: relative;
             z-index: 1;
         }
-        
+
         .countdown-card h2 {
             font-size: 20px;
             margin-bottom: 35px;
             text-shadow: 4px 4px 0 #000;
         }
-        
+
         .countdown {
             display: flex;
             gap: 30px;
             justify-content: center;
             font-size: 32px;
         }
-        
+
         .countdown div {
             background: rgba(0,0,0,0.7);
             padding: 25px 20px;
@@ -240,23 +311,23 @@
             min-width: 100px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.7);
         }
-        
+
         .countdown span {
             display: block;
             font-size: 11px;
             margin-top: 12px;
             color: #FFD700;
         }
-        
+
         .stone-buttons {
             display: flex;
             gap: 50px;
             justify-content: center;
             margin-top: 60px;
         }
-        
+
         .stone-btn {
-            background-image: url('https://static.wikia.nocookie.net/minecraft_gamepedia/images/5/5c/Stone_JE5_BE3.png');
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczMZ213EkYNghug2YDe5JlReDkV4NnHM3CGMcE9KqZfO3wC9E_mPF4fTCfvumT9HwnfLUKLq-QrhWvHSVF0b9jXjoA3SyMnZ25P4sEngOwiGw-gXURtMETzmtALESaDtVdos6rNA5r0Gn5hq25KXxsdU=w1731-h974-s-no-gm?authuser=0');
             background-size: cover;
             border: 6px solid #303030;
             padding: 30px 50px;
@@ -272,7 +343,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .stone-btn::before {
             content: '';
             position: absolute;
@@ -284,22 +355,22 @@
             transform: rotate(45deg);
             animation: shine 3s infinite;
         }
-        
+
         @keyframes shine {
             0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
             100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
         }
-        
+
         .stone-btn:hover {
             transform: translateY(-8px) scale(1.05);
             box-shadow: 0 15px 35px rgba(255, 215, 0, 0.5);
             border-color: #FFD700;
         }
-        
+
         .stone-btn:active {
             transform: translateY(-2px) scale(1.02);
         }
-        
+
         /* Sections with backgrounds */
         section {
             padding: 120px 20px;
@@ -307,7 +378,7 @@
             margin: 0 auto;
             position: relative;
         }
-        
+
         .section-bg {
             padding: 120px 20px;
             background-size: cover;
@@ -315,7 +386,7 @@
             background-attachment: fixed;
             position: relative;
         }
-        
+
         .section-bg::before {
             content: '';
             position: absolute;
@@ -326,32 +397,32 @@
             background: rgba(0, 0, 0, 0.6);
             z-index: 0;
         }
-        
+
         .section-bg > * {
             position: relative;
             z-index: 1;
         }
-        
+
         #about {
             background-image: url('YOUR_ABOUT_BACKGROUND_URL.png');
         }
-        
+
         #tracks {
             background-image: url('YOUR_TRACKS_BACKGROUND_URL.png');
         }
-        
+
         #why-attend {
             background-image: url('YOUR_WHY_ATTEND_BACKGROUND_URL.png');
         }
-        
+
         #prizes {
             background-image: url('YOUR_PRIZES_BACKGROUND_URL.png');
         }
-        
+
         #sponsors {
             background-image: url('YOUR_SPONSORS_BACKGROUND_URL.png');
         }
-        
+
         h2 {
             font-size: 36px;
             text-align: center;
@@ -359,7 +430,7 @@
             text-shadow: 5px 5px 0 #000;
             color: #FFD700;
         }
-        
+
         .about-content {
             max-width: 900px;
             margin: 0 auto;
@@ -370,7 +441,7 @@
             font-size: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
-        
+
         .stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -380,7 +451,7 @@
             margin-left: auto;
             margin-right: auto;
         }
-        
+
         .stat-box {
             background-image: url('YOUR_SIGN_TEXTURE_URL.png');
             background-size: cover;
@@ -391,7 +462,7 @@
             transition: transform 0.3s;
             position: relative;
         }
-        
+
         .stat-box::before {
             content: '';
             position: absolute;
@@ -402,16 +473,16 @@
             background: rgba(0, 0, 0, 0.4);
             z-index: 0;
         }
-        
+
         .stat-box > * {
             position: relative;
             z-index: 1;
         }
-        
+
         .stat-box:hover {
             transform: translateY(-10px) scale(1.05);
         }
-        
+
         .stat-number {
             font-size: 42px;
             display: block;
@@ -419,12 +490,12 @@
             text-shadow: 4px 4px 0 #000;
             color: #FFD700;
         }
-        
+
         .stat-label {
             font-size: 12px;
             color: #FFF;
         }
-        
+
         /* Cards Grid */
         .cards-grid {
             display: grid;
@@ -433,7 +504,7 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         .card {
             background-image: url('https://static.wikia.nocookie.net/minecraft_gamepedia/images/b/b4/Oak_Planks_JE6_BE3.png');
             background-size: cover;
@@ -444,7 +515,7 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.8);
             position: relative;
         }
-        
+
         .card::before {
             content: '';
             position: absolute;
@@ -455,35 +526,35 @@
             background: rgba(0, 0, 0, 0.4);
             z-index: 0;
         }
-        
+
         .card > * {
             position: relative;
             z-index: 1;
         }
-        
+
         .card:hover {
             transform: translateY(-15px);
             box-shadow: 0 15px 35px rgba(255, 215, 0, 0.4);
         }
-        
+
         .card img {
             width: 110px;
             height: 110px;
             margin-bottom: 30px;
             filter: drop-shadow(0 5px 10px rgba(0,0,0,0.9));
         }
-        
+
         .card h3 {
             font-size: 15px;
             margin-bottom: 20px;
             color: #FFD700;
         }
-        
+
         .card p {
             font-size: 10px;
             line-height: 1.9;
         }
-        
+
         /* Prize Pool - Pyramid Shape */
         .prizes {
             display: flex;
@@ -493,55 +564,55 @@
             max-width: 1000px;
             margin: 0 auto;
         }
-        
+
         .prize-row {
             display: flex;
             justify-content: center;
             gap: 60px;
             flex-wrap: wrap;
         }
-        
+
         .prize-card {
             text-align: center;
             transition: transform 0.3s;
         }
-        
+
         .prize-card:hover {
             transform: scale(1.15);
         }
-        
+
         .chest-img {
             width: 220px;
             height: 220px;
             margin-bottom: 25px;
             filter: drop-shadow(0 10px 20px rgba(0,0,0,0.9));
         }
-        
+
         .prize-label {
             font-size: 13px;
             margin-bottom: 12px;
             color: #FFD700;
             text-shadow: 3px 3px 6px #000;
         }
-        
+
         .prize-amount {
             font-size: 24px;
             color: #FFF;
             text-shadow: 4px 4px 0 #000;
         }
-        
+
         /* Sponsors */
         .sponsor-tier {
             margin-bottom: 80px;
         }
-        
+
         .sponsor-tier h3 {
             font-size: 22px;
             margin-bottom: 45px;
             text-align: center;
             color: #FFD700;
         }
-        
+
         .sponsors-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -549,7 +620,7 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         .sponsor-box {
             background: rgba(255,255,255,0.95);
             padding: 30px;
@@ -560,17 +631,17 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.6);
             transition: transform 0.3s;
         }
-        
+
         .sponsor-box:hover {
             transform: translateY(-8px);
         }
-        
+
         .sponsor-box img {
             max-width: 100%;
             height: 75px;
             object-fit: contain;
         }
-        
+
         /* FAB */
         .fab {
             position: fixed;
@@ -592,24 +663,24 @@
             justify-content: center;
             font-size: 40px;
         }
-        
+
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
         }
-        
+
         @keyframes pulse {
             0%, 100% { box-shadow: 0 0 40px rgba(255, 165, 0, 0.9); }
             50% { box-shadow: 0 0 60px rgba(255, 215, 0, 1); }
         }
-        
+
         /* Footer */
         footer {
             background: linear-gradient(180deg, #2C1810 0%, #0a0605 100%);
             padding: 90px 20px 40px;
             border-top: 10px solid #654321;
         }
-        
+
         .footer-content {
             max-width: 1400px;
             margin: 0 auto;
@@ -618,13 +689,13 @@
             gap: 60px;
             margin-bottom: 60px;
         }
-        
+
         .footer-section h3 {
             font-size: 18px;
             margin-bottom: 30px;
             color: #FFD700;
         }
-        
+
         .footer-section a {
             display: block;
             color: #FFF;
@@ -633,18 +704,18 @@
             margin-bottom: 15px;
             transition: all 0.3s;
         }
-        
+
         .footer-section a:hover {
             color: #FFD700;
             transform: translateX(8px);
         }
-        
+
         .socials {
             display: flex;
             gap: 25px;
             margin-top: 25px;
         }
-        
+
         .social-icon {
             width: 55px;
             height: 55px;
@@ -658,13 +729,13 @@
             font-size: 22px;
             transition: all 0.3s;
         }
-        
+
         .social-icon:hover {
             transform: scale(1.25) rotate(10deg);
             background: #8B4513;
             border-color: #FFD700;
         }
-        
+
         .map-container {
             width: 100%;
             height: 280px;
@@ -672,14 +743,14 @@
             border: 5px solid #8B4513;
             margin-top: 30px;
         }
-        
+
         .copyright {
             text-align: center;
             padding-top: 50px;
             border-top: 4px solid #654321;
             font-size: 10px;
         }
-        
+
         @media (max-width: 768px) {
             .countdown {
                 font-size: 22px;
@@ -712,6 +783,11 @@
                 width: 160px;
                 height: 160px;
             }
+            
+            .hero-logo {
+                max-width: 90%;
+                height: 200px;
+            }
         }
     </style>
 </head>
@@ -721,6 +797,8 @@
 
     <!-- Navbar -->
     <nav>
+        <div class="nav-texture-bar"></div>
+
         <div class="nav-container">
             <div class="lantern-container">
                 <div class="chain"></div>
@@ -753,7 +831,7 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <img src="https://via.placeholder.com/600x200/228B22/FFFFFF?text=AceHack+5.0" alt="AceHack 5.0" class="hero-logo">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczNvsQh1pVZjWde6BOyCtrei5x9sUxA3ErI8YInz1OqzoCst1vpXhOEn0POnVjx2zX69LBXNRKOz_kbo_ybUf_pZk6_XVozUoobIvhIF17YopkWS8qoA900udoxv54nbig0fn7hLJdV19NRHaIGh5qJ3=w1865-h659-s-no-gm?authuser=0" alt="AceHack 5.0" class="hero-logo">
         
         <div class="countdown-card">
             <h2>Event Starts In</h2>
