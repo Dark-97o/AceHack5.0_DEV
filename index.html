@@ -4,848 +4,1073 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AceHack 5.0 - Hackathon</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="https://static.wikia.nocookie.net/minecraft_gamepedia/images/f/fe/Grass_Block_JE7_BE6.png" type="image/x-icon">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: 'Courier New', monospace;
+            font-family: 'Press Start 2P', cursive;
             background: #1a1a1a;
-            color: #fff;
+            color: #FFFFFF;
             overflow-x: hidden;
+            position: relative;
         }
-
-        /* Minecraft Background */
-        .minecraft-bg {
+        
+        /* Animated Particle Background */
+        .particles {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('https://images.unsplash.com/photo-1589241062272-c0a000072945?w=1600');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.15;
-            z-index: -1;
+            z-index: -2;
+            pointer-events: none;
         }
-
-        /* Animated Blocks */
-        .block {
-            position: fixed;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(45deg, #8b6f47 25%, #a0826d 25%, #a0826d 50%, #8b6f47 50%, #8b6f47 75%, #a0826d 75%);
-            background-size: 20px 20px;
-            border: 2px solid #5a4a3a;
-            animation: float 15s infinite ease-in-out;
-            opacity: 0.3;
-            z-index: -1;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            25% { transform: translateY(-30px) rotate(5deg); }
-            50% { transform: translateY(0) rotate(0deg); }
-            75% { transform: translateY(30px) rotate(-5deg); }
-        }
-
-        /* Minecraft Trees */
-        .mc-tree {
-            position: fixed;
-            width: 60px;
-            height: 100px;
-            z-index: -1;
-            opacity: 0.4;
-        }
-
-        .mc-trunk {
-            width: 20px;
-            height: 50px;
-            background: #8b6f47;
-            border: 2px solid #5a4a3a;
+        
+        .particle {
             position: absolute;
-            bottom: 0;
-            left: 20px;
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.6);
+            animation: float-particle linear infinite;
         }
-
-        .mc-leaves {
-            width: 60px;
-            height: 60px;
-            background: #228b22;
-            border: 2px solid #1a6b1a;
-            position: absolute;
-            top: 0;
+        
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
         }
-
-        /* Navbar */
+        
+        /* Navbar - Transparent */
         nav {
-            background: rgba(0, 0, 0, 0.9);
-            padding: 1rem 2rem;
-            position: sticky;
+            position: fixed;
             top: 0;
+            width: 100%;
+            background: transparent;
+            padding: 0 0 120px;
             z-index: 1000;
-            border-bottom: 4px solid #4CAF50;
-            box-shadow: 0 4px 20px rgba(76, 175, 80, 0.3);
         }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            color: #4CAF50;
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px #000;
-            transition: all 0.3s;
-            padding: 0.5rem 1rem;
-            border: 2px solid transparent;
-        }
-
-        nav a:hover {
-            color: #fff;
-            border: 2px solid #4CAF50;
-            background: rgba(76, 175, 80, 0.2);
-        }
-
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 4rem 2rem;
-            position: relative;
-        }
-
-        .logo {
-            max-width: 400px;
-            width: 90%;
-            margin-bottom: 2rem;
-            filter: drop-shadow(0 0 20px #4CAF50);
-            animation: glow 2s infinite alternate;
-        }
-
-        @keyframes glow {
-            from { filter: drop-shadow(0 0 20px #4CAF50); }
-            to { filter: drop-shadow(0 0 40px #4CAF50); }
-        }
-
-        .dates {
-            font-size: 1.8rem;
-            color: #FFD700;
-            margin-bottom: 2rem;
-            text-shadow: 2px 2px 4px #000;
-        }
-
-        /* Countdown */
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-        }
-
-        .countdown-item {
-            background: rgba(0, 0, 0, 0.8);
-            border: 3px solid #4CAF50;
-            padding: 1.5rem;
-            border-radius: 10px;
-            min-width: 120px;
-        }
-
-        .countdown-item .number {
-            font-size: 3rem;
-            color: #4CAF50;
-            font-weight: bold;
-        }
-
-        .countdown-item .label {
-            font-size: 1rem;
-            color: #FFD700;
-        }
-
-        /* Buttons */
-        .buttons {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            margin: 3rem 0;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 1.2rem 3rem;
-            font-size: 1.3rem;
-            font-weight: bold;
-            border: 3px solid #4CAF50;
-            background: rgba(76, 175, 80, 0.2);
-            color: #4CAF50;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s;
-            text-shadow: 2px 2px 4px #000;
-            box-shadow: 0 0 20px rgba(76, 175, 80, 0.5);
-        }
-
-        .btn:hover {
-            background: #4CAF50;
-            color: #000;
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(76, 175, 80, 0.8);
-        }
-
-        /* Description */
-        .description {
-            max-width: 800px;
-            margin: 3rem auto;
-            padding: 2rem;
-            background: rgba(0, 0, 0, 0.8);
-            border: 3px solid #4CAF50;
-            border-radius: 10px;
-            line-height: 1.8;
-            font-size: 1.2rem;
-            text-align: center;
-        }
-
-        /* Section Styling */
-        .section {
-            padding: 4rem 2rem;
+        
+        .nav-container {
             max-width: 1400px;
             margin: 0 auto;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: 0 40px;
+            position: relative;
         }
-
-        .section-title {
+        
+        /* Lantern with chain - Pendulum swing */
+        .lantern-container {
+            position: relative;
+            width: 60px;
+            transform-origin: top center;
+            animation: pendulum-swing 4s ease-in-out infinite;
+        }
+        
+        @keyframes pendulum-swing {
+            0%, 100% { transform: rotate(-8deg); }
+            50% { transform: rotate(8deg); }
+        }
+        
+        .chain {
+            width: 8px;
+            height: 80px;
+            background: repeating-linear-gradient(
+                0deg,
+                #5C4033 0px,
+                #5C4033 8px,
+                #3E2723 8px,
+                #3E2723 16px
+            );
+            margin: 0 auto 0;
+            border-radius: 2px;
+        }
+        
+        .lantern {
+            width: 50px;
+            height: 70px;
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczPOaiEMh44SO1C-USmJudCX__Wq50ckoHtpl0oa4lVsadJHNGPuZMvrrf_baOM2AXwYeOxZ209MfjCuoZVwQe-dptcdvy9FaTl2MKMgMsCezFO2hOnDfrbCznXVBuUw1Yj5C421BPF9ce-UK0IpqBL4=w74-h127-s-no-gm?authuser=0');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0 auto;
+            position: relative;
+            animation: glow 2s ease-in-out infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% { filter: brightness(1) drop-shadow(0 0 10px #FFA500); }
+            50% { filter: brightness(1.3) drop-shadow(0 0 20px #FFD700); }
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            padding-bottom: 80px;
+        }
+        
+        .nav-links::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .nav-sign-container {
+            position: relative;
+            min-width: 140px;
+        }
+        
+        .sign-chain {
+            width: 4px;
+            height: 40px;
+            background: repeating-linear-gradient(
+                0deg,
+                #5C4033 0px,
+                #5C4033 6px,
+                #3E2723 6px,
+                #3E2723 12px
+            );
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+        
+        .nav-sign {
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczNw1Zvz9dY5v0NWEwVgFPylGSLJLyuUI7I2poyoDAbGLN5UCyDmbBamBzyn5SyFinjjVc2vfVc9UoUGLoMVrCdBfdJ089vubKPcA2JJP_cU4jvWKDD_O1mIZAz2VZTHl2BrvLBE07gIczPfUwe5Bmcs=w800-h450-s-no-gm?authuser=0');
+            background-size: cover;
+            border: 3px solid #4A3C2F;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: #FFF;
+            font-size: 9px;
+            white-space: nowrap;
+            display: block;
             text-align: center;
-            font-size: 3rem;
-            color: #4CAF50;
-            margin-bottom: 3rem;
-            text-shadow: 3px 3px 6px #000;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.7);
         }
-
-        /* Why Attend Cards */
-        .why-attend-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+        
+        .nav-sign:hover {
+            transform: translateY(5px);
         }
-
-        .why-card {
-            background: rgba(0, 0, 0, 0.8);
-            border: 3px solid #4CAF50;
-            padding: 2rem;
-            border-radius: 10px;
+        
+        /* Hero Section */
+        .hero {
+            margin-top: 180px;
+            padding: 100px 20px;
             text-align: center;
-            transition: all 0.3s;
+            background-image: url('https://i.pinimg.com/originals/c8/c5/66/c8c56618c87e161ba7c67b85806f6044.gif');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
         }
-
-        .why-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.5);
+        
+        .hero-logo {
+            max-width: 600px;
+            margin: 0 auto 100px;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.9));
         }
-
-        .why-card i {
-            font-size: 3rem;
-            color: #4CAF50;
-            margin-bottom: 1rem;
+        
+        .countdown-card {
+            background-image: url('https://static.wikia.nocookie.net/minecraft_gamepedia/images/3/3d/Grass_Block_JE7_BE6.png');
+            background-size: cover;
+            max-width: 700px;
+            margin: 60px auto;
+            padding: 50px 40px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.9);
+            position: relative;
         }
-
-        .why-card h3 {
+        
+        .countdown-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+        
+        .countdown-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .countdown-card h2 {
+            font-size: 20px;
+            margin-bottom: 35px;
+            text-shadow: 4px 4px 0 #000;
+        }
+        
+        .countdown {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            font-size: 32px;
+        }
+        
+        .countdown div {
+            background: rgba(0,0,0,0.7);
+            padding: 25px 20px;
+            border: 4px solid #FFD700;
+            min-width: 100px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.7);
+        }
+        
+        .countdown span {
+            display: block;
+            font-size: 11px;
+            margin-top: 12px;
             color: #FFD700;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
         }
-
-        /* Tracks Grid */
-        .tracks-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+        
+        .stone-buttons {
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            margin-top: 60px;
         }
-
-        .track-card {
-            background: rgba(0, 0, 0, 0.8);
-            border: 3px solid #4CAF50;
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            transition: all 0.3s;
+        
+        .stone-btn {
+            background-image: url('https://static.wikia.nocookie.net/minecraft_gamepedia/images/5/5c/Stone_JE5_BE3.png');
+            background-size: cover;
+            border: 6px solid #303030;
+            padding: 30px 50px;
+            font-family: 'Press Start 2P', cursive;
+            color: #FFF;
+            font-size: 13px;
             cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+            text-shadow: 3px 3px 6px #000;
+            position: relative;
+            overflow: hidden;
         }
-
-        .track-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.5);
+        
+        .stone-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        .stone-btn:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.5);
             border-color: #FFD700;
         }
-
-        .track-card i {
-            font-size: 3rem;
-            color: #4CAF50;
-            margin-bottom: 1rem;
+        
+        .stone-btn:active {
+            transform: translateY(-2px) scale(1.02);
         }
-
-        .track-card h3 {
-            color: #FFD700;
-            margin-bottom: 0.5rem;
+        
+        /* Sections with backgrounds */
+        section {
+            padding: 120px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
         }
-
-        /* Mentors/Judges Section */
-        .people-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+        
+        .section-bg {
+            padding: 120px 20px;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
         }
-
-        .person-card {
-            background: rgba(0, 0, 0, 0.8);
-            border: 3px solid #4CAF50;
-            padding: 1.5rem;
-            border-radius: 10px;
+        
+        .section-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 0;
+        }
+        
+        .section-bg > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        #about {
+            background-image: url('YOUR_ABOUT_BACKGROUND_URL.png');
+        }
+        
+        #tracks {
+            background-image: url('YOUR_TRACKS_BACKGROUND_URL.png');
+        }
+        
+        #why-attend {
+            background-image: url('YOUR_WHY_ATTEND_BACKGROUND_URL.png');
+        }
+        
+        #prizes {
+            background-image: url('YOUR_PRIZES_BACKGROUND_URL.png');
+        }
+        
+        #sponsors {
+            background-image: url('YOUR_SPONSORS_BACKGROUND_URL.png');
+        }
+        
+        h2 {
+            font-size: 36px;
             text-align: center;
-            transition: all 0.3s;
-        }
-
-        .person-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.5);
-        }
-
-        .person-card img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 3px solid #4CAF50;
-            margin-bottom: 1rem;
-            object-fit: cover;
-        }
-
-        .person-card h3 {
+            margin-bottom: 70px;
+            text-shadow: 5px 5px 0 #000;
             color: #FFD700;
-            margin-bottom: 0.5rem;
         }
-
-        .person-card p {
-            color: #4CAF50;
-            font-size: 0.9rem;
+        
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(139, 69, 19, 0.95);
+            padding: 50px;
+            border: 6px solid #654321;
+            line-height: 2;
+            font-size: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
-
-        /* Sponsors Section */
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-top: 60px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .stat-box {
+            background-image: url('YOUR_SIGN_TEXTURE_URL.png');
+            background-size: cover;
+            border: 6px solid #4A3C2F;
+            padding: 50px 30px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+            transition: transform 0.3s;
+            position: relative;
+        }
+        
+        .stat-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 0;
+        }
+        
+        .stat-box > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-10px) scale(1.05);
+        }
+        
+        .stat-number {
+            font-size: 42px;
+            display: block;
+            margin-bottom: 20px;
+            text-shadow: 4px 4px 0 #000;
+            color: #FFD700;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #FFF;
+        }
+        
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            background-image: url('https://static.wikia.nocookie.net/minecraft_gamepedia/images/b/b4/Oak_Planks_JE6_BE3.png');
+            background-size: cover;
+            border: 6px solid #4A3C2F;
+            padding: 45px 35px;
+            text-align: center;
+            transition: transform 0.3s;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+            position: relative;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 0;
+        }
+        
+        .card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.4);
+        }
+        
+        .card img {
+            width: 110px;
+            height: 110px;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.9));
+        }
+        
+        .card h3 {
+            font-size: 15px;
+            margin-bottom: 20px;
+            color: #FFD700;
+        }
+        
+        .card p {
+            font-size: 10px;
+            line-height: 1.9;
+        }
+        
+        /* Prize Pool - Pyramid Shape */
+        .prizes {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .prize-row {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        
+        .prize-card {
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .prize-card:hover {
+            transform: scale(1.15);
+        }
+        
+        .chest-img {
+            width: 220px;
+            height: 220px;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.9));
+        }
+        
+        .prize-label {
+            font-size: 13px;
+            margin-bottom: 12px;
+            color: #FFD700;
+            text-shadow: 3px 3px 6px #000;
+        }
+        
+        .prize-amount {
+            font-size: 24px;
+            color: #FFF;
+            text-shadow: 4px 4px 0 #000;
+        }
+        
+        /* Sponsors */
+        .sponsor-tier {
+            margin-bottom: 80px;
+        }
+        
+        .sponsor-tier h3 {
+            font-size: 22px;
+            margin-bottom: 45px;
+            text-align: center;
+            color: #FFD700;
+        }
+        
         .sponsors-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-            align-items: center;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-
-        .sponsor-card {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            transition: all 0.3s;
-            border: 3px solid transparent;
-        }
-
-        .sponsor-card:hover {
-            transform: scale(1.1);
-            border-color: #4CAF50;
-        }
-
-        .sponsor-card img {
-            max-width: 150px;
-            height: auto;
-        }
-
-        /* Gallery */
-        .gallery {
-            margin: 4rem 0;
-            overflow: hidden;
-        }
-
-        .gallery-row {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            animation: scroll 30s linear infinite;
-        }
-
-        .gallery-row:nth-child(even) {
-            animation-direction: reverse;
-        }
-
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .gallery-row img {
-            height: 200px;
-            width: 300px;
-            object-fit: cover;
-            border: 3px solid #4CAF50;
-            flex-shrink: 0;
-        }
-
-        /* FAQ Button */
-        .faq-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: #4CAF50;
-            border: 3px solid #FFD700;
-            border-radius: 50%;
+        
+        .sponsor-box {
+            background: rgba(255,255,255,0.95);
+            padding: 30px;
+            border: 5px solid #654321;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            color: #000;
-            text-decoration: none;
-            box-shadow: 0 4px 20px rgba(76, 175, 80, 0.6);
-            transition: all 0.3s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+            transition: transform 0.3s;
+        }
+        
+        .sponsor-box:hover {
+            transform: translateY(-8px);
+        }
+        
+        .sponsor-box img {
+            max-width: 100%;
+            height: 75px;
+            object-fit: contain;
+        }
+        
+        /* FAB */
+        .fab {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 90px;
+            height: 90px;
+            background-image: url('https://static.wikia.nocookie.net/minecraft_gamepedia/images/9/94/Glowstone_JE3_BE2.gif');
+            background-size: cover;
+            border: 6px solid #FF8C00;
+            border-radius: 50%;
+            cursor: pointer;
             z-index: 999;
+            box-shadow: 0 0 40px rgba(255, 165, 0, 0.9);
+            animation: float 3s ease-in-out infinite, pulse 2s ease-in-out infinite;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
         }
-
-        .faq-btn:hover {
-            transform: scale(1.1) rotate(360deg);
-            box-shadow: 0 6px 30px rgba(76, 175, 80, 0.8);
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
-
-        /* Map Section */
-        .map-container {
-            margin-top: 2rem;
-            border: 3px solid #4CAF50;
-            border-radius: 10px;
-            overflow: hidden;
-            height: 400px;
+        
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 40px rgba(255, 165, 0, 0.9); }
+            50% { box-shadow: 0 0 60px rgba(255, 215, 0, 1); }
         }
-
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
+        
         /* Footer */
         footer {
-            background: linear-gradient(to bottom, #2d5016, #1a3010);
-            border-top: 8px solid #4CAF50;
-            padding: 3rem 2rem 1rem;
-            margin-top: 4rem;
-            position: relative;
+            background: linear-gradient(180deg, #2C1810 0%, #0a0605 100%);
+            padding: 90px 20px 40px;
+            border-top: 10px solid #654321;
         }
-
-        .grass-pattern {
-            position: absolute;
-            top: -8px;
-            left: 0;
-            width: 100%;
-            height: 8px;
-            background: repeating-linear-gradient(90deg, #4CAF50 0px, #4CAF50 20px, #45a049 20px, #45a049 40px);
-        }
-
+        
         .footer-content {
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 60px;
+            margin-bottom: 60px;
         }
-
+        
         .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 30px;
             color: #FFD700;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
         }
-
-        .footer-logo {
-            max-width: 200px;
-            margin-bottom: 1rem;
+        
+        .footer-section a {
+            display: block;
+            color: #FFF;
+            text-decoration: none;
+            font-size: 11px;
+            margin-bottom: 15px;
+            transition: all 0.3s;
         }
-
-        .social-links {
+        
+        .footer-section a:hover {
+            color: #FFD700;
+            transform: translateX(8px);
+        }
+        
+        .socials {
             display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 25px;
         }
-
-        .social-links a {
-            width: 50px;
-            height: 50px;
-            background: rgba(76, 175, 80, 0.2);
-            border: 2px solid #4CAF50;
-            border-radius: 50%;
+        
+        .social-icon {
+            width: 55px;
+            height: 55px;
+            background: #654321;
+            border: 4px solid #8B4513;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #4CAF50;
-            font-size: 1.5rem;
-            transition: all 0.3s;
             text-decoration: none;
+            color: #FFF;
+            font-size: 22px;
+            transition: all 0.3s;
         }
-
-        .social-links a:hover {
-            background: #4CAF50;
-            color: #000;
-            transform: scale(1.1);
+        
+        .social-icon:hover {
+            transform: scale(1.25) rotate(10deg);
+            background: #8B4513;
+            border-color: #FFD700;
         }
-
-        .footer-bottom {
+        
+        .map-container {
+            width: 100%;
+            height: 280px;
+            background: #654321;
+            border: 5px solid #8B4513;
+            margin-top: 30px;
+        }
+        
+        .copyright {
             text-align: center;
-            padding-top: 2rem;
-            border-top: 2px solid #4CAF50;
-            color: #FFD700;
+            padding-top: 50px;
+            border-top: 4px solid #654321;
+            font-size: 10px;
         }
-
+        
         @media (max-width: 768px) {
-            .dates { font-size: 1.3rem; }
-            .section-title { font-size: 2rem; }
-            .countdown { gap: 1rem; }
-            .countdown-item { min-width: 80px; padding: 1rem; }
-            .countdown-item .number { font-size: 2rem; }
-            nav ul { gap: 1.5rem; }
+            .countdown {
+                font-size: 22px;
+                gap: 20px;
+            }
+            
+            .countdown div {
+                min-width: 75px;
+                padding: 20px 15px;
+            }
+            
+            .stone-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            h2 {
+                font-size: 24px;
+            }
+            
+            .prizes {
+                gap: 30px;
+            }
+            
+            .prize-row {
+                gap: 40px;
+            }
+            
+            .chest-img {
+                width: 160px;
+                height: 160px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="minecraft-bg"></div>
-
-    <!-- Animated Blocks -->
-    <div class="block" style="top: 10%; left: 10%;"></div>
-    <div class="block" style="top: 30%; right: 15%; animation-delay: -5s;"></div>
-    <div class="block" style="top: 60%; left: 20%; animation-delay: -10s;"></div>
-    <div class="block" style="top: 80%; right: 25%; animation-delay: -7s;"></div>
-
-    <!-- Minecraft Trees -->
-    <div class="mc-tree" style="top: 15%; left: 5%;">
-        <div class="mc-leaves"></div>
-        <div class="mc-trunk"></div>
-    </div>
-    <div class="mc-tree" style="top: 50%; right: 8%;">
-        <div class="mc-leaves"></div>
-        <div class="mc-trunk"></div>
-    </div>
-    <div class="mc-tree" style="top: 75%; left: 15%;">
-        <div class="mc-leaves"></div>
-        <div class="mc-trunk"></div>
-    </div>
-
-    <!-- FAQ Button -->
-    <a href="faq.html" class="faq-btn" title="FAQs">
-        <i class="fas fa-question"></i>
-    </a>
+    <!-- Animated Particles -->
+    <div class="particles" id="particles"></div>
 
     <!-- Navbar -->
     <nav>
-        <ul>
-            <li><a href="#home">HOME</a></li>
-            <li><a href="#why-attend">WHY ATTEND</a></li>
-            <li><a href="#tracks">TRACKS</a></li>
-            <li><a href="#mentors">MENTORS</a></li>
-            <li><a href="#sponsors">SPONSORS</a></li>
-            <li><a href="#gallery">GALLERY</a></li>
-            <li><a href="#contact">CONTACT</a></li>
-        </ul>
+        <div class="nav-container">
+            <div class="lantern-container">
+                <div class="chain"></div>
+                <div class="lantern"></div>
+            </div>
+            <div class="nav-links">
+                <div class="nav-sign-container" style="--index: 0">
+                    <div class="sign-chain"></div>
+                    <a href="#home" class="nav-sign">Home</a>
+                </div>
+                <div class="nav-sign-container" style="--index: 1">
+                    <div class="sign-chain"></div>
+                    <a href="#timeline" class="nav-sign">Timeline</a>
+                </div>
+                <div class="nav-sign-container" style="--index: 2">
+                    <div class="sign-chain"></div>
+                    <a href="#guests" class="nav-sign">Guests</a>
+                </div>
+                <div class="nav-sign-container" style="--index: 3">
+                    <div class="sign-chain"></div>
+                    <a href="#team" class="nav-sign">Our Team</a>
+                </div>
+                <div class="nav-sign-container" style="--index: 4">
+                    <div class="sign-chain"></div>
+                    <a href="#contact" class="nav-sign">Contact</a>
+                </div>
+            </div>
+        </div>
     </nav>
 
     <!-- Hero Section -->
-    <div class="hero" id="home">
-        <img src="YOUR_LOGO_URL_HERE" alt="AceHack 5.0 Logo" class="logo">
-        <div class="dates">📅 March 8-9, 2026</div>
-
-        <!-- Countdown -->
-        <div class="countdown" id="countdown">
-            <div class="countdown-item">
-                <div class="number" id="days">00</div>
-                <div class="label">DAYS</div>
-            </div>
-            <div class="countdown-item">
-                <div class="number" id="hours">00</div>
-                <div class="label">HOURS</div>
-            </div>
-            <div class="countdown-item">
-                <div class="number" id="minutes">00</div>
-                <div class="label">MINUTES</div>
-            </div>
-            <div class="countdown-item">
-                <div class="number" id="seconds">00</div>
-                <div class="label">SECONDS</div>
+    <section class="hero" id="home">
+        <img src="https://via.placeholder.com/600x200/228B22/FFFFFF?text=AceHack+5.0" alt="AceHack 5.0" class="hero-logo">
+        
+        <div class="countdown-card">
+            <h2>Event Starts In</h2>
+            <div class="countdown" id="countdown">
+                <div><span id="days">00</span><span>Days</span></div>
+                <div><span id="hours">00</span><span>Hours</span></div>
+                <div><span id="mins">00</span><span>Mins</span></div>
+                <div><span id="secs">00</span><span>Secs</span></div>
             </div>
         </div>
-
-        <!-- Buttons -->
-        <div class="buttons">
-            <a href="#" class="btn">🎫 REGISTRATIONS OPENING SOON</a>
-            <a href="#" class="btn">💬 JOIN COMMUNITY</a>
+        
+        <div class="stone-buttons">
+            <a href="#" class="stone-btn">Register Now</a>
+            <a href="#" class="stone-btn">Join Community</a>
         </div>
+    </section>
 
-        <!-- Description -->
-        <div class="description">
-            <h2 style="color: #4CAF50; margin-bottom: 1rem;">🎮 CRAFT YOUR CODE 🎮</h2>
-            <p>Welcome to AceHack 5.0, where innovation meets creativity! Join us for an epic 24-hour hackathon experience. Build, create, and innovate with fellow developers, designers, and dreamers. Whether you're a seasoned coder or just starting out, AceHack 5.0 is your platform to turn ideas into reality. Get ready for workshops, mentorship, prizes, and an unforgettable Minecraft-themed adventure!</p>
-        </div>
-    </div>
-
-    <!-- Why Attend Section -->
-    <div class="section" id="why-attend">
-        <h2 class="section-title">🌟 WHY ATTEND ACEHACK? 🌟</h2>
-        <div class="why-attend-grid">
-            <div class="why-card">
-                <i class="fas fa-trophy"></i>
-                <h3>Amazing Prizes</h3>
-                <p>Win exciting prizes worth lakhs! Cash prizes, swag, and exclusive opportunities await the winners.</p>
+    <!-- About Section -->
+    <section id="about" class="section-bg">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <h2>About AceHack 5.0</h2>
+            <div class="about-content">
+                <p>Welcome to AceHack 5.0, the ultimate hackathon experience where innovation meets creativity! Join hundreds of developers, designers, and entrepreneurs for 24 hours of intense coding, collaboration, and creation. Build the future, one block at a time.</p>
             </div>
-            <div class="why-card">
-                <i class="fas fa-users"></i>
-                <h3>Network & Collaborate</h3>
-                <p>Connect with 500+ hackers, mentors, and industry professionals. Build lasting relationships!</p>
-            </div>
-            <div class="why-card">
-                <i class="fas fa-lightbulb"></i>
-                <h3>Learn & Grow</h3>
-                <p>Attend workshops, tech talks, and mentoring sessions from industry experts and innovators.</p>
-            </div>
-            <div class="why-card">
-                <i class="fas fa-rocket"></i>
-                <h3>Build Your Portfolio</h3>
-                <p>Create innovative projects in 24 hours that showcase your skills to future employers.</p>
-            </div>
-            <div class="why-card">
-                <i class="fas fa-pizza-slice"></i>
-                <h3>Free Food & Swag</h3>
-                <p>Enjoy unlimited food, beverages, snacks, and exclusive AceHack merchandise throughout the event!</p>
-            </div>
-            <div class="why-card">
-                <i class="fas fa-certificate"></i>
-                <h3>Certificates & Recognition</h3>
-                <p>Receive participation certificates and get featured on our platform. Stand out from the crowd!</p>
+            
+            <div class="stats">
+                <div class="stat-box">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Participants</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">100+</span>
+                    <span class="stat-label">Projects</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">₹5L</span>
+                    <span class="stat-label">Prize Pool</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Mentors</span>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Tracks Section -->
-    <div class="section" id="tracks">
-        <h2 class="section-title">🎯 HACKATHON TRACKS 🎯</h2>
-        <div class="tracks-grid">
-            <div class="track-card">
-                <i class="fas fa-brain"></i>
-                <h3>AI & Machine Learning</h3>
-                <p>Build intelligent solutions using ML, NLP, and deep learning technologies.</p>
-            </div>
-            <div class="track-card">
-                <i class="fas fa-shield-alt"></i>
-                <h3>Cybersecurity</h3>
-                <p>Create tools and solutions to enhance digital security and privacy.</p>
-            </div>
-            <div class="track-card">
-                <i class="fas fa-mobile-alt"></i>
-                <h3>Web & Mobile Dev</h3>
-                <p>Develop innovative web and mobile applications that solve real problems.</p>
-            </div>
-            <div class="track-card">
-                <i class="fas fa-bitcoin"></i>
-                <h3>Blockchain & Web3</h3>
-                <p>Build decentralized applications and explore the future of the internet.</p>
-            </div>
-            <div class="track-card">
-                <i class="fas fa-heart"></i>
-                <h3>Healthcare</h3>
-                <p>Create technology solutions to improve healthcare accessibility and efficiency.</p>
-            </div>
-            <div class="track-card">
-                <i class="fas fa-leaf"></i>
-                <h3>Sustainability</h3>
-                <p>Develop eco-friendly solutions for environmental challenges and climate change.</p>
-            </div>
-            <div class="track-card">
-                <i class="fas fa-graduation-cap"></i>
-                <h3>EdTech</h3>
-                <p>Transform education with innovative learning platforms and tools.</p>
-            </div>
-            <div class="track-card">
-                <i class="fas fa-gamepad"></i>
-                <h3>Gaming & AR/VR</h3>
-                <p>Create immersive gaming experiences and virtual reality applications.</p>
-            </div>
-            <div class="track-card">
-                <i class="fas fa-code"></i>
-                <h3>Open Innovation</h3>
-                <p>Think outside the box! Build anything innovative that doesn't fit other tracks.</p>
+    <section id="tracks" class="section-bg">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <h2>Hackathon Tracks</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/f/f7/Redstone_Dust_JE2_BE2.png" alt="AI/ML">
+                    <h3>AI/ML</h3>
+                    <p>Build intelligent solutions using machine learning and artificial intelligence</p>
+                </div>
+                <div class="card">
+                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d1/Diamond_JE3_BE3.png" alt="Web3">
+                    <h3>Web3</h3>
+                    <p>Create decentralized applications and blockchain solutions</p>
+                </div>
+                <div class="card">
+                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/0/09/Redstone_Lamp_%28S%29_JE3.gif" alt="IoT">
+                    <h3>IoT</h3>
+                    <p>Connect the physical world with smart devices and sensors</p>
+                </div>
+                <div class="card">
+                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/6/6e/Enchanted_Golden_Apple_JE2_BE2.png" alt="Healthcare">
+                    <h3>Healthcare</h3>
+                    <p>Innovate solutions for better health and wellness</p>
+                </div>
+                <div class="card">
+                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/e/e0/Experience_Orb_Value_1237.png" alt="EdTech">
+                    <h3>EdTech</h3>
+                    <p>Transform education with technology</p>
+                </div>
+                <div class="card">
+                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/de/Emerald_JE3_BE3.png" alt="FinTech">
+                    <h3>FinTech</h3>
+                    <p>Revolutionize financial services</p>
+                </div>
+                <div class="card">
+                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/c/c5/Oak_Sapling_JE7_BE2.png" alt="Sustainability">
+                    <h3>Sustainability</h3>
+                    <p>Build for a greener tomorrow</p>
+                </div>
+                <div class="card">
+                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/26/TNT_JE3_BE2.png" alt="Open Innovation">
+                    <h3>Open Innovation</h3>
+                    <p>Create anything your mind imagines</p>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Mentors & Judges Section -->
-    <div class="section" id="mentors">
-        <h2 class="section-title">👨‍🏫 PREVIOUS MENTORS & JUDGES 👩‍🏫</h2>
-        <div class="people-grid">
-            <div class="person-card">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200" alt="Mentor">
-                <h3>John Doe</h3>
-                <p>Senior Engineer @ Google</p>
-            </div>
-            <div class="person-card">
-                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200" alt="Mentor">
-                <h3>Jane Smith</h3>
-                <p>Product Lead @ Microsoft</p>
-            </div>
-            <div class="person-card">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200" alt="Judge">
-                <h3>Alex Johnson</h3>
-                <p>CTO @ StartupXYZ</p>
-            </div>
-            <div class="person-card">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200" alt="Judge">
-                <h3>Sarah Williams</h3>
-                <p>AI Researcher @ Meta</p>
-            </div>
-            <div class="person-card">
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200" alt="Mentor">
-                <h3>Mike Brown</h3>
-                <p>Founder @ TechCorp</p>
-            </div>
-            <div class="person-card">
-                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=200" alt="Mentor">
-                <h3>Emily Davis</h3>
-                <p>VP Engineering @ Amazon</p>
+    <!-- Why Attend Section -->
+    <section id="why-attend" class="section-bg">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <h2>Why Attend?</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/9/98/Nether_Star_JE2_BE2.gif" alt="Win Prizes">
+                    <h3>Win Prizes</h3>
+                    <p>Compete for amazing prizes and recognition</p>
+                </div>
+                <div class="card">
+                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/a/ab/Player_Head_JE2_BE2.png" alt="Network">
+                    <h3>Network</h3>
+                    <p>Connect with industry experts and fellow hackers</p>
+                </div>
+                <div class="card">
+                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/23/Book_JE2_BE2.png" alt="Learn">
+                    <h3>Learn</h3>
+                    <p>Attend workshops and gain new skills</p>
+                </div>
+                <div class="card">
+                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/3/34/Crafting_Table_JE4_BE3.png" alt="Build">
+                    <h3>Build</h3>
+                    <p>Turn your ideas into reality in 24 hours</p>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Prize Pool Section - Pyramid Shape -->
+    <section id="prizes" class="section-bg">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <h2>Prize Pool</h2>
+            <div class="prizes">
+                <!-- Top of pyramid - 1st place -->
+                <div class="prize-row">
+                    <div class="prize-card">
+                        <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d5/Chest_%28S%29_JE3_BE2.gif" alt="1st Place Chest" class="chest-img">
+                        <div class="prize-label">🥇 1st Place</div>
+                        <div class="prize-amount">₹2,00,000</div>
+                    </div>
+                </div>
+                
+                <!-- Second row - 2nd and 3rd place -->
+                <div class="prize-row">
+                    <div class="prize-card">
+                        <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d5/Chest_%28S%29_JE3_BE2.gif" alt="2nd Place Chest" class="chest-img">
+                        <div class="prize-label">🥈 2nd Place</div>
+                        <div class="prize-amount">₹1,00,000</div>
+                    </div>
+                    <div class="prize-card">
+                        <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d5/Chest_%28S%29_JE3_BE2.gif" alt="3rd Place Chest" class="chest-img">
+                        <div class="prize-label">🥉 3rd Place</div>
+                        <div class="prize-amount">₹50,000</div>
+                    </div>
+                </div>
+                
+                <!-- Bottom row - Special categories -->
+                <div class="prize-row">
+                    <div class="prize-card">
+                        <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d5/Chest_%28S%29_JE3_BE2.gif" alt="Best Beginner Chest" class="chest-img">
+                        <div class="prize-label">🌟 Best Beginner</div>
+                        <div class="prize-amount">₹30,000</div>
+                    </div>
+                    <div class="prize-card">
+                        <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d5/Chest_%28S%29_JE3_BE2.gif" alt="All Girls Team Chest" class="chest-img">
+                        <div class="prize-label">👑 All Girls Team</div>
+                        <div class="prize-amount">₹30,000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Sponsors Section -->
-    <div class="section" id="sponsors">
-        <h2 class="section-title">🤝 PREVIOUS SPONSORS 🤝</h2>
-        <div class="sponsors-grid">
-            <div class="sponsor-card">
-                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=150" alt="Sponsor">
+    <section id="sponsors" class="section-bg">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <h2>Our Sponsors</h2>
+            
+            <div class="sponsor-tier">
+                <h3>💎 Diamond Sponsors</h3>
+                <div class="sponsors-grid">
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/000000/FFFFFF?text=Sponsor+1" alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/000000/FFFFFF?text=Sponsor+2" alt="Sponsor"></div>
+                </div>
             </div>
-            <div class="sponsor-card">
-                <img src="https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=150" alt="Sponsor">
+            
+            <div class="sponsor-tier">
+                <h3>⚪ Platinum Sponsors</h3>
+                <div class="sponsors-grid">
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/333333/FFFFFF?text=Sponsor+3" alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/333333/FFFFFF?text=Sponsor+4" alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/333333/FFFFFF?text=Sponsor+5" alt="Sponsor"></div>
+                </div>
             </div>
-            <div class="sponsor-card">
-                <img src="https://images.unsplash.com/photo-1633409361618-c73427e4e206?w=150" alt="Sponsor">
+            
+            <div class="sponsor-tier">
+                <h3>🥇 Gold Sponsors</h3>
+                <div class="sponsors-grid">
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/666666/FFFFFF?text=Sponsor+6" alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/666666/FFFFFF?text=Sponsor+7" alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/666666/FFFFFF?text=Sponsor+8" alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/666666/FFFFFF?text=Sponsor+9" alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/666666/FFFFFF?text=Sponsor+10" alt="Sponsor"></div>
+                </div>
             </div>
-            <div class="sponsor-card">
-                <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=150" alt="Sponsor">
+            
+            <div class="sponsor-tier">
+                <h3>🥈 Silver Sponsors</h3>
+                <div class="sponsors-grid">
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/999999/FFFFFF?text=Sponsor+11" alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/999999/FFFFFF?text=Sponsor+12" alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/999999/FFFFFF?text=Sponsor+13" alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/999999/FFFFFF?text=Sponsor+14" alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/999999/FFFFFF?text=Sponsor+15" alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/999999/FFFFFF?text=Sponsor+16" alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/999999/FFFFFF?text=Sponsor+17" alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/999999/FFFFFF?text=Sponsor+18" alt="Sponsor"></div>
+                </div>
             </div>
-            <div class="sponsor-card">
-                <img src="https://images.unsplash.com/photo-1614680376408-81e91ffe3db7?w=150" alt="Sponsor">
-            </div>
-            <div class="sponsor-card">
-                <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=150" alt="Sponsor">
-            </div>
-        </div>
-    </div>
 
-    <!-- Gallery -->
-    <div class="section" id="gallery">
-        <h2 class="section-title">📸 GALLERY 📸</h2>
-        <div class="gallery">
-            <div class="gallery-row">
-                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=300" alt="Hackathon">
-                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=300" alt="Coding">
-                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=300" alt="Team">
-                <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=300" alt="Workshop">
-                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=300" alt="Hackathon">
-                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=300" alt="Coding">
+            <div class="sponsor-tier">
+                <h3>🥉 Bronze Sponsors</h3>
+                <div class="sponsors-grid">
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+19" alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+20" alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+21" alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+22" alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+23" alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+24" alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+25" alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+26" alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+27" alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+28" alt="Sponsor"></div>
+                </div>
             </div>
-            <div class="gallery-row">
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=300" alt="Collaboration">
-                <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=300" alt="Coding">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=300" alt="Success">
-                <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=300" alt="Developer">
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=300" alt="Collaboration">
-                <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=300" alt="Coding">
-            </div>
-            <div class="gallery-row">
-                <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=300" alt="Team Work">
-                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=300" alt="Meeting">
-                <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=300" alt="Presentation">
-                <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=300" alt="Planning">
-                <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=300" alt="Team Work">
-                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=300" alt="Meeting">
-            </div>
-            <div class="gallery-row">
-                <img src="https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?w=300" alt="Innovation">
-                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=300" alt="Brainstorm">
-                <img src="https://images.unsplash.com/photo-1552581234-26160f608093?w=300" alt="Winners">
-                <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=300" alt="Code">
-                <img src="https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?w=300" alt="Innovation">
-                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=300" alt="Brainstorm">
-            </div>
-        </div>
-    </div>
 
-    <!-- Map Section -->
-    <div class="section" id="contact">
-        <h2 class="section-title">📍 FIND US 📍</h2>
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3506.2233913121413!2d77.4051603!3d28.5021359!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cea64b8f89b2d%3A0x9005be338280e06!2sGurugram%2C%20Haryana!5e0!3m2!1sen!2sin!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+            <div class="sponsor-tier">
+                <h3>🤝 Community Partners</h3>
+                <div class="sponsors-grid">
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/4CAF50/FFFFFF?text=Partner+1" alt="Partner"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/4CAF50/FFFFFF?text=Partner+2" alt="Partner"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/4CAF50/FFFFFF?text=Partner+3" alt="Partner"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/4CAF50/FFFFFF?text=Partner+4" alt="Partner"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/4CAF50/FFFFFF?text=Partner+5" alt="Partner"></div>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- FAB Button -->
+    <a href="faq.html" class="fab">💡</a>
 
     <!-- Footer -->
-    <footer>
-        <div class="grass-pattern"></div>
+    <footer id="contact">
         <div class="footer-content">
             <div class="footer-section">
-                <img src="YOUR_LOGO_URL_HERE" alt="AceHack Logo" class="footer-logo">
-                <p style="color: #FFD700; line-height: 1.6;">Join us for the most exciting hackathon experience! Code, create, and innovate with AceHack 5.0.</p>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <p><a href="#home" style="color: #4CAF50; text-decoration: none;">Home</a></p>
-                <p><a href="#tracks" style="color: #4CAF50; text-decoration: none;">Tracks</a></p>
-                <p><a href="#sponsors" style="color: #4CAF50; text-decoration: none;">Sponsors</a></p>
-                <p><a href="faq.html" style="color: #4CAF50; text-decoration: none;">FAQs</a></p>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Connect With Us</h3>
-                <div class="social-links">
-                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" title="Twitter"><i class="fab fa-x-twitter"></i></a>
-                    <a href="#" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
-                    <a href="#" title="Discord"><i class="fab fa-discord"></i></a>
-                    <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                <img src="https://via.placeholder.com/200x70/228B22/FFFFFF?text=AceHack" alt="AceHack Logo" style="margin-bottom: 25px;">
+                <p style="font-size: 10px; line-height: 2;">The ultimate hackathon experience. Build the future, one block at a time.</p>
+                <div class="socials">
+                    <a href="#" class="social-icon">f</a>
+                    <a href="#" class="social-icon">𝕏</a>
+                    <a href="#" class="social-icon">in</a>
+                    <a href="#" class="social-icon">▶</a>
                 </div>
             </div>
             
             <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p style="color: #FFD700;">📧 contact@acehack.com</p>
-                <p style="color: #FFD700;">📱 +91 XXXXX XXXXX</p>
-                <p style="color: #FFD700;">📍 Gurugram, Haryana, India</p>
+                <h3>Quick Links</h3>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#tracks">Tracks</a>
+                <a href="#prizes">Prizes</a>
+                <a href="#sponsors">Sponsors</a>
+                <a href="faq.html">FAQs</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Archives</h3>
+                <a href="#">AceHack 4.0 - 2025</a>
+                <a href="#">AceHack 3.0 - 2024</a>
+                <a href="#">AceHack 2.0 - 2023</a>
+                <a href="#">AceHack 1.0 - 2022</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Location</h3>
+                <p style="font-size: 10px; line-height: 2;">Your College Name<br>Address Line 1<br>City, State - 000000<br>India</p>
+                <div class="map-container">
+                    <!-- Add Google Maps embed here -->
+                </div>
             </div>
         </div>
         
-        <div class="footer-bottom">
-            <p>© 2025 AceHack 5.0. All Rights Reserved. | Crafted with 💚 by AceHack Team</p>
+        <div class="copyright">
+            © 2026 AceHack. All Rights Reserved. | Crafted with ❤️ by the AceHack Team
         </div>
     </footer>
 
     <script>
-        // Countdown Timer
-        const countdownDate = new Date('Mar 8, 2026 00:00:00').getTime();
+        // Create animated particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particle.style.opacity = Math.random() * 0.5 + 0.3;
+                container.appendChild(particle);
+            }
+        }
         
-        const countdown = setInterval(() => {
+        createParticles();
+        
+        // Countdown timer
+        const countdownDate = new Date('March 8, 2026 00:00:00').getTime();
+        
+        const countdownFunction = setInterval(() => {
             const now = new Date().getTime();
             const distance = countdownDate - now;
             
@@ -854,16 +1079,30 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
             
-            document.getElementById('days').textContent = days.toString().padStart(2, '0');
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            document.getElementById('days').innerHTML = String(days).padStart(2, '0');
+            document.getElementById('hours').innerHTML = String(hours).padStart(2, '0');
+            document.getElementById('mins').innerHTML = String(minutes).padStart(2, '0');
+            document.getElementById('secs').innerHTML = String(seconds).padStart(2, '0');
             
             if (distance < 0) {
-                clearInterval(countdown);
-                document.getElementById('countdown').innerHTML = '<h2>EVENT STARTED!</h2>';
+                clearInterval(countdownFunction);
+                document.getElementById('countdown').innerHTML = '<div style="font-size: 22px;">🎉 EVENT STARTED! 🎉</div>';
             }
         }, 1000);
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
     </script>
 </body>
 </html>
