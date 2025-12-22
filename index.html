@@ -78,13 +78,14 @@
         }
 
         .nav-container {
-            max-width: 1400px;
+            max-width: 100%;
             margin: 0 auto;
             display: flex;
             align-items: flex-start;
             justify-content: space-between;
             padding: 0 40px;
             position: relative;
+            gap: 0;
         }
 
         /* Lantern with chain - Attached to nav bar */
@@ -137,6 +138,9 @@
             overflow-x: auto;
             scrollbar-width: none;
             padding-bottom: 80px;
+            position: absolute;  /* Add this */
+            left: 50%;  /* Add this */
+            transform: translateX(-50%);  /* Add this */
         }
 
         .nav-links::-webkit-scrollbar {
@@ -163,7 +167,7 @@
             content: '';
             position: absolute;
             width: 4px;
-            height: 46px;
+            height: 44px;
             background: repeating-linear-gradient(
                 0deg,
                 #5C4033 0px,
@@ -179,7 +183,7 @@
             content: '';
             position: absolute;
             width: 4px;
-            height: 46px;
+            height: 44px;
             background: repeating-linear-gradient(
                 0deg,
                 #5C4033 0px,
@@ -192,26 +196,27 @@
         }
 
         .sign-chain::before {
-            left: -25px;
+            left: -39px;
         }
 
         .sign-chain::after {
-            right: -25px;
+            right: -39px;
         }
 
         .nav-sign {
-            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczNw1Zvz9dY5v0NWEwVgFPylGSLJLyuUI7I2poyoDAbGLN5UCyDmbBamBzyn5SyFinjjVc2vfVc9UoUGLoMVrCdBfdJ089vubKPcA2JJP_cU4jvWKDD_O1mIZAz2VZTHl2BrvLBE07gIczPfUwe5Bmcs=w800-h450-s-no-gm?authuser=0');
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczMxkXqlZpEAGsqwkmKuJT0ceVu9_CuV2rmiFt8xlvW9X30dcur-795F1dwSkhe9je8mMAqhnPsQMVd2q7GwOeP257Kx6k7NqVyA0w-G6l1Tq17S6upayDwz3JdLd3AQ0vM2zUx4vqhdtbQlNkFFf1aq=w1163-h400-s-no-gm?authuser=0');
             background-size: cover;
             border: 3px solid #4A3C2F;
             padding: 15px 20px;
             text-decoration: none;
             color: #FFF;
-            font-size: 9px;
+            font-size: 11px;
             white-space: nowrap;
             display: block;
             text-align: center;
             transition: transform 0.3s;
             box-shadow: 5px 5px 5px rgba(0,0,0,2);
+            z-index: 1000;
         }
 
         .nav-sign:hover {
@@ -220,8 +225,8 @@
 
         /* Hero Section */
         .hero {
-            margin-top: -145px;
-            max-width: 1470px;
+            margin-top: -217px;
+            max-width: 1480px;
             padding: 180px 20px 100px;
             text-align: center;
             background-image: url('https://lh3.googleusercontent.com/pw/AP1GczMDt64O1LC2xmfarv0iZpsC2eMk3DwoeaTq6wo7fGiSZueu9OI60rrOzMgwBrM8FEGFKVU-AFAtlZYYjTAPubl4F8M012dGow66ll26T6yxW_ouN9UU-Rba36Rd18joqffWY9wE75tblXz-H8CGiYTO=w795-h420-s-no-gm?authuser=0');
@@ -293,8 +298,8 @@
         }
 
         .countdown-card h2 {
-            font-size: 20px;
-            margin-bottom: 35px;
+            font-size: 25px;
+            margin-bottom: 38px;
             text-shadow: 4px 4px 0 #000;
         }
 
@@ -315,7 +320,7 @@
 
         .countdown span {
             display: block;
-            font-size: 11px;
+            font-size: 15px;
             margin-top: 12px;
             color: #FFD700;
         }
@@ -405,7 +410,7 @@
         }
 
         #about {
-            background-image: url('YOUR_ABOUT_BACKGROUND_URL.png');
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczPArpLIRviTli6-xNYj6Na_0cuOtj9jFjDpO4IC-WfnexM2nip4HuDuF7495x6ynDjYpqfj2HkCQpkHab9Iw7XpT_ZkCsrWJgJ2c7Nb1rM9OMEgR5DxYcVwnS_MWc02kYWVYutMmfysgZifa_HdoNeZ=w938-h938-s-no-gm?authuser=0');
         }
 
         #tracks {
@@ -827,6 +832,10 @@
                     <a href="#contact" class="nav-sign">Contact</a>
                 </div>
             </div>
+            <div class="lantern-container">
+                <div class="chain"></div>
+                <div class="lantern"></div>
+            </div>
         </div>
     </nav>
 
@@ -1183,5 +1192,6 @@
             });
         });
     </script>
+    
 </body>
 </html>
