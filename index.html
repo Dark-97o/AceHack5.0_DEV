@@ -229,7 +229,7 @@
             max-width: 1480px;
             padding: 180px 20px 100px;
             text-align: center;
-            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczMDt64O1LC2xmfarv0iZpsC2eMk3DwoeaTq6wo7fGiSZueu9OI60rrOzMgwBrM8FEGFKVU-AFAtlZYYjTAPubl4F8M012dGow66ll26T6yxW_ouN9UU-Rba36Rd18joqffWY9wE75tblXz-H8CGiYTO=w795-h420-s-no-gm?authuser=0');
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczPImIZLv30YQn4jXuTuzxyyzJTKYF965FS7xS3jjf_OexojHUI2PH0xMPuKaSmeIU5koTDoScACCQi08SZqPR0opNrWzyRvf5AI6WK9VcNhFVb5TJK0WgOBDpe5h-rl862CmDT1uqPZ2EJ84M0ALocs=w800-h450-s-no-gm?authuser=0');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -250,13 +250,13 @@
             bottom: 0;
             background: linear-gradient(
                 to bottom,
-                rgba(0, 0, 0, 0.7) 0%,
+                rgba(0, 0, 0, 0.69) 0%,
                 rgba(0, 0, 0, 0.5) 50%,
-                rgba(0, 0, 0, 0.7) 100%
+                rgba(0, 0, 0, 0.69) 100%
             );
             z-index: 0;
         }
-
+        
         .hero > * {
             position: relative;
             z-index: 1;
@@ -265,20 +265,22 @@
         .hero-logo {
             max-width: 800px;
             height: 300px;
-            margin: 0 auto 100px;
+            margin: 100px auto 100px;
             filter: drop-shadow(0 10px 20px rgba(0,0,0,0.9));
             object-fit: contain;
         }
 
         .countdown-card {
-            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczOyeNXygoJ0R6ejdrUgwsUd0pTCo5kI6zmd1AOQSSbS-fyYfwuXmEeFQ05a7OmFOtm7SgghK-sAEpjiMwKlBHTkPe6nftA1CCokpRloPR7L4cKDwyPmcdgCICDPdrD6ULQ0cK6Gp9BkFX9dHOEyNgcv=w815-h405-s-no-gm?authuser=0');
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczPEriaY5PSmrTgJNQYqowfF7FXAGoqZTkInKkLrAid_5hHCUXzUo0y27FqjcFn2tlJzoNLjcbSNlT7j91x3kx5bgYPymMAdpB2DmPzuhJsf5xjsTfjP02x2o-GW4vvOin7xNSK2En-ZFz9u3nGXK8h8=w889-h287-s-no-gm?authuser=0');
             background-size: cover;
-            border: 2px solid #4e2806;
-            max-width: 700px;
-            margin: 60px auto;
-            padding: 50px 40px;
+            height: 230px;
+            border: 2px solid #ffffff;
+            max-width: 665px;
+            margin: 30px auto;
+            padding: 32px 35px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.9);
             position: relative;
+            border-radius: 2px;
         }
 
         .countdown-card::before {
@@ -300,6 +302,7 @@
         .countdown-card h2 {
             font-size: 25px;
             margin-bottom: 38px;
+            color: #ffffff;
             text-shadow: 4px 4px 0 #000;
         }
 
@@ -313,7 +316,7 @@
         .countdown div {
             background: rgba(0,0,0,0.7);
             padding: 25px 20px;
-            border: 2px solid #FFD700;
+            border: 2px solid #ffffff;
             min-width: 100px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.7);
         }
@@ -322,7 +325,7 @@
             display: block;
             font-size: 15px;
             margin-top: 12px;
-            color: #FFD700;
+            color: #ffffff;
         }
 
         .stone-buttons {
@@ -335,7 +338,8 @@
         .stone-btn {
             background-image: url('https://lh3.googleusercontent.com/pw/AP1GczMZ213EkYNghug2YDe5JlReDkV4NnHM3CGMcE9KqZfO3wC9E_mPF4fTCfvumT9HwnfLUKLq-QrhWvHSVF0b9jXjoA3SyMnZ25P4sEngOwiGw-gXURtMETzmtALESaDtVdos6rNA5r0Gn5hq25KXxsdU=w1731-h974-s-no-gm?authuser=0');
             background-size: cover;
-            border: 6px solid #303030;
+            border: 3px solid #303030;
+            border-radius: 10px;
             padding: 30px 50px;
             font-family: 'Press Start 2P', cursive;
             color: #FFF;
@@ -357,14 +361,14 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.099), transparent);
             transform: rotate(45deg);
             animation: shine 3s infinite;
         }
 
         @keyframes shine {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+            0% { transform: translateX(-100%) translateY(-100%) rotate(0deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(180deg); }
         }
 
         .stone-btn:hover {
@@ -380,7 +384,7 @@
         /* Sections with backgrounds */
         section {
             padding: 120px 20px;
-            max-width: 1400px;
+            max-width: 1480px;
             margin: 0 auto;
             position: relative;
         }
@@ -389,7 +393,7 @@
             padding: 120px 20px;
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
+            background-attachment: scroll;
             position: relative;
         }
 
@@ -410,7 +414,7 @@
         }
 
         #about {
-            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczPArpLIRviTli6-xNYj6Na_0cuOtj9jFjDpO4IC-WfnexM2nip4HuDuF7495x6ynDjYpqfj2HkCQpkHab9Iw7XpT_ZkCsrWJgJ2c7Nb1rM9OMEgR5DxYcVwnS_MWc02kYWVYutMmfysgZifa_HdoNeZ=w938-h938-s-no-gm?authuser=0');
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczPkpeeSD4FFLX3PGNIxBaTH3hF0H43Jop7biQT_U0jOjyap-DKHL7RWTlLoCCVHq67ngTOvdbNP8dkQBpwEg65IDkIs81c6PgArqVblLdN8M5wmzui4VBoRxleGpEeTgeIAAU7Zz7I_keL0zinrQpnQ=w740-h414-s-no-gm?authuser=0');
         }
 
         #tracks {
@@ -438,14 +442,33 @@
         }
 
         .about-content {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
-            background: rgba(139, 69, 19, 0.95);
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczPGXBKzE5zkj-D3nlT9V7mCRAyM2diPngsAOX8JAmSFHs5AnfUB0YyPGXvQ2hQ_LWILvjHgAT69_yfwXgD4wueXVlme0euFHw3Fkq8hPuOOq57oJnmC-IPToFMRx99iqOc8ydNLvyS7I5OFrDjM9LsE=w878-h304-s-no-gm?authuser=0');
             padding: 50px;
-            border: 6px solid #654321;
+            border-radius: 9px;
+            border: 2px solid #4e4e4e;
             line-height: 2;
-            font-size: 12px;
+            font-size: 15px;
+            text-shadow: 4px 4px 0 #000;
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            position: relative; 
+        }
+
+        .about-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3); /* Black overlay with 50% opacity */
+            z-index: 0;
+        }
+
+        .about-content > * {
+            position: relative;
+            z-index: 1;
         }
 
         .stats {
@@ -459,10 +482,11 @@
         }
 
         .stat-box {
-            background-image: url('YOUR_SIGN_TEXTURE_URL.png');
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczNMFDvRP2LUGTWyLqy8hyVod0E51GIN2puYcrchdkJt_JBzemnh4qkJ_6lTFyUwOvUuL6GmPuZov_TgZuwru6FuVzoz00hz_Nlj1cPuCKu_pK0da7BJQTjsA8_NESTnjmOlX2-QF2SFPgg0y2_3YUL-=w160-h160-s-no-gm?authuser=0');
             background-size: cover;
-            border: 6px solid #4A3C2F;
-            padding: 50px 30px;
+            height: 135px;
+            border: 2px solid #7c310c;
+            padding: 30px 20px;
             text-align: center;
             box-shadow: 0 10px 25px rgba(0,0,0,0.8);
             transition: transform 0.3s;
@@ -498,7 +522,7 @@
         }
 
         .stat-label {
-            font-size: 12px;
+            font-size: 15px;
             color: #FFF;
         }
 
@@ -653,31 +677,38 @@
             position: fixed;
             bottom: 40px;
             right: 40px;
-            width: 90px;
-            height: 90px;
-            background-image: url('https://static.wikia.nocookie.net/minecraft_gamepedia/images/9/94/Glowstone_JE3_BE2.gif');
+            width: 80px;
+            height: 80px;
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczP1lCeiQIfbd83eLG7d4f-uawftSIIHk4rpp8bQSiOR8KmmuLcCisWxTopkn-56BiB6wYDc7-qWvy0HRZyGEtrH84uz_cF9nsAcdOTuZ2ROvMVsFL4irkzZSVhIBBgpUWBvvbqa0emAaqC0yA_ekiov=w160-h160-s-no-gm?authuser=0');
             background-size: cover;
-            border: 6px solid #FF8C00;
+            border: 4px solid #240036;
             border-radius: 50%;
             cursor: pointer;
             z-index: 999;
-            box-shadow: 0 0 40px rgba(255, 165, 0, 0.9);
+            box-shadow: 0 0 40px rgba(84, 0, 144, 0.9);
             animation: float 3s ease-in-out infinite, pulse 2s ease-in-out infinite;
             text-decoration: none;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 40px;
+            overflow: hidden;
+            padding: 15px;
+        }
+
+        .fab img {
+            width: 120%;
+            height: 120%;
+            object-fit: contain;
         }
 
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            50% { transform: translateY(-10px); }
         }
 
         @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 40px rgba(255, 165, 0, 0.9); }
-            50% { box-shadow: 0 0 60px rgba(255, 215, 0, 1); }
+            0%, 100% { box-shadow: 0 0 40px rgba(71, 0, 80, 0.9); }
+            50% { box-shadow: 0 0 60px rgb(106, 0, 128); }
         }
 
         /* Footer */
@@ -864,7 +895,16 @@
         <div style="max-width: 1400px; margin: 0 auto;">
             <h2>About AceHack 5.0</h2>
             <div class="about-content">
-                <p>Welcome to AceHack 5.0, the ultimate hackathon experience where innovation meets creativity! Join hundreds of developers, designers, and entrepreneurs for 24 hours of intense coding, collaboration, and creation. Build the future, one block at a time.</p>
+                <p>
+                AceHack 5.0 marks the next evolution of Rajasthan’s biggest student-run hackathon—where ideas are built from the ground up and innovation takes shape through creativity and collaboration. This 36-hour hackathon brings together students, innovators, and tech enthusiasts from across the country to design, construct, and deploy solutions to real-world challenges using technology.
+                </p>
+                <p>
+                More than just coding, AceHack 5.0 is an immersive space to explore ideas, experiment freely, and level up your skills. Whether you are starting with the basics or engineering complex systems, this is your platform to create, iterate, and grow alongside a driven community of problem-solvers.
+                </p>
+                <p>
+                Enter AceHack 5.0 and shape the future—one idea at a time.
+                </p>
+
             </div>
             
             <div class="stats">
@@ -877,7 +917,7 @@
                     <span class="stat-label">Projects</span>
                 </div>
                 <div class="stat-box">
-                    <span class="stat-number">₹5L</span>
+                    <span class="stat-number">$1000</span>
                     <span class="stat-label">Prize Pool</span>
                 </div>
                 <div class="stat-box">
@@ -1088,7 +1128,9 @@
     </section>
 
     <!-- FAB Button -->
-    <a href="faq.html" class="fab">💡</a>
+    <a href="faq.html" class="fab">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczOMB69NwJ_IWSyPXAwbrNFCvnMOP-u9cdkKZHW9zR_f6z9fURzBgnJMo6BeHngzO_rRvIywqAz_dSD5RM0zwwGJQEYmm3DAjnnPcm7cVa4MLAhAHKTDEpz8laBBjO3I7EbEBymeoXODgu3E4iBCWYfc=w211-h211-s-no-gm?authuser=0" alt="FAQ">
+    </a>
 
     <!-- Footer -->
     <footer id="contact">
