@@ -23,40 +23,167 @@
         }
 
         /* Animated Particle Background */
-        .particles {
+        /* Minecraft End Sky Background */
+        .end-sky {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -2;
+            z-index: -1;
+            background: linear-gradient(to bottom, #0a0014 0%, #1a0b2e 50%, #2d1b4e 100%);
             pointer-events: none;
         }
 
-        .particle {
+        /* Twinkling Stars */
+        .star {
             position: absolute;
-            width: 8px;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.6);
-            animation: float-particle linear infinite;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle linear infinite;
+            box-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
         }
 
-        @keyframes float-particle {
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        /* Purple Ambient Glow */
+        .purple-glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.4;
+            animation: float-glow linear infinite;
+        }
+
+        @keyframes float-glow {
+            0% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-40px) translateX(30px); }
+            100% { transform: translateY(0) translateX(0); }
+        }
+
+        /* Blocky Purple Clouds */
+        /* Blocky Purple Clouds - Minecraft Style */
+        .end-cloud {
+            position: absolute;
+            background: rgba(88, 28, 135, 0.4);
+            border: none;
+            animation: drift-cloud linear infinite;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+            box-shadow: 
+                0 0 0 2px rgba(58, 18, 85, 0.6),
+                0 0 0 4px rgba(88, 28, 135, 0.4),
+                0 0 20px rgba(139, 92, 246, 0.3);
+        }
+        
+        /* Create blocky layers for cloud structure */
+        .end-cloud::before,
+        .end-cloud::after {
+            content: '';
+            position: absolute;
+            background: rgba(88, 28, 135, 0.5);
+            image-rendering: pixelated;
+        }
+        
+        .end-cloud::before {
+            width: 60%;
+            height: 70%;
+            top: -15%;
+            left: 20%;
+            box-shadow: 0 0 0 2px rgba(58, 18, 85, 0.5);
+        }
+        
+        .end-cloud::after {
+            width: 50%;
+            height: 60%;
+            bottom: -10%;
+            right: 15%;
+            box-shadow: 0 0 0 2px rgba(58, 18, 85, 0.5);
+        }
+
+        @keyframes drift-cloud {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-150vw); }
+        }
+
+        /* Flying Entity (Ender Dragon/Enderman) */
+        .flying-entity {
+            position: absolute;
+            top: 20%;
+            right: -300px;
+            width: 500px;
+            height: 500px;
+            z-index: 0;
+            animation: fly-across 10s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.6));
+        }
+
+        @keyframes fly-across {
             0% {
-                transform: translateY(100vh) rotate(0deg);
+                right: -300px;
+                top: 25%;
+                transform: rotate(-8deg) scale(0.85);
                 opacity: 0;
             }
+
             10% {
                 opacity: 1;
             }
+
+            20% {
+                top: 15%;
+                transform: rotate(6deg) scale(0.95);
+            }
+
+            35% {
+                top: 40%;
+                transform: rotate(-4deg) scale(1);
+            }
+
+            50% {
+                top: 5%;
+                transform: rotate(8deg) scale(1.05);
+            }
+
+            65% {
+                top: 30%;
+                transform: rotate(-6deg) scale(1);
+            }
+
+            80% {
+                top: 22%;
+                transform: rotate(4deg) scale(0.95);
+            }
+
             90% {
                 opacity: 1;
             }
+
             100% {
-                transform: translateY(-100px) rotate(360deg);
+                right: calc(100% + 320px);
+                top: 98%;
+                transform: rotate(0deg) scale(0.85);
                 opacity: 0;
             }
         }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        .flying-object {
+            animation:
+                fly-across 8s cubic-bezier(0.45, 0, 0.55, 1) infinite,
+                float 1.8s ease-in-out infinite;
+            will-change: transform, top, right;
+        }
+
+
 
         /* Navbar - Transparent */
         nav {
@@ -263,9 +390,9 @@
         }
 
         .hero-logo {
-            max-width: 800px;
-            height: 300px;
-            margin: 100px auto 100px;
+            max-width: 1100px;
+            height: 500px;
+            margin: 70px auto 1px;
             filter: drop-shadow(0 10px 20px rgba(0,0,0,0.9));
             object-fit: contain;
         }
@@ -414,7 +541,7 @@
         }
 
         #about {
-            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczPkpeeSD4FFLX3PGNIxBaTH3hF0H43Jop7biQT_U0jOjyap-DKHL7RWTlLoCCVHq67ngTOvdbNP8dkQBpwEg65IDkIs81c6PgArqVblLdN8M5wmzui4VBoRxleGpEeTgeIAAU7Zz7I_keL0zinrQpnQ=w740-h414-s-no-gm?authuser=0');
+            background-image: url('YOUR_ABOUT_BACKGROUND_URL.png');
         }
 
         #tracks {
@@ -442,11 +569,11 @@
         }
 
         .about-content {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
             background-image: url('https://lh3.googleusercontent.com/pw/AP1GczPGXBKzE5zkj-D3nlT9V7mCRAyM2diPngsAOX8JAmSFHs5AnfUB0YyPGXvQ2hQ_LWILvjHgAT69_yfwXgD4wueXVlme0euFHw3Fkq8hPuOOq57oJnmC-IPToFMRx99iqOc8ydNLvyS7I5OFrDjM9LsE=w878-h304-s-no-gm?authuser=0');
-            padding: 50px;
-            border-radius: 9px;
+            padding: 30px;
+            border-radius: 0px;
             border: 2px solid #4e4e4e;
             line-height: 2;
             font-size: 15px;
@@ -462,7 +589,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.3); /* Black overlay with 50% opacity */
+            background: rgba(0, 0, 0, 0.45); /* Black overlay with 50% opacity */
             z-index: 0;
         }
 
@@ -681,11 +808,11 @@
             height: 80px;
             background-image: url('https://lh3.googleusercontent.com/pw/AP1GczP1lCeiQIfbd83eLG7d4f-uawftSIIHk4rpp8bQSiOR8KmmuLcCisWxTopkn-56BiB6wYDc7-qWvy0HRZyGEtrH84uz_cF9nsAcdOTuZ2ROvMVsFL4irkzZSVhIBBgpUWBvvbqa0emAaqC0yA_ekiov=w160-h160-s-no-gm?authuser=0');
             background-size: cover;
-            border: 4px solid #240036;
+            border: 2px solid #fff700;
             border-radius: 50%;
             cursor: pointer;
             z-index: 999;
-            box-shadow: 0 0 40px rgba(84, 0, 144, 0.9);
+            box-shadow: 0 0 40px rgba(234, 255, 7, 0.9);
             animation: float 3s ease-in-out infinite, pulse 2s ease-in-out infinite;
             text-decoration: none;
             display: flex;
@@ -707,8 +834,8 @@
         }
 
         @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 40px rgba(71, 0, 80, 0.9); }
-            50% { box-shadow: 0 0 60px rgb(106, 0, 128); }
+            0%, 100% { box-shadow: 0 0 40px rgba(181, 156, 0, 0.2); }
+            50% { box-shadow: 0 0 60px rgb(255, 251, 0); }
         }
 
         /* Footer */
@@ -830,7 +957,8 @@
 </head>
 <body>
     <!-- Animated Particles -->
-    <div class="particles" id="particles"></div>
+    <!-- Minecraft End Sky Background -->
+    <div class="end-sky" id="endSky"></div> 
 
     <!-- Navbar -->
     <nav>
@@ -856,7 +984,7 @@
                 </div>
                 <div class="nav-sign-container" style="--index: 3">
                     <div class="sign-chain"></div>
-                    <a href="#team" class="nav-sign">Our Team</a>
+                    <a href="#team" class="nav-sign">DG Swags</a>
                 </div>
                 <div class="nav-sign-container" style="--index: 4">
                     <div class="sign-chain"></div>
@@ -872,8 +1000,7 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczNvsQh1pVZjWde6BOyCtrei5x9sUxA3ErI8YInz1OqzoCst1vpXhOEn0POnVjx2zX69LBXNRKOz_kbo_ybUf_pZk6_XVozUoobIvhIF17YopkWS8qoA900udoxv54nbig0fn7hLJdV19NRHaIGh5qJ3=w1865-h659-s-no-gm?authuser=0" alt="AceHack 5.0" class="hero-logo">
-        
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczPxb-M-DbEfiTuCRNNuye1Hmi-tOO0co4dj9ABS6RA1i66QiECIi16ZzjfYl7oSQMfW1YAOwmKVxWvIVXN8grhpAIp4jP3FOJOXWgmIm8qsPDd4-iEHxVaIvujxAp-c-hdSH11bA5ISpRCiEX1FWEjJ=w929-h531-s-no-gm?authuser=0" alt="AceHack 5.0" class="hero-logo">
         <div class="countdown-card">
             <h2>Event Starts In</h2>
             <div class="countdown" id="countdown">
@@ -896,13 +1023,13 @@
             <h2>About AceHack 5.0</h2>
             <div class="about-content">
                 <p>
-                AceHack 5.0 marks the next evolution of Rajasthan’s biggest student-run hackathon—where ideas are built from the ground up and innovation takes shape through creativity and collaboration. This 36-hour hackathon brings together students, innovators, and tech enthusiasts from across the country to design, construct, and deploy solutions to real-world challenges using technology.
+                AceHack 5.0 is the next evolution of Rajasthan’s biggest student-run hackathon—a 36-hour build space where students and innovators from across the country come together to create impactful, real-world tech solutions.
                 </p>
                 <p>
-                More than just coding, AceHack 5.0 is an immersive space to explore ideas, experiment freely, and level up your skills. Whether you are starting with the basics or engineering complex systems, this is your platform to create, iterate, and grow alongside a driven community of problem-solvers.
+                More than just coding, it is a platform to explore ideas, sharpen skills, and grow with a driven community—whether you are just starting out or building complex systems.
                 </p>
                 <p>
-                Enter AceHack 5.0 and shape the future—one idea at a time.
+                Enter AceHack 5.0 and shape the future, one idea at a time.
                 </p>
 
             </div>
@@ -1129,7 +1256,7 @@
 
     <!-- FAB Button -->
     <a href="faq.html" class="fab">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczOMB69NwJ_IWSyPXAwbrNFCvnMOP-u9cdkKZHW9zR_f6z9fURzBgnJMo6BeHngzO_rRvIywqAz_dSD5RM0zwwGJQEYmm3DAjnnPcm7cVa4MLAhAHKTDEpz8laBBjO3I7EbEBymeoXODgu3E4iBCWYfc=w211-h211-s-no-gm?authuser=0" alt="FAQ">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczN1JC7IshEcH37kyGSYZgnMowLxC9Z5zIT-r-U1wtqLjQJ3rV4R6nTxUjfdMUCLEViGhnzXMdGo8IaUsZSaMt7qSr0NxO3q_eNIh5TTFMmlzOXUMMkENrMOQlLGwXOTyscY4GCER2XbALXG1cR-uPR-=w938-h938-s-no-gm?authuser=0" alt="FAQ">
     </a>
 
     <!-- Footer -->
@@ -1180,22 +1307,59 @@
 
     <script>
         // Create animated particles
-        function createParticles() {
-            const container = document.getElementById('particles');
-            const particleCount = 30;
+       // Create Minecraft End Sky
+        function createEndSky() {
+            const container = document.getElementById('endSky');
             
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-                particle.style.animationDelay = Math.random() * 5 + 's';
-                particle.style.opacity = Math.random() * 0.5 + 0.3;
-                container.appendChild(particle);
+            // Create twinkling stars
+            for (let i = 0; i < 80; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = (Math.random() * 3 + 1) + 'px';
+                star.style.height = star.style.width;
+                star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                container.appendChild(star);
             }
+            
+            // Create purple ambient glows
+            for (let i = 0; i < 8; i++) {
+                const glow = document.createElement('div');
+                glow.className = 'purple-glow';
+                glow.style.left = Math.random() * 100 + '%';
+                glow.style.top = Math.random() * 100 + '%';
+                glow.style.width = (Math.random() * 300 + 200) + 'px';
+                glow.style.height = glow.style.width;
+                glow.style.background = `radial-gradient(circle, rgba(139, 92, 246, ${Math.random() * 0.3 + 0.2}) 0%, transparent 70%)`;
+                glow.style.animationDuration = (Math.random() * 20 + 15) + 's';
+                glow.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(glow);
+            }
+            
+            // Create blocky purple clouds
+            for (let i = 0; i < 15; i++) {
+                const cloud = document.createElement('div');
+                cloud.className = 'end-cloud';
+                cloud.style.left = (100 + Math.random() * 100) + '%';
+                cloud.style.top = Math.random() * 80 + '%';
+                cloud.style.width = (Math.random() * 100 + 80) + 'px';
+                cloud.style.height = (Math.random() * 40 + 30) + 'px';
+                cloud.style.animationDuration = (Math.random() * 30 + 20) + 's';
+                cloud.style.animationDelay = Math.random() * 10 + 's';
+                container.appendChild(cloud);
+            }
+            
+            // Create flying entity (passes every 15 seconds)
+            const entity = document.createElement('img');
+            entity.className = 'flying-entity';
+            entity.src = 'https://lh3.googleusercontent.com/pw/AP1GczPV701QojlTPppKTU5fRn4pSw94_Yh_U6spxRgmq1I1WtR7nQjxEpirl4UNy4I53aLpKYZqULLRuoWkL58Ew3xOBkzT6XA0vjYm9GzfXZ9s7xwY_KDb3XJPUWc6S8NaByK1CEI9VvQz6aeQnSg8bEam=w1126-h938-s-no-gm?authuser=0';
+            entity.alt = 'Flying Entity';
+            container.appendChild(entity);
         }
-        
-        createParticles();
+
+        createEndSky();
         
         // Countdown timer
         const countdownDate = new Date('March 8, 2026 00:00:00').getTime();
