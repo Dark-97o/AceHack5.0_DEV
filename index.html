@@ -230,7 +230,7 @@
 
         .chain {
             width: 4px;
-            height: 80px;
+            height: 60px;
             background: repeating-linear-gradient(
                 0deg,
                 #5C4033 0px,
@@ -282,7 +282,7 @@
 
         .sign-chain {
             width: 4px;
-            height: 40px;
+            height: 30px;
             background: transparent;
             margin: 0 auto;
             border-radius: 2px;
@@ -294,7 +294,7 @@
             content: '';
             position: absolute;
             width: 4px;
-            height: 44px;
+            height: 35.5px;
             background: repeating-linear-gradient(
                 0deg,
                 #5C4033 0px,
@@ -310,7 +310,7 @@
             content: '';
             position: absolute;
             width: 4px;
-            height: 44px;
+            height: 35.5px;
             background: repeating-linear-gradient(
                 0deg,
                 #5C4033 0px,
@@ -354,13 +354,13 @@
         .hero {
             margin-top: -217px;
             max-width: 1480px;
-            padding: 180px 20px 100px;
+            padding: 180px 20px 60px;
             text-align: center;
             background-image: url('https://lh3.googleusercontent.com/pw/AP1GczPImIZLv30YQn4jXuTuzxyyzJTKYF965FS7xS3jjf_OexojHUI2PH0xMPuKaSmeIU5koTDoScACCQi08SZqPR0opNrWzyRvf5AI6WK9VcNhFVb5TJK0WgOBDpe5h-rl862CmDT1uqPZ2EJ84M0ALocs=w800-h450-s-no-gm?authuser=0');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            min-height: 95vh;
+            min-height: 90vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -391,8 +391,8 @@
 
         .hero-logo {
             max-width: 1100px;
-            height: 500px;
-            margin: 70px auto 1px;
+            height: 440px;
+            margin: 8px auto 1px;
             filter: drop-shadow(0 10px 20px rgba(0,0,0,0.9));
             object-fit: contain;
             animation: heroFloat 6s ease-in-out infinite;
@@ -414,11 +414,11 @@
         .countdown-card {
             background-image: url('https://lh3.googleusercontent.com/pw/AP1GczPEriaY5PSmrTgJNQYqowfF7FXAGoqZTkInKkLrAid_5hHCUXzUo0y27FqjcFn2tlJzoNLjcbSNlT7j91x3kx5bgYPymMAdpB2DmPzuhJsf5xjsTfjP02x2o-GW4vvOin7xNSK2En-ZFz9u3nGXK8h8=w889-h287-s-no-gm?authuser=0');
             background-size: cover;
-            height: 230px;
+            height: 160px;
             border: 2px solid #ffffff;
             max-width: 665px;
-            margin: 30px auto;
-            padding: 32px 35px;
+            margin: -80px auto;
+            padding: 22px 35px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.9);
             position: relative;
             border-radius: 2px;
@@ -441,55 +441,55 @@
         }
 
         .countdown-card h2 {
-            font-size: 25px;
-            margin-bottom: 38px;
+            font-size: 19px;
+            margin-bottom: 24px;
             color: #ffffff;
-            text-shadow: 4px 4px 0 #000;
+            text-shadow: 3px 3px 0 #000;
         }
 
         .countdown {
             display: flex;
             gap: 30px;
             justify-content: center;
-            font-size: 32px;
+            font-size: 10px;
         }
 
         .countdown div {
             background: rgba(0,0,0,0.7);
-            padding: 25px 20px;
+            padding: 10px 10px;
             border: 2px solid #ffffff;
-            min-width: 100px;
+            min-width: 70px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.7);
         }
 
         .countdown span {
             display: block;
-            font-size: 15px;
+            font-size: 12px;
             margin-top: 12px;
             color: #ffffff;
         }
 
         .stone-buttons {
             display: flex;
-            gap: 50px;
+            gap: 100px;
             justify-content: center;
-            margin-top: 60px;
+            margin-top: 118px;
         }
 
         .stone-btn {
             background-image: url('https://lh3.googleusercontent.com/pw/AP1GczMZ213EkYNghug2YDe5JlReDkV4NnHM3CGMcE9KqZfO3wC9E_mPF4fTCfvumT9HwnfLUKLq-QrhWvHSVF0b9jXjoA3SyMnZ25P4sEngOwiGw-gXURtMETzmtALESaDtVdos6rNA5r0Gn5hq25KXxsdU=w1731-h974-s-no-gm?authuser=0');
             background-size: cover;
             border: 3px solid #303030;
-            border-radius: 10px;
-            padding: 30px 50px;
+            border-radius: 2px;
+            padding:26px 35px;
             font-family: 'Press Start 2P', cursive;
             color: #FFF;
-            font-size: 13px;
+            font-size: 15px;
             cursor: pointer;
             transition: all 0.3s;
             text-decoration: none;
             display: inline-block;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.8);
             text-shadow: 3px 3px 6px #000;
             position: relative;
             overflow: hidden;
@@ -508,19 +508,38 @@
         }
 
         @keyframes shine {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(0deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(180deg); }
+            0% {
+                transform: translateX(-130%) translateY(-130%) rotate(25deg);
+                opacity: 0;
+            }
+            30% {
+                opacity: 0.35;
+            }
+            60% {
+                opacity: 0.25;
+            }
+            100% {
+                transform: translateX(130%) translateY(130%) rotate(25deg);
+                opacity: 0;
+            }
         }
 
+
         .stone-btn:hover {
-            transform: translateY(-8px) scale(1.05);
-            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.5);
-            border-color: #FFD700;
+            transform: translateY(-6px) scale(1.04);
+            box-shadow:
+                0 10px 25px rgba(114, 114, 114, 0.25),
+                inset 0 0 18px rgba(0, 0, 0, 0.507);
+            border-color: #575757;
         }
 
         .stone-btn:active {
-            transform: translateY(-2px) scale(1.02);
+            transform: translateY(-2px) scale(1.01);
+            box-shadow:
+                0 4px 10px rgba(255, 255, 255, 0.2),
+                inset 0 0 10px rgba(0, 0, 0, 0.6);
         }
+
 
         /* Sections with backgrounds */
         section {
@@ -554,7 +573,7 @@
             z-index: 1;
         }
 
-        #about {
+        /* #about {
             background-image: url('YOUR_ABOUT_BACKGROUND_URL.png');
         }
 
@@ -572,7 +591,7 @@
 
         #sponsors {
             background-image: url('YOUR_SPONSORS_BACKGROUND_URL.png');
-        }
+        } */
 
         h2 {
             font-size: 36px;
@@ -585,15 +604,16 @@
         .about-content {
             max-width: 1300px;
             margin: 0 auto;
-            padding: 30px;
+            margin-top: -33px;
+            padding: 30px auto 0px;
             border-radius: 0px;
             line-height: 2;
             font-size: 12px;
             text-shadow: 4px 4px 0 #000;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            /* box-shadow: 0 10px 30px rgba(0,0,0,0.8); */
             position: relative; 
             display: flex;
-            gap: 40px;
+            gap: 20px;
             align-items: center;
             justify-content: space-between;
         }
@@ -605,7 +625,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.45); /* Black overlay with 50% opacity */
+            /* background: rgba(0, 0, 0, 0.45);  */
             z-index: 0;
         }
 
@@ -629,7 +649,7 @@
         .about-image img {
             width: 100%;
             height: auto;
-            max-width: 400px;
+            max-width: 200px;
             image-rendering: pixelated;
         }
 
@@ -637,7 +657,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 50px;
-            margin-top: 60px;
+            margin-top: 42px;
             max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
@@ -1069,7 +1089,7 @@
                     </p>
                 </div>
                 <div class="about-image">
-                    <img src="https://lh3.googleusercontent.com/pw/AP1GczOI-K29veq3HxA7M-xsTTCt5_19DheFclYz9sTR8OjeC74WCiaNcpCGIiQspX2uFoXDXalwaXRxcswbO5DGEjVFEGmtdl5x1bveHwAIOuv1ol6INlQT3uD_FbUGNCmXdROn8L-3Hh3IP9mAeD-ptnwl=w999-h605-s-no-gm?authuser=0" alt="AceHack">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNWNWiQ4kQZeKYZNto0zbPYMNi0geP_jgBiH7dOCR10sFhgEeKMm5smK3O-FATAvxv35rkMSScR6NWfBQeRo7bNHTUUSqgtY_EeHkQ-w4iyNI2OoaI8rWmH5I5OvyUkdBgIEfqDyOwl9_iL_grP143S=w188-h200-s-no-gm?authuser=0" alt="AceHack">
                 </div>
             </div>
             
