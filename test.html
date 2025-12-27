@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AceHack 5.0 - Hackathon</title>
-    <link rel="icon" href="https://static.wikia.nocookie.net/minecraft_gamepedia/images/f/fe/Grass_Block_JE7_BE6.png" type="image/x-icon">
+    <link rel="icon" href="https://static.wikia.nocookie.net/minecraft_gamepedia/images/f/fe/Grass_Block_JE7_BE6.png"
+        type="image/x-icon">
+    <link rel="stylesheet" href="text.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
@@ -45,8 +48,17 @@
         }
 
         @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.5); }
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.5);
+            }
         }
 
         /* Purple Ambient Glow */
@@ -59,9 +71,17 @@
         }
 
         @keyframes float-glow {
-            0% { transform: translateY(0) translateX(0); }
-            50% { transform: translateY(-40px) translateX(30px); }
-            100% { transform: translateY(0) translateX(0); }
+            0% {
+                transform: translateY(0) translateX(0);
+            }
+
+            50% {
+                transform: translateY(-40px) translateX(30px);
+            }
+
+            100% {
+                transform: translateY(0) translateX(0);
+            }
         }
 
         /* Blocky Purple Clouds */
@@ -74,12 +94,12 @@
             image-rendering: pixelated;
             image-rendering: -moz-crisp-edges;
             image-rendering: crisp-edges;
-            box-shadow: 
+            box-shadow:
                 0 0 0 2px rgba(58, 18, 85, 0.6),
                 0 0 0 4px rgba(88, 28, 135, 0.4),
                 0 0 20px rgba(139, 92, 246, 0.3);
         }
-        
+
         /* Create blocky layers for cloud structure */
         .end-cloud::before,
         .end-cloud::after {
@@ -88,7 +108,7 @@
             background: rgba(88, 28, 135, 0.5);
             image-rendering: pixelated;
         }
-        
+
         .end-cloud::before {
             width: 60%;
             height: 70%;
@@ -96,7 +116,7 @@
             left: 20%;
             box-shadow: 0 0 0 2px rgba(58, 18, 85, 0.5);
         }
-        
+
         .end-cloud::after {
             width: 50%;
             height: 60%;
@@ -106,8 +126,13 @@
         }
 
         @keyframes drift-cloud {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-150vw); }
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-150vw);
+            }
         }
 
         /* Flying Entity (Ender Dragon/Enderman) */
@@ -172,8 +197,15 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
         }
 
         .flying-object {
@@ -201,7 +233,7 @@
             background-repeat: repeat-x;
             background-size: auto 100%;
             background-position: center;
-            box-shadow: inset 0 -4px 6px rgba(0,0,0,0.5);
+            box-shadow: inset 0 -4px 6px rgba(0, 0, 0, 0.5);
         }
 
         .nav-container {
@@ -224,20 +256,25 @@
         }
 
         @keyframes pendulum-swing {
-            0%, 100% { transform: rotate(-8deg); }
-            50% { transform: rotate(8deg); }
+
+            0%,
+            100% {
+                transform: rotate(-8deg);
+            }
+
+            50% {
+                transform: rotate(8deg);
+            }
         }
 
         .chain {
             width: 4px;
             height: 80px;
-            background: repeating-linear-gradient(
-                0deg,
-                #5C4033 0px,
-                #5C4033 8px,
-                #3E2723 8px,
-                #3E2723 16px
-            );
+            background: repeating-linear-gradient(0deg,
+                    #5C4033 0px,
+                    #5C4033 8px,
+                    #3E2723 8px,
+                    #3E2723 16px);
             margin: 0 auto 0;
             border-radius: 2px;
         }
@@ -255,8 +292,15 @@
         }
 
         @keyframes glow {
-            0%, 100% { filter: brightness(1) drop-shadow(0 0 10px #FFA500); }
-            50% { filter: brightness(1.3) drop-shadow(0 0 20px #FFD700); }
+
+            0%,
+            100% {
+                filter: brightness(1) drop-shadow(0 0 10px #FFA500);
+            }
+
+            50% {
+                filter: brightness(1.3) drop-shadow(0 0 20px #FFD700);
+            }
         }
 
         .nav-links {
@@ -265,9 +309,12 @@
             overflow-x: auto;
             scrollbar-width: none;
             padding-bottom: 80px;
-            position: absolute;  /* Add this */
-            left: 50%;  /* Add this */
-            transform: translateX(-50%);  /* Add this */
+            position: absolute;
+            /* Add this */
+            left: 50%;
+            /* Add this */
+            transform: translateX(-50%);
+            /* Add this */
         }
 
         .nav-links::-webkit-scrollbar {
@@ -290,18 +337,16 @@
         }
 
         /* Add chains on left and right of sign */
-        .sign-chain::before{
+        .sign-chain::before {
             content: '';
             position: absolute;
             width: 4px;
             height: 44px;
-            background: repeating-linear-gradient(
-                0deg,
-                #5C4033 0px,
-                #5C4033 6px,
-                #3E2723 6px,
-                #3E2723 12px
-            );
+            background: repeating-linear-gradient(0deg,
+                    #5C4033 0px,
+                    #5C4033 6px,
+                    #3E2723 6px,
+                    #3E2723 12px);
             border-radius: 2px;
             top: 0;
         }
@@ -311,13 +356,11 @@
             position: absolute;
             width: 4px;
             height: 44px;
-            background: repeating-linear-gradient(
-                0deg,
-                #5C4033 0px,
-                #5C4033 6px,
-                #3E2723 6px,
-                #3E2723 12px
-            );
+            background: repeating-linear-gradient(0deg,
+                    #5C4033 0px,
+                    #5C4033 6px,
+                    #3E2723 6px,
+                    #3E2723 12px);
             border-radius: 2px;
             top: 0;
         }
@@ -342,7 +385,7 @@
             display: block;
             text-align: center;
             transition: transform 0.3s;
-            box-shadow: 5px 5px 5px rgba(0,0,0,2);
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 2);
             z-index: 1000;
         }
 
@@ -375,16 +418,14 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(
-                to bottom,
-                rgba(0, 0, 0, 0.69) 0%,
-                rgba(0, 0, 0, 0.5) 50%,
-                rgba(0, 0, 0, 0.69) 100%
-            );
+            background: linear-gradient(to bottom,
+                    rgba(0, 0, 0, 0.69) 0%,
+                    rgba(0, 0, 0, 0.5) 50%,
+                    rgba(0, 0, 0, 0.69) 100%);
             z-index: 0;
         }
-        
-        .hero > * {
+
+        .hero>* {
             position: relative;
             z-index: 1;
         }
@@ -393,7 +434,7 @@
             max-width: 1100px;
             height: 500px;
             margin: 70px auto 1px;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.9));
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.9));
             object-fit: contain;
             animation: heroFloat 6s ease-in-out infinite;
             will-change: transform;
@@ -403,9 +444,11 @@
             0% {
                 transform: translateY(0);
             }
+
             50% {
                 transform: translateY(-10px);
             }
+
             100% {
                 transform: translateY(0);
             }
@@ -419,7 +462,7 @@
             max-width: 665px;
             margin: 30px auto;
             padding: 32px 35px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.9);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
             position: relative;
             border-radius: 2px;
         }
@@ -435,7 +478,7 @@
             z-index: 0;
         }
 
-        .countdown-card > * {
+        .countdown-card>* {
             position: relative;
             z-index: 1;
         }
@@ -455,11 +498,11 @@
         }
 
         .countdown div {
-            background: rgba(0,0,0,0.7);
+            background: rgba(0, 0, 0, 0.7);
             padding: 25px 20px;
             border: 2px solid #ffffff;
             min-width: 100px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.7);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
         }
 
         .countdown span {
@@ -489,7 +532,7 @@
             transition: all 0.3s;
             text-decoration: none;
             display: inline-block;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
             text-shadow: 3px 3px 6px #000;
             position: relative;
             overflow: hidden;
@@ -508,8 +551,13 @@
         }
 
         @keyframes shine {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(0deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(180deg); }
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(0deg);
+            }
+
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(180deg);
+            }
         }
 
         .stone-btn:hover {
@@ -549,7 +597,7 @@
             z-index: 0;
         }
 
-        .section-bg > * {
+        .section-bg>* {
             position: relative;
             z-index: 1;
         }
@@ -590,8 +638,8 @@
             line-height: 2;
             font-size: 12px;
             text-shadow: 4px 4px 0 #000;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-            position: relative; 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            position: relative;
             display: flex;
             gap: 40px;
             align-items: center;
@@ -605,11 +653,12 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.45); /* Black overlay with 50% opacity */
+            background: rgba(0, 0, 0, 0.45);
+            /* Black overlay with 50% opacity */
             z-index: 0;
         }
 
-        .about-content > * {
+        .about-content>* {
             position: relative;
             z-index: 1;
         }
@@ -650,7 +699,7 @@
             border: 2px solid #000000;
             padding: 30px 20px;
             text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
             transition: transform 0.3s;
             position: relative;
         }
@@ -666,7 +715,7 @@
             z-index: 0;
         }
 
-        .stat-box > * {
+        .stat-box>* {
             position: relative;
             z-index: 1;
         }
@@ -704,7 +753,7 @@
             padding: 45px 35px;
             text-align: center;
             transition: transform 0.3s;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
             position: relative;
         }
 
@@ -719,7 +768,7 @@
             z-index: 0;
         }
 
-        .card > * {
+        .card>* {
             position: relative;
             z-index: 1;
         }
@@ -733,7 +782,7 @@
             width: 110px;
             height: 110px;
             margin-bottom: 30px;
-            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.9));
+            filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.9));
         }
 
         .card h3 {
@@ -777,7 +826,7 @@
             width: 220px;
             height: 220px;
             margin-bottom: 25px;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.9));
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.9));
         }
 
         .prize-label {
@@ -814,13 +863,13 @@
         }
 
         .sponsor-box {
-            background: rgba(255,255,255,0.95);
+            background: rgba(255, 255, 255, 0.95);
             padding: 30px;
             border: 5px solid #654321;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
             transition: transform 0.3s;
         }
 
@@ -864,13 +913,27 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 40px rgba(181, 156, 0, 0.2); }
-            50% { box-shadow: 0 0 60px rgb(255, 251, 0); }
+
+            0%,
+            100% {
+                box-shadow: 0 0 40px rgba(181, 156, 0, 0.2);
+            }
+
+            50% {
+                box-shadow: 0 0 60px rgb(255, 251, 0);
+            }
         }
 
         /* Footer */
@@ -955,45 +1018,360 @@
                 font-size: 22px;
                 gap: 20px;
             }
-            
+
             .countdown div {
                 min-width: 75px;
                 padding: 20px 15px;
             }
-            
+
             .stone-buttons {
                 flex-direction: column;
                 align-items: center;
             }
-            
+
             h2 {
                 font-size: 24px;
             }
-            
+
             .prizes {
                 gap: 30px;
             }
-            
+
             .prize-row {
                 gap: 40px;
             }
-            
+
             .chest-img {
                 width: 160px;
                 height: 160px;
             }
-            
+
             .hero-logo {
                 max-width: 90%;
                 height: 200px;
             }
         }
+
+
     </style>
 </head>
+
 <body>
     <!-- Animated Particles -->
     <!-- Minecraft End Sky Background -->
-    <div class="end-sky" id="endSky"></div> 
+    <div class="end-sky" id="endSky">
+        <div class="star"
+            style="left: 66.9968%; top: 22.1119%; width: 1.09158px; height: 1.09158px; animation-duration: 2.22343s; animation-delay: 1.59385s;">
+        </div>
+        <div class="star"
+            style="left: 98.0015%; top: 79.584%; width: 2.57765px; height: 2.57765px; animation-duration: 4.23247s; animation-delay: 0.491242s;">
+        </div>
+        <div class="star"
+            style="left: 69.8806%; top: 45.4882%; width: 1.51454px; height: 1.51454px; animation-duration: 2.46988s; animation-delay: 0.813357s;">
+        </div>
+        <div class="star"
+            style="left: 21.3116%; top: 51.376%; width: 3.52626px; height: 3.52626px; animation-duration: 3.61136s; animation-delay: 0.528739s;">
+        </div>
+        <div class="star"
+            style="left: 78.6572%; top: 70.287%; width: 3.42299px; height: 3.42299px; animation-duration: 3.98692s; animation-delay: 2.42738s;">
+        </div>
+        <div class="star"
+            style="left: 87.0628%; top: 89.0028%; width: 2.7764px; height: 2.7764px; animation-duration: 4.63458s; animation-delay: 0.518499s;">
+        </div>
+        <div class="star"
+            style="left: 69.716%; top: 64.5002%; width: 2.60731px; height: 2.60731px; animation-duration: 3.60436s; animation-delay: 0.68715s;">
+        </div>
+        <div class="star"
+            style="left: 81.3533%; top: 12.5439%; width: 1.00906px; height: 1.00906px; animation-duration: 2.4191s; animation-delay: 0.0602074s;">
+        </div>
+        <div class="star"
+            style="left: 77.7025%; top: 88.0649%; width: 2.08373px; height: 2.08373px; animation-duration: 4.94808s; animation-delay: 2.98987s;">
+        </div>
+        <div class="star"
+            style="left: 30.8119%; top: 64.4356%; width: 1.93283px; height: 1.93283px; animation-duration: 3.93854s; animation-delay: 0.644441s;">
+        </div>
+        <div class="star"
+            style="left: 85.5618%; top: 71.6259%; width: 1.05005px; height: 1.05005px; animation-duration: 2.51834s; animation-delay: 0.167941s;">
+        </div>
+        <div class="star"
+            style="left: 92.291%; top: 12.1114%; width: 1.62278px; height: 1.62278px; animation-duration: 2.02554s; animation-delay: 2.61253s;">
+        </div>
+        <div class="star"
+            style="left: 61.4864%; top: 13.8024%; width: 3.02374px; height: 3.02374px; animation-duration: 2.5094s; animation-delay: 2.16106s;">
+        </div>
+        <div class="star"
+            style="left: 25.5847%; top: 85.7682%; width: 3.22683px; height: 3.22683px; animation-duration: 3.92674s; animation-delay: 2.24929s;">
+        </div>
+        <div class="star"
+            style="left: 17.0267%; top: 43.659%; width: 3.3182px; height: 3.3182px; animation-duration: 3.20914s; animation-delay: 0.942424s;">
+        </div>
+        <div class="star"
+            style="left: 85.8317%; top: 44.5742%; width: 3.13691px; height: 3.13691px; animation-duration: 4.65963s; animation-delay: 1.65844s;">
+        </div>
+        <div class="star"
+            style="left: 4.4676%; top: 57.2541%; width: 2.73669px; height: 2.73669px; animation-duration: 4.64629s; animation-delay: 1.23946s;">
+        </div>
+        <div class="star"
+            style="left: 65.2126%; top: 6.76908%; width: 1.84834px; height: 1.84834px; animation-duration: 2.68631s; animation-delay: 1.49413s;">
+        </div>
+        <div class="star"
+            style="left: 33.2451%; top: 60.793%; width: 3.67325px; height: 3.67325px; animation-duration: 4.11395s; animation-delay: 0.622792s;">
+        </div>
+        <div class="star"
+            style="left: 59.7537%; top: 45.1999%; width: 1.40008px; height: 1.40008px; animation-duration: 3.56432s; animation-delay: 1.73781s;">
+        </div>
+        <div class="star"
+            style="left: 10.3887%; top: 6.36291%; width: 3.03897px; height: 3.03897px; animation-duration: 4.53319s; animation-delay: 0.376361s;">
+        </div>
+        <div class="star"
+            style="left: 72.4711%; top: 57.3605%; width: 2.30027px; height: 2.30027px; animation-duration: 3.54054s; animation-delay: 0.779855s;">
+        </div>
+        <div class="star"
+            style="left: 11.7414%; top: 91.4512%; width: 3.53756px; height: 3.53756px; animation-duration: 3.55907s; animation-delay: 0.737354s;">
+        </div>
+        <div class="star"
+            style="left: 57.8844%; top: 91.8558%; width: 3.69187px; height: 3.69187px; animation-duration: 3.56681s; animation-delay: 2.62662s;">
+        </div>
+        <div class="star"
+            style="left: 67.5944%; top: 0.4612%; width: 3.02922px; height: 3.02922px; animation-duration: 3.40711s; animation-delay: 2.32264s;">
+        </div>
+        <div class="star"
+            style="left: 20.2539%; top: 28.9579%; width: 1.26647px; height: 1.26647px; animation-duration: 2.94575s; animation-delay: 1.71135s;">
+        </div>
+        <div class="star"
+            style="left: 66.3321%; top: 81.3919%; width: 2.09698px; height: 2.09698px; animation-duration: 3.95993s; animation-delay: 1.546s;">
+        </div>
+        <div class="star"
+            style="left: 13.4233%; top: 8.61519%; width: 2.04033px; height: 2.04033px; animation-duration: 4.25771s; animation-delay: 1.3429s;">
+        </div>
+        <div class="star"
+            style="left: 36.9226%; top: 3.1107%; width: 1.62457px; height: 1.62457px; animation-duration: 4.404s; animation-delay: 0.101769s;">
+        </div>
+        <div class="star"
+            style="left: 0.66745%; top: 61.0444%; width: 1.64968px; height: 1.64968px; animation-duration: 2.2947s; animation-delay: 0.706906s;">
+        </div>
+        <div class="star"
+            style="left: 8.18961%; top: 17.6222%; width: 3.80744px; height: 3.80744px; animation-duration: 4.92576s; animation-delay: 1.18781s;">
+        </div>
+        <div class="star"
+            style="left: 56.2342%; top: 6.10242%; width: 1.35714px; height: 1.35714px; animation-duration: 2.34695s; animation-delay: 0.530554s;">
+        </div>
+        <div class="star"
+            style="left: 25.9327%; top: 36.7511%; width: 3.0913px; height: 3.0913px; animation-duration: 2.08289s; animation-delay: 0.902089s;">
+        </div>
+        <div class="star"
+            style="left: 46.9924%; top: 53.3997%; width: 2.19257px; height: 2.19257px; animation-duration: 4.25574s; animation-delay: 2.08037s;">
+        </div>
+        <div class="star"
+            style="left: 86.4794%; top: 31.4473%; width: 3.00466px; height: 3.00466px; animation-duration: 3.86965s; animation-delay: 2.11239s;">
+        </div>
+        <div class="star"
+            style="left: 99.3134%; top: 37.8732%; width: 1.06424px; height: 1.06424px; animation-duration: 2.32458s; animation-delay: 2.24226s;">
+        </div>
+        <div class="star"
+            style="left: 64.2806%; top: 27.8964%; width: 3.39115px; height: 3.39115px; animation-duration: 3.59305s; animation-delay: 2.67386s;">
+        </div>
+        <div class="star"
+            style="left: 92.5386%; top: 59.5247%; width: 3.90276px; height: 3.90276px; animation-duration: 4.86822s; animation-delay: 1.14304s;">
+        </div>
+        <div class="star"
+            style="left: 90.2886%; top: 0.144524%; width: 2.78906px; height: 2.78906px; animation-duration: 2.30442s; animation-delay: 2.59216s;">
+        </div>
+        <div class="star"
+            style="left: 62.1186%; top: 53.4878%; width: 2.37295px; height: 2.37295px; animation-duration: 3.33296s; animation-delay: 1.6052s;">
+        </div>
+        <div class="star"
+            style="left: 17.6276%; top: 1.27918%; width: 1.5458px; height: 1.5458px; animation-duration: 3.56164s; animation-delay: 0.477912s;">
+        </div>
+        <div class="star"
+            style="left: 3.36344%; top: 50.0867%; width: 1.09766px; height: 1.09766px; animation-duration: 2.64626s; animation-delay: 0.477663s;">
+        </div>
+        <div class="star"
+            style="left: 31.9812%; top: 47.9657%; width: 1.22149px; height: 1.22149px; animation-duration: 3.65045s; animation-delay: 2.35937s;">
+        </div>
+        <div class="star"
+            style="left: 20.1519%; top: 71.2123%; width: 2.70373px; height: 2.70373px; animation-duration: 4.6926s; animation-delay: 2.92518s;">
+        </div>
+        <div class="star"
+            style="left: 1.31335%; top: 88.3758%; width: 3.23189px; height: 3.23189px; animation-duration: 2.79317s; animation-delay: 2.8511s;">
+        </div>
+        <div class="star"
+            style="left: 91.539%; top: 84.5271%; width: 2.11749px; height: 2.11749px; animation-duration: 2.60452s; animation-delay: 2.32236s;">
+        </div>
+        <div class="star"
+            style="left: 14.9873%; top: 49.3648%; width: 1.61914px; height: 1.61914px; animation-duration: 4.85713s; animation-delay: 2.66348s;">
+        </div>
+        <div class="star"
+            style="left: 34.2227%; top: 92.9424%; width: 1.37931px; height: 1.37931px; animation-duration: 3.44897s; animation-delay: 2.81204s;">
+        </div>
+        <div class="star"
+            style="left: 20.8971%; top: 66.0115%; width: 1.51667px; height: 1.51667px; animation-duration: 4.61965s; animation-delay: 0.810133s;">
+        </div>
+        <div class="star"
+            style="left: 96.546%; top: 96.2353%; width: 2.30947px; height: 2.30947px; animation-duration: 3.1718s; animation-delay: 0.850088s;">
+        </div>
+        <div class="star"
+            style="left: 82.0404%; top: 36.211%; width: 1.08939px; height: 1.08939px; animation-duration: 3.86888s; animation-delay: 1.47883s;">
+        </div>
+        <div class="star"
+            style="left: 77.4022%; top: 32.0374%; width: 2.28971px; height: 2.28971px; animation-duration: 3.56991s; animation-delay: 2.33623s;">
+        </div>
+        <div class="star"
+            style="left: 32.716%; top: 9.71066%; width: 1.61778px; height: 1.61778px; animation-duration: 4.02348s; animation-delay: 2.86734s;">
+        </div>
+        <div class="star"
+            style="left: 41.9067%; top: 67.6002%; width: 1.79357px; height: 1.79357px; animation-duration: 4.13785s; animation-delay: 0.533041s;">
+        </div>
+        <div class="star"
+            style="left: 96.9155%; top: 25.5562%; width: 1.04144px; height: 1.04144px; animation-duration: 2.42889s; animation-delay: 2.57126s;">
+        </div>
+        <div class="star"
+            style="left: 73.9651%; top: 91.431%; width: 3.98643px; height: 3.98643px; animation-duration: 4.35406s; animation-delay: 1.6986s;">
+        </div>
+        <div class="star"
+            style="left: 34.6689%; top: 28.7624%; width: 1.96834px; height: 1.96834px; animation-duration: 2.85221s; animation-delay: 2.01398s;">
+        </div>
+        <div class="star"
+            style="left: 40.5637%; top: 46.9955%; width: 3.5502px; height: 3.5502px; animation-duration: 2.34769s; animation-delay: 1.58412s;">
+        </div>
+        <div class="star"
+            style="left: 51.4859%; top: 97.8989%; width: 3.71744px; height: 3.71744px; animation-duration: 4.93579s; animation-delay: 0.173679s;">
+        </div>
+        <div class="star"
+            style="left: 65.8254%; top: 11.8212%; width: 3.21963px; height: 3.21963px; animation-duration: 4.47372s; animation-delay: 0.940957s;">
+        </div>
+        <div class="star"
+            style="left: 37.6174%; top: 81.4955%; width: 1.41845px; height: 1.41845px; animation-duration: 2.12337s; animation-delay: 1.27899s;">
+        </div>
+        <div class="star"
+            style="left: 73.0603%; top: 93.3594%; width: 2.76863px; height: 2.76863px; animation-duration: 3.98813s; animation-delay: 2.20872s;">
+        </div>
+        <div class="star"
+            style="left: 54.6523%; top: 77.2524%; width: 3.6394px; height: 3.6394px; animation-duration: 4.51981s; animation-delay: 0.640898s;">
+        </div>
+        <div class="star"
+            style="left: 22.1962%; top: 2.05913%; width: 3.28596px; height: 3.28596px; animation-duration: 3.09007s; animation-delay: 2.27631s;">
+        </div>
+        <div class="star"
+            style="left: 39.8991%; top: 3.61698%; width: 1.32953px; height: 1.32953px; animation-duration: 4.47104s; animation-delay: 1.64859s;">
+        </div>
+        <div class="star"
+            style="left: 35.6464%; top: 15.7202%; width: 3.31537px; height: 3.31537px; animation-duration: 2.73746s; animation-delay: 2.70879s;">
+        </div>
+        <div class="star"
+            style="left: 32.5212%; top: 33.9802%; width: 1.91967px; height: 1.91967px; animation-duration: 2.45568s; animation-delay: 2.97221s;">
+        </div>
+        <div class="star"
+            style="left: 26.5835%; top: 56.7986%; width: 2.84101px; height: 2.84101px; animation-duration: 2.27299s; animation-delay: 0.518364s;">
+        </div>
+        <div class="star"
+            style="left: 29.8256%; top: 72.991%; width: 2.00455px; height: 2.00455px; animation-duration: 4.31871s; animation-delay: 2.48718s;">
+        </div>
+        <div class="star"
+            style="left: 76.9245%; top: 71.7496%; width: 2.45484px; height: 2.45484px; animation-duration: 2.80379s; animation-delay: 1.52129s;">
+        </div>
+        <div class="star"
+            style="left: 78.0202%; top: 3.40871%; width: 3.3763px; height: 3.3763px; animation-duration: 2.88879s; animation-delay: 0.971146s;">
+        </div>
+        <div class="star"
+            style="left: 77.6539%; top: 8.13739%; width: 2.48624px; height: 2.48624px; animation-duration: 4.87303s; animation-delay: 2.70187s;">
+        </div>
+        <div class="star"
+            style="left: 53.2974%; top: 70.6607%; width: 3.83762px; height: 3.83762px; animation-duration: 2.14025s; animation-delay: 0.437019s;">
+        </div>
+        <div class="star"
+            style="left: 26.6689%; top: 51.2625%; width: 3.13108px; height: 3.13108px; animation-duration: 4.47248s; animation-delay: 0.498017s;">
+        </div>
+        <div class="star"
+            style="left: 11.6188%; top: 46.2446%; width: 2.69541px; height: 2.69541px; animation-duration: 4.42205s; animation-delay: 1.37081s;">
+        </div>
+        <div class="star"
+            style="left: 1.95108%; top: 44.686%; width: 3.40624px; height: 3.40624px; animation-duration: 4.23513s; animation-delay: 2.6611s;">
+        </div>
+        <div class="star"
+            style="left: 36.1156%; top: 7.63858%; width: 1.68671px; height: 1.68671px; animation-duration: 4.14302s; animation-delay: 1.42789s;">
+        </div>
+        <div class="star"
+            style="left: 40.6003%; top: 2.74232%; width: 1.88093px; height: 1.88093px; animation-duration: 3.29216s; animation-delay: 1.3842s;">
+        </div>
+        <div class="star"
+            style="left: 91.8866%; top: 71.5956%; width: 1.65227px; height: 1.65227px; animation-duration: 2.71387s; animation-delay: 1.27348s;">
+        </div>
+        <div class="star"
+            style="left: 44.5442%; top: 48.5056%; width: 2.08813px; height: 2.08813px; animation-duration: 2.38241s; animation-delay: 2.22241s;">
+        </div>
+        <div class="purple-glow"
+            style="left: 24.0098%; top: 59.9376%; width: 481.871px; height: 481.871px; background: radial-gradient(circle, rgba(139, 92, 246, 0.47) 0%, transparent 70%); animation-duration: 15.2203s; animation-delay: 4.18233s;">
+        </div>
+        <div class="purple-glow"
+            style="left: 34.2104%; top: 43.6903%; width: 237.415px; height: 237.415px; background: radial-gradient(circle, rgba(139, 92, 246, 0.475) 0%, transparent 70%); animation-duration: 27.2992s; animation-delay: 4.04829s;">
+        </div>
+        <div class="purple-glow"
+            style="left: 77.1225%; top: 6.4819%; width: 381.126px; height: 381.126px; background: radial-gradient(circle, rgba(139, 92, 246, 0.384) 0%, transparent 70%); animation-duration: 33.2532s; animation-delay: 3.62275s;">
+        </div>
+        <div class="purple-glow"
+            style="left: 35.8362%; top: 96.9225%; width: 436.936px; height: 436.936px; background: radial-gradient(circle, rgba(139, 92, 246, 0.424) 0%, transparent 70%); animation-duration: 19.6533s; animation-delay: 0.609437s;">
+        </div>
+        <div class="purple-glow"
+            style="left: 40.1609%; top: 52.9603%; width: 325.018px; height: 325.018px; background: radial-gradient(circle, rgba(139, 92, 246, 0.22) 0%, transparent 70%); animation-duration: 26.7582s; animation-delay: 1.40272s;">
+        </div>
+        <div class="purple-glow"
+            style="left: 12.9173%; top: 86.0309%; width: 277.588px; height: 277.588px; background: radial-gradient(circle, rgba(139, 92, 246, 0.298) 0%, transparent 70%); animation-duration: 31.0265s; animation-delay: 4.84859s;">
+        </div>
+        <div class="purple-glow"
+            style="left: 44.5252%; top: 12.4228%; width: 306.808px; height: 306.808px; background: radial-gradient(circle, rgba(139, 92, 246, 0.337) 0%, transparent 70%); animation-duration: 31.303s; animation-delay: 1.55256s;">
+        </div>
+        <div class="purple-glow"
+            style="left: 5.38219%; top: 11.6389%; width: 310.302px; height: 310.302px; background: radial-gradient(circle, rgba(139, 92, 246, 0.427) 0%, transparent 70%); animation-duration: 32.9498s; animation-delay: 1.92747s;">
+        </div>
+        <div class="end-cloud"
+            style="left: 105.016%; top: 39.1323%; width: 136.239px; height: 58.3804px; animation-duration: 35.1764s; animation-delay: 9.42047s;">
+        </div>
+        <div class="end-cloud"
+            style="left: 195.529%; top: 1.92176%; width: 144.643px; height: 55.7137px; animation-duration: 32.3715s; animation-delay: 4.65445s;">
+        </div>
+        <div class="end-cloud"
+            style="left: 105.779%; top: 17.2058%; width: 170.408px; height: 36.2882px; animation-duration: 48.4288s; animation-delay: 0.518185s;">
+        </div>
+        <div class="end-cloud"
+            style="left: 171.77%; top: 21.6332%; width: 167.853px; height: 46.4928px; animation-duration: 38.625s; animation-delay: 9.04206s;">
+        </div>
+        <div class="end-cloud"
+            style="left: 129.208%; top: 78.6778%; width: 152.905px; height: 37.1043px; animation-duration: 28.6111s; animation-delay: 8.52641s;">
+        </div>
+        <div class="end-cloud"
+            style="left: 155.96%; top: 74.7716%; width: 110.974px; height: 49.35px; animation-duration: 35.8696s; animation-delay: 1.69168s;">
+        </div>
+        <div class="end-cloud"
+            style="left: 198.854%; top: 45.5568%; width: 85.8352px; height: 69.9534px; animation-duration: 31.2739s; animation-delay: 6.43735s;">
+        </div>
+        <div class="end-cloud"
+            style="left: 103.257%; top: 63.6798%; width: 132.563px; height: 48.7115px; animation-duration: 34.2845s; animation-delay: 7.36673s;">
+        </div>
+        <div class="end-cloud"
+            style="left: 105.036%; top: 56.5441%; width: 137.083px; height: 62.4458px; animation-duration: 44.6389s; animation-delay: 7.15091s;">
+        </div>
+        <div class="end-cloud"
+            style="left: 137.308%; top: 26.0278%; width: 144.004px; height: 50.4171px; animation-duration: 33.0508s; animation-delay: 5.73446s;">
+        </div>
+        <div class="end-cloud"
+            style="left: 114.923%; top: 41.7265%; width: 119.399px; height: 41.9842px; animation-duration: 49.8079s; animation-delay: 2.81473s;">
+        </div>
+        <div class="end-cloud"
+            style="left: 157.016%; top: 60.8074%; width: 116.531px; height: 38.7174px; animation-duration: 28.0945s; animation-delay: 5.61827s;">
+        </div>
+        <div class="end-cloud"
+            style="left: 175.418%; top: 26.2099%; width: 80.629px; height: 67.2838px; animation-duration: 34.5376s; animation-delay: 3.21747s;">
+        </div>
+        <div class="end-cloud"
+            style="left: 163.722%; top: 30.8907%; width: 119.646px; height: 46.1354px; animation-duration: 48.9183s; animation-delay: 2.29703s;">
+        </div>
+        <div class="end-cloud"
+            style="left: 162.423%; top: 49.5762%; width: 133.201px; height: 52.6684px; animation-duration: 40.4092s; animation-delay: 2.71107s;">
+        </div><img class="flying-entity"
+            src="https://lh3.googleusercontent.com/pw/AP1GczPV701QojlTPppKTU5fRn4pSw94_Yh_U6spxRgmq1I1WtR7nQjxEpirl4UNy4I53aLpKYZqULLRuoWkL58Ew3xOBkzT6XA0vjYm9GzfXZ9s7xwY_KDb3XJPUWc6S8NaByK1CEI9VvQz6aeQnSg8bEam=w1126-h938-s-no-gm?authuser=0"
+            alt="Flying Entity">
+    </div>
 
     <!-- Navbar -->
     <nav>
@@ -1035,17 +1413,18 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczPxb-M-DbEfiTuCRNNuye1Hmi-tOO0co4dj9ABS6RA1i66QiECIi16ZzjfYl7oSQMfW1YAOwmKVxWvIVXN8grhpAIp4jP3FOJOXWgmIm8qsPDd4-iEHxVaIvujxAp-c-hdSH11bA5ISpRCiEX1FWEjJ=w929-h531-s-no-gm?authuser=0" alt="AceHack 5.0" class="hero-logo">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczPxb-M-DbEfiTuCRNNuye1Hmi-tOO0co4dj9ABS6RA1i66QiECIi16ZzjfYl7oSQMfW1YAOwmKVxWvIVXN8grhpAIp4jP3FOJOXWgmIm8qsPDd4-iEHxVaIvujxAp-c-hdSH11bA5ISpRCiEX1FWEjJ=w929-h531-s-no-gm?authuser=0"
+            alt="AceHack 5.0" class="hero-logo">
         <div class="countdown-card">
             <h2>Event Starts In</h2>
             <div class="countdown" id="countdown">
-                <div><span id="days">00</span><span>Days</span></div>
-                <div><span id="hours">00</span><span>Hours</span></div>
-                <div><span id="mins">00</span><span>Mins</span></div>
-                <div><span id="secs">00</span><span>Secs</span></div>
+                <div><span id="days">70</span><span>Days</span></div>
+                <div><span id="hours">21</span><span>Hours</span></div>
+                <div><span id="mins">54</span><span>Mins</span></div>
+                <div><span id="secs">19</span><span>Secs</span></div>
             </div>
         </div>
-        
+
         <div class="stone-buttons">
             <a href="#" class="stone-btn">Register Now</a>
             <a href="#" class="stone-btn">Join Community</a>
@@ -1059,20 +1438,24 @@
             <div class="about-content">
                 <div class="about-text">
                     <p>
-                    AceHack 5.0 is the next evolution of Rajasthan's biggest student-run hackathon—a 36-hour build space where students and innovators from across the country come together to create impactful, real-world tech solutions.
+                        AceHack 5.0 is the next evolution of Rajasthan's biggest student-run hackathon—a 36-hour build
+                        space where students and innovators from across the country come together to create impactful,
+                        real-world tech solutions.
                     </p>
                     <p>
-                    More than just coding, it is a platform to explore ideas, sharpen skills, and grow with a driven community—whether you are just starting out or building complex systems.
+                        More than just coding, it is a platform to explore ideas, sharpen skills, and grow with a driven
+                        community—whether you are just starting out or building complex systems.
                     </p>
                     <p>
-                    Enter AceHack 5.0 and shape the future, one idea at a time.
+                        Enter AceHack 5.0 and shape the future, one idea at a time.
                     </p>
                 </div>
                 <div class="about-image">
-                    <img src="https://lh3.googleusercontent.com/pw/AP1GczOI-K29veq3HxA7M-xsTTCt5_19DheFclYz9sTR8OjeC74WCiaNcpCGIiQspX2uFoXDXalwaXRxcswbO5DGEjVFEGmtdl5x1bveHwAIOuv1ol6INlQT3uD_FbUGNCmXdROn8L-3Hh3IP9mAeD-ptnwl=w999-h605-s-no-gm?authuser=0" alt="AceHack">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczOI-K29veq3HxA7M-xsTTCt5_19DheFclYz9sTR8OjeC74WCiaNcpCGIiQspX2uFoXDXalwaXRxcswbO5DGEjVFEGmtdl5x1bveHwAIOuv1ol6INlQT3uD_FbUGNCmXdROn8L-3Hh3IP9mAeD-ptnwl=w999-h605-s-no-gm?authuser=0"
+                        alt="AceHack">
                 </div>
             </div>
-            
+
             <div class="stats">
                 <div class="stat-box">
                     <span class="stat-number">500+</span>
@@ -1100,42 +1483,50 @@
             <h2>Hackathon Tracks</h2>
             <div class="cards-grid">
                 <div class="card">
-                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/f/f7/Redstone_Dust_JE2_BE2.png" alt="AI/ML">
+                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/f/f7/Redstone_Dust_JE2_BE2.png"
+                        alt="AI/ML">
                     <h3>AI/ML</h3>
                     <p>Build intelligent solutions using machine learning and artificial intelligence</p>
                 </div>
                 <div class="card">
-                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d1/Diamond_JE3_BE3.png" alt="Web3">
+                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d1/Diamond_JE3_BE3.png"
+                        alt="Web3">
                     <h3>Web3</h3>
                     <p>Create decentralized applications and blockchain solutions</p>
                 </div>
                 <div class="card">
-                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/0/09/Redstone_Lamp_%28S%29_JE3.gif" alt="IoT">
+                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/0/09/Redstone_Lamp_%28S%29_JE3.gif"
+                        alt="IoT">
                     <h3>IoT</h3>
                     <p>Connect the physical world with smart devices and sensors</p>
                 </div>
                 <div class="card">
-                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/6/6e/Enchanted_Golden_Apple_JE2_BE2.png" alt="Healthcare">
+                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/6/6e/Enchanted_Golden_Apple_JE2_BE2.png"
+                        alt="Healthcare">
                     <h3>Healthcare</h3>
                     <p>Innovate solutions for better health and wellness</p>
                 </div>
                 <div class="card">
-                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/e/e0/Experience_Orb_Value_1237.png" alt="EdTech">
+                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/e/e0/Experience_Orb_Value_1237.png"
+                        alt="EdTech">
                     <h3>EdTech</h3>
                     <p>Transform education with technology</p>
                 </div>
                 <div class="card">
-                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/de/Emerald_JE3_BE3.png" alt="FinTech">
+                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/de/Emerald_JE3_BE3.png"
+                        alt="FinTech">
                     <h3>FinTech</h3>
                     <p>Revolutionize financial services</p>
                 </div>
                 <div class="card">
-                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/c/c5/Oak_Sapling_JE7_BE2.png" alt="Sustainability">
+                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/c/c5/Oak_Sapling_JE7_BE2.png"
+                        alt="Sustainability">
                     <h3>Sustainability</h3>
                     <p>Build for a greener tomorrow</p>
                 </div>
                 <div class="card">
-                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/26/TNT_JE3_BE2.png" alt="Open Innovation">
+                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/26/TNT_JE3_BE2.png"
+                        alt="Open Innovation">
                     <h3>Open Innovation</h3>
                     <p>Create anything your mind imagines</p>
                 </div>
@@ -1149,22 +1540,26 @@
             <h2>Why Attend?</h2>
             <div class="cards-grid">
                 <div class="card">
-                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/9/98/Nether_Star_JE2_BE2.gif" alt="Win Prizes">
+                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/9/98/Nether_Star_JE2_BE2.gif"
+                        alt="Win Prizes">
                     <h3>Win Prizes</h3>
                     <p>Compete for amazing prizes and recognition</p>
                 </div>
                 <div class="card">
-                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/a/ab/Player_Head_JE2_BE2.png" alt="Network">
+                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/a/ab/Player_Head_JE2_BE2.png"
+                        alt="Network">
                     <h3>Network</h3>
                     <p>Connect with industry experts and fellow hackers</p>
                 </div>
                 <div class="card">
-                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/23/Book_JE2_BE2.png" alt="Learn">
+                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/23/Book_JE2_BE2.png"
+                        alt="Learn">
                     <h3>Learn</h3>
                     <p>Attend workshops and gain new skills</p>
                 </div>
                 <div class="card">
-                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/3/34/Crafting_Table_JE4_BE3.png" alt="Build">
+                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/3/34/Crafting_Table_JE4_BE3.png"
+                        alt="Build">
                     <h3>Build</h3>
                     <p>Turn your ideas into reality in 24 hours</p>
                 </div>
@@ -1180,35 +1575,40 @@
                 <!-- Top of pyramid - 1st place -->
                 <div class="prize-row">
                     <div class="prize-card">
-                        <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d5/Chest_%28S%29_JE3_BE2.gif" alt="1st Place Chest" class="chest-img">
+                        <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d5/Chest_%28S%29_JE3_BE2.gif"
+                            alt="1st Place Chest" class="chest-img">
                         <div class="prize-label">🥇 1st Place</div>
                         <div class="prize-amount">₹2,00,000</div>
                     </div>
                 </div>
-                
+
                 <!-- Second row - 2nd and 3rd place -->
                 <div class="prize-row">
                     <div class="prize-card">
-                        <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d5/Chest_%28S%29_JE3_BE2.gif" alt="2nd Place Chest" class="chest-img">
+                        <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d5/Chest_%28S%29_JE3_BE2.gif"
+                            alt="2nd Place Chest" class="chest-img">
                         <div class="prize-label">🥈 2nd Place</div>
                         <div class="prize-amount">₹1,00,000</div>
                     </div>
                     <div class="prize-card">
-                        <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d5/Chest_%28S%29_JE3_BE2.gif" alt="3rd Place Chest" class="chest-img">
+                        <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d5/Chest_%28S%29_JE3_BE2.gif"
+                            alt="3rd Place Chest" class="chest-img">
                         <div class="prize-label">🥉 3rd Place</div>
                         <div class="prize-amount">₹50,000</div>
                     </div>
                 </div>
-                
+
                 <!-- Bottom row - Special categories -->
                 <div class="prize-row">
                     <div class="prize-card">
-                        <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d5/Chest_%28S%29_JE3_BE2.gif" alt="Best Beginner Chest" class="chest-img">
+                        <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d5/Chest_%28S%29_JE3_BE2.gif"
+                            alt="Best Beginner Chest" class="chest-img">
                         <div class="prize-label">🌟 Best Beginner</div>
                         <div class="prize-amount">₹30,000</div>
                     </div>
                     <div class="prize-card">
-                        <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d5/Chest_%28S%29_JE3_BE2.gif" alt="All Girls Team Chest" class="chest-img">
+                        <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d5/Chest_%28S%29_JE3_BE2.gif"
+                            alt="All Girls Team Chest" class="chest-img">
                         <div class="prize-label">👑 All Girls Team</div>
                         <div class="prize-amount">₹30,000</div>
                     </div>
@@ -1221,73 +1621,106 @@
     <section id="sponsors" class="section-bg">
         <div style="max-width: 1400px; margin: 0 auto;">
             <h2>Our Sponsors</h2>
-            
+
             <div class="sponsor-tier">
                 <h3>💎 Diamond Sponsors</h3>
                 <div class="sponsors-grid">
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/000000/FFFFFF?text=Sponsor+1" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/000000/FFFFFF?text=Sponsor+2" alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/000000/FFFFFF?text=Sponsor+1"
+                            alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/000000/FFFFFF?text=Sponsor+2"
+                            alt="Sponsor"></div>
                 </div>
             </div>
-            
+
             <div class="sponsor-tier">
                 <h3>⚪ Platinum Sponsors</h3>
                 <div class="sponsors-grid">
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/333333/FFFFFF?text=Sponsor+3" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/333333/FFFFFF?text=Sponsor+4" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/333333/FFFFFF?text=Sponsor+5" alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/333333/FFFFFF?text=Sponsor+3"
+                            alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/333333/FFFFFF?text=Sponsor+4"
+                            alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/333333/FFFFFF?text=Sponsor+5"
+                            alt="Sponsor"></div>
                 </div>
             </div>
-            
+
             <div class="sponsor-tier">
                 <h3>🥇 Gold Sponsors</h3>
                 <div class="sponsors-grid">
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/666666/FFFFFF?text=Sponsor+6" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/666666/FFFFFF?text=Sponsor+7" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/666666/FFFFFF?text=Sponsor+8" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/666666/FFFFFF?text=Sponsor+9" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/666666/FFFFFF?text=Sponsor+10" alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/666666/FFFFFF?text=Sponsor+6"
+                            alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/666666/FFFFFF?text=Sponsor+7"
+                            alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/666666/FFFFFF?text=Sponsor+8"
+                            alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/666666/FFFFFF?text=Sponsor+9"
+                            alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/666666/FFFFFF?text=Sponsor+10"
+                            alt="Sponsor"></div>
                 </div>
             </div>
-            
+
             <div class="sponsor-tier">
                 <h3>🥈 Silver Sponsors</h3>
                 <div class="sponsors-grid">
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/999999/FFFFFF?text=Sponsor+11" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/999999/FFFFFF?text=Sponsor+12" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/999999/FFFFFF?text=Sponsor+13" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/999999/FFFFFF?text=Sponsor+14" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/999999/FFFFFF?text=Sponsor+15" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/999999/FFFFFF?text=Sponsor+16" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/999999/FFFFFF?text=Sponsor+17" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/999999/FFFFFF?text=Sponsor+18" alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/999999/FFFFFF?text=Sponsor+11"
+                            alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/999999/FFFFFF?text=Sponsor+12"
+                            alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/999999/FFFFFF?text=Sponsor+13"
+                            alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/999999/FFFFFF?text=Sponsor+14"
+                            alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/999999/FFFFFF?text=Sponsor+15"
+                            alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/999999/FFFFFF?text=Sponsor+16"
+                            alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/999999/FFFFFF?text=Sponsor+17"
+                            alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/999999/FFFFFF?text=Sponsor+18"
+                            alt="Sponsor"></div>
                 </div>
             </div>
 
             <div class="sponsor-tier">
                 <h3>🥉 Bronze Sponsors</h3>
                 <div class="sponsors-grid">
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+19" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+20" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+21" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+22" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+23" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+24" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+25" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+26" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+27" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+28" alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+19"
+                            alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+20"
+                            alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+21"
+                            alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+22"
+                            alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+23"
+                            alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+24"
+                            alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+25"
+                            alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+26"
+                            alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+27"
+                            alt="Sponsor"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+28"
+                            alt="Sponsor"></div>
                 </div>
             </div>
 
             <div class="sponsor-tier">
                 <h3>🤝 Community Partners</h3>
                 <div class="sponsors-grid">
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/4CAF50/FFFFFF?text=Partner+1" alt="Partner"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/4CAF50/FFFFFF?text=Partner+2" alt="Partner"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/4CAF50/FFFFFF?text=Partner+3" alt="Partner"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/4CAF50/FFFFFF?text=Partner+4" alt="Partner"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/4CAF50/FFFFFF?text=Partner+5" alt="Partner"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/4CAF50/FFFFFF?text=Partner+1"
+                            alt="Partner"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/4CAF50/FFFFFF?text=Partner+2"
+                            alt="Partner"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/4CAF50/FFFFFF?text=Partner+3"
+                            alt="Partner"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/4CAF50/FFFFFF?text=Partner+4"
+                            alt="Partner"></div>
+                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/4CAF50/FFFFFF?text=Partner+5"
+                            alt="Partner"></div>
                 </div>
             </div>
         </div>
@@ -1295,23 +1728,33 @@
 
     <!-- FAB Button -->
     <a href="faq.html" class="fab">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczN1JC7IshEcH37kyGSYZgnMowLxC9Z5zIT-r-U1wtqLjQJ3rV4R6nTxUjfdMUCLEViGhnzXMdGo8IaUsZSaMt7qSr0NxO3q_eNIh5TTFMmlzOXUMMkENrMOQlLGwXOTyscY4GCER2XbALXG1cR-uPR-=w938-h938-s-no-gm?authuser=0" alt="FAQ">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczN1JC7IshEcH37kyGSYZgnMowLxC9Z5zIT-r-U1wtqLjQJ3rV4R6nTxUjfdMUCLEViGhnzXMdGo8IaUsZSaMt7qSr0NxO3q_eNIh5TTFMmlzOXUMMkENrMOQlLGwXOTyscY4GCER2XbALXG1cR-uPR-=w938-h938-s-no-gm?authuser=0"
+            alt="FAQ">
     </a>
 
-    <!-- Footer -->
+    <!-- FOOTER -->
+    <!-- Complete Minecraft-themed footer including AceHack logo, Quick Links, -->
+    <!-- Archives, and UEM Jaipur location map in test.html (by Aman)  -->
     <footer id="contact">
+
         <div class="footer-content">
+
+            <!-- Logo / Description -->
             <div class="footer-section">
-                <img src="https://via.placeholder.com/200x70/228B22/FFFFFF?text=AceHack" alt="AceHack Logo" style="margin-bottom: 25px;">
-                <p style="font-size: 10px; line-height: 2;">The ultimate hackathon experience. Build the future, one block at a time.</p>
+                <img src="acehack-logo.png" alt="AceHack Logo">
+                <p>
+                    The ultimate hackathon experience. Build the future, one block at a time.
+                </p>
+
                 <div class="socials">
-                    <a href="#" class="social-icon">f</a>
-                    <a href="#" class="social-icon">𝕏</a>
+                    <a href="#" class="social-icon">F</a>
+                    <a href="#" class="social-icon">X</a>
                     <a href="#" class="social-icon">in</a>
                     <a href="#" class="social-icon">▶</a>
                 </div>
             </div>
-            
+
+            <!-- Quick Links -->
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <a href="#home">Home</a>
@@ -1319,37 +1762,52 @@
                 <a href="#tracks">Tracks</a>
                 <a href="#prizes">Prizes</a>
                 <a href="#sponsors">Sponsors</a>
-                <a href="faq.html">FAQs</a>
+                <a href="#FAQs">FAQs</a>
             </div>
-            
+
+            <!-- Archives -->
             <div class="footer-section">
                 <h3>Archives</h3>
-                <a href="#">AceHack 4.0 - 2025</a>
-                <a href="#">AceHack 3.0 - 2024</a>
-                <a href="#">AceHack 2.0 - 2023</a>
-                <a href="#">AceHack 1.0 - 2022</a>
+                <a href="#">AceHack 4.0 – 2025</a>
+                <a href="#">AceHack 3.0 – 2024</a>
+                <a href="#">AceHack 2.0 – 2023</a>
+                <a href="#">AceHack 1.0 – 2022</a>
             </div>
-            
+
+            <!-- Location -->
             <div class="footer-section">
                 <h3>Location</h3>
-                <p style="font-size: 10px; line-height: 2;">Your College Name<br>Address Line 1<br>City, State - 000000<br>India</p>
+                <p>
+                    University of Engineering & Management (UEM), Jaipur<br>
+                    Gurukul Campus, Sikar Road<br>
+                    Jaipur, Rajasthan –303807<br>
+                    (6 km away from Chomu)<br>
+                    India
+                </p>
+
                 <div class="map-container">
-                    <!-- Add Google Maps embed here -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.512!2d75.7002425!3d27.2124649!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db5f1e3b7b5b5%3A0xb78e5c340c935a95!2sUniversity%20of%20Engineering%20%26%20Management%20(UEM)%2C%20Jaipur!5e0!3m2!1sen!2sin!4v1739999999999" 
+                    width="100%" height="270" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
+
         </div>
-        
+
+        <!-- COPYRIGHT -->
         <div class="copyright">
             © 2026 AceHack. All Rights Reserved. | Crafted with ❤️ by the AceHack Team
         </div>
+
     </footer>
+
+
 
     <script>
         // Create animated particles
-       // Create Minecraft End Sky
+        // Create Minecraft End Sky
         function createEndSky() {
             const container = document.getElementById('endSky');
-            
+
             // Create twinkling stars
             for (let i = 0; i < 80; i++) {
                 const star = document.createElement('div');
@@ -1362,7 +1820,7 @@
                 star.style.animationDelay = Math.random() * 3 + 's';
                 container.appendChild(star);
             }
-            
+
             // Create purple ambient glows
             for (let i = 0; i < 8; i++) {
                 const glow = document.createElement('div');
@@ -1376,7 +1834,7 @@
                 glow.style.animationDelay = Math.random() * 5 + 's';
                 container.appendChild(glow);
             }
-            
+
             // Create blocky purple clouds
             for (let i = 0; i < 15; i++) {
                 const cloud = document.createElement('div');
@@ -1389,8 +1847,8 @@
                 cloud.style.animationDelay = Math.random() * 10 + 's';
                 container.appendChild(cloud);
             }
-            
-            // Create flying entity (passes every # seconds)
+
+            // Create flying entity (passes every 15 seconds)
             const entity = document.createElement('img');
             entity.className = 'flying-entity';
             entity.src = 'https://lh3.googleusercontent.com/pw/AP1GczPV701QojlTPppKTU5fRn4pSw94_Yh_U6spxRgmq1I1WtR7nQjxEpirl4UNy4I53aLpKYZqULLRuoWkL58Ew3xOBkzT6XA0vjYm9GzfXZ9s7xwY_KDb3XJPUWc6S8NaByK1CEI9VvQz6aeQnSg8bEam=w1126-h938-s-no-gm?authuser=0';
@@ -1399,30 +1857,30 @@
         }
 
         createEndSky();
-        
+
         // Countdown timer
         const countdownDate = new Date('March 8, 2026 00:00:00').getTime();
-        
+
         const countdownFunction = setInterval(() => {
             const now = new Date().getTime();
             const distance = countdownDate - now;
-            
+
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
+
             document.getElementById('days').innerHTML = String(days).padStart(2, '0');
             document.getElementById('hours').innerHTML = String(hours).padStart(2, '0');
             document.getElementById('mins').innerHTML = String(minutes).padStart(2, '0');
             document.getElementById('secs').innerHTML = String(seconds).padStart(2, '0');
-            
+
             if (distance < 0) {
                 clearInterval(countdownFunction);
                 document.getElementById('countdown').innerHTML = '<div style="font-size: 22px;">🎉 EVENT STARTED! 🎉</div>';
             }
         }, 1000);
-        
+
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1437,6 +1895,8 @@
             });
         });
     </script>
-    
+
+
 </body>
+
 </html>
