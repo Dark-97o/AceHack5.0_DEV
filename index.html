@@ -540,6 +540,35 @@
                 inset 0 0 10px rgba(0, 0, 0, 0.6);
         }
 
+        .stone-btn-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .popup-image {
+            position: absolute;
+            width: 41.5px;
+            height: 41.5px;
+            top: 1%;
+            left: 94%;
+            transform: translate(-50%, -50%) scale(0);
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.8));
+            image-rendering: pixelated;
+        }
+
+        .stone-btn-wrapper:hover .popup-image {
+            transform: translate(-50%, -50%) scale(1.5) rotate(15deg);
+            opacity: 1;
+            z-index: 10;
+        }
+
+        .stone-btn-wrapper:hover .stone-btn {
+            z-index: 1;
+        }
 
         /* Sections with backgrounds */
         section {
@@ -1067,8 +1096,14 @@
         </div>
         
         <div class="stone-buttons">
-            <a href="#" class="stone-btn">Register Now</a>
-            <a href="#" class="stone-btn">Join Community</a>
+            <div class="stone-btn-wrapper">
+                <a href="#" class="stone-btn">Register Now</a>
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczMeqenNSDCEYEvZ8vPHzJRrkSk9UoakdEVllKTU-kgOC1Un8F6jjOyTdJNAtB9Wp2Q3VnTpijka2PbFKWGw_1kF1nSr65_fyrqLXAG_E5RhhCxrJpnMrqWb3CZ0aDYblwLMbcQ2GBFD96rifvy11Vp3=w158-h158-s-no-gm?authuser=0" alt="Diamond" class="popup-image">
+            </div>
+            <div class="stone-btn-wrapper">
+                <a href="#" class="stone-btn">Join Community</a>
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczMeqenNSDCEYEvZ8vPHzJRrkSk9UoakdEVllKTU-kgOC1Un8F6jjOyTdJNAtB9Wp2Q3VnTpijka2PbFKWGw_1kF1nSr65_fyrqLXAG_E5RhhCxrJpnMrqWb3CZ0aDYblwLMbcQ2GBFD96rifvy11Vp3=w158-h158-s-no-gm?authuser=0" alt="Golden Apple" class="popup-image">
+            </div>
         </div>
     </section>
 
