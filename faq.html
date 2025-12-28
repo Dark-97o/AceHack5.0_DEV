@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AceHack 5.0 - FAQs</title>
+    <link rel="icon" href="https://static.wikia.nocookie.net/minecraft_gamepedia/images/f/fe/Grass_Block_JE7_BE6.png" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: url('https://lh3.googleusercontent.com/pw/AP1GczPmJIHevxWymh_uCbDKcKBucaZ5-mx0D17X7GUYe9G_rE68GPM-j6JgGVdarLimt8bEU4oKgg4UH8D4s7w4h-egebpN1BZPiCi7hoCxdmqV4zu0lQ4mhdHpXP4Ivne3NCPiD6ln95Tv7vjH4q4l4blw=w20-h20-s-no-gm?authuser=0') 18 16, auto;
+        }
+
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background: #1a1a1a;
+            color: #FFFFFF;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Minecraft End Sky Background */
+        .end-sky {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(to bottom, #0a0014 0%, #1a0b2e 50%, #2d1b4e 100%);
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle linear infinite;
+            box-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        .purple-glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.4;
+            animation: float-glow linear infinite;
+        }
+
+        @keyframes float-glow {
+            0% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-40px) translateX(30px); }
+            100% { transform: translateY(0) translateX(0); }
+        }
+
+        .end-cloud {
+            position: absolute;
+            background: rgba(88, 28, 135, 0.4);
+            border: none;
+            animation: drift-cloud linear infinite;
+            image-rendering: pixelated;
+            box-shadow: 
+                0 0 0 2px rgba(58, 18, 85, 0.6),
+                0 0 0 4px rgba(88, 28, 135, 0.4),
+                0 0 20px rgba(139, 92, 246, 0.3);
+        }
+        
+        .end-cloud::before,
+        .end-cloud::after {
+            content: '';
+            position: absolute;
+            background: rgba(88, 28, 135, 0.5);
+            image-rendering: pixelated;
+        }
+        
+        .end-cloud::before {
+            width: 60%;
+            height: 70%;
+            top: -15%;
+            left: 20%;
+            box-shadow: 0 0 0 2px rgba(58, 18, 85, 0.5);
+        }
+        
+        .end-cloud::after {
+            width: 50%;
+            height: 60%;
+            bottom: -10%;
+            right: 15%;
+            box-shadow: 0 0 0 2px rgba(58, 18, 85, 0.5);
+        }
+
+        @keyframes drift-cloud {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-150vw); }
+        }
+
+        .flying-entity {
+            position: absolute;
+            top: 20%;
+            right: -300px;
+            width: 500px;
+            height: 500px;
+            z-index: 0;
+            animation: fly-across 10s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.6));
+        }
+
+        @keyframes fly-across {
+            0% {
+                right: -300px;
+                top: 25%;
+                transform: rotate(-8deg) scale(0.85);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            20% { top: 15%; transform: rotate(6deg) scale(0.95); }
+            35% { top: 40%; transform: rotate(-4deg) scale(1); }
+            50% { top: 5%; transform: rotate(8deg) scale(1.05); }
+            65% { top: 30%; transform: rotate(-6deg) scale(1); }
+            80% { top: 22%; transform: rotate(4deg) scale(0.95); }
+            90% { opacity: 1; }
+            100% {
+                right: calc(100% + 320px);
+                top: 98%;
+                transform: rotate(0deg) scale(0.85);
+                opacity: 0;
+            }
+        }
+
+        /* Navbar */
+        nav {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background: transparent;
+            z-index: 1000;
+        }
+
+        .nav-texture-bar {
+            width: 100%;
+            height: 14px;
+            background-image: url("https://lh3.googleusercontent.com/pw/AP1GczPSZFithNMgw3p0NfejCpVSDTcs4uBveqBbFIQhIYpNpQmHtH3hdvbLKfEVlYf08kgjmMfhrvW6q5gTzl0wiluQnke2OSErtyz9RDP-R6-5-4TiPN9xICRt3IDNc5uoaUlRfsRDFyLXIzQh5_3BlLUQ=w16-h16-s-no-gm?authuser=0");
+            background-repeat: repeat-x;
+            background-size: auto 100%;
+            background-position: center;
+            box-shadow: inset 0 -4px 6px rgba(0,0,0,0.5);
+        }
+
+        .nav-container {
+            max-width: 100%;
+            margin: 0 auto;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: 0 40px;
+            position: relative;
+            gap: 0;
+        }
+
+        .lantern-container {
+            width: 60px;
+            transform-origin: top center;
+            animation: pendulum-swing 4s ease-in-out infinite;
+            margin-top: -14px;
+        }
+
+        @keyframes pendulum-swing {
+            0%, 100% { transform: rotate(-8deg); }
+            50% { transform: rotate(8deg); }
+        }
+
+        .chain {
+            width: 4px;
+            height: 60px;
+            background: repeating-linear-gradient(
+                0deg,
+                #5C4033 0px,
+                #5C4033 8px,
+                #3E2723 8px,
+                #3E2723 16px
+            );
+            margin: 0 auto 0;
+            border-radius: 2px;
+        }
+
+        .lantern {
+            width: 50px;
+            height: 70px;
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczPOaiEMh44SO1C-USmJudCX__Wq50ckoHtpl0oa4lVsadJHNGPuZMvrrf_baOM2AXwYeOxZ209MfjCuoZVwQe-dptcdvy9FaTl2MKMgMsCezFO2hOnDfrbCznXVBuUw1Yj5C421BPF9ce-UK0IpqBL4=w74-h127-s-no-gm?authuser=0');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0 auto;
+            position: relative;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: brightness(1) drop-shadow(0 0 10px #FFA500); }
+            50% { filter: brightness(1.3) drop-shadow(0 0 20px #FFD700); }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            padding-bottom: 80px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .nav-links::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-sign-container {
+            position: relative;
+            min-width: 140px;
+            margin-top: -14px;
+        }
+
+        .sign-chain {
+            width: 4px;
+            height: 30px;
+            background: transparent;
+            margin: 0 auto;
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .sign-chain::before,
+        .sign-chain::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 35.5px;
+            background: repeating-linear-gradient(
+                0deg,
+                #5C4033 0px,
+                #5C4033 6px,
+                #3E2723 6px,
+                #3E2723 12px
+            );
+            border-radius: 2px;
+            top: 0;
+        }
+
+        .sign-chain::before { left: -39px; }
+        .sign-chain::after { right: -39px; }
+
+        .nav-sign {
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczMxkXqlZpEAGsqwkmKuJT0ceVu9_CuV2rmiFt8xlvW9X30dcur-795F1dwSkhe9je8mMAqhnPsQMVd2q7GwOeP257Kx6k7NqVyA0w-G6l1Tq17S6upayDwz3JdLd3AQ0vM2zUx4vqhdtbQlNkFFf1aq=w1163-h400-s-no-gm?authuser=0');
+            background-size: cover;
+            border: 3px solid #4A3C2F;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: #FFF;
+            font-size: 11px;
+            white-space: nowrap;
+            display: block;
+            text-align: center;
+            transition: transform 0.3s;
+            box-shadow: 5px 5px 5px rgba(0,0,0,2);
+            z-index: 1000;
+        }
+
+        .nav-sign:hover {
+            transform: translateY(5px);
+        }
+
+        /* FAQ Hero Section */
+        .faq-hero {
+            margin-top: -140px;
+            padding: 200px 20px 60px;
+            text-align: center;
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczOnmdJI8iAsh8dhlFKJq2lf_SJScGw7PI0EVoOqhaPVOwQDEj0qdquliRyLXjHYMcLUe4x7cVKz4HnEkmWzuGrx0dpAJCqWvzIbRWlkql6vL2eaDlWKOyoB0yXksLPWhDSJSr4eil0BwmrulSOl5f5b=w800-h450-s-no-gm?authuser=0');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .faq-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.69) 0%,
+                rgba(0, 0, 0, 0.5) 50%,
+                rgba(0, 0, 0, 0.69) 100%
+            );
+            z-index: 0;
+        }
+        
+        .faq-hero > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .faq-hero h1 {
+            font-size: 48px;
+            margin-bottom: 30px;
+            color: #FFD700;
+            text-shadow: 5px 5px 0 #000;
+            animation: heroFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes heroFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .faq-hero p {
+            font-size: 14px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 2;
+            text-shadow: 3px 3px 0 #000;
+        }
+
+        /* Search Box */
+        .search-container {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 20px 60px 20px 20px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 11px;
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczNnB0JGNo44l7KU1Itz9Q5q5-z_tUBHRHBsg0aXq9RaT_B9nZ7RDcnmWhwJC4-EBOseHexMxQPCox-oVjfbyIW3M_lWXAGAKmRgCSSlh-8rV-MrEJ-tArBHJr6ttInovvC1MHOAwDRHrQqIg4zVnIJ7=w628-h96-s-no-gm?authuser=0');
+            /* background-color: #000; */
+            background-size: cover;
+            border: 3px solid #571d00;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.8);
+            outline: none;
+            z-index: 100;
+        }
+
+        .search-box::placeholder {
+            color: #ffffff;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            filter: brightness(0) invert(1);
+        }
+
+        /* FAQ Categories */
+        .category-filters {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .category-btn {
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczNJ77pHT2EdmVtFMFXhVxaC8c7EMJqKwRgwTX-hJ7vzGFUjABS8OtjHWiXOc7FONqjlRUUnMxxvOTtyDdSAl3fLwPpwX_AH8spgnGwRqP59JwQVXm2LFq6YjLf-IPcMSVxf92tNNvxc8eqwQ-uSbZou=w160-h160-s-no-gm?authuser=0');
+            background-size: cover;
+            border: 3px solid #303030;
+            padding: 15px 25px;
+            font-family: 'Press Start 2P', cursive;
+            color: #FFF;
+            font-size: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.8);
+            text-shadow: 2px 2px 4px #000;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            transform: translateY(-5px);
+            border-color: #FFD700;
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 60px 20px 120px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .faq-item {
+            background-image: url('');
+            background-size: cover;
+            border: 4px solid #4A3C2F;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.8);
+            position: relative;
+        }
+
+        .faq-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 0;
+        }
+
+        .faq-item > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .faq-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .faq-item.active {
+            border-color: #FFD700;
+        }
+
+        .faq-question {
+            padding: 25px 70px 25px 25px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+        }
+
+        .faq-icon {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+            image-rendering: pixelated;
+            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.7));
+        }
+
+        .faq-question-text {
+            font-size: 12px;
+            color: #FFD700;
+            text-shadow: 2px 2px 4px #000;
+            flex: 1;
+        }
+
+        .faq-toggle {
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            color: #FFD700;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 25px 0 85px;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 25px 25px 85px;
+        }
+
+        .faq-answer p {
+            font-size: 10px;
+            line-height: 2;
+            color: #FFF;
+            text-shadow: 2px 2px 3px #000;
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 80px 20px;
+            display: none;
+        }
+
+        .no-results img {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 30px;
+            image-rendering: pixelated;
+        }
+
+        .no-results h3 {
+            font-size: 20px;
+            color: #FFD700;
+            margin-bottom: 15px;
+        }
+
+        .no-results p {
+            font-size: 11px;
+            color: #AAA;
+        }
+
+        /* FAB */
+        .fab {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 80px;
+            height: 80px;
+            background-image: url('');
+            background-size: cover;
+            border: 2px solid #fff700;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 0 40px rgba(234, 255, 7, 0.9);
+            animation: float 3s ease-in-out infinite, pulse 2s ease-in-out infinite;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: #FFF;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 40px rgba(181, 156, 0, 0.2); }
+            50% { box-shadow: 0 0 60px rgb(255, 251, 0); }
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(180deg, #2C1810 0%, #0a0605 100%);
+            padding: 90px 20px 40px;
+            border-top: 10px solid #654321;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #FFD700;
+        }
+
+        .footer-section a {
+            display: block;
+            color: #FFF;
+            text-decoration: none;
+            font-size: 11px;
+            margin-bottom: 15px;
+            transition: all 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #FFD700;
+            transform: translateX(8px);
+        }
+
+        .socials {
+            display: flex;
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .social-icon {
+            width: 55px;
+            height: 55px;
+            background: #654321;
+            border: 4px solid #8B4513;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #FFF;
+            font-size: 22px;
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.25) rotate(10deg);
+            background: #8B4513;
+            border-color: #FFD700;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 50px;
+            border-top: 4px solid #654321;
+            font-size: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .faq-hero h1 {
+                font-size: 28px;
+            }
+
+            .faq-question-text {
+                font-size: 10px;
+            }
+
+            .faq-answer {
+                padding: 0 20px 0 20px;
+            }
+
+            .faq-item.active .faq-answer {
+                padding: 0 20px 20px 20px;
+            }
+
+            .category-filters {
+                gap: 10px;
+            }
+
+            .category-btn {
+                padding: 12px 18px;
+                font-size: 9px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="end-sky" id="endSky"></div>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-texture-bar"></div>
+        <div class="nav-container">
+            <div class="lantern-container">
+                <div class="chain"></div>
+                <div class="lantern"></div>
+            </div>
+            <div class="nav-links">
+                <div class="nav-sign-container">
+                    <div class="sign-chain"></div>
+                    <a href="index.html" class="nav-sign">Home</a>
+                </div>
+                <div class="nav-sign-container">
+                    <div class="sign-chain"></div>
+                    <a href="index.html#timeline" class="nav-sign">Timeline</a>
+                </div>
+                <div class="nav-sign-container">
+                    <div class="sign-chain"></div>
+                    <a href="index.html#guests" class="nav-sign">Guests</a>
+                </div>
+                <div class="nav-sign-container">
+                    <div class="sign-chain"></div>
+                    <a href="index.html#team" class="nav-sign">DG Swags</a>
+                </div>
+                <div class="nav-sign-container">
+                    <div class="sign-chain"></div>
+                    <a href="index.html#contact" class="nav-sign">Contact</a>
+                </div>
+            </div>
+            <div class="lantern-container">
+                <div class="chain"></div>
+                <div class="lantern"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- FAQ Hero -->
+    <section class="faq-hero">
+        <h1>Frequently Asked Questions</h1>
+        <p>Got questions? We've got answers! Browse through our FAQ to find everything you need to know about AceHack 5.0</p>
+        
+        <div class="search-container">
+            <input type="text" class="search-box" id="searchBox" placeholder="🔍 Search">
+            <!-- <span class="search-icon"></span> -->
+        </div>
+
+        <div class="category-filters">
+            <button class="category-btn active" data-category="all">All Questions</button>
+            <button class="category-btn" data-category="general">General</button>
+            <button class="category-btn" data-category="registration">Registration</button>
+            <button class="category-btn" data-category="event">Event Details</button>
+            <button class="category-btn" data-category="technical">Technical</button>
+            <button class="category-btn" data-category="prizes">Prizes & Judging</button>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="faq-list" id="faqList">
+            <!-- General FAQs -->
+            <div class="faq-item" data-category="general">
+                <div class="faq-question">
+                    <img src="" alt="Icon" class="faq-icon">
+                    <span class="faq-question-text">What is AceHack 5.0?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>AceHack 5.0 is a 36-hour hackathon where students and innovators create real-world tech solutions. It's a platform to learn, build, network, and compete for amazing prizes while working on projects that matter.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="general">
+                <div class="faq-question">
+                    <img src="" alt="Icon" class="faq-icon">
+                    <span class="faq-question-text">When and where is AceHack 5.0 taking place?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>AceHack 5.0 will be held on March 8-9, 2026. The event location will be announced soon. Stay tuned to our social media channels for updates!</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="general">
+                <div class="faq-question">
+                    <img src="" alt="Icon" class="faq-icon">
+                    <span class="faq-question-text">Who can participate in AceHack 5.0?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>AceHack 5.0 is open to all students currently enrolled in any educational institution across India. Whether you're a beginner or an experienced developer, everyone is welcome!</p>
+                </div>
+            </div>
+
+            <!-- Registration FAQs -->
+            <div class="faq-item" data-category="registration">
+                <div class="faq-question">
+                    <img src="" alt="Icon" class="faq-icon">
+                    <span class="faq-question-text">How do I register for the hackathon?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Click the "Register Now" button on our homepage and fill out the registration form with your details. You'll receive a confirmation email once your registration is complete.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="registration">
+                <div class="faq-question">
+                    <img src="" alt="Icon" class="faq-icon">
+                    <span class="faq-question-text">Is there a registration fee?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>No! AceHack 5.0 is completely free to participate in. We believe in making innovation accessible to everyone.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="registration">
+                <div class="faq-question">
+                    <img src="" alt="Icon" class="faq-icon">
+                    <span class="faq-question-text">Can I participate individually or do I need a team?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>You can participate either individually or in teams of up to 4 members. We recommend forming teams to enhance collaboration and learning!</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="registration">
+                <div class="faq-question">
+                    <img src="" alt="Icon" class="faq-icon">
+                    <span class="faq-question-text">When is the registration deadline?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Registration closes on March 1, 2026, or when we reach maximum capacity. We recommend registering early to secure your spot!</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="registration">
+                <div class="faq-question">
+                    <img src="" alt="Icon" class="faq-icon">
+                    <span class="faq-question-text">Can I change my team after registering?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, team changes are allowed up to 48 hours before the event starts. Please contact us at team@acehack.com to make modifications.</p>
+                </div>
+            </div>
+
+            <!-- Event Details FAQs -->
+            <div class="faq-item" data-category="event">
+                <div class="faq-question">
+                    <img src="" alt="Icon" class="faq-icon">
+                    <span class="faq-question-text">What should I bring to the hackathon?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Bring your laptop, chargers, student ID, and enthusiasm! We'll provide food, drinks, WiFi, and workspace. Don't forget a sleeping bag if you plan to work through the night!</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="event">
+                <div class="faq-question">
+                    <img src="" alt="Icon" class="faq-icon">
+                    <span class="faq-question-text">Will food and accommodation be provided?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! We'll provide all meals, snacks, and refreshments throughout the 36-hour event. Accommodation arrangements will be shared closer to the event date.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="event">
+                <div class="faq-question">
+                    <img src="" alt="Icon" class="faq-icon">
+                    <span class="faq-question-text">What are the hackathon tracks?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>We have 8 tracks: AI/ML, Web3, IoT, Healthcare, EdTech, FinTech, Sustainability, and Open Innovation. Choose the track that aligns with your project idea!</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="event">
+                <div class="faq-question">
+                    <img src="" alt="Icon" class="faq-icon">
+                    <span class="faq-question-text">Will there be mentors available during the event?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely! We have 50+ mentors from various tech domains who will be available throughout the hackathon to guide you, answer questions, and help debug your projects.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="event">
+                <div class="faq-question">
+                    <img src="" alt="Icon" class="faq-icon">
+                    <span class="faq-question-text">Are there any workshops or tech talks?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! We'll have workshops, tech talks, and sessions by industry experts throughout the event. Schedule will be shared with registered participants.</p>
+                </div>
+            </div>
+
+            <!-- Technical FAQs -->
+            <div class="faq-item" data-category="technical">
+                <div class="faq-question">
+                    <img src="" alt="Icon" class="faq-icon">
+                    <span class="faq-question-text">What technologies can we use?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>You're free to use any programming languages, frameworks, APIs, or platforms you prefer. Choose what works best for your project idea!</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="technical">
+                <div class="faq-question">
+                    <img src="" alt="Icon" class="faq-icon">
+                    <span class="faq-question-text">Can we start working on our project before the hackathon?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>No, all code must be written during the 36-hour event period. However, you can come with an idea, research, and design mockups prepared beforehand.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="technical">
+                <div class="faq-question">
+                    <img src="" alt="Icon" class="faq-icon">
+                    <span class="faq-question-text">Do we need to have a working prototype?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>While a working prototype is preferred, we also value innovative ideas and solid execution plans. Focus on demonstrating your concept effectively!</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="technical">
+                <div class="faq-question">
+                    <img src="" alt="Icon" class="faq-icon">
+                    <span class="faq-question-text">Will internet and power outlets be available?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! High-speed WiFi and charging stations will be available throughout the venue. We'll ensure you have all the infrastructure needed to build great projects.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="technical">
+                <div class="faq-question">
+                    <img src="" alt="Icon" class="faq-icon">
+                    <span class="faq-question-text">Can we use open-source libraries and APIs?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! You're encouraged to use open-source libraries, APIs, and frameworks. Just make sure to properly attribute any third-party code you use.</p>
+                </div>
+            </div>
+
+            <!-- Prizes & Judging FAQs -->
+            <div class="faq-item" data-category="prizes">
+                <div class="faq-question">
+                    <img src="" alt="Icon" class="faq-icon">
+                    <span class="faq-question-text">What is the total prize pool?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>The total prize pool is ₹4,10,000! This includes prizes for top 3 teams, best beginner team, and all-girls team categories.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="prizes">
+                <div class="faq-question">
+                    <img src="" alt="Icon" class="faq-icon">
+                    <span class="faq-question-text">How will projects be judged?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Projects will be evaluated based on innovation, technical complexity, design & usability, real-world impact, and presentation quality by our expert panel of judges.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="prizes">
+                <div class="faq-question">
+                    <img src="" alt="Icon" class="faq-icon">
+                    <span class="faq-question-text">When will winners be announced?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Winners will be announced during the closing ceremony on March 9, 2026. All participants must be present for the final presentations and ceremony.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="prizes">
+                <div class="faq-question">
+                    <img src="" alt="Icon" class="faq-icon">
+                    <span class="faq-question-text">Will I get a certificate of participation?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! All participants will receive a certificate of participation. Winners and special category awardees will receive additional recognition certificates.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="prizes">
+                <div class="faq-question">
+                    <img src="" alt="Icon" class="faq-icon">
+                    <span class="faq-question-text">Are there any sponsor prizes or tracks?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! Our sponsors may offer additional prizes and special tracks. Details will be announced to registered participants before the event.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="general">
+                <div class="faq-question">
+                    <img src="" alt="Icon" class="faq-icon">
+                    <span class="faq-question-text">What if I'm a beginner with no prior hackathon experience?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Perfect! AceHack 5.0 welcomes beginners. We have a special "Best Beginner" category and mentors dedicated to helping first-timers. It's a great place to learn!</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="event">
+                <div class="faq-question">
+                    <img src="" alt="Icon" class="faq-icon">
+                    <span class="faq-question-text">Is there a code of conduct?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, all participants must follow our code of conduct which promotes respect, inclusivity, and collaboration. Harassment of any kind will not be tolerated.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="registration">
+                <div class="faq-question">
+                    <img src="" alt="Icon" class="faq-icon">
+                    <span class="faq-question-text">What if I can't find a team?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Don't worry! We'll have a team formation session before the hackathon starts where you can meet other participants and form teams based on interests and skills.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="technical">
+                <div class="faq-question">
+                    <img src="" alt="Icon" class="faq-icon">
+                    <span class="faq-question-text">Can we work on hardware projects?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely! Hardware projects are welcome, especially in the IoT track. Please bring your own hardware components as we have limited equipment available.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="event">
+                <div class="faq-question">
+                    <img src="" alt="Icon" class="faq-icon">
+                    <span class="faq-question-text">How long is the presentation/demo time?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Each team will have 5 minutes to present their project followed by 2 minutes of Q&A with judges. Make your demo impactful and concise!</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="general">
+                <div class="faq-question">
+                    <img src="" alt="Icon" class="faq-icon">
+                    <span class="faq-question-text">Can participants from other cities attend?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! AceHack 5.0 is open to students from across India. We encourage diversity and welcome participants from all regions.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="no-results" id="noResults">
+            <img src="" alt="No Results">
+            <h3>No Results Found</h3>
+            <p>Try different keywords or browse all questions</p>
+        </div>
+    </section>
+
+    <!-- FAB -->
+    <a href="index.html" class="fab" title="Back to Home">🏠</a>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <img src="https://via.placeholder.com/200x70/228B22/FFFFFF?text=AceHack" alt="AceHack Logo" style="margin-bottom: 25px;">
+                <p style="font-size: 10px; line-height: 2;">The ultimate hackathon experience. Build the future, one block at a time.</p>
+                <div class="socials">
+                    <a href="#" class="social-icon">f</a>
+                    <a href="#" class="social-icon">𝕏</a>
+                    <a href="#" class="social-icon">in</a>
+                    <a href="#" class="social-icon">▶</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html#home">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#tracks">Tracks</a>
+                <a href="index.html#prizes">Prizes</a>
+                <a href="index.html#sponsors">Sponsors</a>
+                <a href="faq.html">FAQs</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Archives</h3>
+                <a href="#">AceHack 4.0 - 2025</a>
+                <a href="#">AceHack 3.0 - 2024</a>
+                <a href="#">AceHack 2.0 - 2023</a>
+                <a href="#">AceHack 1.0 - 2022</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Location</h3>
+                <p style="font-size: 10px; line-height: 2;">Your College Name<br>Address Line 1<br>City, State - 000000<br>India</p>
+                <div style="width: 100%; height: 280px; background: #654321; border: 5px solid #8B4513; margin-top: 30px;">
+                    <!-- Add Google Maps embed here -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            © 2026 AceHack. All Rights Reserved. | Crafted with ❤️ by the AceHack Team
+        </div>
+    </footer>
+
+    <script>
+        // Create End Sky Background
+        function createEndSky() {
+            const container = document.getElementById('endSky');
+            
+            for (let i = 0; i < 80; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = (Math.random() * 3 + 1) + 'px';
+                star.style.height = star.style.width;
+                star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                container.appendChild(star);
+            }
+            
+            for (let i = 0; i < 8; i++) {
+                const glow = document.createElement('div');
+                glow.className = 'purple-glow';
+                glow.style.left = Math.random() * 100 + '%';
+                glow.style.top = Math.random() * 100 + '%';
+                glow.style.width = (Math.random() * 300 + 200) + 'px';
+                glow.style.height = glow.style.width;
+                glow.style.background = `radial-gradient(circle, rgba(139, 92, 246, ${Math.random() * 0.3 + 0.2}) 0%, transparent 70%)`;
+                glow.style.animationDuration = (Math.random() * 20 + 15) + 's';
+                glow.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(glow);
+            }
+            
+            for (let i = 0; i < 15; i++) {
+                const cloud = document.createElement('div');
+                cloud.className = 'end-cloud';
+                cloud.style.left = (100 + Math.random() * 100) + '%';
+                cloud.style.top = Math.random() * 80 + '%';
+                cloud.style.width = (Math.random() * 100 + 80) + 'px';
+                cloud.style.height = (Math.random() * 40 + 30) + 'px';
+                cloud.style.animationDuration = (Math.random() * 30 + 20) + 's';
+                cloud.style.animationDelay = Math.random() * 10 + 's';
+                container.appendChild(cloud);
+            }
+            
+            const entity = document.createElement('img');
+            entity.className = 'flying-entity';
+            entity.src = '';
+            entity.alt = 'Flying Entity';
+            container.appendChild(entity);
+        }
+
+        createEndSky();
+
+        // FAQ Functionality
+        const faqItems = document.querySelectorAll('.faq-item');
+        const searchBox = document.getElementById('searchBox');
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const noResults = document.getElementById('noResults');
+        const faqList = document.getElementById('faqList');
+
+        // Toggle FAQ
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                // Close all other FAQs
+                faqItems.forEach(otherItem => {
+                    otherItem.classList.remove('active');
+                });
+                
+                // Toggle current FAQ
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Search Functionality
+        searchBox.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            let hasResults = false;
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question-text').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer p').textContent.toLowerCase();
+                
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = 'block';
+                    hasResults = true;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            // Show/hide no results message
+            if (!hasResults && searchTerm !== '') {
+                faqList.style.display = 'none';
+                noResults.style.display = 'block';
+            } else {
+                faqList.style.display = 'flex';
+                noResults.style.display = 'none';
+            }
+        });
+
+        // Category Filter
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const category = button.dataset.category;
+                
+                // Update active button
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                // Filter FAQs
+                faqItems.forEach(item => {
+                    if (category === 'all' || item.dataset.category === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                // Clear search
+                searchBox.value = '';
+                faqList.style.display = 'flex';
+                noResults.style.display = 'none';
+            });
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
