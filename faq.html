@@ -380,6 +380,8 @@
             justify-content: center;
             flex-wrap: wrap;
             margin-bottom: 60px;
+            position: relative;  /* Add this */
+            z-index: 10; 
         }
 
         .category-btn {
@@ -394,6 +396,8 @@
             transition: all 0.3s;
             box-shadow: 0 5px 15px rgba(0,0,0,0.8);
             text-shadow: 2px 2px 4px #000;
+            position: relative;  /* Add this */
+            z-index: 10; 
         }
 
         .category-btn:hover,
@@ -719,9 +723,9 @@
         <h1>Frequently Asked Questions</h1>
         <p>Got questions? We've got answers! Browse through our FAQ to find everything you need to know about AceHack 5.0</p>
         
-        <!-- <div class="search-container">
-            <input type="text" class="search-box" id="searchBox" placeholder="🔍 Search">
-        </div> -->
+        <div class="search-container">
+            <input type="text" class="search-box" id="searchBox" placeholder="   Search">
+        </div>
 
         <div class="category-filters">
             <button class="category-btn active" data-category="all">All Questions</button>
