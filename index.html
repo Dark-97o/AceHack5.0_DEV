@@ -706,6 +706,56 @@ s
             image-rendering: pixelated;
         }
 
+        /* Particle burst effect - BEHIND the card */
+        .particle {
+            position: absolute;
+            margin-top: -50px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0; /* ← BEHIND the card */
+            animation: particle-burst 1s ease-out forwards;
+            image-rendering: pixelated; /* Minecraft style */
+        }
+
+        @keyframes particle-burst {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0.3);
+                opacity: 0;
+            }
+        }
+
+        /* Different particle colors - Minecraft themed */
+        .particle-gold {
+            background: #FFD700;
+            box-shadow: 0 0 15px #FFD700, 0 0 30px #FFD700;
+        }
+
+        .particle-diamond {
+            background: #00FFFF;
+            box-shadow: 0 0 15px #00FFFF, 0 0 30px #00FFFF;
+        }
+
+        .particle-emerald {
+            background: #50C878;
+            box-shadow: 0 0 15px #50C878, 0 0 30px #50C878;
+        }
+
+        .particle-redstone {
+            background: #FF0000;
+            box-shadow: 0 0 15px #FF0000, 0 0 30px #FF0000;
+        }
+
+        .particle-purple {
+            background: #A855F7;
+            box-shadow: 0 0 15px #A855F7, 0 0 30px #A855F7;
+        }
+
         .stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -714,6 +764,7 @@ s
             max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
+            position: relative;
         }
 
         .stat-box {
@@ -726,6 +777,7 @@ s
             box-shadow: 0 10px 25px rgba(0,0,0,0.8);
             transition: transform 0.3s;
             position: relative;
+            z-index: 1;
         }
 
         .stat-box::before {
@@ -1066,7 +1118,7 @@ s
 <body>
     <div id="bootup-screen">
         <video id="bootup-video" class="bootup-fullscreen" autoplay muted playsinline>
-            <source src="https://lh3.googleusercontent.com/pw/AP1GczN2jwCe0uaE3dfouTNDIwtxZ38rOPxcdDFE2OjBE5eudhWUxcDAvPsu-4Olz2oIX11PeGvR9ZG8qyIB_S2yaKMZZHVJSa8AbKJTlBXcHdGf2d4EHSdHU2jvu1KCUqecgRbsULRWj_XU9eKb53VQo0qrXJqxq-QNFqMXobnllIrBFFg6dWNCyoio3R1tybvXoMxS4n8yKmXVQWdyj4_eVnQ_8UAp28vyy_M_Plei0TZNfT8m6quJP0AkOXtVSThTBixqA_DU3OA8DdTtfPiNU2gghyDbdhV3_sKRl5sDpUFpkPNVivdPBb8fpLL1ARWDBQiMG2P47d5bwkj7dkyeFH6rtFJ_SpgQF7Olv4WRi2DXpZCvlJjwys-mtGzdR7BhRUUgzzEIoxDizkHcwIX5FPW2bBfNyjjI2B8a6t3uYRaLG7IbhXMc802LtCMEBr35UJ5F3av0jBDgWkbo3Ofqfa9m6d4qavTWn4s-fDQlLIA7WHhfkS-8PcwbPz1NTMByyAiJZdPz2Fi0toluAvDiP55OogFYrROJliva2N88Y7TDK00ywSAC1Bh3rIZ_F-NrMMUvGDZDHWt4J7yAZcwM30BW6hFkxx4RNISARbxGNGMI1YtQ0M_W2UbUkLUw7SqIOR1_m5ulzQD4Z0y8hsbx0iQIydsg0mCoZAqy98H5MU6xGLB99Vcgmty9GCzrzQrFL3BVjkU_AbFb6xSyjGWK9A3SjKf5U_pTx-KzUd_cCm3VuxgjAD-ekJKIpg3H3m71P4Ctf6x8TASXuPMl_WX5BWWi-DQbourymVQruKunBPjzX_YWyQKMlhFZEwqAvKIwBphN8vS8bL1rPKG0KSbQ3fR7VRPBPFVrz8Kh84T4HzTHgVM6cscVH5NgStq7OUAuU6ZQMNwx-5oKYrtdKOPYRgVeVH2X2io9VZfurODUeHcDcfw451tXQ9u7ysq4yXiVAqDOsjYVKIWCTttaBqV_xdumrlw-cuJBsGijelgXbKz3FQ=m15?authuser=0&cpn=_LKhHWeF1XPM0zpv&c=WEB_EMBEDDED_PLAYER&cver=1.20251216.21.00" type="video/mp4">
+            <source src="assets/vid/bootup.mov" type="video/mp4">
             <!-- <source src="YOUR_VIDEO_URL.webm" type="video/webm"> -->
         </video>
     </div>
@@ -1545,6 +1597,59 @@ s
                     bootupScreen.classList.add('hidden');
                 }
             }, 10000);
+        });
+
+        // Particle burst effect - BEHIND stat cards in ALL directions
+        function createParticleBurst(e) {
+            const box = e.currentTarget;
+            const colors = ['particle-gold', 'particle-diamond', 'particle-emerald', 'particle-redstone', 'particle-purple'];
+            
+            // Create 30 particles bursting in all directions
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = `particle ${colors[Math.floor(Math.random() * colors.length)]}`;
+                
+                // Calculate random angle for all directions (360 degrees)
+                const angle = (Math.PI * 2 * i) / particleCount + (Math.random() - 0.5) * 0.5;
+                
+                // Random distance for variation
+                const distance = 100 + Math.random() * 80;
+                
+                // Calculate x and y based on angle
+                const tx = Math.cos(angle) * distance;
+                const ty = Math.sin(angle) * distance;
+                
+                // Set CSS variables for animation
+                particle.style.setProperty('--tx', `${tx}px`);
+                particle.style.setProperty('--ty', `${ty}px`);
+                
+                // Position at center of stat box
+                particle.style.left = '50%';
+                particle.style.top = '50%';
+                
+                // Random size variation (Minecraft block-like)
+                const size = 8 + Math.random() * 6;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Add particle to the box
+                box.appendChild(particle);
+                
+                // Remove particle after animation completes
+                setTimeout(() => {
+                    particle.remove();
+                }, 1000);
+            }
+        }
+
+        // Add hover listeners to all stat boxes when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const statBoxes = document.querySelectorAll('.stat-box');
+            statBoxes.forEach(box => {
+                box.addEventListener('mouseenter', createParticleBurst);
+            });
         });
 
     </script>
