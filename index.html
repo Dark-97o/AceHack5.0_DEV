@@ -628,10 +628,10 @@ s
         }
 
         /* #about {
-            background-image: url('YOUR_ABOUT_BACKGROUND_URL.png');
-        }
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczMcGS1yt1wT5BKt2RRvmacdjuSxybrIVbCmbPYNzpdJ23P7dmlD_alt51XhLJl9wuVCOuLxSnlutwWM5j9SCRyKY03sG_YdH_8flssVSPrANbg7GTYnIYdtjleg35W8sEejN2f2wffVYbmKJhWLYEgE=w1080-h483-s-no-gm?authuser=0');
+        } */
 
-        #tracks {
+        /* #tracks {
             background-image: url('YOUR_TRACKS_BACKGROUND_URL.png');
         }
 
@@ -653,6 +653,38 @@ s
             margin-bottom: 70px;
             text-shadow: 5px 5px 0 #000;
             color: #FFD700;
+        }
+
+        /* Corner Frame Decoration */
+        .corner-frame {
+            position: absolute;
+            z-index: 10;
+            margin-top: 330px;
+            pointer-events: none;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.8));
+            animation: frame-float 4s ease-in-out infinite;
+        }
+
+        .corner-frame img {
+            width: 200px;
+            height: auto;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+        }
+
+        /* Left corner positioning */
+
+        .right-corner {
+            top: -400px;
+            right: 20px;
+            transform: scale(-1,-1);
+        }
+
+        .right-corner-1 {
+            top: -400px;
+            right: 1180px;
+            transform: scaleY(-1);
         }
 
         .about-content {
@@ -688,6 +720,7 @@ s
         }
 
         .about-text {
+            margin-left: 50px;
             flex: 1;
             text-align: left;
         }
@@ -709,7 +742,7 @@ s
         /* Particle burst effect - BEHIND the card */
         .particle {
             position: absolute;
-            margin-top: -50px;
+            margin-top: 25px;
             width: 10px;
             height: 10px;
             border-radius: 50%;
@@ -1116,12 +1149,12 @@ s
     </style>
 </head>
 <body>
-    <div id="bootup-screen">
+    <!-- <div id="bootup-screen">
         <video id="bootup-video" class="bootup-fullscreen" autoplay muted playsinline>
             <source src="assets/vid/bootup.mov" type="video/mp4">
-            <!-- <source src="YOUR_VIDEO_URL.webm" type="video/webm"> -->
         </video>
-    </div>
+    </div> -->
+
     <!-- Animated Particles -->
     <!-- Minecraft End Sky Background -->
     <div class="end-sky" id="endSky"></div> 
@@ -1192,6 +1225,9 @@ s
     <!-- About Section -->
     <section id="about" class="section-bg">
         <div style="max-width: 1400px; margin: 0 auto;">
+            <div class="corner-frame right-corner">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczN4KtQ-FUGOEogbXEXajsXbyB6SEU-VZJSz3Ba2P5HD3K5wfAK_U_Xy7hFnlMeDgyvVUPSS43kzjxUUCL2f4xKSM-egIQyqqZRiFD-q2EVAa69U2At9npioC5yTnnJQRWmsyV-WpIxQFd-0sIKS_QJj=w998-h995-s-no-gm?authuser=0" alt="Frame">
+            </div>
             <h2>About AceHack 5.0</h2>
             <div class="about-content">
                 <div class="about-text">
@@ -1237,6 +1273,9 @@ s
     <!-- Tracks Section -->
     <section id="tracks" class="section-bg">
         <div style="max-width: 1400px; margin: 0 auto;">
+            <div class="corner-frame right-corner-1">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczN4KtQ-FUGOEogbXEXajsXbyB6SEU-VZJSz3Ba2P5HD3K5wfAK_U_Xy7hFnlMeDgyvVUPSS43kzjxUUCL2f4xKSM-egIQyqqZRiFD-q2EVAa69U2At9npioC5yTnnJQRWmsyV-WpIxQFd-0sIKS_QJj=w998-h995-s-no-gm?authuser=0" alt="Frame">
+            </div>
             <h2>Hackathon Tracks</h2>
             <div class="cards-grid">
                 <div class="card">
@@ -1599,52 +1638,45 @@ s
             }, 10000);
         });
 
-        // Particle burst effect - BEHIND stat cards in ALL directions
+       // Particle burst effect - with dedicated container
         function createParticleBurst(e) {
             const box = e.currentTarget;
             const colors = ['particle-gold', 'particle-diamond', 'particle-emerald', 'particle-redstone', 'particle-purple'];
             
-            // Create 30 particles bursting in all directions
+            // Create particle container if it doesn't exist
+            let particleContainer = box.querySelector('.particle-container');
+            if (!particleContainer) {
+                particleContainer = document.createElement('div');
+                particleContainer.className = 'particle-container';
+                box.insertBefore(particleContainer, box.firstChild); // Insert as first child
+            }
+            
             const particleCount = 30;
             
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.className = `particle ${colors[Math.floor(Math.random() * colors.length)]}`;
                 
-                // Calculate random angle for all directions (360 degrees)
                 const angle = (Math.PI * 2 * i) / particleCount + (Math.random() - 0.5) * 0.5;
-                
-                // Random distance for variation
                 const distance = 100 + Math.random() * 80;
-                
-                // Calculate x and y based on angle
                 const tx = Math.cos(angle) * distance;
                 const ty = Math.sin(angle) * distance;
                 
-                // Set CSS variables for animation
                 particle.style.setProperty('--tx', `${tx}px`);
                 particle.style.setProperty('--ty', `${ty}px`);
-                
-                // Position at center of stat box
                 particle.style.left = '50%';
                 particle.style.top = '50%';
                 
-                // Random size variation (Minecraft block-like)
                 const size = 8 + Math.random() * 6;
                 particle.style.width = `${size}px`;
                 particle.style.height = `${size}px`;
                 
-                // Add particle to the box
-                box.appendChild(particle);
+                particleContainer.appendChild(particle);
                 
-                // Remove particle after animation completes
-                setTimeout(() => {
-                    particle.remove();
-                }, 1000);
+                setTimeout(() => particle.remove(), 1000);
             }
         }
 
-        // Add hover listeners to all stat boxes when page loads
         document.addEventListener('DOMContentLoaded', function() {
             const statBoxes = document.querySelectorAll('.stat-box');
             statBoxes.forEach(box => {
