@@ -905,6 +905,280 @@ s
             line-height: 1.9;
         }
 
+        /* Tracks Container */
+        .tracks-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            overflow: hidden;
+            padding: 0px 20px;
+        }
+
+        .track-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px; /* REDUCED from 100px */
+            position: relative;
+            padding: 50px 0; /* INCREASED padding for larger minecarts */
+        }
+
+        /* Minecart Rail - Full Width */
+        .minecart-rail {
+            margin-top: 50px;
+            position: absolute;
+            width: 100%;
+            height: 80px; /* INCREASED from 40px */
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczObok46sVoyhzb7t683F3aoprm1__CM0rWoM3SUlcbLGjF7ZZ4wGNv-JbzdpWSoBOVL25v1EfD4K6yC9DrkWY748f58rT4Q5CcljA8V4weDuoKnwMpWiBzncLGTsjphJYdwWXS2CuZBTpS_4y0TCnpv=w301-h270-s-no-gm?authuser=0');
+            background-repeat: repeat-x;
+            background-size: auto 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 0;
+            image-rendering: pixelated;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+        }
+
+        /* Minecart Card Container */
+        .minecart-card {
+            flex: 0 0 calc(25% - 30px);
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+
+        /* Minecart Body with Background - INCREASED SIZE */
+        .minecart-body {
+            width: 260px; /* INCREASED from 180px */
+            height: 260px; /* INCREASED from 180px */
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczM0PeHmA1W9pMt-V-tlsTUIY-U3NPU4htKmlTYkEwsJtRzLeMu7lvOVvjJZZ44Mq-JhRvudREzbo5kz6XUAVBZhwKQZ_sFN2k4MtN5FhSWuZswNAZ3Rp9aZKc2I5jyOGuGknwuxNKsFiotDCUoqz7Oy=w780-h478-s-no-gm?authuser=0');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            image-rendering: pixelated;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8));
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .minecart-body:hover {
+            transform: translateY(-10px) scale(1.05);
+        }
+
+        /* Track Logo inside Minecart - INCREASED SIZE */
+        .track-logo {
+            width: 170px; /* INCREASED from 80px */
+            height: 160px; /* INCREASED from 80px */
+            image-rendering: pixelated;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.9));
+            position: relative;
+            z-index: 2;
+            margin-top: -140px; /* ADJUSTED for larger size */
+        }
+
+        /* Track Info Below Minecart */
+        .track-info {
+            margin-top: -60px;
+            text-align: center;
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczPh0E37VblTYcHvlnQKK-_o_3bCckjMDFHueAVwrJTXMEsZJJyjhO0mT2RLL1Ws7yaSl1SZ9xKDpbhrYIdjfrsl8HJRnm4H9VJfzmZXOR_jhg_Q6RvGfb0vvJrKGYDBaUaVyGCsDiOqTeH-v87PlTE3=w1077-h138-s-no-gm?authuser=0');
+            background-size: contain;
+            text-shadow: #000 3px 3px 0;
+            padding: 9px 25px; /* INCREASED padding */
+            border: 3px solid #4A3C2F;  
+            border-radius: 1px;
+            min-width: 240px; /* INCREASED from 200px */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        .track-info::after {
+            content: '';
+            position: absolute;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: -1;
+        }
+
+        .track-info h3 {
+            font-size: 16px; /* INCREASED from 14px */
+            color: #FFD700;
+        }
+
+        .track-info p {
+            font-size: 10px; /* INCREASED from 9px */
+            line-height: 1.7;
+            color: #FFF;
+            margin: 0;
+        }
+
+        /* Row 1 Animation - Right to Left (SLIDING, NO ROTATION) */
+        .track-row-1 .minecart-card {
+            transform: translateX(150px);
+        }
+
+        .track-row-1 .minecart-card.visible {
+            animation: slideInFromRight 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes slideInFromRight {
+            0% {
+                opacity: 0;
+                transform: translateX(150px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Row 2 Animation - Left to Right (SLIDING, NO ROTATION) */
+        .track-row-2 .minecart-card {
+            transform: translateX(-150px);
+        }
+
+        .track-row-2 .minecart-card.visible {
+            animation: slideInFromLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes slideInFromLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-150px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Stagger animation delays for ONE BY ONE effect */
+        .minecart-card[data-index="0"].visible { animation-delay: 0s; }
+        .minecart-card[data-index="1"].visible { animation-delay: 0.2s; }
+        .minecart-card[data-index="2"].visible { animation-delay: 0.4s; }
+        .minecart-card[data-index="3"].visible { animation-delay: 0.6s; }
+
+        /* Minecart subtle bounce on hover */
+        .minecart-card.visible .minecart-body {
+            animation: minecartBounce 2s ease-in-out infinite;
+        }
+
+        /* @keyframes minecartBounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        } */
+
+        .minecart-card.visible .minecart-body:hover {
+            animation: none;
+            transform: translateY(-10px) scale(1.05);
+        }
+
+        /* Open Innovation Banner */
+        .open-innovation-banner {
+            margin-top: 60px; /* REDUCED from 80px */
+            padding: 0 20px;
+        }
+
+        .banner-content {
+            background-image: url('https://static.wikia.nocookie.net/minecraft_gamepedia/images/b/b4/Oak_Planks_JE6_BE3.png');
+            background-size: cover;
+            border: 6px solid #4A3C2F;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+            position: relative;
+            min-height: 150px;
+            image-rendering: pixelated;
+        }
+
+        .banner-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 0;
+        }
+
+        .banner-content > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .steve-img {
+            width: 140px; /* INCREASED from 120px */
+            height: auto;
+            image-rendering: pixelated;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.9));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .chat-bubble {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.95);
+            border: 4px solid #333;
+            border-radius: 20px;
+            padding: 28px 40px; /* INCREASED padding */
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        .chat-bubble::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-right: 20px solid #333;
+        }
+
+        .chat-bubble::after {
+            content: '';
+            position: absolute;
+            left: -14px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            border-right: 16px solid rgba(255, 255, 255, 0.95);
+        }
+
+        .chat-bubble p {
+            margin: 0;
+            font-size: 20px; /* INCREASED from 18px */
+            color: #333;
+            text-shadow: none;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .anvil-img {
+            width: 120px; /* INCREASED from 100px */
+            height: auto;
+            image-rendering: pixelated;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.9));
+        }
+
+
         /* Prize Pool - Pyramid Shape */
         .prizes {
             display: flex;
@@ -1267,63 +1541,107 @@ s
         </div>
     </section>
 
-    
-    <div class="section-separator"></div>
-
-    <!-- Tracks Section -->
+   <!-- Inside #tracks section, replace everything inside the section -->
     <section id="tracks" class="section-bg">
         <div style="max-width: 1400px; margin: 0 auto;">
-            <div class="corner-frame right-corner-1">
-                <img src="https://lh3.googleusercontent.com/pw/AP1GczN4KtQ-FUGOEogbXEXajsXbyB6SEU-VZJSz3Ba2P5HD3K5wfAK_U_Xy7hFnlMeDgyvVUPSS43kzjxUUCL2f4xKSM-egIQyqqZRiFD-q2EVAa69U2At9npioC5yTnnJQRWmsyV-WpIxQFd-0sIKS_QJj=w998-h995-s-no-gm?authuser=0" alt="Frame">
-            </div>
             <h2>Hackathon Tracks</h2>
-            <div class="cards-grid">
-                <div class="card">
-                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/f/f7/Redstone_Dust_JE2_BE2.png" alt="AI/ML">
-                    <h3>AI/ML</h3>
-                    <p>Build intelligent solutions using machine learning and artificial intelligence</p>
+            
+            <div class="tracks-container">
+                <!-- First Row - Right to Left -->
+                <div class="track-row track-row-1">
+                    <div class="minecart-rail"></div>
+                    
+                    <div class="minecart-card" data-index="0">
+                        <div class="minecart-body">
+                            <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/f/f7/Redstone_Dust_JE2_BE2.png" alt="AI/ML" class="track-logo">
+                        </div>
+                        <div class="track-info">
+                            <h3>AI/ML</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="minecart-card" data-index="1">
+                        <div class="minecart-body">
+                            <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d1/Diamond_JE3_BE3.png" alt="Web3" class="track-logo">
+                        </div>
+                        <div class="track-info">
+                            <h3>Web3</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="minecart-card" data-index="2">
+                        <div class="minecart-body">
+                            <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/0/09/Redstone_Lamp_%28S%29_JE3.gif" alt="IoT" class="track-logo">
+                        </div>
+                        <div class="track-info">
+                            <h3>IoT</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="minecart-card" data-index="3">
+                        <div class="minecart-body">
+                            <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/6/6e/Enchanted_Golden_Apple_JE2_BE2.png" alt="Healthcare" class="track-logo">
+                        </div>
+                        <div class="track-info">
+                            <h3>Healthcare</h3>
+                        </div>
+                    </div>
                 </div>
-                <div class="card">
-                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d1/Diamond_JE3_BE3.png" alt="Web3">
-                    <h3>Web3</h3>
-                    <p>Create decentralized applications and blockchain solutions</p>
+
+                <!-- Second Row - Left to Right -->
+                <div class="track-row track-row-2">
+                    <div class="minecart-rail"></div>
+                    
+                    <div class="minecart-card" data-index="0">
+                        <div class="minecart-body">
+                            <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/e/e0/Experience_Orb_Value_1237.png" alt="EdTech" class="track-logo">
+                        </div>
+                        <div class="track-info">
+                            <h3>EdTech</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="minecart-card" data-index="1">
+                        <div class="minecart-body">
+                            <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/de/Emerald_JE3_BE3.png" alt="FinTech" class="track-logo">
+                        </div>
+                        <div class="track-info">
+                            <h3>FinTech</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="minecart-card" data-index="2">
+                        <div class="minecart-body">
+                            <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/c/c5/Oak_Sapling_JE7_BE2.png" alt="Sustainability" class="track-logo">
+                        </div>
+                        <div class="track-info">
+                            <h3>Sustainability</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="minecart-card" data-index="3">
+                        <div class="minecart-body">
+                            <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/26/TNT_JE3_BE2.png" alt="Open Innovation" class="track-logo">
+                        </div>
+                        <div class="track-info">
+                            <h3>Open Innovation</h3>
+                        </div>
+                    </div>
                 </div>
-                <div class="card">
-                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/0/09/Redstone_Lamp_%28S%29_JE3.gif" alt="IoT">
-                    <h3>IoT</h3>
-                    <p>Connect the physical world with smart devices and sensors</p>
-                </div>
-                <div class="card">
-                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/6/6e/Enchanted_Golden_Apple_JE2_BE2.png" alt="Healthcare">
-                    <h3>Healthcare</h3>
-                    <p>Innovate solutions for better health and wellness</p>
-                </div>
-                <div class="card">
-                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/e/e0/Experience_Orb_Value_1237.png" alt="EdTech">
-                    <h3>EdTech</h3>
-                    <p>Transform education with technology</p>
-                </div>
-                <div class="card">
-                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/de/Emerald_JE3_BE3.png" alt="FinTech">
-                    <h3>FinTech</h3>
-                    <p>Revolutionize financial services</p>
-                </div>
-                <div class="card">
-                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/c/c5/Oak_Sapling_JE7_BE2.png" alt="Sustainability">
-                    <h3>Sustainability</h3>
-                    <p>Build for a greener tomorrow</p>
-                </div>
-                <div class="card">
-                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/26/TNT_JE3_BE2.png" alt="Open Innovation">
-                    <h3>Open Innovation</h3>
-                    <p>Create anything your mind imagines</p>
+
+                <!-- Open Innovation Banner -->
+                <div class="open-innovation-banner">
+                    <div class="banner-content">
+                        <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/8/8d/Steve_JE4.png" alt="Steve" class="steve-img">
+                        <div class="chat-bubble">
+                            <p>Open Innovation Also Allowed!</p>
+                        </div>
+                        <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/9/90/Anvil_%28N%29_JE3.png" alt="Anvil" class="anvil-img">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
-    
-    <div class="section-separator"></div>
 
     <!-- Why Attend Section -->
     <section id="why-attend" class="section-bg">
@@ -1683,6 +2001,32 @@ s
                 box.addEventListener('mouseenter', createParticleBurst);
             });
         });
+
+        // Scroll-triggered animation for minecart cards
+        function handleMinecartScroll() {
+            const minecartCards = document.querySelectorAll('.minecart-card');
+            
+            minecartCards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                
+                // Trigger when card is 70% visible in viewport
+                if (rect.top < windowHeight * 0.7 && rect.bottom > 0) {
+                    if (!card.classList.contains('visible')) {
+                        card.classList.add('visible');
+                    }
+                }
+            });
+        }
+
+        // Add scroll event listener
+        window.addEventListener('scroll', handleMinecartScroll);
+
+        // Trigger on page load
+        window.addEventListener('load', handleMinecartScroll);
+
+        // Also trigger immediately in case elements are already in view
+        handleMinecartScroll();
 
     </script>
     
