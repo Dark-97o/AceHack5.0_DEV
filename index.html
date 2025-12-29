@@ -17,11 +17,35 @@
 
         body {
             font-family: 'Press Start 2P', cursive;
-            background: #1a1a1a;
-            color: #FFFFFF;
+            background: linear-gradient(to bottom, #0a0014 0%, #2d1b4e 45%, #1a0b2e 50%, #2d1b4e 75%,#1a0b2e 100%);
+            color: #FFF;
             overflow-x: hidden;
             position: relative;
         }
+
+        /* Full Screen Boot-up */
+        #bootup-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 99999;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .bootup-fullscreen {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Fills entire screen */
+            display: block;
+        }
+
+        #bootup-screen.hidden {
+            display: none;
+        }
+        
 s
         /* Animated Particle Background */
         /* Minecraft End Sky Background */
@@ -31,7 +55,7 @@ s
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: 100;
             background: linear-gradient(to bottom, #0a0014 0%, #1a0b2e 50%, #2d1b4e 100%);
             pointer-events: none;
         }
@@ -113,12 +137,12 @@ s
 
         /* Flying Entity (Ender Dragon/Enderman) */
         .flying-entity {
-            position: absolute;
+            position: fixed;
             top: 20%;
             right: -300px;
             width: 500px;
             height: 500px;
-            z-index: 0;
+            z-index: -1;
             animation: fly-across 10s ease-in-out infinite;
             filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.6));
         }
@@ -378,9 +402,9 @@ s
             bottom: 0;
             background: linear-gradient(
                 to bottom,
-                rgba(0, 0, 0, 0.69) 0%,
-                rgba(0, 0, 0, 0.5) 50%,
-                rgba(0, 0, 0, 0.69) 100%
+                rgba(0, 0, 0, 0.49) 0%,
+                rgba(0, 0, 0, 0.3) 50%,
+                rgba(0, 0, 0, 0.49) 100%
             );
             z-index: 0;
         }
@@ -594,7 +618,7 @@ s
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.4);
             z-index: 0;
         }
 
@@ -634,7 +658,6 @@ s
         .about-content {
             max-width: 1300px;
             margin: 0 auto;
-            margin-top: -33px;
             padding: 30px auto 0px;
             border-radius: 0px;
             line-height: 2;
@@ -1041,6 +1064,12 @@ s
     </style>
 </head>
 <body>
+    <div id="bootup-screen">
+        <video id="bootup-video" class="bootup-fullscreen" autoplay muted playsinline>
+            <source src="https://lh3.googleusercontent.com/pw/AP1GczN2jwCe0uaE3dfouTNDIwtxZ38rOPxcdDFE2OjBE5eudhWUxcDAvPsu-4Olz2oIX11PeGvR9ZG8qyIB_S2yaKMZZHVJSa8AbKJTlBXcHdGf2d4EHSdHU2jvu1KCUqecgRbsULRWj_XU9eKb53VQo0qrXJqxq-QNFqMXobnllIrBFFg6dWNCyoio3R1tybvXoMxS4n8yKmXVQWdyj4_eVnQ_8UAp28vyy_M_Plei0TZNfT8m6quJP0AkOXtVSThTBixqA_DU3OA8DdTtfPiNU2gghyDbdhV3_sKRl5sDpUFpkPNVivdPBb8fpLL1ARWDBQiMG2P47d5bwkj7dkyeFH6rtFJ_SpgQF7Olv4WRi2DXpZCvlJjwys-mtGzdR7BhRUUgzzEIoxDizkHcwIX5FPW2bBfNyjjI2B8a6t3uYRaLG7IbhXMc802LtCMEBr35UJ5F3av0jBDgWkbo3Ofqfa9m6d4qavTWn4s-fDQlLIA7WHhfkS-8PcwbPz1NTMByyAiJZdPz2Fi0toluAvDiP55OogFYrROJliva2N88Y7TDK00ywSAC1Bh3rIZ_F-NrMMUvGDZDHWt4J7yAZcwM30BW6hFkxx4RNISARbxGNGMI1YtQ0M_W2UbUkLUw7SqIOR1_m5ulzQD4Z0y8hsbx0iQIydsg0mCoZAqy98H5MU6xGLB99Vcgmty9GCzrzQrFL3BVjkU_AbFb6xSyjGWK9A3SjKf5U_pTx-KzUd_cCm3VuxgjAD-ekJKIpg3H3m71P4Ctf6x8TASXuPMl_WX5BWWi-DQbourymVQruKunBPjzX_YWyQKMlhFZEwqAvKIwBphN8vS8bL1rPKG0KSbQ3fR7VRPBPFVrz8Kh84T4HzTHgVM6cscVH5NgStq7OUAuU6ZQMNwx-5oKYrtdKOPYRgVeVH2X2io9VZfurODUeHcDcfw451tXQ9u7ysq4yXiVAqDOsjYVKIWCTttaBqV_xdumrlw-cuJBsGijelgXbKz3FQ=m15?authuser=0&cpn=_LKhHWeF1XPM0zpv&c=WEB_EMBEDDED_PLAYER&cver=1.20251216.21.00" type="video/mp4">
+            <!-- <source src="YOUR_VIDEO_URL.webm" type="video/webm"> -->
+        </video>
+    </div>
     <!-- Animated Particles -->
     <!-- Minecraft End Sky Background -->
     <div class="end-sky" id="endSky"></div> 
@@ -1150,6 +1179,9 @@ s
         </div>
     </section>
 
+    
+    <div class="section-separator"></div>
+
     <!-- Tracks Section -->
     <section id="tracks" class="section-bg">
         <div style="max-width: 1400px; margin: 0 auto;">
@@ -1198,6 +1230,9 @@ s
             </div>
         </div>
     </section>
+
+    
+    <div class="section-separator"></div>
 
     <!-- Why Attend Section -->
     <section id="why-attend" class="section-bg">
@@ -1493,6 +1528,25 @@ s
                 }
             });
         });
+
+        // Video bootup - auto-hides when video ends
+        window.addEventListener('load', function() {
+            const bootupScreen = document.getElementById('bootup-screen');
+            const video = document.getElementById('bootup-video');
+            
+            // Hide bootup screen when video ends
+            video.addEventListener('ended', function() {
+                bootupScreen.classList.add('hidden');
+            });
+            
+            // Fallback: force hide after 10 seconds if video doesn't end
+            setTimeout(function() {
+                if (!bootupScreen.classList.contains('hidden')) {
+                    bootupScreen.classList.add('hidden');
+                }
+            }, 10000);
+        });
+
     </script>
     
 </body>

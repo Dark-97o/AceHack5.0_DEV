@@ -31,7 +31,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: linear-gradient(to bottom, #0a0014 0%, #1a0b2e 50%, #2d1b4e 100%);
+            background: repeating-linear-gradient(to bottom, #0a0014 0%, #1a0b2e 50%, #2d1b4e 100%);
             pointer-events: none;
         }
 
@@ -282,7 +282,7 @@
         /* FAQ Hero Section */
         .faq-hero {
             margin-top: -140px;
-            padding: 200px 20px 60px;
+            padding: 200px 20px 20px;
             text-align: center;
             background-image: url('https://lh3.googleusercontent.com/pw/AP1GczOnmdJI8iAsh8dhlFKJq2lf_SJScGw7PI0EVoOqhaPVOwQDEj0qdquliRyLXjHYMcLUe4x7cVKz4HnEkmWzuGrx0dpAJCqWvzIbRWlkql6vL2eaDlWKOyoB0yXksLPWhDSJSr4eil0BwmrulSOl5f5b=w800-h450-s-no-gm?authuser=0');
             background-size: cover;
@@ -305,8 +305,9 @@
             background: linear-gradient(
                 to bottom,
                 rgba(0, 0, 0, 0.69) 0%,
-                rgba(0, 0, 0, 0.5) 50%,
-                rgba(0, 0, 0, 0.69) 100%
+                rgba(0, 0, 0, 0.3) 50%,
+                rgba(0, 0, 0, 0.3) 90%,
+                rgba(0, 0, 0, 1) 100%
             );
             z-index: 0;
         }
@@ -323,11 +324,11 @@
             text-shadow: 5px 5px 0 #000;
             animation: heroFloat 6s ease-in-out infinite;
         }
-
+/* 
         @keyframes heroFloat {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
-        }
+        } */
 
         .faq-hero p {
             font-size: 14px;
@@ -409,6 +410,17 @@
             margin: 0 auto;
         }
 
+        .faq-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: -1;
+        }
+
         .faq-list {
             display: flex;
             flex-direction: column;
@@ -416,7 +428,7 @@
         }
 
         .faq-item {
-            background-image: url('');
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczNnRMyOqLqz8uhsHKe1iXkI88f3bHaszEoNhw7jmQozRTa0ZTD7oWwhwvp95nkASVLX2PlfeAvch9nvN6va5j2kNr0QP70GWxapOg4B8MIiwkeDFDOtSuV8jWXc9jCjBREupS3MZdE0muy7tkghxgPr=w1199-h198-s-no-gm?authuser=0');
             background-size: cover;
             border: 4px solid #4A3C2F;
             overflow: hidden;
@@ -432,7 +444,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.82);
             z-index: 0;
         }
 
@@ -539,7 +551,7 @@
             right: 40px;
             width: 80px;
             height: 80px;
-            background-image: url('');
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczP1lCeiQIfbd83eLG7d4f-uawftSIIHk4rpp8bQSiOR8KmmuLcCisWxTopkn-56BiB6wYDc7-qWvy0HRZyGEtrH84uz_cF9nsAcdOTuZ2ROvMVsFL4irkzZSVhIBBgpUWBvvbqa0emAaqC0yA_ekiov=w160-h160-s-no-gm?authuser=0');
             background-size: cover;
             border: 2px solid #fff700;
             border-radius: 50%;
@@ -707,10 +719,9 @@
         <h1>Frequently Asked Questions</h1>
         <p>Got questions? We've got answers! Browse through our FAQ to find everything you need to know about AceHack 5.0</p>
         
-        <div class="search-container">
+        <!-- <div class="search-container">
             <input type="text" class="search-box" id="searchBox" placeholder="🔍 Search">
-            <!-- <span class="search-icon"></span> -->
-        </div>
+        </div> -->
 
         <div class="category-filters">
             <button class="category-btn active" data-category="all">All Questions</button>
@@ -728,7 +739,7 @@
             <!-- General FAQs -->
             <div class="faq-item" data-category="general">
                 <div class="faq-question">
-                    <img src="" alt="Icon" class="faq-icon">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNEoBzBhYzzk9Irk6UdqAfA4CgvNBE0ewV05fQKUjgIdIe2A6Yy2vkr8ieY6KX0x-tU0ZfC00wMH6GSL-5VdaLxLGcB9W48VTI5dqV1OIN_lanCo8N9ZVBTDDl9SqxlSY4PxfNHAXV___InDebJDfjO=w160-h160-s-no-gm?authuser=0" alt="Icon" class="faq-icon">
                     <span class="faq-question-text">What is AceHack 5.0?</span>
                     <span class="faq-toggle">+</span>
                 </div>
@@ -739,7 +750,7 @@
 
             <div class="faq-item" data-category="general">
                 <div class="faq-question">
-                    <img src="" alt="Icon" class="faq-icon">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNEoBzBhYzzk9Irk6UdqAfA4CgvNBE0ewV05fQKUjgIdIe2A6Yy2vkr8ieY6KX0x-tU0ZfC00wMH6GSL-5VdaLxLGcB9W48VTI5dqV1OIN_lanCo8N9ZVBTDDl9SqxlSY4PxfNHAXV___InDebJDfjO=w160-h160-s-no-gm?authuser=0" alt="Icon" class="faq-icon">
                     <span class="faq-question-text">When and where is AceHack 5.0 taking place?</span>
                     <span class="faq-toggle">+</span>
                 </div>
@@ -750,7 +761,7 @@
 
             <div class="faq-item" data-category="general">
                 <div class="faq-question">
-                    <img src="" alt="Icon" class="faq-icon">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNEoBzBhYzzk9Irk6UdqAfA4CgvNBE0ewV05fQKUjgIdIe2A6Yy2vkr8ieY6KX0x-tU0ZfC00wMH6GSL-5VdaLxLGcB9W48VTI5dqV1OIN_lanCo8N9ZVBTDDl9SqxlSY4PxfNHAXV___InDebJDfjO=w160-h160-s-no-gm?authuser=0" alt="Icon" class="faq-icon">
                     <span class="faq-question-text">Who can participate in AceHack 5.0?</span>
                     <span class="faq-toggle">+</span>
                 </div>
@@ -762,7 +773,7 @@
             <!-- Registration FAQs -->
             <div class="faq-item" data-category="registration">
                 <div class="faq-question">
-                    <img src="" alt="Icon" class="faq-icon">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNEoBzBhYzzk9Irk6UdqAfA4CgvNBE0ewV05fQKUjgIdIe2A6Yy2vkr8ieY6KX0x-tU0ZfC00wMH6GSL-5VdaLxLGcB9W48VTI5dqV1OIN_lanCo8N9ZVBTDDl9SqxlSY4PxfNHAXV___InDebJDfjO=w160-h160-s-no-gm?authuser=0" alt="Icon" class="faq-icon">
                     <span class="faq-question-text">How do I register for the hackathon?</span>
                     <span class="faq-toggle">+</span>
                 </div>
@@ -773,7 +784,7 @@
 
             <div class="faq-item" data-category="registration">
                 <div class="faq-question">
-                    <img src="" alt="Icon" class="faq-icon">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNEoBzBhYzzk9Irk6UdqAfA4CgvNBE0ewV05fQKUjgIdIe2A6Yy2vkr8ieY6KX0x-tU0ZfC00wMH6GSL-5VdaLxLGcB9W48VTI5dqV1OIN_lanCo8N9ZVBTDDl9SqxlSY4PxfNHAXV___InDebJDfjO=w160-h160-s-no-gm?authuser=0" alt="Icon" class="faq-icon">
                     <span class="faq-question-text">Is there a registration fee?</span>
                     <span class="faq-toggle">+</span>
                 </div>
@@ -784,7 +795,7 @@
 
             <div class="faq-item" data-category="registration">
                 <div class="faq-question">
-                    <img src="" alt="Icon" class="faq-icon">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNEoBzBhYzzk9Irk6UdqAfA4CgvNBE0ewV05fQKUjgIdIe2A6Yy2vkr8ieY6KX0x-tU0ZfC00wMH6GSL-5VdaLxLGcB9W48VTI5dqV1OIN_lanCo8N9ZVBTDDl9SqxlSY4PxfNHAXV___InDebJDfjO=w160-h160-s-no-gm?authuser=0" alt="Icon" class="faq-icon">
                     <span class="faq-question-text">Can I participate individually or do I need a team?</span>
                     <span class="faq-toggle">+</span>
                 </div>
@@ -795,7 +806,7 @@
 
             <div class="faq-item" data-category="registration">
                 <div class="faq-question">
-                    <img src="" alt="Icon" class="faq-icon">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNEoBzBhYzzk9Irk6UdqAfA4CgvNBE0ewV05fQKUjgIdIe2A6Yy2vkr8ieY6KX0x-tU0ZfC00wMH6GSL-5VdaLxLGcB9W48VTI5dqV1OIN_lanCo8N9ZVBTDDl9SqxlSY4PxfNHAXV___InDebJDfjO=w160-h160-s-no-gm?authuser=0" alt="Icon" class="faq-icon">
                     <span class="faq-question-text">When is the registration deadline?</span>
                     <span class="faq-toggle">+</span>
                 </div>
@@ -806,7 +817,7 @@
 
             <div class="faq-item" data-category="registration">
                 <div class="faq-question">
-                    <img src="" alt="Icon" class="faq-icon">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNEoBzBhYzzk9Irk6UdqAfA4CgvNBE0ewV05fQKUjgIdIe2A6Yy2vkr8ieY6KX0x-tU0ZfC00wMH6GSL-5VdaLxLGcB9W48VTI5dqV1OIN_lanCo8N9ZVBTDDl9SqxlSY4PxfNHAXV___InDebJDfjO=w160-h160-s-no-gm?authuser=0" alt="Icon" class="faq-icon">
                     <span class="faq-question-text">Can I change my team after registering?</span>
                     <span class="faq-toggle">+</span>
                 </div>
@@ -818,7 +829,7 @@
             <!-- Event Details FAQs -->
             <div class="faq-item" data-category="event">
                 <div class="faq-question">
-                    <img src="" alt="Icon" class="faq-icon">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNEoBzBhYzzk9Irk6UdqAfA4CgvNBE0ewV05fQKUjgIdIe2A6Yy2vkr8ieY6KX0x-tU0ZfC00wMH6GSL-5VdaLxLGcB9W48VTI5dqV1OIN_lanCo8N9ZVBTDDl9SqxlSY4PxfNHAXV___InDebJDfjO=w160-h160-s-no-gm?authuser=0" alt="Icon" class="faq-icon">
                     <span class="faq-question-text">What should I bring to the hackathon?</span>
                     <span class="faq-toggle">+</span>
                 </div>
@@ -829,7 +840,7 @@
 
             <div class="faq-item" data-category="event">
                 <div class="faq-question">
-                    <img src="" alt="Icon" class="faq-icon">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNEoBzBhYzzk9Irk6UdqAfA4CgvNBE0ewV05fQKUjgIdIe2A6Yy2vkr8ieY6KX0x-tU0ZfC00wMH6GSL-5VdaLxLGcB9W48VTI5dqV1OIN_lanCo8N9ZVBTDDl9SqxlSY4PxfNHAXV___InDebJDfjO=w160-h160-s-no-gm?authuser=0" alt="Icon" class="faq-icon">
                     <span class="faq-question-text">Will food and accommodation be provided?</span>
                     <span class="faq-toggle">+</span>
                 </div>
@@ -840,7 +851,7 @@
 
             <div class="faq-item" data-category="event">
                 <div class="faq-question">
-                    <img src="" alt="Icon" class="faq-icon">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNEoBzBhYzzk9Irk6UdqAfA4CgvNBE0ewV05fQKUjgIdIe2A6Yy2vkr8ieY6KX0x-tU0ZfC00wMH6GSL-5VdaLxLGcB9W48VTI5dqV1OIN_lanCo8N9ZVBTDDl9SqxlSY4PxfNHAXV___InDebJDfjO=w160-h160-s-no-gm?authuser=0" alt="Icon" class="faq-icon">
                     <span class="faq-question-text">What are the hackathon tracks?</span>
                     <span class="faq-toggle">+</span>
                 </div>
@@ -851,7 +862,7 @@
 
             <div class="faq-item" data-category="event">
                 <div class="faq-question">
-                    <img src="" alt="Icon" class="faq-icon">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNEoBzBhYzzk9Irk6UdqAfA4CgvNBE0ewV05fQKUjgIdIe2A6Yy2vkr8ieY6KX0x-tU0ZfC00wMH6GSL-5VdaLxLGcB9W48VTI5dqV1OIN_lanCo8N9ZVBTDDl9SqxlSY4PxfNHAXV___InDebJDfjO=w160-h160-s-no-gm?authuser=0" alt="Icon" class="faq-icon">
                     <span class="faq-question-text">Will there be mentors available during the event?</span>
                     <span class="faq-toggle">+</span>
                 </div>
@@ -862,7 +873,7 @@
 
             <div class="faq-item" data-category="event">
                 <div class="faq-question">
-                    <img src="" alt="Icon" class="faq-icon">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNEoBzBhYzzk9Irk6UdqAfA4CgvNBE0ewV05fQKUjgIdIe2A6Yy2vkr8ieY6KX0x-tU0ZfC00wMH6GSL-5VdaLxLGcB9W48VTI5dqV1OIN_lanCo8N9ZVBTDDl9SqxlSY4PxfNHAXV___InDebJDfjO=w160-h160-s-no-gm?authuser=0" alt="Icon" class="faq-icon">
                     <span class="faq-question-text">Are there any workshops or tech talks?</span>
                     <span class="faq-toggle">+</span>
                 </div>
@@ -874,7 +885,7 @@
             <!-- Technical FAQs -->
             <div class="faq-item" data-category="technical">
                 <div class="faq-question">
-                    <img src="" alt="Icon" class="faq-icon">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNEoBzBhYzzk9Irk6UdqAfA4CgvNBE0ewV05fQKUjgIdIe2A6Yy2vkr8ieY6KX0x-tU0ZfC00wMH6GSL-5VdaLxLGcB9W48VTI5dqV1OIN_lanCo8N9ZVBTDDl9SqxlSY4PxfNHAXV___InDebJDfjO=w160-h160-s-no-gm?authuser=0" alt="Icon" class="faq-icon">
                     <span class="faq-question-text">What technologies can we use?</span>
                     <span class="faq-toggle">+</span>
                 </div>
@@ -885,7 +896,7 @@
 
             <div class="faq-item" data-category="technical">
                 <div class="faq-question">
-                    <img src="" alt="Icon" class="faq-icon">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNEoBzBhYzzk9Irk6UdqAfA4CgvNBE0ewV05fQKUjgIdIe2A6Yy2vkr8ieY6KX0x-tU0ZfC00wMH6GSL-5VdaLxLGcB9W48VTI5dqV1OIN_lanCo8N9ZVBTDDl9SqxlSY4PxfNHAXV___InDebJDfjO=w160-h160-s-no-gm?authuser=0" alt="Icon" class="faq-icon">
                     <span class="faq-question-text">Can we start working on our project before the hackathon?</span>
                     <span class="faq-toggle">+</span>
                 </div>
@@ -896,7 +907,7 @@
 
             <div class="faq-item" data-category="technical">
                 <div class="faq-question">
-                    <img src="" alt="Icon" class="faq-icon">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNEoBzBhYzzk9Irk6UdqAfA4CgvNBE0ewV05fQKUjgIdIe2A6Yy2vkr8ieY6KX0x-tU0ZfC00wMH6GSL-5VdaLxLGcB9W48VTI5dqV1OIN_lanCo8N9ZVBTDDl9SqxlSY4PxfNHAXV___InDebJDfjO=w160-h160-s-no-gm?authuser=0" alt="Icon" class="faq-icon">
                     <span class="faq-question-text">Do we need to have a working prototype?</span>
                     <span class="faq-toggle">+</span>
                 </div>
@@ -907,7 +918,7 @@
 
             <div class="faq-item" data-category="technical">
                 <div class="faq-question">
-                    <img src="" alt="Icon" class="faq-icon">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNEoBzBhYzzk9Irk6UdqAfA4CgvNBE0ewV05fQKUjgIdIe2A6Yy2vkr8ieY6KX0x-tU0ZfC00wMH6GSL-5VdaLxLGcB9W48VTI5dqV1OIN_lanCo8N9ZVBTDDl9SqxlSY4PxfNHAXV___InDebJDfjO=w160-h160-s-no-gm?authuser=0" alt="Icon" class="faq-icon">
                     <span class="faq-question-text">Will internet and power outlets be available?</span>
                     <span class="faq-toggle">+</span>
                 </div>
@@ -918,7 +929,7 @@
 
             <div class="faq-item" data-category="technical">
                 <div class="faq-question">
-                    <img src="" alt="Icon" class="faq-icon">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNEoBzBhYzzk9Irk6UdqAfA4CgvNBE0ewV05fQKUjgIdIe2A6Yy2vkr8ieY6KX0x-tU0ZfC00wMH6GSL-5VdaLxLGcB9W48VTI5dqV1OIN_lanCo8N9ZVBTDDl9SqxlSY4PxfNHAXV___InDebJDfjO=w160-h160-s-no-gm?authuser=0" alt="Icon" class="faq-icon">
                     <span class="faq-question-text">Can we use open-source libraries and APIs?</span>
                     <span class="faq-toggle">+</span>
                 </div>
@@ -930,7 +941,7 @@
             <!-- Prizes & Judging FAQs -->
             <div class="faq-item" data-category="prizes">
                 <div class="faq-question">
-                    <img src="" alt="Icon" class="faq-icon">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNEoBzBhYzzk9Irk6UdqAfA4CgvNBE0ewV05fQKUjgIdIe2A6Yy2vkr8ieY6KX0x-tU0ZfC00wMH6GSL-5VdaLxLGcB9W48VTI5dqV1OIN_lanCo8N9ZVBTDDl9SqxlSY4PxfNHAXV___InDebJDfjO=w160-h160-s-no-gm?authuser=0" alt="Icon" class="faq-icon">
                     <span class="faq-question-text">What is the total prize pool?</span>
                     <span class="faq-toggle">+</span>
                 </div>
@@ -941,7 +952,7 @@
 
             <div class="faq-item" data-category="prizes">
                 <div class="faq-question">
-                    <img src="" alt="Icon" class="faq-icon">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNEoBzBhYzzk9Irk6UdqAfA4CgvNBE0ewV05fQKUjgIdIe2A6Yy2vkr8ieY6KX0x-tU0ZfC00wMH6GSL-5VdaLxLGcB9W48VTI5dqV1OIN_lanCo8N9ZVBTDDl9SqxlSY4PxfNHAXV___InDebJDfjO=w160-h160-s-no-gm?authuser=0" alt="Icon" class="faq-icon">
                     <span class="faq-question-text">How will projects be judged?</span>
                     <span class="faq-toggle">+</span>
                 </div>
@@ -952,7 +963,7 @@
 
             <div class="faq-item" data-category="prizes">
                 <div class="faq-question">
-                    <img src="" alt="Icon" class="faq-icon">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNEoBzBhYzzk9Irk6UdqAfA4CgvNBE0ewV05fQKUjgIdIe2A6Yy2vkr8ieY6KX0x-tU0ZfC00wMH6GSL-5VdaLxLGcB9W48VTI5dqV1OIN_lanCo8N9ZVBTDDl9SqxlSY4PxfNHAXV___InDebJDfjO=w160-h160-s-no-gm?authuser=0" alt="Icon" class="faq-icon">
                     <span class="faq-question-text">When will winners be announced?</span>
                     <span class="faq-toggle">+</span>
                 </div>
@@ -963,7 +974,7 @@
 
             <div class="faq-item" data-category="prizes">
                 <div class="faq-question">
-                    <img src="" alt="Icon" class="faq-icon">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNEoBzBhYzzk9Irk6UdqAfA4CgvNBE0ewV05fQKUjgIdIe2A6Yy2vkr8ieY6KX0x-tU0ZfC00wMH6GSL-5VdaLxLGcB9W48VTI5dqV1OIN_lanCo8N9ZVBTDDl9SqxlSY4PxfNHAXV___InDebJDfjO=w160-h160-s-no-gm?authuser=0" alt="Icon" class="faq-icon">
                     <span class="faq-question-text">Will I get a certificate of participation?</span>
                     <span class="faq-toggle">+</span>
                 </div>
@@ -974,7 +985,7 @@
 
             <div class="faq-item" data-category="prizes">
                 <div class="faq-question">
-                    <img src="" alt="Icon" class="faq-icon">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNEoBzBhYzzk9Irk6UdqAfA4CgvNBE0ewV05fQKUjgIdIe2A6Yy2vkr8ieY6KX0x-tU0ZfC00wMH6GSL-5VdaLxLGcB9W48VTI5dqV1OIN_lanCo8N9ZVBTDDl9SqxlSY4PxfNHAXV___InDebJDfjO=w160-h160-s-no-gm?authuser=0" alt="Icon" class="faq-icon">
                     <span class="faq-question-text">Are there any sponsor prizes or tracks?</span>
                     <span class="faq-toggle">+</span>
                 </div>
@@ -985,7 +996,7 @@
 
             <div class="faq-item" data-category="general">
                 <div class="faq-question">
-                    <img src="" alt="Icon" class="faq-icon">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNEoBzBhYzzk9Irk6UdqAfA4CgvNBE0ewV05fQKUjgIdIe2A6Yy2vkr8ieY6KX0x-tU0ZfC00wMH6GSL-5VdaLxLGcB9W48VTI5dqV1OIN_lanCo8N9ZVBTDDl9SqxlSY4PxfNHAXV___InDebJDfjO=w160-h160-s-no-gm?authuser=0" alt="Icon" class="faq-icon">
                     <span class="faq-question-text">What if I'm a beginner with no prior hackathon experience?</span>
                     <span class="faq-toggle">+</span>
                 </div>
@@ -996,7 +1007,7 @@
 
             <div class="faq-item" data-category="event">
                 <div class="faq-question">
-                    <img src="" alt="Icon" class="faq-icon">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNEoBzBhYzzk9Irk6UdqAfA4CgvNBE0ewV05fQKUjgIdIe2A6Yy2vkr8ieY6KX0x-tU0ZfC00wMH6GSL-5VdaLxLGcB9W48VTI5dqV1OIN_lanCo8N9ZVBTDDl9SqxlSY4PxfNHAXV___InDebJDfjO=w160-h160-s-no-gm?authuser=0" alt="Icon" class="faq-icon">
                     <span class="faq-question-text">Is there a code of conduct?</span>
                     <span class="faq-toggle">+</span>
                 </div>
@@ -1007,7 +1018,7 @@
 
             <div class="faq-item" data-category="registration">
                 <div class="faq-question">
-                    <img src="" alt="Icon" class="faq-icon">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNEoBzBhYzzk9Irk6UdqAfA4CgvNBE0ewV05fQKUjgIdIe2A6Yy2vkr8ieY6KX0x-tU0ZfC00wMH6GSL-5VdaLxLGcB9W48VTI5dqV1OIN_lanCo8N9ZVBTDDl9SqxlSY4PxfNHAXV___InDebJDfjO=w160-h160-s-no-gm?authuser=0" alt="Icon" class="faq-icon">
                     <span class="faq-question-text">What if I can't find a team?</span>
                     <span class="faq-toggle">+</span>
                 </div>
@@ -1018,7 +1029,7 @@
 
             <div class="faq-item" data-category="technical">
                 <div class="faq-question">
-                    <img src="" alt="Icon" class="faq-icon">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNEoBzBhYzzk9Irk6UdqAfA4CgvNBE0ewV05fQKUjgIdIe2A6Yy2vkr8ieY6KX0x-tU0ZfC00wMH6GSL-5VdaLxLGcB9W48VTI5dqV1OIN_lanCo8N9ZVBTDDl9SqxlSY4PxfNHAXV___InDebJDfjO=w160-h160-s-no-gm?authuser=0" alt="Icon" class="faq-icon">
                     <span class="faq-question-text">Can we work on hardware projects?</span>
                     <span class="faq-toggle">+</span>
                 </div>
@@ -1029,7 +1040,7 @@
 
             <div class="faq-item" data-category="event">
                 <div class="faq-question">
-                    <img src="" alt="Icon" class="faq-icon">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNEoBzBhYzzk9Irk6UdqAfA4CgvNBE0ewV05fQKUjgIdIe2A6Yy2vkr8ieY6KX0x-tU0ZfC00wMH6GSL-5VdaLxLGcB9W48VTI5dqV1OIN_lanCo8N9ZVBTDDl9SqxlSY4PxfNHAXV___InDebJDfjO=w160-h160-s-no-gm?authuser=0" alt="Icon" class="faq-icon">
                     <span class="faq-question-text">How long is the presentation/demo time?</span>
                     <span class="faq-toggle">+</span>
                 </div>
@@ -1040,7 +1051,7 @@
 
             <div class="faq-item" data-category="general">
                 <div class="faq-question">
-                    <img src="" alt="Icon" class="faq-icon">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNEoBzBhYzzk9Irk6UdqAfA4CgvNBE0ewV05fQKUjgIdIe2A6Yy2vkr8ieY6KX0x-tU0ZfC00wMH6GSL-5VdaLxLGcB9W48VTI5dqV1OIN_lanCo8N9ZVBTDDl9SqxlSY4PxfNHAXV___InDebJDfjO=w160-h160-s-no-gm?authuser=0" alt="Icon" class="faq-icon">
                     <span class="faq-question-text">Can participants from other cities attend?</span>
                     <span class="faq-toggle">+</span>
                 </div>
@@ -1056,9 +1067,6 @@
             <p>Try different keywords or browse all questions</p>
         </div>
     </section>
-
-    <!-- FAB -->
-    <a href="index.html" class="fab" title="Back to Home">🏠</a>
 
     <!-- Footer -->
     <footer id="contact">
@@ -1150,7 +1158,7 @@
             
             const entity = document.createElement('img');
             entity.className = 'flying-entity';
-            entity.src = '';
+            entity.src = 'https://lh3.googleusercontent.com/pw/AP1GczPV701QojlTPppKTU5fRn4pSw94_Yh_U6spxRgmq1I1WtR7nQjxEpirl4UNy4I53aLpKYZqULLRuoWkL58Ew3xOBkzT6XA0vjYm9GzfXZ9s7xwY_KDb3XJPUWc6S8NaByK1CEI9VvQz6aeQnSg8bEam=w1126-h938-s-no-gm?authuser=0';
             entity.alt = 'Flying Entity';
             container.appendChild(entity);
         }
