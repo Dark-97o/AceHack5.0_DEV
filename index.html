@@ -765,20 +765,7 @@ s
             max-width: 200px;
             image-rendering: pixelated;
         }
-
-        /* Particle burst effect - BEHIND the card */
-        .particle {
-            position: absolute;
-            margin-top: 25px;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 0; /* ← BEHIND the card */
-            animation: particle-burst 1s ease-out forwards;
-            image-rendering: pixelated; /* Minecraft style */
-        }
-
+        
         @keyframes particle-burst {
             0% {
                 transform: translate(-50%, -50%) scale(1);
@@ -1059,6 +1046,7 @@ s
         .banner-content {
             background:transparent;
             margin-top: -30px;
+            margin-bottom: -10px;
             background-size: cover;
             padding: 0px;
             display: flex;
@@ -1093,7 +1081,6 @@ s
             height: auto;
             image-rendering: pixelated;
             filter: drop-shadow(0 5px 10px rgba(0,0,0,0.9));
-            animation: float 3s ease-in-out infinite;
         }
 
         .chat-bubble {
@@ -1164,13 +1151,6 @@ s
             0%   { opacity: 0.45; transform: scale(0.98); }
             50%  { opacity: 0.85; transform: scale(1.02); }
             100% { opacity: 0.45; transform: scale(0.98); }
-        }
-
-        .anvil-img {
-            width: 100px; /* INCREASED from 100px */
-            height: auto;
-            image-rendering: pixelated;
-            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.9));
         }
 
         /* ============================================
@@ -1357,37 +1337,150 @@ s
             }
         }
 
-        /* Prize Pool - Pyramid Shape */
+        /* Prize Pool - 2 Rows of 3 */
         .prizes {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 40px;
-            max-width: 1000px;
+            gap: 80px;
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 40px 0;
         }
 
         .prize-row {
             display: flex;
+            margin-top: -50px;
             justify-content: center;
+            align-items: flex-end;
             gap: 60px;
             flex-wrap: wrap;
+            width: 100%;
         }
 
         .prize-card {
             text-align: center;
-            transition: transform 0.3s;
+            position: relative;
+            opacity: 0;
+            transform: translateY(-800px);
+            transition: none;
         }
 
-        .prize-card:hover {
-            transform: scale(1.15);
+        /* 1st place elevated in middle */
+        .prize-card-elevated {
+            transform: translateY(-850px);
+            margin-bottom: 40px;
+        }
+
+        /* Soil/Brown particle colors for prize chests */
+        /* Particle burst effect - BEHIND the card */
+        /* ==================================================
+        BASE PARTICLE — SHARED BY ALL EFFECTS
+        ================================================== */
+        .particle {
+            position: absolute;
+            pointer-events: none;
+            z-index: 0;
+            image-rendering: pixelated;
+
+            /* image-based particles support */
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+
+            /* performance */
+            will-change: transform, opacity;
+        }
+
+
+        .particle-burst {
+            width: 10px;
+            height: 10px;
+            margin-top: 25px;
+            animation: particle-burst 1s ease-out forwards;
+        }
+        
+        .particle-fall {
+            width: 10px;
+            height: 10px;
+            margin-top: -10px;
+            animation: particle-burst-fall 3s ease-out forwards;
+        }
+
+        @keyframes particle-burst-fall {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+            30% {
+                transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(1.2);
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.9;
+            }
+            100% {
+                transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty) + 150px)) scale(0.3); /* Falls down 150px */
+                opacity: 0;
+            }
+        }
+
+        .particle-soil-dark {
+            background-image: url("https://lh3.googleusercontent.com/pw/AP1GczOnA70azawW6Kgofg25lPYoPyI9YJfV0bcBgFVfdMmkn3V5suVqcLR3BYYkRChqspLH2Qw2LMFvPBIKhQH5H7j_6YxVN8a_UCahp0RLnUaS6c0d7Z1xzzRmAiP_J_OnXsAQFmWwVL85d5fMUCjOcq6I=w144-h144-s-no-gm?authuser=0");
+        }
+
+        .particle-soil-medium {
+            background-image: url("https://lh3.googleusercontent.com/pw/AP1GczOlFB2J4uL8wIqyT-ePz-J6HveRgkh14g43b0JYvF78NoEpu2r-EVc55cdpcVJkmSlOZLJ2X_M0kGLRfdMC86V6S-C1esbBIuiQLVCmheRKcKL7X56g71w1Jz6_wRmve04P2jTUJpXoydx7s4S_6co4=w160-h160-s-no-gm?authuser=0");
+        }
+
+        .particle-soil-light {
+            background-image: url("https://lh3.googleusercontent.com/pw/AP1GczNIuou5hUOOdK_OjwM48qCj_BdFJDZA57COlvNmm6YYj2L8VeipvIGSUVR9r_P81oXGKY1WZry2t1ne4OrD2mAPO5ATlsVnKKB3xJbvcjqMJM7H-EDVmmM4SgfDFSLwlJsuNZQ4i24No1Qjob5ZF3G_=w160-h160-s-no-gm?authuser=0");
+        }
+
+        .particle-dirt {
+            background-image: url("https://lh3.googleusercontent.com/pw/AP1GczMOqITyfzJKaORYdL6-TNKodIde6XDr5_KnpBE_q4oDinwB6uLaZSv5w8L1nw6HFxSzKZdU37IgASB3efTyb5fz2Z4p_rqtWYxLu9z6DErSz-rtjyLzAcMn4XxC8Y3rRY1JPcUZJfKQ3NptqnUFJjc8=w160-h160-s-no-gm?authuser=0");
+        }
+
+        .particle-brown {
+            background-image: url("https://lh3.googleusercontent.com/pw/AP1GczO9O-Wkk6CGxvDysW9PB5WZyfEPDeprYSnMjxQ0BpVbTHDFrNpKlKeD_izK2aLJPRsrw9Mfoab-0bfYpAt1EOqXPWnr7F6fFqRFyNQ3MTnxIYGk_2ye4fBdbgtxoQv2zIVR6zQn_ss4pBdx3wF4Akj9=w160-h160-s-no-gm?authuser=0");
+        }
+
+        /* Chest wrapper for image swap on hover */
+        .chest-wrapper {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 25px;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.9));
+            z-index: 1;
         }
 
         .chest-img {
-            width: 220px;
-            height: 220px;
-            margin-bottom: 25px;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.9));
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: opacity 0.3s ease;
+            image-rendering: pixelated;
+        }
+
+        .chest-default {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .chest-hover {
+            opacity: 0;
+            z-index: 2;
+        }
+
+        .chest-wrapper:hover .chest-default {
+            opacity: 0;
+        }
+
+        .chest-wrapper:hover .chest-hover {
+            opacity: 1;
         }
 
         .prize-label {
@@ -1397,10 +1490,106 @@ s
             text-shadow: 3px 3px 6px #000;
         }
 
+        /* Prize amount with scramble effect */
         .prize-amount {
             font-size: 24px;
             color: #FFF;
             text-shadow: 4px 4px 0 #000;
+            font-family: 'Press Start 2P', cursive;
+            letter-spacing: 2px;
+            min-width: 200px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .prize-card:not(:hover) .prize-amount {
+            color: #888;
+            text-shadow: 2px 2px 0 #000;
+        }
+
+        /* Falling animation when visible */
+        .prize-card.visible {
+            animation: chestFall 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .prize-card-elevated.visible {
+            animation: chestFallElevated 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes chestFall {
+            0% {
+                opacity: 0;
+                transform: translateY(-500px) rotate(0deg);
+            }
+            60% {
+                opacity: 1;
+                transform: translateY(0) rotate(0deg);
+            }
+            75% {
+                transform: translateY(-15px) rotate(-2deg);
+            }
+            85% {
+                transform: translateY(5px) rotate(1deg);
+            }
+            95% {
+                transform: translateY(-5px) rotate(-0.5deg);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+
+        @keyframes chestFallElevated {
+            0% {
+                opacity: 0;
+                transform: translateY(-550px) rotate(0deg);
+                margin-bottom: 40px;
+            }
+            60% {
+                opacity: 1;
+                transform: translateY(0) rotate(0deg);
+                margin-bottom: 40px;
+            }
+            75% {
+                transform: translateY(-15px) rotate(-2deg);
+                margin-bottom: 40px;
+            }
+            85% {
+                transform: translateY(5px) rotate(1deg);
+                margin-bottom: 40px;
+            }
+            95% {
+                transform: translateY(-5px) rotate(-0.5deg);
+                margin-bottom: 40px;
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) rotate(0deg);
+                margin-bottom: 40px;
+            }
+        }
+
+        /* Stagger delays for falling effect */
+        .prize-row-1 .prize-card[data-index="0"].visible { animation-delay: 0.1s; }
+        .prize-row-1 .prize-card[data-index="1"].visible { animation-delay: 0s; }
+        .prize-row-1 .prize-card[data-index="2"].visible { animation-delay: 0.2s; }
+
+        .prize-row-2 .prize-card[data-index="0"].visible { animation-delay: 0.4s; }
+        .prize-row-2 .prize-card[data-index="1"].visible { animation-delay: 0.5s; }
+        .prize-row-2 .prize-card[data-index="2"].visible { animation-delay: 0.6s; }
+
+        /* Particle container for ground impact */
+        .prize-card .particle-container {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 300px;
+            margin-top: -500px;
+            pointer-events: none;
+            z-index: 0;
         }
 
         /* Sponsors */
@@ -1824,9 +2013,9 @@ s
         </div>
     </section>
 
-    <!-- Why Attend Section -->
+    <!-- Why Attend Section --> 
     <section id="why-attend" class="section-bg">
-        <div style="max-width: 1400px; margin: 0 auto;">
+        <div style="max-width: 1400px; margin: 0 auto; margin-top: -50px;">
             <h2>Why Attend?</h2>
             <div class="cards-grid">
                 <!-- Row 1 -->
@@ -1879,45 +2068,92 @@ s
         </div>
     </section>
 
-    <!-- Prize Pool Section - Pyramid Shape -->
+    <!-- Prize Pool Section -->
     <section id="prizes" class="section-bg">
-        <div style="max-width: 1400px; margin: 0 auto;">
+        <div style="max-width: 1400px; margin: 0 auto; margin-top: -40px;">
             <h2>Prize Pool</h2>
             <div class="prizes">
-                <!-- Top of pyramid - 1st place -->
-                <div class="prize-row">
-                    <div class="prize-card">
-                        <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d5/Chest_%28S%29_JE3_BE2.gif" alt="1st Place Chest" class="chest-img">
-                        <div class="prize-label">🥇 1st Place</div>
-                        <div class="prize-amount">₹2,00,000</div>
+                <!-- First Row - 3 chests (1st elevated in middle) -->
+                <div class="prize-row prize-row-1">
+                    <div class="prize-card" data-index="1" data-amount="₹XXXXXX">
+                        <div class="chest-wrapper">
+                            <img src="https://lh3.googleusercontent.com/pw/AP1GczPLrnuwnxYCu-oyzbs8jtmD-LgJfqAtZxjDIezDo-lpa_7TLKpfb7xBr1jM_k2T1QCNPqJFlS-dhsc9GfxmCW72EsJ5Wi9tVQaEZLty2HsHVVCQlLr6AwRoDh5Tnxl19u9WYz5vDXJtdx0MZ-WIm3Cx=w907-h907-s-no-gm?authuser=0" 
+                                alt="2nd Place Chest" 
+                                class="chest-img chest-default">
+                            <img src="YOUR_HOVER_IMAGE_URL_2ND.png" 
+                                alt="2nd Place Hover" 
+                                class="chest-img chest-hover">
+                        </div>
+                        <div class="prize-label">2nd Place</div>
+                        <div class="prize-amount">₹X,XX,XXX</div>
+                    </div>
+
+                    <div class="prize-card prize-card-elevated" data-index="0" data-amount="₹XXXXXX">
+                        <div class="chest-wrapper">
+                            <img src="https://lh3.googleusercontent.com/pw/AP1GczNZG3ASWwdLZP8Of9_jeG8SEzHuYrK0OqW1o3OXuSA_UuL6rotdbLTH4p8d9LrBcTjkV7JxOvAleacNMjd548u5bzsIVDg4a4GtWnXuQbnSGclXbK4KXJRGZr2-pVi2UI4DC60I6kPayLSZ7GkUz-VI=w907-h907-s-no-gm?authuser=0" 
+                                alt="1st Place Chest" 
+                                class="chest-img chest-default">
+                            <img src="YOUR_HOVER_IMAGE_URL_1ST.png" 
+                                alt="1st Place Hover" 
+                                class="chest-img chest-hover">
+                        </div>
+                        <div class="prize-label">1st Place</div>
+                        <div class="prize-amount">₹X,XX,XXX</div>
+                    </div>
+
+                    <div class="prize-card" data-index="2" data-amount="₹XXXXXX">
+                        <div class="chest-wrapper">
+                            <img src="https://lh3.googleusercontent.com/pw/AP1GczMsMOcpdOl_lLgyfSV6FToK6aSt_2AAuCUooxaVqol11-fWXrHN_k_co9rHWvVwMBrdwj6u0k_EcKcuciVN3J7aaTIU7M8lFdcGBx0cUyHkj0xTTdIiKIN_xMjdN2JiNenzI--vwIbxqwUfeEWw-cpn=w910-h910-s-no-gm?authuser=0" 
+                                alt="3rd Place Chest" 
+                                class="chest-img chest-default">
+                            <img src="YOUR_HOVER_IMAGE_URL_3RD.png" 
+                                alt="3rd Place Hover" 
+                                class="chest-img chest-hover">
+                        </div>
+                        <div class="prize-label">3rd Place</div>
+                        <div class="prize-amount">₹XX,XXX</div>
                     </div>
                 </div>
-                
-                <!-- Second row - 2nd and 3rd place -->
-                <div class="prize-row">
-                    <div class="prize-card">
-                        <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d5/Chest_%28S%29_JE3_BE2.gif" alt="2nd Place Chest" class="chest-img">
-                        <div class="prize-label">🥈 2nd Place</div>
-                        <div class="prize-amount">₹1,00,000</div>
+
+                <!-- Second Row -->
+                <div class="prize-row prize-row-2">
+                    <div class="prize-card" data-index="0" data-amount="₹XXXXXX">
+                        <div class="chest-wrapper">
+                            <img src="https://lh3.googleusercontent.com/pw/AP1GczNn7ETN0UEhCjdtcqFBaFFEV-gUsZV5yDpg33RmPuI4g015rYI-uhMbPNGVWvto19E6Md3qCXO_Gxe9S02h9zh0UF_wZcIZ60zDHur2mLVpllJMtgQjVSRmGHn-cx-0IdkNZNLptSE9PVowwcmanPM7=w906-h906-s-no-gm?authuser=0" 
+                                alt="Best Beginner Chest" 
+                                class="chest-img chest-default">
+                            <img src="YOUR_HOVER_IMAGE_URL_BEGINNER.png" 
+                                alt="Best Beginner Hover" 
+                                class="chest-img chest-hover">
+                        </div>
+                        <div class="prize-label">Best Beginner</div>
+                        <div class="prize-amount">₹XX,XXX</div>
                     </div>
-                    <div class="prize-card">
-                        <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d5/Chest_%28S%29_JE3_BE2.gif" alt="3rd Place Chest" class="chest-img">
-                        <div class="prize-label">🥉 3rd Place</div>
-                        <div class="prize-amount">₹50,000</div>
+
+                    <div class="prize-card" data-index="1" data-amount="₹XXXXXX">
+                        <div class="chest-wrapper">
+                            <img src="https://lh3.googleusercontent.com/pw/AP1GczM6z3kP-IB1r0JtKjXWIJDFAxTXfGvehQ6sZV_sKgyJxP_s3QtGRxe3vkvCK2Dkua18X6bvuXSue4_4qv8TfSGF95Hc0ztPxcxj1MQoYMFIUg-x5OiLKYo5Yn7LUf-3Xs4S9Fb3BBx_hEnflMrXVXOR=w906-h906-s-no-gm?authuser=0" 
+                                alt="All Girls Team Chest" 
+                                class="chest-img chest-default">
+                            <img src="YOUR_HOVER_IMAGE_URL_GIRLS.png" 
+                                alt="All Girls Team Hover" 
+                                class="chest-img chest-hover">
+                        </div>
+                        <div class="prize-label">All Girls Team</div>
+                        <div class="prize-amount">₹XX,XXX</div>
                     </div>
-                </div>
-                
-                <!-- Bottom row - Special categories -->
-                <div class="prize-row">
-                    <div class="prize-card">
-                        <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d5/Chest_%28S%29_JE3_BE2.gif" alt="Best Beginner Chest" class="chest-img">
-                        <div class="prize-label">🌟 Best Beginner</div>
-                        <div class="prize-amount">₹30,000</div>
-                    </div>
-                    <div class="prize-card">
-                        <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d5/Chest_%28S%29_JE3_BE2.gif" alt="All Girls Team Chest" class="chest-img">
-                        <div class="prize-label">👑 All Girls Team</div>
-                        <div class="prize-amount">₹30,000</div>
+
+                    <div class="prize-card" data-index="2" data-amount="₹XXXXXX">
+                        <div class="chest-wrapper">
+                            <img src="https://lh3.googleusercontent.com/pw/AP1GczO-gTRP00JjwUbaTKm5WPD1jRNPWoxNlfivO9r5q9p47lBhpAXVJXroXDUuE87nmd6nNBvHuxIy62WfhcyUxg46eBn0QYdku2D_STIR64lZXccnLmuPH08hUlnl61yL_wRdjHk1yIJ2rwpOV9qmptrZ=w904-h904-s-no-gm?authuser=0" 
+                                alt="Special Goodies Box" 
+                                class="chest-img chest-default">
+                            <img src="YOUR_HOVER_IMAGE_URL_SPECIAL.png" 
+                                alt="Special Prize Hover" 
+                                class="chest-img chest-hover">
+                        </div>
+                        <div class="prize-label">Special Prize</div>
+                        <div class="prize-amount">₹XX,XXX</div>
                     </div>
                 </div>
             </div>
@@ -2191,11 +2427,11 @@ s
                 box.insertBefore(particleContainer, box.firstChild); // Insert as first child
             }
             
-            const particleCount = 30;
+            const particleCount = 8;
             
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
-                particle.className = `particle ${colors[Math.floor(Math.random() * colors.length)]}`;
+                particle.className = `particle particle-burst ${colors[Math.floor(Math.random() * colors.length)]}`;
                 
                 const angle = (Math.PI * 2 * i) / particleCount + (Math.random() - 0.5) * 0.5;
                 const distance = 100 + Math.random() * 80;
@@ -2259,7 +2495,7 @@ s
                 const windowHeight = window.innerHeight;
                 
                 // Trigger when card is 70% visible in viewport
-                if (rect.top < windowHeight * 0.8 && rect.bottom > 0) {
+                if (rect.top < windowHeight * 0.6 && rect.bottom > 0) {
                     if (!wrapper.classList.contains('visible')) {
                         wrapper.classList.add('visible');
                     }
@@ -2276,6 +2512,139 @@ s
         // Also trigger immediately in case elements are already in view
         handleCardsScroll();
 
+
+        // Scroll-triggered animation for prize chests - ONLY WHEN CENTERED
+        function handlePrizeScroll() {
+            const prizesSection = document.querySelector('#prizes');
+            const prizeCards = document.querySelectorAll('.prize-card');
+            
+            if (!prizesSection) return;
+            
+            const sectionRect = prizesSection.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            const sectionMiddle = sectionRect.top + (sectionRect.height / 2);
+            const screenMiddle = windowHeight / 2;
+            
+            // Only trigger when section middle is near screen middle (±200px)
+            if (Math.abs(sectionMiddle - screenMiddle) < 200) {
+                prizeCards.forEach(card => {
+                    if (!card.classList.contains('visible')) {
+                        card.classList.add('visible');
+                        
+                        // Create particle burst on landing (after fall animation)
+                        setTimeout(() => {
+                            createPrizeParticleBurst(card);
+                        }, 800);
+                    }
+                });
+            }
+        }
+
+        // Particle burst with SOIL COLORS - BIGGER SCATTER & FALLING DUST
+        function createPrizeParticleBurst(card) {
+            const colors = ['particle-soil-dark', 'particle-soil-medium', 'particle-soil-light', 'particle-dirt', 'particle-brown'];
+            
+            // Find or create particle container attached to chest wrapper
+            const chestWrapper = card.querySelector('.chest-wrapper');
+            let particleContainer = card.querySelector('.particle-container');
+            
+            if (!particleContainer) {
+                particleContainer = document.createElement('div');
+                particleContainer.className = 'particle-container';
+                chestWrapper.appendChild(particleContainer); // Attach to chest wrapper
+            }
+            
+            const particleCount = 30; // INCREASED from 25
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = `particle particle-fall ${colors[Math.floor(Math.random() * colors.length)]}`;
+                
+                // BIGGER SCATTER - increased distances
+                const angle = (Math.PI * 2 * i) / particleCount + (Math.random() - 0.5) * 0.8;
+                const distance = 120 + Math.random() * 100; // INCREASED from 80 + 60
+                const tx = Math.cos(angle) * distance;
+                const ty = Math.sin(angle) * distance * 0.4; // Less vertical, more horizontal spread
+                
+                particle.style.setProperty('--tx', `${tx}px`);
+                particle.style.setProperty('--ty', `${ty}px`);
+                particle.style.left = '50%';
+                particle.style.top = '100%'; // Start from bottom of chest
+                
+                // BIGGER PARTICLES with more size variation
+                const size = 8 + Math.random() * 30; // INCREASED from 6 + 8
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                particleContainer.appendChild(particle);
+                
+                // SLOWER - remove after 2s instead of 1s
+                setTimeout(() => particle.remove(), 2000);
+            }
+        }
+
+        // SCRAMBLE EFFECT for prize amounts
+        function initPrizeScramble() {
+            const prizeCards = document.querySelectorAll('.prize-card');
+            
+            prizeCards.forEach(card => {
+                const amountElement = card.querySelector('.prize-amount');
+                const realAmount = card.getAttribute('data-amount');
+                let scrambleInterval;
+                
+                // Function to generate random scrambled text
+                function scrambleText() {
+                    const chars = '1234567890,XXX';
+                    const length = realAmount.length + 1;
+                    let scrambled = '';
+                    
+                    for (let i = 0; i < length; i++) {
+                        if (realAmount[i] === '₹') {
+                            scrambled += '₹';
+                        } else if (realAmount[i] === ',') {
+                            scrambled += ',';
+                        } else {
+                            scrambled += chars[Math.floor(Math.random() * 10) + 1]; // Skip ₹
+                        }
+                    }
+                    
+                    return scrambled;
+                }
+                
+                // Start scrambling
+                function startScramble() {
+                    scrambleInterval = setInterval(() => {
+                        amountElement.textContent = scrambleText();
+                    }, 80);
+                }
+                
+                // Stop scrambling and show real amount
+                function stopScramble() {
+                    clearInterval(scrambleInterval);
+                    amountElement.textContent = realAmount;
+                }
+                
+                // Initialize with scrambled text
+                startScramble();
+                
+                // Event listeners
+                card.addEventListener('mouseenter', stopScramble);
+                card.addEventListener('mouseleave', startScramble);
+            });
+        }
+
+        // Add scroll event listener
+        window.addEventListener('scroll', handlePrizeScroll);
+
+        // Initialize on page load
+        window.addEventListener('load', () => {
+            handlePrizeScroll();
+            initPrizeScramble();
+        });
+
+        // Trigger immediately
+        handlePrizeScroll();
+        initPrizeScramble();
     </script>
     
 </body>
