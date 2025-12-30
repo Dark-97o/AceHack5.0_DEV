@@ -647,12 +647,50 @@ s
             background-image: url('YOUR_SPONSORS_BACKGROUND_URL.png');
         } */
 
+        h1 {
+            font-size: 22px;
+            text-align: center;
+            margin-bottom: 22px;
+            text-shadow: 4px 4px 0 #000;
+            color: #ffffff;
+        }
+
         h2 {
             font-size: 36px;
             text-align: center;
-            margin-bottom: 70px;
+            margin-bottom: 76px;
             text-shadow: 5px 5px 0 #000;
             color: #FFD700;
+        }
+
+        /* Image above heading */
+        h2::before {
+            content: '';
+            position: absolute;
+            top: -110px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 350px;
+            height: 120px;
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczNanViXbxtTb4J6iI1DiyGtGlEA5n1FTMjXqKKobDwkyJfeEHp94FVfY5h1zxW4qxZ0G0YUZWaklrV5jurrL-YU3p25gC2TyosYluywv-IlU3PvNFPKgfQQV1flzFTOmvpJ0LaJYqaw-M12pKriI1BJ=w1865-h274-s-no-gm?authuser=0');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            image-rendering: pixelated;
+            filter: drop-shadow(0 8px 16px rgba(0,0,0,0.8));
+        }
+
+        /* Optional: Add decorative lines on sides */
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -215px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #FFD700, transparent);
+            box-shadow: 0 2px 8px rgba(255, 215, 0, 0.5);
         }
 
         /* Corner Frame Decoration */
@@ -895,7 +933,7 @@ s
 
         .card h3 {
             font-size: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             color: #FFD700;
         }
 
@@ -924,7 +962,7 @@ s
 
         /* Minecart Rail - Full Width */
         .minecart-rail {
-            margin-top: 50px;
+            margin-top: 33px;
             position: absolute;
             width: 100%;
             height: 80px; /* INCREASED from 40px */
@@ -986,21 +1024,22 @@ s
         .track-info {
             margin-top: -30px;
             text-align: center;
-            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczPh0E37VblTYcHvlnQKK-_o_3bCckjMDFHueAVwrJTXMEsZJJyjhO0mT2RLL1Ws7yaSl1SZ9xKDpbhrYIdjfrsl8HJRnm4H9VJfzmZXOR_jhg_Q6RvGfb0vvJrKGYDBaUaVyGCsDiOqTeH-v87PlTE3=w1077-h138-s-no-gm?authuser=0');
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczMxkXqlZpEAGsqwkmKuJT0ceVu9_CuV2rmiFt8xlvW9X30dcur-795F1dwSkhe9je8mMAqhnPsQMVd2q7GwOeP257Kx6k7NqVyA0w-G6l1Tq17S6upayDwz3JdLd3AQ0vM2zUx4vqhdtbQlNkFFf1aq=w1163-h400-s-no-gm?authuser=0');
             background-size: contain;
             text-shadow: #000 3px 3px 0;
             padding: 9px 25px; /* INCREASED padding */
-            border: 2px solid #222222cd;  
+            border: 1px solid #000000cd;  
             border-radius: 1px;
             min-width: 240px; /* INCREASED from 200px */
+            height: 37px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
 
         .track-info::after {
             content: '';
             position: absolute;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: -1;
+            background: rgb(1, 1, 1,10);
+            z-index: 100;
         }
 
         .track-info h3 {
@@ -1082,20 +1121,20 @@ s
 
         /* Open Innovation Banner */
         .open-innovation-banner {
-            margin-top: 60px; /* REDUCED from 80px */
+            margin-top: 30px; /* REDUCED from 80px */
             padding: 0 20px;
         }
 
         .banner-content {
-            background-image: url('https://static.wikia.nocookie.net/minecraft_gamepedia/images/b/b4/Oak_Planks_JE6_BE3.png');
+            background:transparent;
+            margin-top: -30px;
             background-size: cover;
-            border: 6px solid #4A3C2F;
-            padding: 40px;
+            padding: 0px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 30px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+            /* box-shadow: 0 10px 25px rgba(0,0,0,0.8); */
             position: relative;
             min-height: 150px;
             image-rendering: pixelated;
@@ -1108,7 +1147,7 @@ s
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.4);
+            /* background: rgba(0, 0, 0, 0.4); */
             z-index: 0;
         }
 
@@ -1118,7 +1157,8 @@ s
         }
 
         .steve-img {
-            width: 140px; /* INCREASED from 120px */
+            width: 110px; /* INCREASED from 120px */
+            margin-left: 50px;
             height: auto;
             image-rendering: pixelated;
             filter: drop-shadow(0 5px 10px rgba(0,0,0,0.9));
@@ -1127,12 +1167,15 @@ s
 
         .chat-bubble {
             flex: 1;
-            background: rgba(255, 255, 255, 0.95);
-            border: 4px solid #333;
-            border-radius: 20px;
-            padding: 28px 40px; /* INCREASED padding */
+            max-width: 1000px;
+            background: rgba(0, 0, 0, 0.464);
+            border: 1px solid #333333dd;
+            border-radius: 1px;
+            margin-right: 120px;
+            padding: 17px 20px; /* INCREASED padding */
             position: relative;
             box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            animation: purple-glow 3.5s ease-in-out infinite;
         }
 
         .chat-bubble::before {
@@ -1143,9 +1186,6 @@ s
             transform: translateY(-50%);
             width: 0;
             height: 0;
-            border-top: 15px solid transparent;
-            border-bottom: 15px solid transparent;
-            border-right: 20px solid #333;
         }
 
         .chat-bubble::after {
@@ -1156,22 +1196,47 @@ s
             transform: translateY(-50%);
             width: 0;
             height: 0;
-            border-top: 12px solid transparent;
-            border-bottom: 12px solid transparent;
-            border-right: 16px solid rgba(255, 255, 255, 0.95);
+            animation: purple-glow-inner 3.5s ease-in-out infinite;
         }
 
         .chat-bubble p {
             margin: 0;
-            font-size: 20px; /* INCREASED from 18px */
-            color: #333;
-            text-shadow: none;
+            font-size: 13px; /* INCREASED from 18px */
+            color: #ffffff;
+            text-shadow: 2px 2px 4px #000;
             font-weight: bold;
             text-align: center;
         }
 
+        @keyframes purple-glow {
+            0% {
+                box-shadow:
+                    0 0 14px rgba(160, 90, 255, 0.25),
+                    0 0 28px rgba(160, 90, 255, 0.15);
+                border-color: rgba(160, 90, 255, 0.35);
+            }
+            50% {
+                box-shadow:
+                    0 0 22px rgba(190, 120, 255, 0.55),
+                    0 0 44px rgba(190, 120, 255, 0.35);
+                border-color: rgba(200, 140, 255, 0.65);
+            }
+            100% {
+                box-shadow:
+                    0 0 14px rgba(160, 90, 255, 0.25),
+                    0 0 28px rgba(160, 90, 255, 0.15);
+                border-color: rgba(160, 90, 255, 0.35);
+            }
+        }
+
+        @keyframes purple-glow-inner {
+            0%   { opacity: 0.45; transform: scale(0.98); }
+            50%  { opacity: 0.85; transform: scale(1.02); }
+            100% { opacity: 0.45; transform: scale(0.98); }
+        }
+
         .anvil-img {
-            width: 120px; /* INCREASED from 100px */
+            width: 100px; /* INCREASED from 100px */
             height: auto;
             image-rendering: pixelated;
             filter: drop-shadow(0 5px 10px rgba(0,0,0,0.9));
@@ -1474,7 +1539,7 @@ s
     <section class="hero" id="home">
         <img src="https://lh3.googleusercontent.com/pw/AP1GczPxb-M-DbEfiTuCRNNuye1Hmi-tOO0co4dj9ABS6RA1i66QiECIi16ZzjfYl7oSQMfW1YAOwmKVxWvIVXN8grhpAIp4jP3FOJOXWgmIm8qsPDd4-iEHxVaIvujxAp-c-hdSH11bA5ISpRCiEX1FWEjJ=w929-h531-s-no-gm?authuser=0" alt="AceHack 5.0" class="hero-logo">
         <div class="countdown-card">
-            <h2>Event Starts In</h2>
+            <h1>Event Starts In</h1>
             <div class="countdown" id="countdown">
                 <div><span id="days">00</span><span>Days</span></div>
                 <div><span id="hours">00</span><span>Hours</span></div>
@@ -1634,11 +1699,11 @@ s
                 <!-- Open Innovation Banner -->
                 <div class="open-innovation-banner">
                     <div class="banner-content">
-                        <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/8/8d/Steve_JE4.png" alt="Steve" class="steve-img">
+                        <img src="https://lh3.googleusercontent.com/pw/AP1GczNXt-QVnFoA434Y-r9SSgbviNGcF8u38hh7DDyFdVzcvXkAZPBSnX3TnWldE11KR3QY0v9hgEBQs_keis690bB5b5TR6K-aNrDss24C4as0DL_hV66yAfU6A3vnzBVtD8jzMnATOwkSipniGTnkl4kk=w226-h230-s-no-gm?authuser=0" alt="Steve" class="steve-img">
                         <div class="chat-bubble">
-                            <p>Open Innovation Also Allowed!</p>
+                            <p>Open Innovation Track is Also Available for Interested Developers!</p>
+                        <!-- <img src="https://lh3.googleusercontent.com/pw/AP1GczO7x7YOv9rP6u1EFaJrhj20eNvYE-Ayk5VLk9ae6HppWSuHCe6unlOJCxuc-uqW-XRa_bWxufwguMXMNrbizkzGQcqud8pQGw3irRIXI4kXrUKI76TFjO_7w6muZ6xLGxQ6MYNNgmgWzhjLASOFqcVc=w995-h995-s-no-gm?authuser=0" alt="Anvil" class="anvil-img"> -->
                         </div>
-                        <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/9/90/Anvil_%28N%29_JE3.png" alt="Anvil" class="anvil-img">
                     </div>
                 </div>
             </div>
