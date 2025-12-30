@@ -7,7 +7,7 @@
     <title>AceHack 5.0 - Hackathon</title>
     <link rel="icon" href="https://static.wikia.nocookie.net/minecraft_gamepedia/images/f/fe/Grass_Block_JE7_BE6.png"
         type="image/x-icon">
-    <link rel="stylesheet" href="text.css">
+    <link rel="stylesheet" href="test.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
@@ -1736,15 +1736,18 @@
     <!-- Complete Minecraft-themed footer including AceHack logo, Quick Links, -->
     <!-- Archives, and UEM Jaipur location map in test.html (by Aman)  -->
     <footer id="contact">
+    <!-- Lava Texture Top Border (with glow) -->
+    <div class="lava-border"></div>
 
+    <!-- Main Footer Content on Soil Texture -->
+    <div class="footer-main">
         <div class="footer-content">
-
             <!-- Logo / Description -->
-            <div class="footer-section">
-                <img src="acehack-logo.png" alt="AceHack Logo">
-                <p>
-                    The ultimate hackathon experience. Build the future, one block at a time.
-                </p>
+            <div class="footer-section logo-section">
+                <div class="logo-bg">
+                    <img src="acehack-logo.png" alt="AceHack Logo" class="acehack-logo">
+                </div>
+                <p>The ultimate hackathon experience. Build the future, one block at a time.</p>
 
                 <div class="socials">
                     <a href="#" class="social-icon">F</a>
@@ -1755,7 +1758,7 @@
             </div>
 
             <!-- Quick Links -->
-            <div class="footer-section">
+            <div class="footer-section links-section">
                 <h3>Quick Links</h3>
                 <a href="#home">Home</a>
                 <a href="#about">About</a>
@@ -1766,7 +1769,7 @@
             </div>
 
             <!-- Archives -->
-            <div class="footer-section">
+            <div class="footer-section links-section">
                 <h3>Archives</h3>
                 <a href="#">AceHack 4.0 – 2025</a>
                 <a href="#">AceHack 3.0 – 2024</a>
@@ -1774,33 +1777,34 @@
                 <a href="#">AceHack 1.0 – 2022</a>
             </div>
 
-            <!-- Location -->
-            <div class="footer-section">
+            <!-- Location + Map -->
+            <div class="footer-section location-section">
                 <h3>Location</h3>
-                <p>
-                    University of Engineering & Management (UEM), Jaipur<br>
-                    Gurukul Campus, Sikar Road<br>
-                    Jaipur, Rajasthan –303807<br>
-                    (6 km away from Chomu)<br>
-                    India
-                </p>
-
-                <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.512!2d75.7002425!3d27.2124649!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db5f1e3b7b5b5%3A0xb78e5c340c935a95!2sUniversity%20of%20Engineering%20%26%20Management%20(UEM)%2C%20Jaipur!5e0!3m2!1sen!2sin!4v1739999999999" 
-                    width="100%" height="270" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="location-content">
+                    <p class="location-text">
+                        University of Engineering & Management (UEM), Jaipur<br>
+                        Gurukul Campus, Sikar Road<br>
+                        Jaipur, Rajasthan –303807<br>
+                        (6 km away from Chomu)<br>
+                        India
+                    </p>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.512!2d75.7002425!3d27.2124649!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db5f1e3b7b5b5%3A0xb78e5c340c935a95!2sUniversity%20of%20Engineering%20%26%20Management%20(UEM)%2C%20Jaipur!5e0!3m2!1sen!2sin!4v1739999999999" 
+                        width="100%" height="100%" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
                 </div>
             </div>
-
         </div>
+    </div>
 
-        <!-- COPYRIGHT -->
-        <div class="copyright">
-            © 2026 AceHack. All Rights Reserved. | Crafted with ❤️ by the AceHack Team
-        </div>
+    <!-- Brown separation line -->
+    <div class="footer-separator"></div>
 
-    </footer>
-
-
+    <!-- Copyright on black background -->
+    <div class="copyright">
+        © 2026 AceHack. All Rights Reserved. | Crafted with ❤️ by the AceHack Team
+    </div>
+</footer>
 
     <script>
         // Create animated particles
