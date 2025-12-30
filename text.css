@@ -1,0 +1,197 @@
+/* Global Footer Styles */
+footer#contact {
+    width: 100%;
+    font-family: 'Press Start 2P', cursive;
+    color: #FFFFFF;
+    image-rendering: pixelated;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.lava-border {
+    width: 100%;
+    height: 140px;
+    background: url('lava texture.jpg') repeat-x top center;
+    background-size: auto 140px;
+    image-rendering: pixelated;
+    box-shadow: 0 0 40px #ff8800, 0 0 80px #ff4400 inset;
+}
+
+.footer-main {
+    width: 100%;
+    background: url('soil texture.png') repeat;
+    background-size: auto;
+    image-rendering: pixelated;
+    padding: 60px 20px 50px;
+    margin-top: -50px;
+    box-sizing: border-box;
+}
+
+.footer-content {
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.logo-section {
+    flex: 1 1 300px;
+    min-width: 240px;
+    max-width: 380px;
+}
+
+.logo-bg {
+    background: #ffffff;
+    padding: 8px;
+    border-radius: 8px;
+    display: inline-flex;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.6);
+    width: fit-content;
+}
+
+.acehack-logo {
+    width: 100%;
+    max-width: 240px;
+    height: auto;
+    display: block;
+    image-rendering: pixelated;
+}
+
+.footer-section p {
+    font-size: clamp(11px, 1.8vw, 14px);
+    margin: 16px 0 0 0;
+    line-height: 1.6;
+    text-shadow: 1px 1px 3px #000;
+}
+
+.socials {
+    display: flex;
+    gap: clamp(8px, 1.5vw, 12px);
+    margin-top: auto;
+}
+
+.social-icon {
+    width: clamp(30px, 5vw, 40px);
+    height: clamp(30px, 5vw, 40px);
+    background: #5D4037;
+    line-height: clamp(30px, 5vw, 40px);
+    font-size: clamp(16px, 3vw, 22px);
+    border-radius: 6px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.right-group {
+    display: flex;
+    gap: clamp(30px, 5vw, 60px);
+    align-items: flex-start;
+    flex: 2 1 600px;
+    min-width: 0;
+}
+
+.links-section {
+    flex: 1 1 160px;
+    min-width: 140px;
+}
+
+.links-section h3 {
+    color: #FFFF00;
+    font-size: clamp(14px, 2.2vw, 18px);
+    margin-bottom: 12px;
+    text-shadow: 2px 2px 4px #000;
+    white-space: nowrap;
+}
+
+.links-section a {
+    display: block;
+    color: #FFFFFF;
+    font-size: clamp(11px, 1.8vw, 13px);
+    margin-bottom: 8px;
+    text-shadow: 1px 1px 2px #000;
+    white-space: nowrap;
+}
+
+.location-section {
+    flex: 1 1 300px;
+    min-width: 280px;
+}
+
+.location-section h3 {
+    color: #FFFF00;
+    font-size: clamp(14px, 2.2vw, 18px);
+    margin-bottom: 12px;
+}
+
+.location-content {
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(20px, 3vw, 35px);
+}
+
+.location-text {
+    flex: 1;
+    min-width: 180px;
+    font-size: clamp(11px, 1.8vw, 13px);
+    line-height: 1.7;
+    text-shadow: 1px 1px 3px #000;
+}
+
+/* FIXED MAP STYLES - STRONGER VERSION */
+.map-container {
+    flex-shrink: 0;
+    width: 100%;                    /* Always fit within parent */
+    max-width: 100%;                /* Critical: never exceed parent width */
+    height: 240px;                  /* Good default height */
+    border-radius: 12px;
+    overflow: hidden;               /* Hide any iframe overflow */
+    box-shadow: 0 6px 16px rgba(0,0,0,0.8);
+    box-sizing: border-box;
+}
+
+.map-container iframe {
+    width: 100% !important;
+    height: 100% !important;
+    border: none;
+    display: block;
+}
+
+/* Separator & Copyright */
+.footer-separator {
+    height: 5px;
+    background: #8B4513;
+    image-rendering: pixelated;
+    margin: 20px 0 0;
+}
+
+.copyright {
+    background: #000000;
+    text-align: center;
+    padding: 20px 0;
+    font-size: clamp(11px, 1.8vw, 13px);
+    text-shadow: 1px 1px 2px #000;
+}
+
+@media (max-width: 1024px) {
+    /* ... your existing rules ... */
+    .map-container {
+        width: 100%;
+        max-width: 500px;
+        height: 300px;
+        margin: 0 auto; /* centers it when stacked */
+    }
+}
+
+@media (max-width: 768px) {
+    /* ... your existing rules ... */
+    .map-container {
+        width: 100%;
+        max-width: 380px;
+        height: 260px;
+        margin: 0 auto;
+    }
+}
