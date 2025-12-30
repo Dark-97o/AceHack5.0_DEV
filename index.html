@@ -33,6 +33,7 @@
             z-index: 99999;
             overflow: hidden;
             background: #000;
+            transition: opacity 0.4s ease;
         }
 
         .bootup-fullscreen {
@@ -44,6 +45,8 @@
 
         #bootup-screen.hidden {
             display: none;
+            opacity: 0;
+            pointer-events: none;
         }
         
 s
@@ -680,19 +683,6 @@ s
             filter: drop-shadow(0 8px 16px rgba(0,0,0,0.8));
         }
 
-        /* Optional: Add decorative lines on sides */
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -215px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, #FFD700, transparent);
-            box-shadow: 0 2px 8px rgba(255, 215, 0, 0.5);
-        }
-
         /* Corner Frame Decoration */
         .corner-frame {
             position: absolute;
@@ -883,65 +873,6 @@ s
             color: #FFF;
         }
 
-        /* Cards Grid */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 50px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .card {
-            background-image: url('https://static.wikia.nocookie.net/minecraft_gamepedia/images/b/b4/Oak_Planks_JE6_BE3.png');
-            background-size: cover;
-            border: 6px solid #4A3C2F;
-            padding: 45px 35px;
-            text-align: center;
-            transition: transform 0.3s;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.8);
-            position: relative;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.4);
-            z-index: 0;
-        }
-
-        .card > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        .card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.4);
-        }
-
-        .card img {
-            width: 110px;
-            height: 110px;
-            margin-bottom: 30px;
-            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.9));
-        }
-
-        .card h3 {
-            font-size: 15px;
-            margin-bottom: 25px;
-            color: #FFD700;
-        }
-
-        .card p {
-            font-size: 10px;
-            line-height: 1.9;
-        }
-
         /* Tracks Container */
         .tracks-container {
             max-width: 1400px;
@@ -1011,10 +942,10 @@ s
 
         /* Track Logo inside Minecart - INCREASED SIZE */
         .track-logo {
-            width: 170px; /* INCREASED from 80px */
-            height: 160px; /* INCREASED from 80px */
+            width: 180px; /* INCREASED from 80px */
+            height: auto; /* INCREASED from 80px */
             image-rendering: pixelated;
-            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.9));
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,2.9));
             position: relative;
             z-index: 2;
             margin-top: -140px; /* ADJUSTED for larger size */
@@ -1242,6 +1173,189 @@ s
             filter: drop-shadow(0 5px 10px rgba(0,0,0,0.9));
         }
 
+        /* ============================================
+        WHY ATTEND SECTION - COMPLETE CSS
+        ============================================ */
+
+        /* Cards Grid Layout */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 2fr);
+            gap: 30px;
+            max-width: 1500px;
+            margin: 0 auto;
+            margin-top: 80px;
+            padding: 70px 1px 0px;
+            margin-bottom: -80px;
+        }
+
+        /* Card Wrapper - Contains bee and card */
+        .card-wrapper {
+            position: relative;
+            opacity: 0;
+            transform: translateX(0);
+            transition: none;
+        }
+
+        /* Initial positions for different flying directions */
+        .card-wrapper[data-direction="top-left"] {
+            transform: translate(-200px, -200px) rotate(-15deg);
+        }
+
+        .card-wrapper[data-direction="top-center"] {
+            transform: translate(0, -250px) rotate(0deg);
+        }
+
+        .card-wrapper[data-direction="top-right"] {
+            transform: translate(200px, -200px) rotate(15deg);
+        }
+
+        .card-wrapper[data-direction="bottom-left"] {
+            transform: translate(-200px, 200px) rotate(-15deg);
+        }
+
+        .card-wrapper[data-direction="bottom-center"] {
+            transform: translate(0, 250px) rotate(0deg);
+        }
+
+        .card-wrapper[data-direction="bottom-right"] {
+            transform: translate(200px, 200px) rotate(15deg);
+        }
+
+        /* Bee Image - Flies above card */
+        .bee-image {
+            position: absolute;
+            top: -55px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90px;
+            height: auto;
+            z-index: 10;
+            image-rendering: pixelated;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.5));
+        }
+
+        /* Card Design */
+        .card {
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczNW5_-Oc5G3NZQZJa0fDPnRt05fruIUvQZneOI-jjw-_XyzuyyEIpbI1hOaWoOLIjj3Nv8zqGfCvsQX6DyKz6AhltYA8sw_2fGSWCI1dDCAv06DD1ES2MPlSwWWazeWLUsHpe_JY0BMT2VzRaBYVmZD=w160-h160-s-no-gm?authuser=0');
+            background-size: cover;
+            margin-bottom: 90px;
+            margin-top: 35px;
+            border: 6px solid transparent;
+            border-image: repeating-linear-gradient(
+                90deg,
+                #8b5a2b 0px,
+                #8b5a2b 6px,
+                #7a4a1f 6px,
+                #7a4a1f 12px,
+                #9c6b3d 12px,
+                #9c6b3d 18px
+            ) 6;
+            border-radius: 1px;
+            padding: 20px 0px 20px;
+            min-width: 200px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+            position: relative;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.1);
+            z-index: 0;
+            border-radius: 2px;
+        }
+
+        .card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Card Logo */
+        .card-logo {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 20px;
+            image-rendering: pixelated;
+            filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.9));
+        }
+
+        /* Card Title */
+        .card h3 {
+            font-size: 18px;
+            color: #000000;
+            margin-bottom: 15px;
+            text-shadow: 2px 1px 0 #ffffff;
+        }
+
+        /* Card Description */
+        .card p {
+            font-size: 11px;
+            line-height: 1.8;
+            color: #FFF;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+        /* Flying animation when visible */
+        .card-wrapper.visible {
+            animation: flyIn 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes flyIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+                transform: translate(0, 0) rotate(0deg);
+            }
+        }
+
+        /* Stagger delays for each card */
+        .card-wrapper[data-index="0"].visible { animation-delay: 0.3s; }
+        .card-wrapper[data-index="1"].visible { animation-delay: 0.35s; }
+        .card-wrapper[data-index="2"].visible { animation-delay: 0.4s; }
+        .card-wrapper[data-index="3"].visible { animation-delay: 0.45s; }
+        .card-wrapper[data-index="4"].visible { animation-delay: 0.5s; }
+        .card-wrapper[data-index="5"].visible { animation-delay: 0.75s; }
+
+        /* Continuous float animation after landing - for the card */
+        .card-wrapper.visible .card {
+            animation: syncedFloat 3s ease-in-out 1s infinite;
+        }
+
+        @keyframes syncedFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* Continuous float animation after landing - for the bee (maintains horizontal centering) */
+        .card-wrapper.visible .bee-image {
+            animation: syncedFloatBee 3s ease-in-out 1s infinite;
+        }
+
+        @keyframes syncedFloatBee {
+            0%, 100% {
+                transform: translate(-50%, 0);
+            }
+            50% {
+                transform: translate(-50%, -15px);
+            }
+        }
 
         /* Prize Pool - Pyramid Shape */
         .prizes {
@@ -1487,11 +1601,11 @@ s
     </style>
 </head>
 <body>
-    <!-- <div id="bootup-screen">
-        <video id="bootup-video" class="bootup-fullscreen" autoplay muted playsinline>
+    <div id="bootup-screen">
+        <video id="bootup-video" class="bootup-fullscreen" autoplay muted playsinline preload="auto">
             <source src="assets/vid/bootup.mov" type="video/mp4">
         </video>
-    </div> -->
+    </div>
 
     <!-- Animated Particles -->
     <!-- Minecraft End Sky Background -->
@@ -1661,7 +1775,7 @@ s
                     
                     <div class="minecart-card" data-index="0">
                         <div class="minecart-body">
-                            <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/e/e0/Experience_Orb_Value_1237.png" alt="EdTech" class="track-logo">
+                            <img src="https://lh3.googleusercontent.com/pw/AP1GczOm0FVQ0MDtL2ljpTkPD8daiKcV7wYuncSYYxM30TxTU5_QxrrLo6BRydmnH5HHzoq4qqJhdhmAFZc40bI67nFOVhZsuCLQUR3-NY7LFt16r58Tg8YZpbax0sCS4rME5SELUyqb3_-SN6O9ni-sG0Ix=w579-h579-s-no-gm?authuser=0" alt="EdTech" class="track-logo">
                         </div>
                         <div class="track-info">
                             <h3>EdTech</h3>
@@ -1715,25 +1829,51 @@ s
         <div style="max-width: 1400px; margin: 0 auto;">
             <h2>Why Attend?</h2>
             <div class="cards-grid">
-                <div class="card">
-                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/9/98/Nether_Star_JE2_BE2.gif" alt="Win Prizes">
-                    <h3>Win Prizes</h3>
-                    <p>Compete for amazing prizes and recognition</p>
+                <!-- Row 1 -->
+                <div class="card-wrapper" data-direction="top-left" data-index="0">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczPm-5kiqlxM9reJPum5egPWbUg78tsMBiQ94gyQ15JB24TFgiX40rliJZEPoAeX0i5YYmug9-E3SXeptXdbauqT2ltBRrnu4oiniouzXC8Vp1TtZTF5JJzxZjqZM4WufXsr0ock4DDHItpqKC3sjEB-=w180-h200-s-no-gm?authuser=0" alt="Bee" class="bee-image">
+                    <div class="card">
+                        <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/9/98/Nether_Star_JE2_BE2.gif" alt="Win Prizes" class="card-logo">
+                        <h3>Build</h3>
+                        <p>Solve real-world problems with practical impact</p>
+                    </div>
                 </div>
-                <div class="card">
-                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/a/ab/Player_Head_JE2_BE2.png" alt="Network">
-                    <h3>Network</h3>
-                    <p>Connect with industry experts and fellow hackers</p>
+                
+                <div class="card-wrapper" data-direction="top-center" data-index="1">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczPm-5kiqlxM9reJPum5egPWbUg78tsMBiQ94gyQ15JB24TFgiX40rliJZEPoAeX0i5YYmug9-E3SXeptXdbauqT2ltBRrnu4oiniouzXC8Vp1TtZTF5JJzxZjqZM4WufXsr0ock4DDHItpqKC3sjEB-=w180-h200-s-no-gm?authuser=0" alt="Bee" class="bee-image">
+                    <div class="card">
+                        <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/a/ab/Player_Head_JE2_BE2.png" alt="Network" class="card-logo">
+                        <h3>Industry</h3>
+                        <p>Interact with the top tech leaders and innovators</p>
+                    </div>
                 </div>
-                <div class="card">
-                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/23/Book_JE2_BE2.png" alt="Learn">
-                    <h3>Learn</h3>
-                    <p>Attend workshops and gain new skills</p>
+                
+                <div class="card-wrapper" data-direction="top-right" data-index="2">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczPm-5kiqlxM9reJPum5egPWbUg78tsMBiQ94gyQ15JB24TFgiX40rliJZEPoAeX0i5YYmug9-E3SXeptXdbauqT2ltBRrnu4oiniouzXC8Vp1TtZTF5JJzxZjqZM4WufXsr0ock4DDHItpqKC3sjEB-=w180-h200-s-no-gm?authuser=0" alt="Bee" class="bee-image">
+                    <div class="card">
+                        <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/23/Book_JE2_BE2.png" alt="Learn" class="card-logo">
+                        <h3>Network</h3>
+                        <p>Connect with like minded hackers and creators</p>
+                    </div>
                 </div>
-                <div class="card">
-                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/3/34/Crafting_Table_JE4_BE3.png" alt="Build">
-                    <h3>Build</h3>
-                    <p>Turn your ideas into reality in 24 hours</p>
+                
+                <!-- Row 2 -->
+                <div class="card-wrapper" data-direction="top-left" data-index="0">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczPm-5kiqlxM9reJPum5egPWbUg78tsMBiQ94gyQ15JB24TFgiX40rliJZEPoAeX0i5YYmug9-E3SXeptXdbauqT2ltBRrnu4oiniouzXC8Vp1TtZTF5JJzxZjqZM4WufXsr0ock4DDHItpqKC3sjEB-=w180-h200-s-no-gm?authuser=0" alt="Bee" class="bee-image">
+                    <div class="card">
+                        <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/3/34/Crafting_Table_JE4_BE3.png" alt="Build" class="card-logo">
+                        <h3>Careers</h3>
+                        <p>Explore jobs, internships, and mentorships</p>
+                    </div>
+                </div>
+                
+                <div class="card-wrapper" data-direction="top-center" data-index="1">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczPm-5kiqlxM9reJPum5egPWbUg78tsMBiQ94gyQ15JB24TFgiX40rliJZEPoAeX0i5YYmug9-E3SXeptXdbauqT2ltBRrnu4oiniouzXC8Vp1TtZTF5JJzxZjqZM4WufXsr0ock4DDHItpqKC3sjEB-=w180-h200-s-no-gm?authuser=0" alt="Bee" class="bee-image">
+                    <div class="card">
+                        <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/f/fc/Compass_JE2_BE1.gif" alt="Explore" class="card-logo">
+                        <h3>Experience</h3>
+                        <p>Enjoy food, swags, energy, and the AceHack vibe</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2005,23 +2145,38 @@ s
             });
         });
 
-        // Video bootup - auto-hides when video ends
-        window.addEventListener('load', function() {
+        //Bootup screen fade out
+        document.addEventListener('DOMContentLoaded', () => {
             const bootupScreen = document.getElementById('bootup-screen');
             const video = document.getElementById('bootup-video');
-            
-            // Hide bootup screen when video ends
-            video.addEventListener('ended', function() {
+
+            if (!bootupScreen || !video) return;
+
+            let hidden = false;
+
+            function hideBootup(reason) {
+                if (hidden) return;
+                hidden = true;
                 bootupScreen.classList.add('hidden');
+                console.log('[Bootup hidden]', reason);
+            }
+
+            // Ensure video starts immediately
+            video.preload = 'auto';
+            video.muted = true;
+            video.playsInline = true;
+
+            // Timer-based hide (independent of page load)
+            video.addEventListener('loadedmetadata', () => {
+                const durationMs = Math.max(video.duration * 1000, 3000);
+                setTimeout(() => hideBootup('timer-based'), durationMs - 120);
             });
-            
-            // Fallback: force hide after 10 seconds if video doesn't end
-            setTimeout(function() {
-                if (!bootupScreen.classList.contains('hidden')) {
-                    bootupScreen.classList.add('hidden');
-                }
-            }, 10000);
+
+            // Safety fallback
+            setTimeout(() => hideBootup('hard-timeout'), 6500);
         });
+
+
 
        // Particle burst effect - with dedicated container
         function createParticleBurst(e) {
@@ -2094,6 +2249,32 @@ s
 
         // Also trigger immediately in case elements are already in view
         handleMinecartScroll();
+
+        // Scroll-triggered animation for Why Attend cards
+        function handleCardsScroll() {
+            const cardWrappers = document.querySelectorAll('.card-wrapper');
+            
+            cardWrappers.forEach(wrapper => {
+                const rect = wrapper.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                
+                // Trigger when card is 70% visible in viewport
+                if (rect.top < windowHeight * 0.8 && rect.bottom > 0) {
+                    if (!wrapper.classList.contains('visible')) {
+                        wrapper.classList.add('visible');
+                    }
+                }
+            });
+        }
+
+        // Add scroll event listener
+        window.addEventListener('scroll', handleCardsScroll);
+
+        // Trigger on page load
+        window.addEventListener('load', handleCardsScroll);
+
+        // Also trigger immediately in case elements are already in view
+        handleCardsScroll();
 
     </script>
     
