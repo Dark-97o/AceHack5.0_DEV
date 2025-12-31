@@ -1037,121 +1037,158 @@ s
             transform: translateY(-10px) scale(1.05);
         }
 
-        /* Open Innovation Banner */
+        /* ============================================
+        GHAST + BANNER SECTION
+        ============================================ */
+
         .open-innovation-banner {
-            margin-top: 30px; /* REDUCED from 80px */
+            margin-top: -25px;
+            margin-left: 50px;
             padding: 0 20px;
+            overflow: hidden;
+            min-height: 200px;
+            position: relative;
+            z-index: 3;
+            animation: simplefloat 4s ease-in-out infinite;
+            overflow: visible;
         }
 
-        .banner-content {
-            background:transparent;
-            margin-top: -30px;
-            margin-bottom: -10px;
-            background-size: cover;
-            padding: 0px;
+        @keyframes simplefloat {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-9px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+
+        /* Wrapper for ghast + ropes + banner */
+        .ghast-banner-wrapper {
+            position: relative;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 30px;
-            /* box-shadow: 0 10px 25px rgba(0,0,0,0.8); */
-            position: relative;
-            min-height: 150px;
-            image-rendering: pixelated;
+            gap: 0;
+            opacity: 0;
+            transform: translateX(150%);
+            transition: none;
+            margin: 40px auto;
+            max-width: 1000px;
         }
 
-        .banner-content::before {
+        /* Ghast Image - REDUCED SIZE */
+        .ghast-img {
+            width: 180px;
+            height: 180px;
+            image-rendering: pixelated;
+            filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.8));
+            z-index: 3;
+            flex-shrink: 0;
+        }
+
+        /* Rope Container - HORIZONTAL */
+        .rope-container {
+            position: relative;
+            width: 100px;
+            height: 8px;
+            margin-left: -20px;
+            margin-right: -20px;
+            z-index: 1;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .rope {
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            background: repeating-linear-gradient(
+                90deg,
+                #5C4033 0px,
+                #5C4033 10px,
+                #3E2723 10px,
+                #3E2723 20px
+            );
+            border-radius: 3px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            left: 0;
+        }
+
+        .rope-left {
+            top: 18px; /* Upper rope - fixed pixel position */
+        }
+
+        .rope-right {
+            bottom: 18px; /* Lower rope - fixed pixel position */
+        }
+
+        /* Banner Sign - REDUCED SIZE */
+        .banner-sign {
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczOg5faX00xxW8BweS_lac6WvAFtu32N7qFDiF1M02n1a6KEdmGrMAYKFcL2fccEVt5aHdOPOnrQwv5OF-X9AkjO74WyLx3yfwt0B0uscF2pqjMulLzOihrqj4s-aceDe__El0LYEgqVDELcwtig6h5w=w160-h160-s-no-gm?authuser=0');
+            background-size: cover;
+            border: 4px solid #5C4033;
+            padding: 9px 29px;
+            max-height: 65px;
+            text-align: center;
+            font-size: 10px;
+            background-size: contain;
+            /* box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8); */
+            z-index: 1;
+            max-width: 690px;
+            position: relative;
+            animation: white-glow 4s ease-in-out infinite;
+
+        }
+
+        @keyframes white-glow {
+            0% {
+                box-shadow: 0 0 6px rgba(255, 255, 255, 0.15);
+            }
+            50% {
+                box-shadow: 0 0 12px rgba(164, 72, 6, 0.35);
+            }
+            100% {
+                box-shadow: 0 0 6px rgba(94, 50, 3, 0.36);
+            }
+        }
+
+
+        .banner-sign::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            /* background: rgba(0, 0, 0, 0.4); */
+            background: rgba(0, 0, 0, 0.3);
             z-index: 0;
         }
 
-        .banner-content > * {
+        .banner-sign > * {
             position: relative;
             z-index: 1;
         }
 
-        .steve-img {
-            width: 110px; /* INCREASED from 120px */
-            margin-left: 50px;
-            height: auto;
-            image-rendering: pixelated;
-            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.9));
-        }
-
-        .chat-bubble {
-            flex: 1;
-            max-width: 1000px;
-            background: rgba(0, 0, 0, 0.464);
-            border: 1px solid #333333dd;
-            border-radius: 1px;
-            margin-right: 120px;
-            padding: 17px 20px; /* INCREASED padding */
-            position: relative;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            animation: purple-glow 3.5s ease-in-out infinite;
-        }
-
-        .chat-bubble::before {
-            content: '';
-            position: absolute;
-            left: -20px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 0;
-            height: 0;
-        }
-
-        .chat-bubble::after {
-            content: '';
-            position: absolute;
-            left: -14px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 0;
-            height: 0;
-            animation: purple-glow-inner 3.5s ease-in-out infinite;
-        }
-
-        .chat-bubble p {
+        .banner-sign p {
             margin: 0;
-            font-size: 13px; /* INCREASED from 18px */
-            color: #ffffff;
-            text-shadow: 2px 2px 4px #000;
+            font-size: 13px;
+            color: #000000;
+            text-shadow: 3px 3px 6px #ffffff;
             font-weight: bold;
-            text-align: center;
+            line-height: 1.6;
         }
 
-        @keyframes purple-glow {
-            0% {
-                box-shadow:
-                    0 0 14px rgba(160, 90, 255, 0.25),
-                    0 0 28px rgba(160, 90, 255, 0.15);
-                border-color: rgba(160, 90, 255, 0.35);
-            }
-            50% {
-                box-shadow:
-                    0 0 22px rgba(190, 120, 255, 0.55),
-                    0 0 44px rgba(190, 120, 255, 0.35);
-                border-color: rgba(200, 140, 255, 0.65);
-            }
-            100% {
-                box-shadow:
-                    0 0 14px rgba(160, 90, 255, 0.25),
-                    0 0 28px rgba(160, 90, 255, 0.15);
-                border-color: rgba(160, 90, 255, 0.35);
-            }
+        /* Slide-in Animation from Right to Left */
+        .ghast-banner-wrapper.visible {
+            animation: slideInFromRight 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         }
 
-        @keyframes purple-glow-inner {
-            0%   { opacity: 0.45; transform: scale(0.98); }
-            50%  { opacity: 0.85; transform: scale(1.02); }
-            100% { opacity: 0.45; transform: scale(0.98); }
-        }
 
         /* ============================================
         WHY ATTEND SECTION - COMPLETE CSS
@@ -1164,7 +1201,7 @@ s
             gap: 30px;
             max-width: 1500px;
             margin: 0 auto;
-            margin-top: 80px;
+            margin-top: 50px;
             padding: 70px 1px 0px;
             margin-bottom: -80px;
         }
@@ -2005,13 +2042,23 @@ s
                     </div>
                 </div>
 
-                <!-- Open Innovation Banner -->
+                <!-- Open Innovation Banner with Ghast -->
                 <div class="open-innovation-banner">
-                    <div class="banner-content">
-                        <img src="https://lh3.googleusercontent.com/pw/AP1GczNXt-QVnFoA434Y-r9SSgbviNGcF8u38hh7DDyFdVzcvXkAZPBSnX3TnWldE11KR3QY0v9hgEBQs_keis690bB5b5TR6K-aNrDss24C4as0DL_hV66yAfU6A3vnzBVtD8jzMnATOwkSipniGTnkl4kk=w226-h230-s-no-gm?authuser=0" alt="Steve" class="steve-img">
-                        <div class="chat-bubble">
+                    <div class="ghast-banner-wrapper">
+                        <!-- Ghast Image -->
+                        <img src="https://lh3.googleusercontent.com/pw/AP1GczOpFnxQjEqmKRGm-uqefkZ1RQ_FGdbvHjy3ai4_ZSidf3WOX2RzQTOzxG2JnIGqALJVSu6Yd5so5KzgO01iIuQjFxMvaM1m7IR-h3bE9uI9vyy_BNrAVHBCw1DnitF3pd3Xu9dDDd0hePOk6wlj7SDZ=w250-h256-s-no-gm?authuser=0" 
+                            alt="Ghast" 
+                            class="ghast-img">
+                        
+                        <!-- Rope Connection -->
+                        <div class="rope-container">
+                            <div class="rope rope-left"></div>
+                            <div class="rope rope-right"></div>
+                        </div>
+                        
+                        <!-- Banner -->
+                        <div class="banner-sign">
                             <p>Open Innovation Track is Also Available for Interested Developers!</p>
-                        <!-- <img src="https://lh3.googleusercontent.com/pw/AP1GczO7x7YOv9rP6u1EFaJrhj20eNvYE-Ayk5VLk9ae6HppWSuHCe6unlOJCxuc-uqW-XRa_bWxufwguMXMNrbizkzGQcqud8pQGw3irRIXI4kXrUKI76TFjO_7w6muZ6xLGxQ6MYNNgmgWzhjLASOFqcVc=w995-h995-s-no-gm?authuser=0" alt="Anvil" class="anvil-img"> -->
                         </div>
                     </div>
                 </div>
@@ -2163,85 +2210,27 @@ s
                     </div>
                 </div>
             </div>
+            <div class="open-innovation-banner" style="margin-top: -10px; ">
+                    <div class="ghast-banner-wrapper">
+                        <!-- Ghast Image -->
+                        <img src="https://lh3.googleusercontent.com/pw/AP1GczOpFnxQjEqmKRGm-uqefkZ1RQ_FGdbvHjy3ai4_ZSidf3WOX2RzQTOzxG2JnIGqALJVSu6Yd5so5KzgO01iIuQjFxMvaM1m7IR-h3bE9uI9vyy_BNrAVHBCw1DnitF3pd3Xu9dDDd0hePOk6wlj7SDZ=w250-h256-s-no-gm?authuser=0" 
+                            alt="Ghast" 
+                            class="ghast-img">
+                        
+                        <!-- Rope Connection -->
+                        <div class="rope-container">
+                            <div class="rope rope-left"></div>
+                            <div class="rope rope-right"></div>
+                        </div>
+                        
+                        <!-- Banner -->
+                        <div class="banner-sign">
+                            <p>Top 30 teams will receive Momentos, Certificates & Swags!</p>
+                        </div>
+                    </div>
+            </div>
         </div>
     </section>
-
-    <!--
-    <section id="sponsors" class="section-bg">
-        <div style="max-width: 1400px; margin: 0 auto;">
-            <h2>Our Sponsors</h2>
-            
-            <div class="sponsor-tier">
-                <h3>💎 Diamond Sponsors</h3>
-                <div class="sponsors-grid">
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/000000/FFFFFF?text=Sponsor+1" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/000000/FFFFFF?text=Sponsor+2" alt="Sponsor"></div>
-                </div>
-            </div>
-            
-            <div class="sponsor-tier">
-                <h3>⚪ Platinum Sponsors</h3>
-                <div class="sponsors-grid">
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/333333/FFFFFF?text=Sponsor+3" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/333333/FFFFFF?text=Sponsor+4" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/333333/FFFFFF?text=Sponsor+5" alt="Sponsor"></div>
-                </div>
-            </div>
-            
-            <div class="sponsor-tier">
-                <h3>🥇 Gold Sponsors</h3>
-                <div class="sponsors-grid">
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/666666/FFFFFF?text=Sponsor+6" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/666666/FFFFFF?text=Sponsor+7" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/666666/FFFFFF?text=Sponsor+8" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/666666/FFFFFF?text=Sponsor+9" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/666666/FFFFFF?text=Sponsor+10" alt="Sponsor"></div>
-                </div>
-            </div>
-            
-            <div class="sponsor-tier">
-                <h3>🥈 Silver Sponsors</h3>
-                <div class="sponsors-grid">
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/999999/FFFFFF?text=Sponsor+11" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/999999/FFFFFF?text=Sponsor+12" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/999999/FFFFFF?text=Sponsor+13" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/999999/FFFFFF?text=Sponsor+14" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/999999/FFFFFF?text=Sponsor+15" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/999999/FFFFFF?text=Sponsor+16" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/999999/FFFFFF?text=Sponsor+17" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/999999/FFFFFF?text=Sponsor+18" alt="Sponsor"></div>
-                </div>
-            </div>
-
-            <div class="sponsor-tier">
-                <h3>🥉 Bronze Sponsors</h3>
-                <div class="sponsors-grid">
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+19" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+20" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+21" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+22" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+23" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+24" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+25" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+26" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+27" alt="Sponsor"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/CD7F32/FFFFFF?text=Sponsor+28" alt="Sponsor"></div>
-                </div>
-            </div>
-
-            <div class="sponsor-tier">
-                <h3>🤝 Community Partners</h3>
-                <div class="sponsors-grid">
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/4CAF50/FFFFFF?text=Partner+1" alt="Partner"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/4CAF50/FFFFFF?text=Partner+2" alt="Partner"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/4CAF50/FFFFFF?text=Partner+3" alt="Partner"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/4CAF50/FFFFFF?text=Partner+4" alt="Partner"></div>
-                    <div class="sponsor-box"><img src="https://via.placeholder.com/150x60/4CAF50/FFFFFF?text=Partner+5" alt="Partner"></div>
-                </div>
-            </div>
-        </div>
-    </section> 
-    --> 
 
     <!-- FAB Button -->
     <a href="faq.html" class="fab">
@@ -2651,6 +2640,28 @@ s
         // Trigger immediately
         handlePrizeScroll();
         initPrizeScramble();
+
+
+
+        // Scroll-triggered animation for Ghast + Banner
+        function handleGhastScroll() {
+            const ghastWrappers = document.querySelectorAll('.ghast-banner-wrapper');
+
+            ghastWrappers.forEach(wrapper => {
+                const rect = wrapper.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                if (rect.top < windowHeight * 0.7 && rect.bottom > 0) {
+                    wrapper.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', handleGhastScroll);
+        window.addEventListener('load', handleGhastScroll);
+        handleGhastScroll();
+
+
     </script>
     
 </body>
