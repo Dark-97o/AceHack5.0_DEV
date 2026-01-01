@@ -195,7 +195,7 @@ body {
 }
 
 /* ===================================
-   PHOTO LAYER - HOVER STATE
+   PHOTO LAYER - HOVER STATE (INCREASED SIZE)
    =================================== */
 .photo-layer {
     position: absolute;
@@ -206,6 +206,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-top: 30px;
     z-index: 1;
     background: linear-gradient(135deg, #2C3E50 0%, #34495E 100%);
     opacity: 0;
@@ -217,8 +218,8 @@ body {
 }
 
 .real-photo {
-    width: 160px;
-    height: 160px;
+    width: 220px;
+    height: 220px;
     border-radius: 50%;
     border: 5px solid #8B5A3C;
     object-fit: cover;
@@ -278,13 +279,6 @@ body {
     right: 8px;
 }
 
-/* Bottom nails */
-.wooden-sign-box::after {
-    content: '';
-    bottom: 8px;
-    top: auto;
-}
-
 /* ===================================
    GUEST INFO TEXT
    =================================== */
@@ -322,6 +316,12 @@ body {
     background-color: #FFD700;
     color: #000000;
     text-shadow: 1px 1px 0px rgba(255,255,255,0.6);
+}
+
+.investor-badge {
+    background-color: #9B59B6;
+    color: #FFFFFF;
+    text-shadow: 1px 1px 0px #000000;
 }
 
 .guest-designation {
@@ -419,6 +419,11 @@ body {
     .guest-designation {
         font-size: 7px;
     }
+
+    .real-photo {
+        width: 200px;
+        height: 200px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -444,8 +449,8 @@ body {
     }
 
     .real-photo {
-        width: 140px;
-        height: 140px;
+        width: 180px;
+        height: 180px;
     }
 }
 
