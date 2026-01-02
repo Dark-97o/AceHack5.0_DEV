@@ -13,7 +13,7 @@ A pixel-perfect Minecraft-themed landing page for AceHack 5.0, Rajasthan's bigge
 
 ## 🌐 Live Demo
 
-[View Live Site]([https://your-demo-link.com](https://dark-97o.github.io/AceHack5.0_Main_website/))
+[View Live Site](https://dark-97o.github.io/AceHack5.0_Main_website/)
 
 ## 🛠️ Technologies
 
