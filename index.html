@@ -1044,6 +1044,7 @@ s
         .open-innovation-banner {
             margin-top: -25px;
             margin-left: 50px;
+            margin-bottom: -29px;
             padding: 0 20px;
             overflow: hidden;
             min-height: 200px;
@@ -1166,7 +1167,7 @@ s
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.15);
             z-index: 0;
         }
 
@@ -1201,7 +1202,7 @@ s
             gap: 30px;
             max-width: 1500px;
             margin: 0 auto;
-            margin-top: 50px;
+            margin-top: -20px;
             padding: 70px 1px 0px;
             margin-bottom: -80px;
         }
@@ -1393,6 +1394,7 @@ s
             gap: 60px;
             flex-wrap: wrap;
             width: 100%;
+            margin-bottom: -30px;
         }
 
         .prize-card {
@@ -1485,8 +1487,8 @@ s
         /* Chest wrapper for image swap on hover */
         .chest-wrapper {
             position: relative;
-            width: 220px;
-            height: 220px;
+            width: 205px;
+            height: 205px;
             margin: 0 auto 25px;
             filter: drop-shadow(0 10px 20px rgba(0,0,0,0.9));
             z-index: 1;
@@ -1715,129 +1717,294 @@ s
             50% { box-shadow: 0 0 60px rgb(255, 251, 0); }
         }
 
-        /* Footer */
-        footer {
-            background: linear-gradient(180deg, #2C1810 0%, #0a0605 100%);
-            padding: 90px 20px 40px;
-            border-top: 10px solid #654321;
+        /* Global Footer Styles */
+        footer#contact {
+            width: 100%;
+            font-family: 'Press Start 2P', cursive;
+            color: #FFFFFF;
+            image-rendering: pixelated;
+            margin: 0;
+            padding: 0;
+            position: relative;
         }
+
+        .lava-border {
+            width: 100%;
+            height: 100px;
+            background: url('https://img.freepik.com/free-photo/detailed-structure-marble-natural-pattern-background-design_1258-79119.jpg?semt=ais_hybrid&w=740&q=80') repeat-x top center;
+            background-size: auto 100%;
+            image-rendering: pixelated;
+            animation: lavaFlow 40s linear infinite;
+            z-index: 10;
+            position: relative;
+        }
+
+        .lava-border::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            animation: lavaGlow 2.5s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .map-overlay {
+            position: absolute;
+            right: 15px;
+            top: 65px;
+            transform: translateY(-50%);
+            width: clamp(220px, 22vw, 300px);
+            height: clamp(220px, 22vw, 300px);
+            border-radius: 12px;
+            overflow: visible;
+            z-index: 35;
+        }
+
+        .map-overlay::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            background: url('https://lh3.googleusercontent.com/pw/AP1GczOnN-03cUemuR5S0Kezbi3WDwAYgx8WVj4TCufy1LoTlc5X85lx_JPsGhs0l-K0vXTA7IB8AM9e5AguXr0i7qEzUtKd_gFAetjGmxYnswU8zXRrHeLKm8EWJZP3X-wC85a-WxYhyAvbVs67XkJLVhjH=w160-h160-s-no-gm?authuser=0') repeat;
+            background-size: 100px 100px;
+            image-rendering: pixelated;
+            z-index: 25;
+        }
+
+        .map-overlay iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            position: relative;
+            z-index: 25;
+        }
+
+        @keyframes lavaFlow {
+            0% { background-position: 0 0; }
+            100% { background-position: 100% 0; }
+        }
+
+        @keyframes lavaGlow {
+            0%, 100% { 
+                box-shadow: 0 0 2   0px #ff8800, 0 0 10px #ffff00;
+            }
+            50% { 
+                box-shadow: 0 0 40px #ffaa00, 0 0 20px #ff0000;
+            }
+}
+
+        .footer-main {
+            height:240px;
+            width: 100%;
+            background: url('https://lh3.googleusercontent.com/pw/AP1GczOnN-03cUemuR5S0Kezbi3WDwAYgx8WVj4TCufy1LoTlc5X85lx_JPsGhs0l-K0vXTA7IB8AM9e5AguXr0i7qEzUtKd_gFAetjGmxYnswU8zXRrHeLKm8EWJZP3X-wC85a-WxYhyAvbVs67XkJLVhjH=w160-h160-s-no-gm?authuser=0') repeat;
+            background-size: 100px 100px;
+            image-rendering: pixelated;
+            padding: 45px 20px 50px;
+            margin-top: -50px;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 15;
+        }   
 
         .footer-content {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 60px;
-            margin-bottom: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 25px;
+            z-index: 25;
         }
 
-        .footer-section h3 {
-            font-size: 18px;
-            margin-bottom: 30px;
-            color: #FFD700;
+        /* Logo Section */
+        .logo-section {
+            flex: 1 1 300px;
+            min-width: 240px;
+            max-width: 380px;
+            text-align: center;
         }
 
-        .footer-section a {
+        .logo-bg {      
+            padding: 8px;
+            border-radius: 1px;
+            display: inline-flex;
+            width: fit-content;
+        }
+
+        .acehack-logo {
+            margin-top: -30px;
+            width: 320px;
+            max-width: 320px;
+            height: auto;
             display: block;
-            color: #FFF;
-            text-decoration: none;
-            font-size: 11px;
-            margin-bottom: 15px;
-            transition: all 0.3s;
+            image-rendering: pixelated;
+            align-content: center;
         }
 
-        .footer-section a:hover {
-            color: #FFD700;
-            transform: translateX(8px);
+        .tagline {
+            font-size: 8px;
+            font-weight: bold;
+            margin: 20px 0 8px 0;
+            line-height: 1.4;
+            text-shadow: 2px 2px 4px #000;
+            letter-spacing: 2px;
+            white-space: nowrap;
+            color: #FFFFFF;
+        }
+
+        .follow-us {
+            font-size: 13px;
+            font-weight: bold;
+            margin-top: 10px;   
+            color: #FFFF00;
+            text-shadow: 1px 1px 3px #000;
+            letter-spacing: 1px;
         }
 
         .socials {
             display: flex;
-            gap: 25px;
-            margin-top: 25px;
+            gap: clamp(8px, 1.5vw, 12px);
+            margin-top: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .social-icon {
-            width: 55px;
-            height: 55px;
-            background: #654321;
-            border: 4px solid #8B4513;
+            width: clamp(30px, 3vw, 35px);
+            height: clamp(30px, 3vw, 35px);
+            background: transparent;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-decoration: none;
-            color: #FFF;
-            font-size: 22px;
-            transition: all 0.3s;
+            transition: transform 0.2s;
         }
 
         .social-icon:hover {
-            transform: scale(1.25) rotate(10deg);
-            background: #8B4513;
-            border-color: #FFD700;
+            transform: scale(1.1);
         }
 
-        .map-container {
+        .social-icon img {
             width: 100%;
-            height: 280px;
-            background: #654321;
-            border: 5px solid #8B4513;
-            margin-top: 30px;
+            height: 100%;
+            object-fit: contain;
+            filter: invert(1) brightness(2);
+        }
+
+        /* Links Sections (Quick Links & Archives) */
+        .links-section {
+            flex: 1 1 160px;
+            min-width: 140px;
+        }
+
+        .links-section h3 {
+            color: #FFFF00;
+            font-size: clamp(11px, 1.8vw, 15px);
+            margin-bottom: 12px;
+            text-shadow: 2px 2px 4px #000;
+            white-space: nowrap;
+        }
+
+        .links-section a {
+            display: block;
+            color: #FFFFFF;
+            font-size: clamp(9px, 1.5vw, 11px);
+            margin-bottom: 8px;
+            text-shadow: 1px 1px 2px #000;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+
+        /* Contact Us Section */
+        .contact-section {
+            flex: 1 1 250px;
+            min-width: 180px;
+        }
+
+        .contact-section h3 {
+            color: #FFFF00;
+            font-size: clamp(11px, 1.8vw, 15px);
+            margin-bottom: 12px;
+            text-shadow: 2px 2px 4px #000;
+            white-space: nowrap;
+        }
+
+        .contact-info {
+            font-size: clamp(9px, 1.5vw, 11px);
+            line-height: 1.8;
+            color: #FFFFFF;
+            text-shadow: 1px 1px 2px #000;
+            margin: 0;
+        }
+
+        /* Location Section */
+        .location-section {
+            flex: 1 1 280px;
+            min-width: 260px;
+            text-align: left;
+        }
+
+        .location-section h3 {
+            color: #FFFF00;
+            font-size: clamp(11px, 1.8vw, 15px);
+            margin-bottom: 12px;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+        /* Separator & Copyright */
+        .footer-separator {
+            height: 5px;
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczMJLO4QxuMypYpHFbsxpGiAs1u51MK4EyEI40Yj0M630JhLIz5XEZo43k6deeFcnpR1imTJPxsRSn7UQ7yJ3CTq9qBY0PeGah2Qt4xeihP-Vk-zxR3p8uQC5-z0GXja6g3fjK5Dpq-NUR0teUGsDPO1=w160-h67-s-no-gm?authuser=0');
+            image-rendering: pixelated;
+            background-size: 80px 80px;
         }
 
         .copyright {
+            background: #000000;
             text-align: center;
-            padding-top: 50px;
-            border-top: 4px solid #654321;
-            font-size: 10px;
+            padding: 20px 0;
+            font-size: clamp(11px, 0.4vw, 13px);
+            text-shadow: 1px 1px 2px #000;
         }
 
-        @media (max-width: 768px) {
-            .countdown {
-                font-size: 22px;
-                gap: 20px;
-            }
-            
-            .countdown div {
-                min-width: 75px;
-                padding: 20px 15px;
-            }
-            
-            .stone-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            h2 {
-                font-size: 24px;
-            }
-            
-            .prizes {
-                gap: 30px;
-            }
-            
-            .prize-row {
-                gap: 40px;
-            }
-            
-            .chest-img {
-                width: 160px;
-                height: 160px;
-            }
-            
-            .hero-logo {
-                max-width: 90%;
-                height: 200px;
-            }
+        .mc-toast {
+            position: fixed;
+            bottom: 390px;
+            left: 50%;
+            transform: translateX(-50%) scale(0.8);
+            background: #2b2b2b;
+            color: #FFD700;
+            border: 3px solid #fff700;
+            padding: 14px 22px;
+            font-size: 22px;
+            text-shadow: 2px 2px 0 #000;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.8);
         }
+
+        .mc-toast.show {
+            opacity: 1;
+            transform: translateX(-50%) scale(1);
+        }
+        
     </style>
 </head>
 <body>
-    <div id="bootup-screen">
+    <!-- <div id="bootup-screen">
         <video id="bootup-video" class="bootup-fullscreen" autoplay muted playsinline preload="auto">
             <source src="assets/vid/bootup.mov" type="video/mp4">
         </video>
-    </div>
+    </div> -->
 
     <!-- Animated Particles -->
     <!-- Minecraft End Sky Background -->
@@ -1859,15 +2026,15 @@ s
                 </div>
                 <div class="nav-sign-container" style="--index: 1">
                     <div class="sign-chain"></div>
-                    <a href="#timeline" class="nav-sign">Timeline</a>
+                    <a href="#timeline" class="nav-sign" data-soon="true">Timeline</a>
                 </div>
                 <div class="nav-sign-container" style="--index: 2">
                     <div class="sign-chain"></div>
-                    <a href="#guests" class="nav-sign">Guests</a>
+                    <a href="#guests" class="nav-sign" data-soon="true">Guests</a>
                 </div>
                 <div class="nav-sign-container" style="--index: 3">
                     <div class="sign-chain"></div>
-                    <a href="#team" class="nav-sign">DG Swags</a>
+                    <a href="#team" class="nav-sign" data-soon="true">DG Swags</a>
                 </div>
                 <div class="nav-sign-container" style="--index: 4">
                     <div class="sign-chain"></div>
@@ -2130,7 +2297,7 @@ s
                 <div class="prize-row prize-row-1">
                     <div class="prize-card" data-index="1" data-amount="₹XXXXXX">
                         <div class="chest-wrapper">
-                            <img src="https://lh3.googleusercontent.com/pw/AP1GczO-v07gCXPjKUbxIA7D9phxiv6AQkrV6aLdVV5S6O9qwvDI9f_gOqIqD8QTShCecAgDZaiMQExIgcfammD_sRWUjzfkmS9VkFekySxKf0d8HjxGI055uuenfbAEUEVmrMmg-1Uvyk2ut6XSQZtE8jkb=w274-h249-s-no-gm?authuser=0" 
+                            <img src="https://lh3.googleusercontent.com/pw/AP1GczNu_H5PVobUGKHQkuX0j_QQtF_N5AV7ezccjknQ0oHH8mRJslsN9h1DglGhHoIX_ZK6gd7nQLWTLk8anZdHajEDnFfaTDfcU8H5r4wd-Hxi7qZoH2y2BdWziMxdqBWb2Bm25twGCUwRLWSYrRbC6qUX=w273-h246-s-no-gm?authuser=0" 
                                 alt="2nd Place Chest" 
                                 class="chest-img chest-default">
                             <img src="https://lh3.googleusercontent.com/pw/AP1GczOUx7jS6BjysWc4E9ccmAONBxbf0I2UMQ4c7xYwHIJiBpnpr4KgfY5DlBuW5F-_jWHFGFUyBh546ClFqFX2bhu9IW86mAYoCfYfuO1BnNfSvaTL-RXnbvyp-xvxTTLl2sDpBKeB7p6O-3kCaMk08QZL=w560-h491-s-no-gm?authuser=0" 
@@ -2237,50 +2404,99 @@ s
         <img src="https://lh3.googleusercontent.com/pw/AP1GczN1JC7IshEcH37kyGSYZgnMowLxC9Z5zIT-r-U1wtqLjQJ3rV4R6nTxUjfdMUCLEViGhnzXMdGo8IaUsZSaMt7qSr0NxO3q_eNIh5TTFMmlzOXUMMkENrMOQlLGwXOTyscY4GCER2XbALXG1cR-uPR-=w938-h938-s-no-gm?authuser=0" alt="FAQ">
     </a>
 
-    <!-- Footer -->
+    <!-- FOOTER -->
+
     <footer id="contact">
+    <!-- Lava Texture Top Border -->
+    <div class="lava-border"></div>
+
+    <!-- Main Footer Content on Soil Texture -->
+    <div class="footer-main">
         <div class="footer-content">
-            <div class="footer-section">
-                <img src="https://via.placeholder.com/200x70/228B22/FFFFFF?text=AceHack" alt="AceHack Logo" style="margin-bottom: 25px;">
-                <p style="font-size: 10px; line-height: 2;">The ultimate hackathon experience. Build the future, one block at a time.</p>
+            <!-- Logo / Tagline / Socials -->
+            <div class="footer-section logo-section">
+                <div class="logo-bg">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNcsBYJRrDQF5xc-IOD9E_9tAf-KWM-rpVcJYXr7EzNU94-PQCOFTBnrTo2AVnYqDfkW-wroeaoN8hMMf_B0vW-mqVewR_bhtGTWzxJSby3AyqlRiJmtvTrrhH1Wi6sWxqgW2K27xgdVhvhdnUMZu0q=w950-h316-s-no-gm?authuser=0" alt="AceHack Logo" class="acehack-logo">
+                </div>
+
+                <p class="follow-us">Follow us</p>
+
+                <!-- 7 Social Media Icons -->
                 <div class="socials">
-                    <a href="#" class="social-icon">f</a>
-                    <a href="#" class="social-icon">𝕏</a>
-                    <a href="#" class="social-icon">in</a>
-                    <a href="#" class="social-icon">▶</a>
+                    <a href="#" class="social-icon whatsapp" aria-label="WhatsApp">
+                        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+                    </a>
+                    <a href="#" class="social-icon instagram" aria-label="Instagram">
+                        <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram">
+                    </a>
+                    <a href="#" class="social-icon linkedin" aria-label="LinkedIn">
+                        <img src="https://cdn-icons-png.flaticon.com/512/733/733561.png" alt="LinkedIn">
+                    </a>
+                    <a href="#" class="social-icon x-twitter" aria-label="X (Twitter)">
+                        <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="X">
+                    </a>
+                    <a href="#" class="social-icon telegram" aria-label="Telegram">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram">
+                    </a>
+                    <a href="#" class="social-icon discord" aria-label="Discord">
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord">
+                    </a>
+                    <a href="#" class="social-icon youtube" aria-label="YouTube">
+                        <img src="https://cdn-icons-png.flaticon.com/512/733/733646.png" alt="YouTube">
+                    </a>
                 </div>
             </div>
-            
-            <div class="footer-section">
+
+            <!-- Quick Links -->
+            <div class="footer-section links-section">
                 <h3>Quick Links</h3>
                 <a href="#home">Home</a>
                 <a href="#about">About</a>
                 <a href="#tracks">Tracks</a>
                 <a href="#prizes">Prizes</a>
-                <a href="#sponsors">Sponsors</a>
                 <a href="faq.html">FAQs</a>
             </div>
-            
-            <div class="footer-section">
-                <h3>Archives</h3>
-                <a href="#">AceHack 4.0 - 2025</a>
-                <a href="#">AceHack 3.0 - 2024</a>
-                <a href="#">AceHack 2.0 - 2023</a>
-                <a href="#">AceHack 1.0 - 2022</a>
+
+            <!-- Contact Us -->
+            <div class="footer-section contact-section">
+                <h3>Contact Us</h3>
+                <p class="contact-info">
+                    <b style="color: #fff700;">Email</b>: acehack@uem.edu.in<br>
+                    <b style="color: #fff700;">Phone</b>: +916296499137<br>
+                    <b style="color: #fff700;">Address</b>: UEM Jaipur<br>
+                    Gurukul Campus, Sikar Road<br>
+                    Rajasthan - 303807
+                </p>
             </div>
-            
-            <div class="footer-section">
-                <h3>Location</h3>
-                <p style="font-size: 10px; line-height: 2;">Your College Name<br>Address Line 1<br>City, State - 000000<br>India</p>
-                <div class="map-container">
-                    <!-- Add Google Maps embed here -->
+
+            <!-- Archives -->
+            <div class="footer-section links-section" style="margin-left: 30px;">
+                <h3>Archives</h3>
+                <a href="#">AceHack 4.0</a>
+                <a href="#">AceHack 3.0</a>
+                <a href="#">AceHack 2.0</a>
+                <a href="#">AceHack 1.0</a>
+            </div>
+
+            <!-- Location with Map -->
+            <div class="footer-section location-section">
+                <div class="map-overlay">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.512!2d75.7002425!3d27.2124649!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db5f1e3b7b5b5%3A0xb78e5c340c935a95!2sUniversity%20of%20Engineering%20%26%20Management%20(UEM)%2C%20Jaipur!5e0!3m2!1sen!2sin!4v1739999999999"
+                        width="100%" height="100%" style="border:0; border-radius:12px;" allowfullscreen=""
+                        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
-        
-        <div class="copyright">
-            © 2026 AceHack. All Rights Reserved. | Crafted with ❤️ by the AceHack Team
-        </div>
+    </div>
+
+    <!-- Brown separation line -->
+    <div class="footer-separator"></div>
+
+    <!-- Copyright on black background -->
+    <div class="copyright">
+        © 2026 AceHack - University of Enigeneering and Management Jaipur. All Rights Reserved.
+    </div>
     </footer>
 
     <script>
@@ -2662,7 +2878,27 @@ s
         handleGhastScroll();
 
 
+    // Toast notification for Coming Soon buttons
+        document.addEventListener('DOMContentLoaded', () => {
+            const toast = document.getElementById('toast');
+
+            document.addEventListener('click', (e) => {
+                const link = e.target.closest('a[data-soon="true"]');
+                if (!link) return;
+
+                e.preventDefault();
+
+                toast.textContent = link.textContent + ' Coming Soon!';
+                toast.classList.add('show');
+
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 2000);
+            });
+        });
+
+
     </script>
-    
+    <div id="toast" class="mc-toast">Coming Soon!</div>
 </body>
 </html>
