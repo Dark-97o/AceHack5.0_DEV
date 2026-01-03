@@ -929,10 +929,11 @@ s
             align-items: center;
             gap: 0;
             opacity: 0;
-            transform: translateX(150%);
+            transform: translate3d(150%, 0, 0);
             transition: none;
             margin: 40px auto;
             max-width: 1000px;
+            will-change: transform, opacity;
         }
 
         /* Ghast Image - REDUCED SIZE */
@@ -1024,9 +1025,19 @@ s
 
         /* Slide-in Animation from Right to Left */
         .ghast-banner-wrapper.visible {
-            animation: slideInFromRight 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            animation: ghastSlideIn 1.2s cubic-bezier(0.34,1.56,0.64,1) forwards;
         }
 
+        @keyframes ghastSlideIn {
+            0% {
+                opacity: 0;
+                transform: translate3d(150%, 0, 0);
+            }
+            100% {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
 
         /* ============================================
         WHY ATTEND SECTION - COMPLETE CSS
@@ -2282,7 +2293,7 @@ s
     </div>
     </footer>
 
-    <script>
+    <script defer>
         /* ======================================================
         END SKY CREATION (RUNS ONCE)
         ====================================================== */
@@ -2404,8 +2415,28 @@ s
         );
 
         document.querySelectorAll(
-            '.minecart-card, .card-wrapper, .prize-card, .ghast-banner-wrapper'
+            '.minecart-card, .card-wrapper, .prize-card'
         ).forEach(el => revealObserver.observe(el));
+        
+       /* ===========================
+        GHAST OBSERVER (FIXED)
+        =========================== */
+        (function initGhasts() {
+            const ghasts = document.querySelectorAll('.ghast-banner-wrapper');
+            if (!ghasts.length) return;
+
+            function reveal() {
+                ghasts.forEach(g => {
+                    if (g.classList.contains('visible')) return;
+                    if (g.getBoundingClientRect().top < window.innerHeight * 0.8) {
+                        g.classList.add('visible');
+                    }
+                });
+            }
+
+            reveal();
+            window.addEventListener('scroll', reveal, { passive: true });
+        })();
 
         /* ======================================================
         PRIZE PARTICLES (REDUCED & SAFE)
