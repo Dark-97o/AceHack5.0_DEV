@@ -140,8 +140,7 @@ s
         /* Flying Entity (Ender Dragon/Enderman) */
         .flying-entity {
             position: fixed;
-            top: 20%;
-            right: -300px;
+            transform: translate3d(120vw, 30vh, 0);
             width: 500px;
             height: 500px;
             z-index: -1;
@@ -150,33 +149,18 @@ s
 
         @keyframes fly-across {
             0% {
-                right: -300px;
-                top: 30%;
-                transform: rotate(-6deg) scale(0.9);
+                transform: translate3d(120vw, 30vh, 0) rotate(-6deg) scale(0.9);
                 opacity: 0;
             }
-
-            15% {
-                opacity: 1;
-            }
-
             50% {
-                top: 10%;
-                transform: rotate(6deg) scale(1);
-            }
-
-            85% {
+                transform: translate3d(50vw, 10vh, 0) rotate(6deg) scale(1);
                 opacity: 1;
             }
-
             100% {
-                right: calc(100% + 320px);
-                top: 90%;
-                transform: rotate(0deg) scale(0.9);
+                transform: translate3d(-120vw, 90vh, 0) rotate(0deg) scale(0.9);
                 opacity: 0;
             }
         }
-
 
         @keyframes float {
             0%, 100% { transform: translateY(0); }
@@ -559,6 +543,17 @@ s
             background-position: center;
             background-attachment: scroll;
             position: relative;
+        }
+
+        .section-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.2);
+            z-index: 0;
         }
 
         .section-bg > * {
@@ -2438,8 +2433,8 @@ s
             window.addEventListener('scroll', reveal, { passive: true });
         })();
 
-        /* ======================================================
-        PRIZE PARTICLES (REDUCED & SAFE)
+       /* ======================================================
+        PRIZE PARTICLES – BIGGER & WIDER SPREAD
         ====================================================== */
         function createPrizeParticleBurst(card) {
             const chest = card.querySelector('.chest-wrapper');
@@ -2455,22 +2450,39 @@ s
             const colors = [
                 'particle-soil-dark',
                 'particle-soil-medium',
-                'particle-soil-light'
+                'particle-soil-light',
+                'particle-dirt',
+                'particle-brown'
             ];
 
-            for (let i = 0; i < 6; i++) {
+            const particleCount = 14; // slightly more, still safe
+
+            for (let i = 0; i < particleCount; i++) {
                 const p = document.createElement('div');
                 p.className = `particle particle-fall ${colors[i % colors.length]}`;
+
+                // BIGGER particles
+                const size = 14 + Math.random() * 20; // was ~8–22
+
+                // WIDER horizontal scatter
+                const tx = (Math.random() - 0.5) * 240; // was 140px
+
+                // More vertical variation
+                const ty = Math.random() * 70; // was 40px
+
                 p.style.cssText = `
                     left:50%;
                     top:100%;
-                    width:${8 + Math.random() * 14}px;
-                    height:${8 + Math.random() * 14}px;
-                    --tx:${(Math.random() - 0.5) * 140}px;
-                    --ty:${Math.random() * 40}px;
+                    width:${size}px;
+                    height:${size}px;
+                    --tx:${tx}px;
+                    --ty:${ty}px;
                 `;
+
                 container.appendChild(p);
-                setTimeout(() => p.remove(), 1800);
+
+                // Slightly longer life to match size
+                setTimeout(() => p.remove(), 2200);
             }
         }
 
