@@ -12,7 +12,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            cursor: url('https://lh3.googleusercontent.com/pw/AP1GczPmJIHevxWymh_uCbDKcKBucaZ5-mx0D17X7GUYe9G_rE68GPM-j6JgGVdarLimt8bEU4oKgg4UH8D4s7w4h-egebpN1BZPiCi7hoCxdmqV4zu0lQ4mhdHpXP4Ivne3NCPiD6ln95Tv7vjH4q4l4blw=w20-h20-s-no-gm?authuser=0') 18 16, auto;
         }
 
         body {
@@ -718,7 +717,7 @@
         <div class="nav-links">
             <div class="nav-sign-container" style="--index: 0">
                 <div class="sign-chain"></div>
-                <a href="#home" class="nav-sign">Home</a>
+                <a href="index.html" class="nav-sign">Home</a>
             </div>
 
             <div class="nav-sign-container" style="--index: 1">
@@ -1160,7 +1159,7 @@
         function createEndSky() {
             const container = document.getElementById('endSky');
             
-            for (let i = 0; i < 80; i++) {
+            for (let i = 0; i < 30; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
                 star.style.left = Math.random() * 100 + '%';
@@ -1172,7 +1171,7 @@
                 container.appendChild(star);
             }
             
-            for (let i = 0; i < 8; i++) {
+            for (let i = 0; i < 1; i++) {
                 const glow = document.createElement('div');
                 glow.className = 'purple-glow';
                 glow.style.left = Math.random() * 100 + '%';
@@ -1185,7 +1184,7 @@
                 container.appendChild(glow);
             }
             
-            for (let i = 0; i < 15; i++) {
+            for (let i = 0; i < 3; i++) {
                 const cloud = document.createElement('div');
                 cloud.className = 'end-cloud';
                 cloud.style.left = (100 + Math.random() * 100) + '%';
