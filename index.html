@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AceHack 5.0 - Hackathon</title>
     <link rel="icon" href="https://static.wikia.nocookie.net/minecraft_gamepedia/images/f/fe/Grass_Block_JE7_BE6.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="image" href="[hero-background-url]">    
+    <link rel="preload" as="image" href="[logo-url]">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
@@ -1780,10 +1784,9 @@ s
 
         /* ============================================
         PERFORMANCE OPTIMIZATION ADDITIONS
-        Add these to your existing CSS
         ============================================ */
 
-        /* 1. FORCE GPU ACCELERATION - Add to ALL animated elements */
+        /* FORCE GPU ACCELERATION - Add to ALL animated elements */
         .hero-logo,
         .stone-btn,
         .minecart-card,
@@ -1809,7 +1812,7 @@ s
             -webkit-font-smoothing: subpixel-antialiased;
         }
 
-        /* 2. CONTAIN PROPERTY - Add to sections for layout isolation */
+        /* CONTAIN PROPERTY - Add to sections for layout isolation */
         nav,
         .hero,
         section,
@@ -1817,12 +1820,12 @@ s
             contain: layout style paint;
         }
 
-        /* 3. REDUCE BLUR INTENSITY - Replace existing purple-glow filter */
+        /*  REDUCE BLUR INTENSITY - Replace existing purple-glow filter */
         .purple-glow {
             filter: blur(60px); /* Reduced from 100px */
         }
 
-        /* 4. OPTIMIZE ANIMATIONS - Update all transform animations */
+        /*  OPTIMIZE ANIMATIONS - Update all transform animations */
         @keyframes twinkle {
             0%, 100% { 
                 opacity: 0.3; 
@@ -1924,7 +1927,7 @@ s
             }
         }
 
-        /* 5. OPTIMIZE TRANSITIONS - Add hardware acceleration */
+        /* OPTIMIZE TRANSITIONS - Add hardware acceleration */
         .stone-btn,
         .nav-sign,
         .minecart-body,
@@ -1934,6 +1937,30 @@ s
             transition-duration: 0.3s;
             transition-timing-function: ease;
         }
+
+        .particle {
+            pointer-events: none;
+            transform: translate3d(0, 0, 0);
+        }
+
+        @keyframes particle-burst-fall {
+            0% {
+                transform: translate3d(-50%, -50%, 0) scale(1);
+                opacity: 1;
+            }
+            30% {
+                transform: translate3d(calc(-50% + var(--tx)), calc(-50% + var(--ty)), 0) scale(1.2);
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.9;
+            }
+            100% {
+                transform: translate3d(calc(-50% + var(--tx)), calc(-50% + var(--ty) + 150px), 0) scale(0.3);
+                opacity: 0;
+            }
+        }
+
         
     </style>
 </head>
