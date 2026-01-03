@@ -2715,4 +2715,215 @@ s
 
     <div id="toast" class="mc-toast">Coming Soon!</div>
 </body>
+<!-- ===============================
+RESPONSIVE OVERRIDES (ADD ONLY)
+DO NOT EDIT EXISTING STYLES
+=============================== -->
+<style>
+
+/* ---------- GLOBAL SAFETY ---------- */
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+section {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* ---------- NAVBAR ---------- */
+@media (max-width: 1024px) {
+  .nav-links {
+    position: static;
+    transform: none;
+    justify-content: center;
+    padding-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .nav-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-sign {
+    font-size: 9px;
+    padding: 10px 14px;
+  }
+}
+
+/* ---------- HERO ---------- */
+@media (max-width: 1024px) {
+  .hero {
+    margin-top: -120px;
+    padding-top: 160px;
+  }
+
+  .hero-logo {
+    max-width: 90%;
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    background-attachment: scroll;
+    min-height: auto;
+  }
+
+  .countdown-card {
+    margin: 20px auto;
+    height: auto;
+  }
+
+  .countdown {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .stone-buttons {
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 60px;
+  }
+}
+
+/* ---------- ABOUT ---------- */
+@media (max-width: 900px) {
+  .about-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-text {
+    margin-left: 0;
+  }
+
+  .about-image {
+    margin-top: 30px;
+  }
+}
+
+/* ---------- STATS ---------- */
+@media (max-width: 768px) {
+  .stats {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 25px;
+  }
+}
+
+/* ---------- TRACKS (CRITICAL FIX) ---------- */
+@media (max-width: 1024px) {
+  .track-row {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+  }
+
+  .minecart-card {
+    flex: 0 0 45%;
+  }
+}
+
+@media (max-width: 640px) {
+  .minecart-card {
+    flex: 0 0 100%;
+  }
+
+  .minecart-rail {
+    display: none;
+  }
+}
+
+/* ---------- GHAST BANNER ---------- */
+@media (max-width: 768px) {
+  .ghast-banner-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .rope-container {
+    display: none;
+  }
+
+  .banner-sign {
+    margin-top: 15px;
+  }
+}
+
+/* ---------- WHY ATTEND ---------- */
+@media (max-width: 1200px) {
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- PRIZES ---------- */
+@media (max-width: 900px) {
+  .prize-row {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .prize-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .prize-card-elevated {
+    margin-bottom: 0;
+  }
+}
+
+/* ---------- FOOTER ---------- */
+@media (max-width: 1024px) {
+  .footer-content {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+  }
+
+  .location-section {
+    width: 100%;
+    text-align: center;
+  }
+
+  .map-overlay {
+    position: static;
+    margin: 30px auto 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .acehack-logo {
+    width: 240px;
+  }
+
+  .fab {
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+</style>
 </html>
