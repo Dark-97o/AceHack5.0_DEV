@@ -2283,357 +2283,209 @@ s
     </footer>
 
     <script>
-        // Create animated particles
-       // Create Minecraft End Sky
-        function createEndSky() {
+        /* ======================================================
+        END SKY CREATION (RUNS ONCE)
+        ====================================================== */
+        (function createEndSky() {
             const container = document.getElementById('endSky');
-            
-            // Create twinkling stars
+            if (!container) return;
+
+            // Stars
             for (let i = 0; i < 25; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                star.style.width = (Math.random() * 3 + 1) + 'px';
-                star.style.height = star.style.width;
-                star.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.cssText = `
+                    left:${Math.random() * 100}%;
+                    top:${Math.random() * 100}%;
+                    width:${Math.random() * 3 + 1}px;
+                    height:${Math.random() * 3 + 1}px;
+                    animation-duration:${Math.random() * 3 + 2}s;
+                    animation-delay:${Math.random() * 3}s;
+                `;
                 container.appendChild(star);
             }
-            
-            // Create purple ambient glows
-            for (let i = 0; i < 1; i++) {
-                const glow = document.createElement('div');
-                glow.className = 'purple-glow';
-                glow.style.left = Math.random() * 100 + '%';
-                glow.style.top = Math.random() * 100 + '%';
-                glow.style.width = (Math.random() * 300 + 200) + 'px';
-                glow.style.height = glow.style.width;
-                glow.style.background = `radial-gradient(circle, rgba(139, 92, 246, ${Math.random() * 0.3 + 0.2}) 0%, transparent 70%)`;
-                glow.style.animationDuration = (Math.random() * 20 + 15) + 's';
-                glow.style.animationDelay = Math.random() * 5 + 's';
-                container.appendChild(glow);
-            }
-            
-            // Create blocky purple clouds
-            for (let i = 0; i < 4; i++) {
+
+            // Purple glow (only ONE – big performance win)
+            const glow = document.createElement('div');
+            glow.className = 'purple-glow';
+            glow.style.cssText = `
+                left:${Math.random() * 100}%;
+                top:${Math.random() * 100}%;
+                width:400px;
+                height:400px;
+                animation-duration:25s;
+            `;
+            container.appendChild(glow);
+
+            // Clouds (reduced count)
+            for (let i = 0; i < 3; i++) {
                 const cloud = document.createElement('div');
                 cloud.className = 'end-cloud';
-                cloud.style.left = (100 + Math.random() * 100) + '%';
-                cloud.style.top = Math.random() * 80 + '%';
-                cloud.style.width = (Math.random() * 100 + 80) + 'px';
-                cloud.style.height = (Math.random() * 40 + 30) + 'px';
-                cloud.style.animationDuration = (Math.random() * 30 + 20) + 's';
-                cloud.style.animationDelay = Math.random() * 10 + 's';
+                cloud.style.cssText = `
+                    left:${100 + Math.random() * 100}%;
+                    top:${Math.random() * 80}%;
+                    width:${Math.random() * 100 + 80}px;
+                    height:${Math.random() * 40 + 30}px;
+                    animation-duration:${Math.random() * 30 + 25}s;
+                `;
                 container.appendChild(cloud);
             }
-            
-            // Create flying entity (passes every 15 seconds)
+
+            // Flying entity
             const entity = document.createElement('img');
             entity.className = 'flying-entity';
-            entity.src = 'https://lh3.googleusercontent.com/pw/AP1GczPV701QojlTPppKTU5fRn4pSw94_Yh_U6spxRgmq1I1WtR7nQjxEpirl4UNy4I53aLpKYZqULLRuoWkL58Ew3xOBkzT6XA0vjYm9GzfXZ9s7xwY_KDb3XJPUWc6S8NaByK1CEI9VvQz6aeQnSg8bEam=w1126-h938-s-no-gm?authuser=0';
-            entity.alt = 'Flying Entity';
+            entity.loading = 'lazy';
+            entity.src = 'https://lh3.googleusercontent.com/pw/AP1GczPV701QojlTPppKTU5fRn4pSw94_Yh_U6spxRgmq1I1WtR7nQjxEpirl4UNy4I53aLpKYZqULLRuoWkL58Ew3xOBkzT6XA0vjYm9GzfXZ9s7xwY_KDb3XJPUWc6S8NaByK1CEI9VvQz6aeQnSg8bEam=w1126-h938-s-no-gm';
             container.appendChild(entity);
-        }
+        })();
 
-        createEndSky();
-        
-        // Countdown timer
-        const countdownDate = new Date('March 8, 2026 00:00:00').getTime();
-        
-        const countdownFunction = setInterval(() => {
-            const now = new Date().getTime();
-            const distance = countdownDate - now;
-            
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
-            document.getElementById('days').innerHTML = String(days).padStart(2, '0');
-            document.getElementById('hours').innerHTML = String(hours).padStart(2, '0');
-            document.getElementById('mins').innerHTML = String(minutes).padStart(2, '0');
-            document.getElementById('secs').innerHTML = String(seconds).padStart(2, '0');
-            
-            if (distance < 0) {
-                clearInterval(countdownFunction);
-                document.getElementById('countdown').innerHTML = '<div style="font-size: 22px;">🎉 EVENT STARTED! 🎉</div>';
-            }
-        }, 1000);
-        
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+        /* ======================================================
+        COUNTDOWN (SAFE & LIGHT)
+        ====================================================== */
+        (function initCountdown() {
+            const target = new Date('March 8, 2026 00:00:00').getTime();
+            const el = {
+                d: document.getElementById('days'),
+                h: document.getElementById('hours'),
+                m: document.getElementById('mins'),
+                s: document.getElementById('secs')
+            };
+
+            const timer = setInterval(() => {
+                if (document.hidden) return;
+
+                const diff = target - Date.now();
+                if (diff <= 0) {
+                    clearInterval(timer);
+                    document.getElementById('countdown').innerHTML =
+                        '<div style="font-size:22px">EVENT STARTED</div>';
+                    return;
+                }
+
+                el.d.textContent = String(Math.floor(diff / 86400000)).padStart(2, '0');
+                el.h.textContent = String(Math.floor(diff / 3600000) % 24).padStart(2, '0');
+                el.m.textContent = String(Math.floor(diff / 60000) % 60).padStart(2, '0');
+                el.s.textContent = String(Math.floor(diff / 1000) % 60).padStart(2, '0');
+            }, 1000);
+        })();
+
+        /* ======================================================
+        SMOOTH SCROLL (UNCHANGED)
+        ====================================================== */
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                const t = document.querySelector(a.getAttribute('href'));
+                if (!t) return;
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                t.scrollIntoView({ behavior: 'smooth' });
             });
         });
 
-        //Bootup screen fade out
-        document.addEventListener('DOMContentLoaded', () => {
-            const bootupScreen = document.getElementById('bootup-screen');
-            const video = document.getElementById('bootup-video');
+        /* ======================================================
+        INTERSECTION OBSERVER (REPLACES ALL SCROLL LISTENERS)
+        ====================================================== */
+        const revealObserver = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
 
-            if (!bootupScreen || !video) return;
+                    const el = entry.target;
+                    el.classList.add('visible');
 
-            let hidden = false;
-
-            function hideBootup(reason) {
-                if (hidden) return;
-                hidden = true;
-                bootupScreen.classList.add('hidden');
-                console.log('[Bootup hidden]', reason);
-            }
-
-            // Ensure video starts immediately
-            video.preload = 'auto';
-            video.muted = true;
-            video.playsInline = true;
-
-            // Timer-based hide (independent of page load)
-            video.addEventListener('loadedmetadata', () => {
-                const durationMs = Math.max(video.duration * 1000, 3000);
-                setTimeout(() => hideBootup('timer-based'), durationMs - 120);
-            });
-
-            // Safety fallback
-            setTimeout(() => hideBootup('hard-timeout'), 6500);
-        });
-
-        // Scroll-triggered animation for minecart cards
-        function handleMinecartScroll() {
-            const minecartCards = document.querySelectorAll('.minecart-card');
-            
-            minecartCards.forEach(card => {
-                const rect = card.getBoundingClientRect();
-                const windowHeight = window.innerHeight;
-                
-                // Trigger when card is 70% visible in viewport
-                if (rect.top < windowHeight * 0.7 && rect.bottom > 0) {
-                    if (!card.classList.contains('visible')) {
-                        card.classList.add('visible');
+                    // Prize particle burst (ONCE)
+                    if (el.classList.contains('prize-card')) {
+                        setTimeout(() => createPrizeParticleBurst(el), 700);
                     }
-                }
-            });
-        }
 
-        // Add scroll event listener
-        window.addEventListener('scroll', handleMinecartScroll);
-
-        // Trigger on page load
-        window.addEventListener('load', handleMinecartScroll);
-
-        // Also trigger immediately in case elements are already in view
-        handleMinecartScroll();
-
-        // Scroll-triggered animation for Why Attend cards
-        function handleCardsScroll() {
-            const cardWrappers = document.querySelectorAll('.card-wrapper');
-            
-            cardWrappers.forEach(wrapper => {
-                const rect = wrapper.getBoundingClientRect();
-                const windowHeight = window.innerHeight;
-                
-                // Trigger when card is 70% visible in viewport
-                if (rect.top < windowHeight * 0.6 && rect.bottom > 0) {
-                    if (!wrapper.classList.contains('visible')) {
-                        wrapper.classList.add('visible');
-                    }
-                }
-            });
-        }
-
-        // Add scroll event listener
-        window.addEventListener('scroll', handleCardsScroll);
-
-        // Trigger on page load
-        window.addEventListener('load', handleCardsScroll);
-
-        // Also trigger immediately in case elements are already in view
-        handleCardsScroll();
-
-
-        // Scroll-triggered animation for prize chests - ONLY WHEN CENTERED
-        function handlePrizeScroll() {
-            const prizesSection = document.querySelector('#prizes');
-            const prizeCards = document.querySelectorAll('.prize-card');
-            
-            if (!prizesSection) return;
-            
-            const sectionRect = prizesSection.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-            const sectionMiddle = sectionRect.top + (sectionRect.height / 2);
-            const screenMiddle = windowHeight / 2;
-            
-            // Only trigger when section middle is near screen middle (±200px)
-            if (Math.abs(sectionMiddle - screenMiddle) < 200) {
-                prizeCards.forEach(card => {
-                    if (!card.classList.contains('visible')) {
-                        card.classList.add('visible');
-                        
-                        // Create particle burst on landing (after fall animation)
-                        setTimeout(() => {
-                            createPrizeParticleBurst(card);
-                        }, 800);
-                    }
+                    revealObserver.unobserve(el);
                 });
-            }
-        }
+            },
+            { threshold: 0.35 }
+        );
 
-        // Particle burst with SOIL COLORS - BIGGER SCATTER & FALLING DUST
+        document.querySelectorAll(
+            '.minecart-card, .card-wrapper, .prize-card, .ghast-banner-wrapper'
+        ).forEach(el => revealObserver.observe(el));
+
+        /* ======================================================
+        PRIZE PARTICLES (REDUCED & SAFE)
+        ====================================================== */
         function createPrizeParticleBurst(card) {
-            const colors = ['particle-soil-dark', 'particle-soil-medium', 'particle-soil-light', 'particle-dirt', 'particle-brown'];
-            
-            // Find or create particle container attached to chest wrapper
-            const chestWrapper = card.querySelector('.chest-wrapper');
-            let particleContainer = card.querySelector('.particle-container');
-            
-            if (!particleContainer) {
-                particleContainer = document.createElement('div');
-                particleContainer.className = 'particle-container';
-                chestWrapper.appendChild(particleContainer); // Attach to chest wrapper
+            const chest = card.querySelector('.chest-wrapper');
+            if (!chest) return;
+
+            let container = chest.querySelector('.particle-container');
+            if (!container) {
+                container = document.createElement('div');
+                container.className = 'particle-container';
+                chest.appendChild(container);
             }
-            
-            const particleCount = 2; // INCREASED from 25
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = `particle particle-fall ${colors[Math.floor(Math.random() * colors.length)]}`;
-                
-                // BIGGER SCATTER - increased distances
-                const angle = (Math.PI * 2 * i) / particleCount + (Math.random() - 0.5) * 0.8;
-                const distance = 120 + Math.random() * 100; // INCREASED from 80 + 60
-                const tx = Math.cos(angle) * distance;
-                const ty = Math.sin(angle) * distance * 0.4; // Less vertical, more horizontal spread
-                
-                particle.style.setProperty('--tx', `${tx}px`);
-                particle.style.setProperty('--ty', `${ty}px`);
-                particle.style.left = '50%';
-                particle.style.top = '100%'; // Start from bottom of chest
-                
-                // BIGGER PARTICLES with more size variation
-                const size = 8 + Math.random() * 30; // INCREASED from 6 + 8
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                
-                particleContainer.appendChild(particle);
-                
-                // SLOWER - remove after 2s instead of 1s
-                setTimeout(() => particle.remove(), 2000);
+
+            const colors = [
+                'particle-soil-dark',
+                'particle-soil-medium',
+                'particle-soil-light'
+            ];
+
+            for (let i = 0; i < 6; i++) {
+                const p = document.createElement('div');
+                p.className = `particle particle-fall ${colors[i % colors.length]}`;
+                p.style.cssText = `
+                    left:50%;
+                    top:100%;
+                    width:${8 + Math.random() * 14}px;
+                    height:${8 + Math.random() * 14}px;
+                    --tx:${(Math.random() - 0.5) * 140}px;
+                    --ty:${Math.random() * 40}px;
+                `;
+                container.appendChild(p);
+                setTimeout(() => p.remove(), 1800);
             }
         }
 
-        // SCRAMBLE EFFECT for prize amounts
-        function initPrizeScramble() {
-            const prizeCards = document.querySelectorAll('.prize-card');
-            
-            prizeCards.forEach(card => {
-                const amountElement = card.querySelector('.prize-amount');
-                const realAmount = card.getAttribute('data-amount');
-                let scrambleInterval;
-                
-                // Function to generate random scrambled text
-                function scrambleText() {
-                    const chars = '1234567890,XXX';
-                    const length = realAmount.length + 1;
-                    let scrambled = '';
-                    
-                    for (let i = 0; i < length; i++) {
-                        if (realAmount[i] === '$') {
-                            scrambled += '$';
-                        } else if (realAmount[i] === ',') {
-                            scrambled += ',';
-                        } else {
-                            scrambled += chars[Math.floor(Math.random() * 10) + 1]; // Skip ₹
-                        }
-                    }
-                    
-                    return scrambled;
-                }
-                
-                // Start scrambling
-                function startScramble() {
-                    scrambleInterval = setInterval(() => {
-                        amountElement.textContent = scrambleText();
-                    }, 80);
-                }
-                
-                // Stop scrambling and show real amount
-                function stopScramble() {
-                    clearInterval(scrambleInterval);
-                    amountElement.textContent = realAmount;
-                }
-                
-                // Initialize with scrambled text
-                startScramble();
-                
-                // Event listeners
-                card.addEventListener('mouseenter', stopScramble);
-                card.addEventListener('mouseleave', startScramble);
+        /* ======================================================
+        PRIZE SCRAMBLE (OPTIMIZED)
+        ====================================================== */
+        document.querySelectorAll('.prize-card').forEach(card => {
+            const el = card.querySelector('.prize-amount');
+            const real = card.dataset.amount;
+            let id;
+
+            const scramble = () => {
+                el.textContent = real
+                    .split('')
+                    .map(c => (c === '₹' || c === ',' ? c : Math.floor(Math.random() * 9)))
+                    .join('');
+            };
+
+            id = setInterval(scramble, 120);
+
+            card.addEventListener('mouseenter', () => {
+                clearInterval(id);
+                el.textContent = real;
             });
-        }
 
-        // Add scroll event listener
-        window.addEventListener('scroll', handlePrizeScroll);
-
-        // Initialize on page load
-        window.addEventListener('load', () => {
-            handlePrizeScroll();
-            initPrizeScramble();
+            card.addEventListener('mouseleave', () => {
+                clearInterval(id);
+                id = setInterval(scramble, 120);
+            });
         });
 
-        // Trigger immediately
-        handlePrizeScroll();
-        initPrizeScramble();
+        /* ======================================================
+        COMING SOON TOAST
+        ====================================================== */
+        document.addEventListener('click', e => {
+            const link = e.target.closest('a[data-soon="true"]');
+            if (!link) return;
 
-
-
-        // Scroll-triggered animation for Ghast + Banner
-        function handleGhastScroll() {
-            const ghastWrappers = document.querySelectorAll('.ghast-banner-wrapper');
-
-            ghastWrappers.forEach(wrapper => {
-                const rect = wrapper.getBoundingClientRect();
-                const windowHeight = window.innerHeight;
-
-                if (rect.top < windowHeight * 0.7 && rect.bottom > 0) {
-                    wrapper.classList.add('visible');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', handleGhastScroll);
-        window.addEventListener('load', handleGhastScroll);
-        handleGhastScroll();
-
-
-    // Toast notification for Coming Soon buttons
-        document.addEventListener('DOMContentLoaded', () => {
+            e.preventDefault();
             const toast = document.getElementById('toast');
-
-            document.addEventListener('click', (e) => {
-                const link = e.target.closest('a[data-soon="true"]');
-                if (!link) return;
-
-                e.preventDefault();
-
-                toast.textContent = link.textContent + ' Coming Soon!';
-                toast.classList.add('show');
-
-                setTimeout(() => {
-                    toast.classList.remove('show');
-                }, 2000);
-            });
+            toast.textContent = link.textContent + ' Coming Soon!';
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2000);
         });
+        </script>
 
-
-    </script>
     <div id="toast" class="mc-toast">Coming Soon!</div>
 </body>
 </html>
