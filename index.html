@@ -151,51 +151,32 @@ s
         @keyframes fly-across {
             0% {
                 right: -300px;
-                top: 25%;
-                transform: rotate(-8deg) scale(0.85);
+                top: 30%;
+                transform: rotate(-6deg) scale(0.9);
                 opacity: 0;
             }
 
-            10% {
+            15% {
                 opacity: 1;
             }
 
-            20% {
-                top: 15%;
-                transform: rotate(6deg) scale(0.95);
-            }
-
-            35% {
-                top: 40%;
-                transform: rotate(-4deg) scale(1);
-            }
-
             50% {
-                top: 5%;
-                transform: rotate(8deg) scale(1.05);
+                top: 10%;
+                transform: rotate(6deg) scale(1);
             }
 
-            65% {
-                top: 30%;
-                transform: rotate(-6deg) scale(1);
-            }
-
-            80% {
-                top: 22%;
-                transform: rotate(4deg) scale(0.95);
-            }
-
-            90% {
+            85% {
                 opacity: 1;
             }
 
             100% {
                 right: calc(100% + 320px);
-                top: 98%;
-                transform: rotate(0deg) scale(0.85);
+                top: 90%;
+                transform: rotate(0deg) scale(0.9);
                 opacity: 0;
             }
         }
+
 
         @keyframes float {
             0%, 100% { transform: translateY(0); }
@@ -2531,7 +2512,7 @@ s
                 chestWrapper.appendChild(particleContainer); // Attach to chest wrapper
             }
             
-            const particleCount = 8; // INCREASED from 25
+            const particleCount = 2; // INCREASED from 25
             
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
