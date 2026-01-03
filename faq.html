@@ -1317,4 +1317,179 @@
     </script>
      <div id="toast" class="mc-toast">Coming Soon!</div>
 </body>
+<style>
+
+/* ---------- GLOBAL SAFETY ---------- */
+* {
+  max-width: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* ---------- NAVBAR FIX ---------- */
+@media (max-width: 1024px) {
+  .nav-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  .nav-links {
+    position: static;
+    transform: none;
+    padding-bottom: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav-sign-container {
+    min-width: 120px;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-sign {
+    font-size: 9px;
+    padding: 10px 14px;
+  }
+}
+
+/* ---------- FAQ HERO ---------- */
+@media (max-width: 1024px) {
+  .faq-hero {
+    background-attachment: scroll;
+    margin-top: -100px;
+    padding-top: 160px;
+  }
+}
+
+@media (max-width: 768px) {
+  .faq-hero h1 {
+    font-size: 26px;
+  }
+
+  .faq-hero p {
+    font-size: 11px;
+    line-height: 1.8;
+  }
+}
+
+/* ---------- SEARCH BOX ---------- */
+@media (max-width: 600px) {
+  .search-container {
+    max-width: 100%;
+  }
+
+  .search-box {
+    font-size: 9px;
+    padding: 16px 50px 16px 16px;
+  }
+
+  .search-icon {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* ---------- CATEGORY BUTTONS ---------- */
+@media (max-width: 768px) {
+  .category-filters {
+    gap: 8px;
+  }
+
+  .category-btn {
+    font-size: 8px;
+    padding: 10px 14px;
+  }
+}
+
+/* ---------- FAQ ITEMS ---------- */
+@media (max-width: 768px) {
+  .faq-item:hover {
+    transform: none; /* prevent sideways scroll */
+  }
+
+  .faq-question {
+    padding: 20px;
+    gap: 12px;
+  }
+
+  .faq-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .faq-question-text {
+    font-size: 10px;
+  }
+
+  .faq-toggle {
+    right: 15px;
+    font-size: 20px;
+  }
+
+  .faq-answer {
+    padding: 0 20px 0 20px;
+  }
+
+  .faq-item.active .faq-answer {
+    padding: 0 20px 20px 20px;
+  }
+
+  .faq-answer p {
+    font-size: 9px;
+    line-height: 1.8;
+  }
+}
+
+/* ---------- FLOATING ENTITY ---------- */
+@media (max-width: 768px) {
+  .flying-entity {
+    width: 260px;
+    height: 260px;
+    opacity: 0.6;
+  }
+}
+
+/* ---------- FAB ---------- */
+@media (max-width: 600px) {
+  .fab {
+    width: 60px;
+    height: 60px;
+    font-size: 26px;
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+/* ---------- TOAST ---------- */
+@media (max-width: 600px) {
+  .mc-toast {
+    font-size: 14px;
+    bottom: 140px;
+    padding: 10px 16px;
+  }
+}
+
+/* ---------- FOOTER ---------- */
+@media (max-width: 1024px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .socials {
+    justify-content: center;
+  }
+
+  footer iframe,
+  footer div[style*="height"] {
+    height: 200px !important;
+  }
+}
+
+</style>
 </html>
