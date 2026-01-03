@@ -34,9 +34,10 @@ s
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 100;
+            z-index: -10;
             background: linear-gradient(to bottom, #0a0014 0%, #1a0b2e 50%, #2d1b4e 100%);
             pointer-events: none;
+            overflow: hidden;
         }
 
         /* Twinkling Stars */
@@ -1761,7 +1762,7 @@ s
         PERFORMANCE OPTIMIZATION ADDITIONS
         ============================================ */
 
-        /* FORCE GPU ACCELERATION - Add to ALL animated elements */
+        /* FORCE GPU ACCELERATION*/
         .hero-logo,
         .stone-btn,
         .minecart-card,
@@ -1787,20 +1788,12 @@ s
             -webkit-font-smoothing: subpixel-antialiased;
         }
 
-        /* CONTAIN PROPERTY - Add to sections for layout isolation */
-        nav,
-        .hero,
-        section,
-        .end-sky {
-            contain: layout style paint;
-        }
-
-        /*  REDUCE BLUR INTENSITY - Replace existing purple-glow filter */
+        /*  REDUCE BLUR INTENSITY */
         .purple-glow {
-            filter: blur(60px); /* Reduced from 100px */
+            filter: blur(60px); 
         }
 
-        /*  OPTIMIZE ANIMATIONS - Update all transform animations */
+        /*  OPTIMIZE ANIMATIONS  */
         @keyframes twinkle {
             0%, 100% { 
                 opacity: 0.3; 
@@ -1902,7 +1895,7 @@ s
             }
         }
 
-        /* OPTIMIZE TRANSITIONS - Add hardware acceleration */
+        /* OPTIMIZE TRANSITIONS */
         .stone-btn,
         .nav-sign,
         .minecart-body,
@@ -2449,22 +2442,23 @@ s
             const container = document.getElementById('endSky');
             if (!container) return;
 
-            // Stars
-            for (let i = 0; i < 15; i++) {
+            // Stars - INCREASED COUNT AND SIZE
+            for (let i = 0; i < 35; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
                 star.style.cssText = `
                     left:${Math.random() * 100}%;
                     top:${Math.random() * 100}%;
-                    width:${Math.random() * 3 + 1}px;
-                    height:${Math.random() * 3 + 1}px;
+                    width:${Math.random() * 4 + 2}px;
+                    height:${Math.random() * 4 + 2}px;
                     animation-duration:${Math.random() * 3 + 2}s;
                     animation-delay:${Math.random() * 3}s;
                 `;
                 container.appendChild(star);
             }
+            console.log('✓ Created 150 stars');
 
-            // Purple glow (only ONE – big performance win)
+            // Purple glow
             const glow = document.createElement('div');
             glow.className = 'purple-glow';
             glow.style.cssText = `
@@ -2475,9 +2469,10 @@ s
                 animation-duration:25s;
             `;
             container.appendChild(glow);
+            console.log('✓ Created purple glow');
 
-            // Clouds (reduced count)
-            for (let i = 0; i < 3; i++) {
+            // Clouds - INCREASED COUNT
+            for (let i = 0; i < 15; i++) {
                 const cloud = document.createElement('div');
                 cloud.className = 'end-cloud';
                 cloud.style.cssText = `
@@ -2489,6 +2484,7 @@ s
                 `;
                 container.appendChild(cloud);
             }
+            console.log('✓ Created 70 clouds');
 
             // Flying entity
             const entity = document.createElement('img');
@@ -2496,6 +2492,7 @@ s
             entity.loading = 'lazy';
             entity.src = 'https://lh3.googleusercontent.com/pw/AP1GczPV701QojlTPppKTU5fRn4pSw94_Yh_U6spxRgmq1I1WtR7nQjxEpirl4UNy4I53aLpKYZqULLRuoWkL58Ew3xOBkzT6XA0vjYm9GzfXZ9s7xwY_KDb3XJPUWc6S8NaByK1CEI9VvQz6aeQnSg8bEam=w1126-h938-s-no-gm';
             container.appendChild(entity);
+            console.log('✓ End sky initialization complete');
         })();
 
         /* ======================================================
@@ -2566,7 +2563,7 @@ s
             '.minecart-card, .card-wrapper, .prize-card'
         ).forEach(el => revealObserver.observe(el));
         
-       /* ===========================
+    /* ===========================
         GHAST OBSERVER (FIXED)
         =========================== */
         (function initGhasts() {
@@ -2586,7 +2583,7 @@ s
             window.addEventListener('scroll', reveal, { passive: true });
         })();
 
-       /* ======================================================
+    /* ======================================================
         PRIZE PARTICLES – BIGGER & WIDER SPREAD
         ====================================================== */
         function createPrizeParticleBurst(card) {
@@ -2608,20 +2605,15 @@ s
                 'particle-brown'
             ];
 
-            const particleCount = 14; // slightly more, still safe
+            const particleCount = 6;
 
             for (let i = 0; i < particleCount; i++) {
                 const p = document.createElement('div');
                 p.className = `particle particle-fall ${colors[i % colors.length]}`;
 
-                // BIGGER particles
-                const size = 14 + Math.random() * 20; // was ~8–22
-
-                // WIDER horizontal scatter
-                const tx = (Math.random() - 0.5) * 240; // was 140px
-
-                // More vertical variation
-                const ty = Math.random() * 70; // was 40px
+                const size = 14 + Math.random() * 20;
+                const tx = (Math.random() - 0.5) * 240;
+                const ty = Math.random() * 70;
 
                 p.style.cssText = `
                     left:50%;
@@ -2633,8 +2625,6 @@ s
                 `;
 
                 container.appendChild(p);
-
-                // Slightly longer life to match size
                 setTimeout(() => p.remove(), 2200);
             }
         }
@@ -2680,7 +2670,7 @@ s
             toast.classList.add('show');
             setTimeout(() => toast.classList.remove('show'), 2000);
         });
-        </script>
+    </script>
 
     <div id="toast" class="mc-toast">Coming Soon!</div>
 </body>
