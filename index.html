@@ -2333,7 +2333,7 @@ s
             }
             
             // Create purple ambient glows
-            for (let i = 0; i < 8; i++) {
+            for (let i = 0; i < 1; i++) {
                 const glow = document.createElement('div');
                 glow.className = 'purple-glow';
                 glow.style.left = Math.random() * 100 + '%';
@@ -2347,7 +2347,7 @@ s
             }
             
             // Create blocky purple clouds
-            for (let i = 0; i < 15; i++) {
+            for (let i = 0; i < 4; i++) {
                 const cloud = document.createElement('div');
                 cloud.className = 'end-cloud';
                 cloud.style.left = (100 + Math.random() * 100) + '%';
@@ -2452,7 +2452,7 @@ s
                 box.insertBefore(particleContainer, box.firstChild); // Insert as first child
             }
             
-            const particleCount = 8;
+            const particleCount = 2;
             
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
