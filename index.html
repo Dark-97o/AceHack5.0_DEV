@@ -47,33 +47,6 @@
             opacity: 0;
             pointer-events: none;
         }
-        
-        /* FORCE GPU ACCELERATION */
-
-        .hero-logo,
-        .stone-btn,
-        .minecart-card,
-        .card-wrapper,
-        .prize-card,
-        .ghast-banner-wrapper,
-        .lantern,
-        .nav-sign,
-        .stat-box,
-        .bee-image,
-        .card,
-        .chest-wrapper,
-        .particle,
-        .end-cloud,
-        .star,
-        .purple-glow,
-        .flying-entity,
-        .lantern-container {
-            will-change: transform;
-            transform: translateZ(0);
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-            -webkit-font-smoothing: subpixel-antialiased;
-        }
 s
         /* Animated Particle Background */
         /* Minecraft End Sky Background */
@@ -106,7 +79,7 @@ s
         .purple-glow {
             position: absolute;
             border-radius: 50%;
-            filter: blur(100px);
+            filter: blur(50px);
             opacity: 0.4;
             animation: float-glow linear infinite;
         }
@@ -1804,6 +1777,163 @@ s
             opacity: 1;
             transform: translateX(-50%) scale(1);
         }
+
+        /* ============================================
+        PERFORMANCE OPTIMIZATION ADDITIONS
+        Add these to your existing CSS
+        ============================================ */
+
+        /* 1. FORCE GPU ACCELERATION - Add to ALL animated elements */
+        .hero-logo,
+        .stone-btn,
+        .minecart-card,
+        .card-wrapper,
+        .prize-card,
+        .ghast-banner-wrapper,
+        .lantern,
+        .nav-sign,
+        .stat-box,
+        .bee-image,
+        .card,
+        .chest-wrapper,
+        .particle,
+        .end-cloud,
+        .star,
+        .purple-glow,
+        .flying-entity,
+        .lantern-container {
+            will-change: transform;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            -webkit-font-smoothing: subpixel-antialiased;
+        }
+
+        /* 2. CONTAIN PROPERTY - Add to sections for layout isolation */
+        nav,
+        .hero,
+        section,
+        .end-sky {
+            contain: layout style paint;
+        }
+
+        /* 3. REDUCE BLUR INTENSITY - Replace existing purple-glow filter */
+        .purple-glow {
+            filter: blur(60px); /* Reduced from 100px */
+        }
+
+        /* 4. OPTIMIZE ANIMATIONS - Update all transform animations */
+        @keyframes twinkle {
+            0%, 100% { 
+                opacity: 0.3; 
+                transform: scale(1) translateZ(0); 
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.5) translateZ(0); 
+            }
+        }
+
+        @keyframes float-glow {
+            0% { transform: translate3d(0, 0, 0); }
+            50% { transform: translate3d(30px, -40px, 0); }
+            100% { transform: translate3d(0, 0, 0); }
+        }
+
+        @keyframes drift-cloud {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-150vw, 0, 0); }
+        }
+
+        @keyframes pendulum-swing {
+            0%, 100% { transform: rotate(-8deg) translateZ(0); }
+            50% { transform: rotate(8deg) translateZ(0); }
+        }
+
+        @keyframes slideInFromRight {
+            0% {
+                opacity: 0;
+                transform: translate3d(150px, 0, 0);
+            }
+            100% {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        @keyframes slideInFromLeft {
+            0% {
+                opacity: 0;
+                transform: translate3d(-150px, 0, 0);
+            }
+            100% {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        @keyframes flyIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+                transform: translate3d(0, 0, 0) rotate(0deg);
+            }
+        }
+
+        @keyframes syncedFloat {
+            0%, 100% {
+                transform: translate3d(0, 0, 0);
+            }
+            50% {
+                transform: translate3d(0, -15px, 0);
+            }
+        }
+
+        @keyframes syncedFloatBee {
+            0%, 100% {
+                transform: translate3d(-50%, 0, 0);
+            }
+            50% {
+                transform: translate3d(-50%, -15px, 0);
+            }
+        }
+
+        @keyframes chestFall {
+            0% {
+                opacity: 0;
+                transform: translate3d(0, -500px, 0) rotate(0deg);
+            }
+            60% {
+                opacity: 1;
+                transform: translate3d(0, 0, 0) rotate(0deg);
+            }
+            75% {
+                transform: translate3d(0, -15px, 0) rotate(-2deg);
+            }
+            85% {
+                transform: translate3d(0, 5px, 0) rotate(1deg);
+            }
+            95% {
+                transform: translate3d(0, -5px, 0) rotate(-0.5deg);
+            }
+            100% {
+                opacity: 1;
+                transform: translate3d(0, 0, 0) rotate(0deg);
+            }
+        }
+
+        /* 5. OPTIMIZE TRANSITIONS - Add hardware acceleration */
+        .stone-btn,
+        .nav-sign,
+        .minecart-body,
+        .stat-box,
+        .popup-image {
+            transition-property: transform, opacity, box-shadow;
+            transition-duration: 0.3s;
+            transition-timing-function: ease;
+        }
         
     </style>
 </head>
@@ -2323,7 +2453,7 @@ s
             if (!container) return;
 
             // Stars
-            for (let i = 0; i < 25; i++) {
+            for (let i = 0; i < 15; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
                 star.style.cssText = `
