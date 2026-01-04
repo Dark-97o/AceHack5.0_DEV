@@ -1965,80 +1965,581 @@ s
                 opacity: 0;
             }
         }
+
+
         /* ========================================
-        RESPONSIVE MEDIA QUERIES
+        HAMBURGER MENU STYLES
         ======================================== */
 
-        /* Tablets and Small Laptops (≤1024px) */
-        @media (max-width: 1024px) {
-            .nav-container {
-                height: auto;
-                flex-direction: column;
-                align-items: center;
-                padding: 0 20px 20px;
-            }
-            
-            .nav-links {
-                position: static;
-                transform: none;
-                padding-bottom: 20px;
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-            
-            .lantern-container {
-                display: none;
-            }
-            
-            .hero {
-                margin-top: 0;
-                padding-top: 80px;
-            }
-            
-            .track-row {
-                justify-content: center;
-            }
-            
-            .minecart-card {
-                flex: 1 1 40%;
-            }
-            
-            .cards-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .prize-row {
-                gap: 30px;
-            }
+        .hamburger-menu {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 2000;
+            background: rgba(26, 11, 46, 0.95);
+            border: 3px solid #8b5a2b;
+            border-radius: 8px;
+            padding: 12px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
         }
 
-        /* Tablets (≤768px) */
-        @media (max-width: 768px) {
+        .hamburger-menu span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background: #FFD700;
+            margin: 4px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+        }
+
+        .hamburger-menu.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
+        /* Mobile overlay menu */
+        .mobile-nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 280px;
+            height: 100vh;
+            background: linear-gradient(to bottom, #1a0b2e 0%, #2d1b4e 100%);
+            z-index: 1999;
+            transition: left 0.4s ease;
+            overflow-y: auto;
+            box-shadow: 5px 0 30px rgba(0, 0, 0, 0.9);
+            border-right: 4px solid #8b5a2b;
+        }
+
+        .mobile-nav-overlay.active {
+            left: 0;
+        }
+
+        .mobile-nav-content {
+            padding: 80px 20px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .mobile-nav-item {
+            margin-bottom: 5px;
+        }
+
+        .mobile-nav-link {
+            display: block;
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczMxkXqlZpEAGsqwkmKuJT0ceVu9_CuV2rmiFt8xlvW9X30dcur-795F1dwSkhe9je8mMAqhnPsQMVd2q7GwOeP257Kx6k7NqVyA0w-G6l1Tq17S6upayDwz3JdLd3AQ0vM2zUx4vqhdtbQlNkFFf1aq=w1163-h400-s-no-gm?authuser=0');
+            background-size: cover;
+            border: 3px solid #2c231b;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: #FFF;
+            font-size: 11px;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        .mobile-nav-link:hover,
+        .mobile-nav-link:active {
+            transform: translateX(8px);
+            box-shadow: 0 6px 15px rgba(139, 90, 43, 0.8);
+            border-color: #8b5a2b;
+        }
+
+        /* Backdrop overlay */
+        .nav-backdrop {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1998;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .nav-backdrop.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* ========================================
+        RESPONSIVE MEDIA QUERIES - COMPLETE FIX
+        ======================================== */
+
+        /* Tablets (≤1024px) - Minor adjustments */
+        @media (max-width: 1024px) {
             .nav-sign {
-                font-size: 9px;
-                padding: 8px 12px;
+                font-size: 10px;
+                padding: 12px 16px;
             }
             
             .nav-sign-container {
-                min-width: 90px;
+                min-width: 110px;
+            }
+            
+            .hero-logo {
+                max-width: 900px;
+            }
+            
+            /* Footer fix for tablets */
+            .footer-main {
+                height: auto;
+                padding: 35px 20px 40px;
+            }
+            
+            .footer-content {
+                gap: 25px;
+                align-items: flex-start;
+            }
+            
+            .acehack-logo {
+                width: 280px;
+                margin-top: -25px;
+            }
+            
+            .map-overlay {
+                width: 240px;
+                height: 240px;
+                top: 60px;
+                right: 20px;
+            }
+        }
+
+        /* Medium Tablets (≤768px) */
+        @media (max-width: 768px) {
+            /* Navbar - shrink but keep structure */
+            .nav-container {
+                padding: 0 15px;
+                height: auto;
+                min-height: 180px;
+            }
+            
+            .lantern-container {
+                width: 50px;
+            }
+            
+            .lantern {
+                width: 40px;
+                height: 56px;
+            }
+            
+            .chain {
+                height: 50px;
+            }
+            
+            .nav-links {
+                gap: 10px;
+                padding-bottom: 60px;
+            }
+            
+            .nav-sign-container {
+                min-width: 85px;
+            }
+            
+            .nav-sign {
+                font-size: 8px;
+                padding: 10px 12px;
             }
             
             .sign-chain::before,
             .sign-chain::after {
-                left: -30px;
-                right: -30px;
+                left: -25px;
+                right: -25px;
+                height: 28px;
+            }
+            
+            /* Mobile Phones (≤480px) - COMPLETE HERO FIX */
+            @media (max-width: 480px) {
+                /* HIDE ORIGINAL NAVBAR */
+                nav {
+                    display: none !important;
+                }
+                
+                /* Hero - COMPLETE SPACING FIX */
+                .hero {
+                    margin-top: 0 !important;
+                    padding: 80px 20px 60px !important;
+                    min-height: 90vh !important;
+                    display: flex !important;
+                    flex-direction: column !important;
+                    justify-content: flex-start !important;
+                    align-items: center !important;
+                }
+                
+                .hero > * {
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+                
+                .hero-logo {
+                    max-width: 85vw;
+                    height: auto;
+                    margin-top: 0 !important;
+                    margin-bottom: 30px !important;
+                    flex-shrink: 0;
+                }
+                
+                .countdown-card {
+                    padding: 12px 18px;
+                    max-width: 90vw;
+                    margin-top: 20px !important;
+                    margin-bottom: 30px !important;
+                    flex-shrink: 0;
+                }
+                
+                .countdown-card h2 {
+                    font-size: 11px;
+                    margin-bottom: 15px;
+                }
+                
+                .countdown {
+                    gap: 8px;
+                    justify-content: center;
+                }
+                
+                .countdown div {
+                    min-width: 50px;
+                    padding: 7px;
+                }
+                
+                .countdown span {
+                    font-size: 10px;
+                    margin-top: 8px;
+                }
+                
+                .stone-buttons {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                    margin-top: 0 !important;
+                    width: 100%;
+                    max-width: 300px;
+                    align-items: center;
+                    flex-shrink: 0;
+                }
+                
+                .stone-btn-wrapper {
+                    width: 100%;
+                    max-width: 280px;
+                }
+                
+                .stone-btn {
+                    font-size: 11px;
+                    padding: 15px 22px;
+                    width: 100%;
+                    display: block;
+                    text-align: center;
+                }
+            }
+            
+            /* Stats */
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+            
+            /* Tracks */
+            .track-row {
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .minecart-card {
+                flex: 0 1 45%;
+                max-width: 220px;
+            }
+            
+            .minecart-body {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .track-logo {
+                width: 125px;
+                margin-top: -95px;
+            }
+            
+            .track-info {
+                width: 180px;
+                padding: 7px 18px;
+            }
+            
+            .track-info h3 {
+                font-size: 11px;
+            }
+            
+            .track-info p {
+                font-size: 8px;
+            }
+            
+            /* Cards */
+            .cards-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 18px;
+            }
+            
+            .bee-image {
+                width: 70px;
+                top: -45px;
+            }
+            
+            .card {
+                margin-top: 25px;
+                margin-bottom: 55px;
+                padding: 12px 8px;
+                min-height: 160px;
+            }
+            
+            .card-logo {
+                width: 85px;
+                height: 85px;
+            }
+            
+            .card h3 {
+                font-size: 13px;
+            }
+            
+            .card p {
+                font-size: 9px;
+            }
+            
+            /* Ghast */
+            .ghast-img {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .rope-container {
+                width: 70px;
+            }
+            
+            .banner-sign {
+                max-width: 500px;
+                padding: 8px 20px;
+            }
+            
+            .banner-sign p {
+                font-size: 11px;
+            }
+            
+            /* Prizes Section - ALWAYS CENTERED */
+            #prizes {
+                text-align: center;
+            }
+
+            #prizes > div {
+                max-width: 1400px;
+                margin: 0 auto;
+            }
+
+            .prizes {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: clamp(50px, 8vw, 80px);
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 40px 20px;
+            }
+
+            .prize-row {
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
+                gap: clamp(30px, 5vw, 60px);
+                flex-wrap: wrap;
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            .prize-row-1,
+            .prize-row-2 {
+                max-width: 100%;
+            }
+
+            .prize-card {
+                text-align: center;
+                position: relative;
+                opacity: 0;
+                transform: translateY(-800px);
+                transition: none;
+                margin: 0 auto;
+            }
+
+            /* Desktop prizes */
+            @media (min-width: 769px) {
+                .prize-row {
+                    justify-content: center;
+                }
+            }
+
+            /* Tablet prizes */
+            @media (max-width: 768px) {
+                .prizes {
+                    gap: 60px;
+                }
+                
+                .prize-row {
+                    gap: 25px;
+                    justify-content: center;
+                }
+            }
+
+            /* Mobile prizes */
+            @media (max-width: 600px) {
+                .prize-row {
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 20px;
+                }
+                
+                .prize-card {
+                    max-width: 250px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .prize-card {
+                    max-width: 220px;
+                }
+                
+                .prize-card-elevated {
+                    margin-bottom: 15px;
+                }
+            }
+            
+            /* Footer - FIXED ALIGNMENT */
+            .footer-main {
+                padding: 30px 15px 35px;
+            }
+            
+            .footer-content {
+                flex-wrap: wrap;
+                justify-content: space-between;
+                gap: 20px;
+            }
+            
+            .logo-section {
+                flex: 1 1 100%;
+                order: 1;
+                text-align: center;
+            }
+            
+            .acehack-logo {
+                width: 260px;
+                margin-top: -20px;
+            }
+            
+            .socials {
+                margin-top: 12px;
+                gap: 10px;
+            }
+            
+            .links-section {
+                flex: 1 1 45%;
+                order: 2;
+                min-width: 140px;
+                text-align: left;
+            }
+            
+            .contact-section {
+                flex: 1 1 45%;
+                order: 3;
+                min-width: 160px;
+                text-align: left;
+            }
+            
+            .location-section {
+                flex: 1 1 100%;
+                order: 4;
+                text-align: center;
+            }
+            
+            .map-overlay {
+                position: relative;
+                right: auto;
+                top: auto;
+                transform: none;
+                width: 100%;
+                max-width: 350px;
+                height: 250px;
+                margin: 15px auto 0;
+            }
+            
+            .links-section h3,
+            .contact-section h3,
+            .location-section h3 {
+                font-size: 12px;
+                margin-bottom: 10px;
+            }
+            
+            .links-section a {
+                font-size: 9px;
+                margin-bottom: 6px;
+            }
+            
+            .contact-info {
+                font-size: 9px;
+                line-height: 1.7;
+            }
+        }
+
+        /* Small Tablets (≤600px) */
+        @media (max-width: 600px) {
+            .nav-container {
+                min-height: 160px;
+            }
+            
+            .lantern-container {
+                width: 45px;
+            }
+            
+            .lantern {
+                width: 35px;
+                height: 50px;
+            }
+            
+            .nav-sign {
+                font-size: 7px;
+                padding: 8px 10px;
+            }
+            
+            .nav-sign-container {
+                min-width: 75px;
+            }
+            
+            .hero {
+                margin-top: -160px;
             }
             
             .hero-logo {
                 max-width: 85vw;
             }
             
-            .stone-buttons {
-                flex-direction: column;
-                align-items: center;
-                gap: 20px;
-            }
-            
+            /* About - stack */
             .about-content {
                 flex-direction: column;
                 text-align: center;
@@ -2048,37 +2549,169 @@ s
                 margin-left: 0;
             }
             
+            /* Stats - 1 column */
             .stats {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr;
             }
             
+            /* Tracks - stack */
             .track-row {
                 flex-direction: column;
             }
             
             .minecart-card {
                 flex: 1 1 100%;
-                max-width: 300px;
+                max-width: 200px;
             }
             
             .minecart-rail {
                 display: none;
             }
             
+            /* Cards - 2 columns */
             .cards-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
             }
             
-            .ghast-banner-wrapper {
+            /* Prizes - stack */
+            .prize-row {
+                flex-direction: column;
+            }
+            
+            .prize-card-elevated {
+                margin-bottom: 20px;
+            }
+            
+            /* Footer */
+            .footer-content {
                 flex-direction: column;
                 align-items: center;
+                text-align: center;
+            }
+            
+            .links-section,
+            .contact-section {
+                flex: 1 1 100%;
+                text-align: center;
+            }
+        }
+
+        /* Mobile Phones (≤480px) - HAMBURGER ACTIVATES */
+        @media (max-width: 480px) {
+            /* SHOW HAMBURGER MENU */
+            .hamburger-menu {
+                display: flex !important;
+            }
+            
+            .mobile-nav-overlay {
+                display: block !important;
+            }
+            
+            .nav-backdrop {
+                display: block !important;
+            }
+            
+            /* HIDE ORIGINAL NAVBAR */
+            nav {
+                display: none !important;
+            }
+            
+            /* Hero adjustments */
+            .hero {
+                margin-top: 0 !important;
+                padding-top: 70px !important;
+            }
+            
+            .hero-logo {
+                max-width: 85vw;
+            }
+            
+            .countdown-card {
+                padding: 12px 18px;
+                max-width: 90vw;
+            }
+            
+            .countdown {
+                gap: 8px;
+            }
+            
+            .countdown div {
+                min-width: 50px;
+                padding: 7px;
+            }
+            
+            .stone-buttons {
+                flex-direction: column;
+                gap: 20px;
+                margin-top: 50px;
+            }
+            
+            .stone-btn {
+                font-size: 11px;
+                padding: 15px 22px;
+            }
+            
+            .popup-image {
+                display: none;
+            }
+            
+            /* About */
+            .about-content {
+                font-size: 10px;
+            }
+            
+            /* Tracks */
+            .minecart-body {
+                width: 170px;
+                height: 170px;
+            }
+            
+            .track-logo {
+                width: 115px;
+                margin-top: -90px;
+            }
+            
+            .track-info {
+                width: 170px;
+                padding: 6px 15px;
+            }
+            
+            .track-info h3 {
+                font-size: 10px;
+            }
+            
+            .track-info p {
+                font-size: 7px;
+            }
+            
+            /* Cards - 1 column */
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .card {
+                max-width: 260px;
+                margin: 25px auto 60px;
+            }
+            
+            .bee-image {
+                width: 75px;
+            }
+            
+            /* Ghast - stack */
+            .ghast-banner-wrapper {
+                flex-direction: column;
+            }
+            
+            .ghast-img {
+                width: 120px;
+                height: 120px;
             }
             
             .rope-container {
                 width: 8px;
-                height: 60px;
-                flex-direction: column;
+                height: 40px;
             }
             
             .rope {
@@ -2087,9 +2720,9 @@ s
                 background: repeating-linear-gradient(
                     0deg,
                     #5C4033 0px,
-                    #5C4033 10px,
-                    #3E2723 10px,
-                    #3E2723 20px
+                    #5C4033 8px,
+                    #3E2723 8px,
+                    #3E2723 16px
                 );
             }
             
@@ -2101,66 +2734,109 @@ s
             }
             
             .banner-sign {
-                max-width: 90%;
-                font-size: 11px;
+                max-width: 88%;
+                padding: 8px 16px;
             }
             
+            .banner-sign p {
+                font-size: 9px;
+                line-height: 1.5;
+            }
+            
+            /* Prizes */
             .prize-card {
-                flex: 1 1 100%;
-                max-width: 300px;
+                max-width: 200px;
             }
             
-            .prize-card-elevated {
-                margin-bottom: 20px;
+            .chest-wrapper {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .prize-amount {
+                font-size: 16px;
+            }
+            
+            /* Footer - FIXED MOBILE */
+            .footer-main {
+                padding: 25px 15px 30px;
             }
             
             .footer-content {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
+                gap: 18px;
             }
             
-            .footer-section {
-                width: 100%;
-                max-width: 400px;
+            .logo-section,
+            .links-section,
+            .contact-section,
+            .location-section {
+                flex: 1 1 100%;
+                max-width: 100%;
             }
             
-            .map-overlay {
-                position: relative;
-                right: auto;
-                top: auto;
-                transform: none;
-                width: 100%;
-                max-width: 400px;
-                margin: 20px auto;
-            }
-        }
-
-        /* Mobile Devices (≤480px) */
-        @media (max-width: 480px) {
-            .nav-sign-container {
-                min-width: 80px;
+            .acehack-logo {
+                width: 230px;
+                margin-top: -15px;
             }
             
-            .nav-sign {
-                font-size: 7px;
-                padding: 6px 10px;
+            .socials {
+                gap: 10px;
+                margin-top: 10px;
             }
             
-            .sign-chain::before,
-            .sign-chain::after {
-                left: -20px;
-                right: -20px;
+            .social-icon {
+                width: 30px;
                 height: 30px;
             }
             
-            .countdown {
-                gap: 8px;
+            .links-section,
+            .contact-section {
+                margin-bottom: 8px;
+            }
+            
+            .map-overlay {
+                max-width: 300px;
+                height: 220px;
+                margin-top: 10px;
+            }
+            
+            .fab {
+                width: 55px;
+                height: 55px;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+
+        /* Extra Small (≤360px) */
+        @media (max-width: 360px) {
+            .hamburger-menu {
+                top: 15px;
+                left: 15px;
+                width: 45px;
+                height: 45px;
+                padding: 10px;
+            }
+            
+            .hamburger-menu span {
+                width: 24px;
+            }
+            
+            .mobile-nav-overlay {
+                width: 250px;
+            }
+            
+            .mobile-nav-link {
+                font-size: 10px;
+                padding: 12px 16px;
+            }
+            
+            .hero-logo {
+                max-width: 90vw;
             }
             
             .countdown div {
                 min-width: 45px;
-                padding: 6px;
             }
             
             .stone-btn {
@@ -2168,158 +2844,9 @@ s
                 padding: 12px 18px;
             }
             
-            .popup-image {
-                display: none;
-            }
-            
-            h2::before {
-                top: -50px;
-                width: 180px;
-                height: 50px;
-            }
-            
-            .stats {
-                grid-template-columns: 1fr;
-            }
-            
             .minecart-body {
-                width: 180px;
-                height: 180px;
-            }
-            
-            .track-logo {
-                width: 120px;
-                margin-top: -100px;
-            }
-            
-            .track-info {
-                width: 180px;
-                padding: 8px 15px;
-            }
-            
-            .track-info h3 {
-                font-size: 11px;
-            }
-            
-            .track-info p {
-                font-size: 8px;
-            }
-            
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .card {
-                min-height: auto;
-                padding: 15px 10px;
-            }
-            
-            .card-logo {
-                width: 80px;
-                height: 80px;
-            }
-            
-            .card h3 {
-                font-size: 14px;
-            }
-            
-            .card p {
-                font-size: 9px;
-            }
-            
-            .ghast-img {
-                width: 120px;
-                height: 120px;
-            }
-            
-            .banner-sign {
-                padding: 8px 15px;
-                font-size: 9px;
-            }
-            
-            .banner-sign p {
-                font-size: 10px;
-            }
-            
-            .chest-wrapper {
-                width: 140px;
-                height: 140px;
-            }
-            
-            .prize-label {
-                font-size: 11px;
-            }
-            
-            .prize-amount {
-                font-size: 16px;
-            }
-            
-            .fab {
-                width: 60px;
-                height: 60px;
-                bottom: 20px;
-                right: 20px;
-            }
-            
-            .footer-main {
-                padding: 30px 15px;
-                height: auto;
-            }
-            
-            .acehack-logo {
-                width: 250px;
-            }
-            
-            .socials {
-                gap: 10px;
-            }
-            
-            .social-icon {
-                width: 28px;
-                height: 28px;
-            }
-            
-            .links-section h3,
-            .contact-section h3 {
-                font-size: 12px;
-            }
-            
-            .links-section a,
-            .contact-info {
-                font-size: 9px;
-            }
-        }
-
-        /* Extra Small Devices (≤360px) */
-        @media (max-width: 360px) {
-            .nav-sign {
-                font-size: 6px;
-                padding: 5px 8px;
-            }
-            
-            .hero-logo {
-                max-width: 95vw;
-            }
-            
-            .countdown-card h2 {
-                font-size: 10px;
-            }
-            
-            .countdown div {
-                min-width: 40px;
-            }
-            
-            h2 {
-                font-size: 18px;
-            }
-            
-            .about-content {
-                font-size: 9px;
-            }
-            
-            .minecart-body {
-                width: 140px;
-                height: 140px;
+                width: 150px;
+                height: 150px;
             }
             
             .track-logo {
@@ -2331,14 +2858,24 @@ s
                 width: 150px;
             }
             
-            .track-info h3 {
-                font-size: 10px;
+            .card {
+                max-width: 240px;
             }
-        }        
-
-    
-
-        
+            
+            .chest-wrapper {
+                width: 130px;
+                height: 130px;
+            }
+            
+            .acehack-logo {
+                width: 200px;
+            }
+            
+            .map-overlay {
+                max-width: 270px;
+                height: 200px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -3079,6 +3616,105 @@ s
             toast.classList.add('show');
             setTimeout(() => toast.classList.remove('show'), 2000);
         });
+        /* ======================================================
+        HAMBURGER MENU - MOBILE ONLY (≤480px)
+        ====================================================== */
+        (function initMobileMenu() {
+            // Create elements immediately
+            const hamburger = document.createElement('div');
+            hamburger.className = 'hamburger-menu';
+            hamburger.innerHTML = '<span></span><span></span><span></span>';
+            
+            const backdrop = document.createElement('div');
+            backdrop.className = 'nav-backdrop';
+            
+            const mobileNav = document.createElement('div');
+            mobileNav.className = 'mobile-nav-overlay';
+            
+            const navContent = document.createElement('div');
+            navContent.className = 'mobile-nav-content';
+            
+            // Nav links
+            const navLinks = [
+                { href: '#home', text: 'Home' },
+                { href: '#timeline', text: 'Timeline', soon: true },
+                { href: '#guests', text: 'Guests', soon: true },
+                { href: '#tracks', text: 'Tracks' },
+                { href: '#team', text: 'DG Swags', soon: true },
+                { href: '#contact', text: 'Contact' }
+            ];
+            
+            // Build menu
+            navLinks.forEach(link => {
+                const item = document.createElement('div');
+                item.className = 'mobile-nav-item';
+                
+                const anchor = document.createElement('a');
+                anchor.href = link.href;
+                anchor.className = 'mobile-nav-link';
+                anchor.textContent = link.text;
+                if (link.soon) anchor.dataset.soon = 'true';
+                
+                item.appendChild(anchor);
+                navContent.appendChild(item);
+            });
+            
+            mobileNav.appendChild(navContent);
+            
+            // Append to body
+            document.body.appendChild(hamburger);
+            document.body.appendChild(backdrop);
+            document.body.appendChild(mobileNav);
+            
+            console.log('✓ Hamburger menu elements created');
+            
+            // Toggle menu
+            function toggleMenu() {
+                hamburger.classList.toggle('active');
+                mobileNav.classList.toggle('active');
+                backdrop.classList.toggle('active');
+                
+                if (mobileNav.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            }
+            
+            // Close menu
+            function closeMenu() {
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('active');
+                backdrop.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            // Event listeners
+            hamburger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleMenu();
+            });
+            
+            backdrop.addEventListener('click', closeMenu);
+            
+            // Handle nav links
+            navContent.querySelectorAll('.mobile-nav-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    if (link.dataset.soon) {
+                        e.preventDefault();
+                        const toast = document.getElementById('toast');
+                        if (toast) {
+                            toast.textContent = link.textContent + ' Coming Soon!';
+                            toast.classList.add('show');
+                            setTimeout(() => toast.classList.remove('show'), 2000);
+                        }
+                    }
+                    closeMenu();
+                });
+            });
+            
+            console.log('✓ Hamburger menu initialized');
+        })();
     </script>
 
     <div id="toast" class="mc-toast">Coming Soon!</div>
