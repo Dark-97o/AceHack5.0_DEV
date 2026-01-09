@@ -2091,10 +2091,6 @@ s
    MOBILE RESPONSIVE STYLES - ALL FIXES APPLIED
    ======================================== */
 
-/* ========================================
-   MOBILE RESPONSIVE STYLES - ALL FIXES APPLIED
-   ======================================== */
-
 /* Tablets and smaller (≤768px) */
 @media (max-width: 768px) {
     /* Enable horizontal scrolling where needed */
@@ -2122,11 +2118,17 @@ s
     }
     
     .countdown-card h2 {
-        font-size: 7px;
+        font-size: 4px;
         margin-bottom: 8px;
+    }
+
+    .countdown-card h1 {
+        font-size: 10px;
+        text-shadow: 2px 2px 0 #000;
     }
     
     .countdown {
+        margin-top: -10px;
         display: flex;
         gap: 5px;
         justify-content: center;
@@ -2335,7 +2337,7 @@ s
     .open-innovation-banner {
         margin-left: 15px;
         margin-top: -15px;
-        margin-bottom: -20px;
+        margin-bottom: 10px;
     }
     
     .ghast-banner-wrapper {
@@ -2371,7 +2373,7 @@ s
     .banner-sign {
         max-width: 400px;
         padding: 6px 16px;
-        max-height: 45px;
+        max-height: 52px;
     }
     
     .banner-sign p {
@@ -2379,50 +2381,70 @@ s
         line-height: 1.5;
     }
     
-    /* WHY ATTEND SECTION - SMALLER CARDS, FORCE VISIBLE */
+    /* WHY ATTEND SECTION – FORCE SMALL CARDS (COPY PASTE READY) */
+
     .cards-grid {
-        grid-template-columns: repeat(5, 1fr);
-        gap: 4px;
-        padding: 25px 2px;
+        display: grid;
+        grid-template-columns: repeat(5, 100px);
+        justify-content: center;
+        gap: 18px;
+        padding: 25px 6px;
         margin-bottom: -50px;
     }
-    
+
+    /* Card container */
     .card-wrapper {
-        min-width: 65px;
-        max-width: 72px;
-        opacity: 1 !important; /* FORCE VISIBLE */
-        transform: none !important; /* REMOVE INITIAL TRANSFORM */
+        width: 100px !important;
+        min-width: 60px !important;
+        max-width: 100px !important;
+        opacity: 1 !important;
+        transform: none !important;
+        overflow: visible; /* bee stays visible */
     }
-    
+
+    /* Bee */
     .bee-image {
         width: 30px;
-        top: -23px;
+        top: -22px;
     }
-    
+
+    /* Card box */
     .card {
+        width: 100px;
+        min-width: 60px;
+        max-width: 100px;
+
+        box-sizing: border-box;
+        overflow: hidden;
+
         min-height: 95px;
         max-height: 115px;
-        padding: 6px 3px;
-        margin-bottom: 30px;
+
+        padding: 6px 4px;
         margin-top: 10px;
+        margin-bottom: 30px;
+
         border-width: 3px;
     }
-    
+
+    /* Logo inside card */
     .card-logo {
-        width: 40px;
-        height: 40px;
-        margin-bottom: 4px;
+        width: 36px;
+        height: 36px;
+        margin-bottom: 6px;
     }
-    
+
+    /* Text */
     .card h3 {
         font-size: 6.5px;
-        margin-bottom: 3px;
+        margin-bottom: 4px;
     }
-    
+
     .card p {
         font-size: 5.5px;
         line-height: 1.3;
     }
+
     
     /* PRIZES SECTION - FORCE VISIBLE */
     .prizes {
@@ -2679,9 +2701,12 @@ s
     }
     
     section, .section-bg {
-        padding: 50px 8px;
+        padding: 60px 8px;
     }
     
+    #why-attend {
+        margin-top: -100px;
+    }
     h2 {
         font-size: 18px;
         margin-bottom: 40px;
@@ -2781,43 +2806,62 @@ s
     }
     
     /* Why Attend - FORCE VISIBLE */
-    .cards-grid {
-        gap: 3px;
-        padding: 25px 1px;
+    /* ============================= */
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 80px); /* 🔒 HARD LOCK */
+            justify-content: center;
+            gap: 3px;
+            padding: 25px 1px;
+        }
+
+        .card-wrapper {
+            width: 80px !important;
+            min-width: 80px !important;
+            max-width: 80px !important;
+            opacity: 1 !important;
+            transform: none !important;
+            overflow: visible;
+        }
+
+        .bee-image {
+            width: 26px;
+            top: -21px;
+        }
+
+        .card {
+            width: 50px;
+            min-width: 80px;
+            max-width: 80px;
+
+            box-sizing: border-box;
+            overflow: hidden;
+
+            min-height: 85px;
+            max-height: 105px;
+
+            padding: 5px 2px;
+            margin-bottom: 26px;
+
+            border-width: 3px;
+        }
+
+        .card-logo {
+            width: 30px;
+            height: 30px;
+        }
+
+        .card h3 {
+            font-size: 6px;
+        }
+
+        .card p {
+            font-size: 5px;
+            line-height: 1.2;
+        }
     }
-    
-    .card-wrapper {
-        min-width: 58px;
-        max-width: 66px;
-        opacity: 1 !important;
-        transform: none !important;
-    }
-    
-    .bee-image {
-        width: 26px;
-        top: -21px;
-    }
-    
-    .card {
-        min-height: 85px;
-        max-height: 105px;
-        padding: 5px 2px;
-        margin-bottom: 26px;
-    }
-    
-    .card-logo {
-        width: 36px;
-        height: 36px;
-    }
-    
-    .card h3 {
-        font-size: 6px;
-    }
-    
-    .card p {
-        font-size: 5px;
-        line-height: 1.2;
-    }
+
     
     /* Prizes - FORCE VISIBLE */
     .prize-card {
