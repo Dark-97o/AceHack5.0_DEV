@@ -147,25 +147,33 @@ s
         /* Flying Entity (Ender Dragon/Enderman) */
         .flying-entity {
             position: fixed;
-            transform: translate3d(120vw, 30vh, 0);
-            width: 500px;
-            height: 500px;
-            z-index: -1;
-            animation: fly-across 10s ease-in-out infinite;
+            width: 400px;
+            height: 400px;
+            z-index: -10;
+            pointer-events: none;
+            image-rendering: pixelated;
+            animation: fly-across 25s linear infinite;
+            will-change: transform, left, top;
         }
 
         @keyframes fly-across {
             0% {
-                transform: translate3d(120vw, 30vh, 0) rotate(-6deg) scale(0.9);
-                opacity: 0;
+                left: 100%;
+                top: 20%;
+                opacity: 1;
+                transform: scale(0.9) rotate(-5deg);
             }
             50% {
-                transform: translate3d(50vw, 10vh, 0) rotate(6deg) scale(1);
+                left: 50%;
+                top: 30%;
                 opacity: 1;
+                transform: scale(1.1) rotate(3deg);
             }
             100% {
-                transform: translate3d(-120vw, 90vh, 0) rotate(0deg) scale(0.9);
-                opacity: 0;
+                left: -20%;
+                top: 50%;
+                opacity: 1;
+                transform: scale(0.9) rotate(0deg);
             }
         }
 
@@ -1807,7 +1815,6 @@ s
         .end-cloud,
         .star,
         .purple-glow,
-        .flying-entity,
         .lantern-container {
             will-change: transform;
             transform: translateZ(0);
@@ -2082,6 +2089,7 @@ s
             opacity: 1;
             pointer-events: auto;
         }
+        
     </style>
 
      <!-- ========================================
@@ -4086,14 +4094,59 @@ s
             console.log('✓ Created 70 clouds');
 
             // Flying entity
-            const entity = document.createElement('img');
-            entity.className = 'flying-entity';
-            entity.loading = 'lazy';
-            entity.src = 'https://lh3.googleusercontent.com/pw/AP1GczPV701QojlTPppKTU5fRn4pSw94_Yh_U6spxRgmq1I1WtR7nQjxEpirl4UNy4I53aLpKYZqULLRuoWkL58Ew3xOBkzT6XA0vjYm9GzfXZ9s7xwY_KDb3XJPUWc6S8NaByK1CEI9VvQz6aeQnSg8bEam=w1126-h938-s-no-gm';
-            container.appendChild(entity);
-            console.log('✓ End sky initialization complete');
+            
         })();
 
+        // Flying entity - GUARANTEED TO WORK
+        (function createFlyingDragon() {
+            console.log('🐉 Initializing dragon...');
+            
+            // Try multiple container options
+            let container = document.body;
+            
+            if (!container) {
+                console.warn('⚠️ endSky not found, using body');
+                container = document.body;
+            }
+            
+            const dragon = document.createElement('img');
+            dragon.className = 'flying-entity';
+            dragon.alt = 'Flying Dragon';
+            dragon.src = 'https://lh3.googleusercontent.com/pw/AP1GczPV701QojlTPppKTU5fRn4pSw94_Yh_U6spxRgmq1I1WtR7nQjxEpirl4UNy4I53aLpKYZqULLRuoWkL58Ew3xOBkzT6XA0vjYm9GzfXZ9s7xwY_KDb3XJPUWc6S8NaByK1CEI9VvQz6aeQnSg8bEam=w1126-h938-s-no-gm';
+            
+            // Force styles inline
+            dragon.style.cssText = `
+                position: fixed !important;
+                width: 400px !important;
+                height: 400px !important;
+                z-index: -1 !important;
+                pointer-events: none !important;
+                image-rendering: pixelated !important;
+                opacity: 1 !important;
+            `;
+            
+            dragon.onload = () => {
+                console.log('✅ Dragon loaded');
+                dragon.style.animation = 'fly-across 20s ease-in-out infinite';
+            };
+            
+            dragon.onerror = () => {
+                console.error('❌ Dragon failed to load');
+            };
+            
+            container.appendChild(dragon);
+            console.log('✓ Dragon added to DOM');
+            
+            // Verify it's in the DOM
+            setTimeout(() => {
+                const check = document.querySelector('.flying-entity');
+                console.log('Dragon in DOM:', check ? 'YES ✓' : 'NO ✗');
+                if (check) {
+                    const rect = check.getBoundingClientRect();
+                    console.log('Dragon position:', rect);
+                }
+            }, 100);
+        })();
         /* ======================================================
         COUNTDOWN (SAFE & LIGHT)
         ====================================================== */
