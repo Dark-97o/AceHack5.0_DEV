@@ -580,102 +580,229 @@
             50% { box-shadow: 0 0 60px rgb(255, 251, 0); }
         }
 
-        /* Footer */
-        footer {
-            background: linear-gradient(180deg, #2C1810 0%, #0a0605 100%);
-            padding: 90px 20px 40px;
-            border-top: 10px solid #654321;
+        /* Global Footer Styles */
+        footer#contact {
+            width: 100%;
+            font-family: 'Press Start 2P', cursive;
+            color: #FFFFFF;
+            image-rendering: pixelated;
+            margin: 0;
+            padding: 0;
+            position: relative;
         }
+
+        .lava-border {
+            width: 100%;
+            height: 100px;
+            background: url('https://img.freepik.com/free-photo/detailed-structure-marble-natural-pattern-background-design_1258-79119.jpg?semt=ais_hybrid&w=740&q=80') repeat-x top center;
+            background-size: auto 100%;
+            image-rendering: pixelated;
+            animation: lavaFlow 40s linear infinite;
+            z-index: 10;
+            position: relative;
+        }
+
+        .map-overlay {
+            position: absolute;
+            right: 15px;
+            top: 65px;
+            transform: translateY(-50%);
+            width: clamp(220px, 22vw, 300px);
+            height: clamp(220px, 22vw, 300px);
+            border-radius: 12px;
+            overflow: visible;
+            z-index: 35;
+        }
+
+        .map-overlay::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            background: url('https://lh3.googleusercontent.com/pw/AP1GczOnN-03cUemuR5S0Kezbi3WDwAYgx8WVj4TCufy1LoTlc5X85lx_JPsGhs0l-K0vXTA7IB8AM9e5AguXr0i7qEzUtKd_gFAetjGmxYnswU8zXRrHeLKm8EWJZP3X-wC85a-WxYhyAvbVs67XkJLVhjH=w160-h160-s-no-gm?authuser=0') repeat;
+            background-size: 100px 100px;
+            image-rendering: pixelated;
+            z-index: 25;
+        }
+
+        .map-overlay iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            position: relative;
+            z-index: 25;
+        }
+
+        @keyframes lavaFlow {
+            0% { background-position: 0 0; }
+            100% { background-position: 100% 0; }
+        }
+
+        .footer-main {
+            height:240px;
+            width: 100%;
+            background: url('https://lh3.googleusercontent.com/pw/AP1GczOnN-03cUemuR5S0Kezbi3WDwAYgx8WVj4TCufy1LoTlc5X85lx_JPsGhs0l-K0vXTA7IB8AM9e5AguXr0i7qEzUtKd_gFAetjGmxYnswU8zXRrHeLKm8EWJZP3X-wC85a-WxYhyAvbVs67XkJLVhjH=w160-h160-s-no-gm?authuser=0') repeat;
+            background-size: 100px 100px;
+            image-rendering: pixelated;
+            padding: 45px 20px 50px;
+            margin-top: -50px;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 15;
+        }   
 
         .footer-content {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 60px;
-            margin-bottom: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 25px;
+            z-index: 25;
         }
 
-        .footer-section h3 {
-            font-size: 18px;
-            margin-bottom: 30px;
-            color: #FFD700;
+        /* Logo Section */
+        .logo-section {
+            flex: 1 1 300px;
+            min-width: 240px;
+            max-width: 380px;
+            text-align: center;
         }
 
-        .footer-section a {
+        .logo-bg {      
+            padding: 8px;
+            border-radius: 1px;
+            display: inline-flex;
+            width: fit-content;
+        }
+
+        .acehack-logo {
+            margin-top: -30px;
+            width: 320px;
+            max-width: 320px;
+            height: auto;
             display: block;
-            color: #FFF;
-            text-decoration: none;
-            font-size: 11px;
-            margin-bottom: 15px;
-            transition: all 0.3s;
+            image-rendering: pixelated;
+            align-content: center;
         }
 
-        .footer-section a:hover {
-            color: #FFD700;
-            transform: translateX(8px);
+        .follow-us {
+            font-size: 13px;
+            font-weight: bold;
+            margin-top: 10px;   
+            color: #FFFF00;
+            letter-spacing: 1px;
         }
 
         .socials {
             display: flex;
-            gap: 25px;
-            margin-top: 25px;
+            gap: clamp(8px, 1.5vw, 12px);
+            margin-top: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .social-icon {
-            width: 55px;
-            height: 55px;
-            background: #654321;
-            border: 4px solid #8B4513;
+            width: clamp(30px, 3vw, 35px);
+            height: clamp(30px, 3vw, 35px);
+            background: transparent;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-decoration: none;
-            color: #FFF;
-            font-size: 22px;
-            transition: all 0.3s;
+            transition: transform 0.2s;
         }
 
         .social-icon:hover {
-            transform: scale(1.25) rotate(10deg);
-            background: #8B4513;
-            border-color: #FFD700;
+            transform: scale(1.1);
+        }
+
+        .social-icon img {
+            width:100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Links Sections (Quick Links & Archives) */
+        .links-section {
+            flex: 1 1 160px;
+            min-width: 140px;
+        }
+
+        .links-section h3 {
+            color: #FFFF00;
+            font-size: clamp(11px, 1.8vw, 15px);
+            margin-bottom: 12px;
+            text-shadow: 2px 2px 4px #000;
+            white-space: nowrap;
+        }
+
+        .links-section a {
+            display: block;
+            color: #FFFFFF;
+            font-size: clamp(9px, 1.5vw, 11px);
+            margin-bottom: 8px;
+            text-shadow: 1px 1px 2px #000;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+
+        /* Contact Us Section */
+        .contact-section {
+            flex: 1 1 250px;
+            min-width: 180px;
+        }
+
+        .contact-section h3 {
+            color: #FFFF00;
+            font-size: clamp(11px, 1.8vw, 15px);
+            margin-bottom: 12px;
+            text-shadow: 2px 2px 4px #000;
+            white-space: nowrap;
+        }
+
+        .contact-info {
+            font-size: clamp(9px, 1.5vw, 11px);
+            line-height: 1.8;
+            color: #FFFFFF;
+            text-shadow: 1px 1px 2px #000;
+            margin: 0;
+        }
+
+        /* Location Section */
+        .location-section {
+            flex: 1 1 280px;
+            min-width: 260px;
+            text-align: left;
+        }
+
+        .location-section h3 {
+            color: #FFFF00;
+            font-size: clamp(11px, 1.8vw, 15px);
+            margin-bottom: 12px;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+        /* Separator & Copyright */
+        .footer-separator {
+            height: 5px;
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczMJLO4QxuMypYpHFbsxpGiAs1u51MK4EyEI40Yj0M630JhLIz5XEZo43k6deeFcnpR1imTJPxsRSn7UQ7yJ3CTq9qBY0PeGah2Qt4xeihP-Vk-zxR3p8uQC5-z0GXja6g3fjK5Dpq-NUR0teUGsDPO1=w160-h67-s-no-gm?authuser=0');
+            image-rendering: pixelated;
+            background-size: 80px 80px;
         }
 
         .copyright {
+            background: #000000;
             text-align: center;
-            padding-top: 50px;
-            border-top: 4px solid #654321;
-            font-size: 10px;
+            padding: 20px 0;
+            font-size: clamp(11px, 0.4vw, 13px);
+            text-shadow: 1px 1px 2px #000;
         }
 
-        @media (max-width: 768px) {
-            .faq-hero h1 {
-                font-size: 28px;
-            }
-
-            .faq-question-text {
-                font-size: 10px;
-            }
-
-            .faq-answer {
-                padding: 0 20px 0 20px;
-            }
-
-            .faq-item.active .faq-answer {
-                padding: 0 20px 20px 20px;
-            }
-
-            .category-filters {
-                gap: 10px;
-            }
-
-            .category-btn {
-                padding: 12px 18px;
-                font-size: 9px;
-            }
-        }
-                .mc-toast {
+        
+        .mc-toast {
             position: fixed;
             bottom: 390px;
             left: 50%;
@@ -705,9 +832,975 @@
         .end-sky {
             contain: layout style paint;
         }
+
+        /* ========================================
+        HAMBURGER MENU STYLES
+        ======================================== */
+
+        .hamburger-menu {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 2000;
+            background: rgba(26, 11, 46, 0.95);
+            border: 2px solid #8b5a2b;
+            border-radius: 8px;
+            padding: 12px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+        }
+
+        .hamburger-menu span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background: #FFD700;
+            margin: 4px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+        }
+
+        .hamburger-menu.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
+        /* Mobile overlay menu */
+        .mobile-nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 280px;
+            height: 100vh;
+            background: linear-gradient(to bottom, #1a0b2e 0%, #2d1b4e 100%);
+            z-index: 1999;
+            transition: left 0.4s ease;
+            overflow-y: auto;
+            box-shadow: 5px 0 30px rgba(0, 0, 0, 0.9);
+            border-right: 4px solid #8b5a2b;
+        }
+
+        .mobile-nav-overlay.active {
+            left: 0;
+        }
+
+        .mobile-nav-content {
+            padding: 80px 20px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .mobile-nav-item {
+            margin-bottom: 5px;
+        }
+
+        .mobile-nav-link {
+            display: block;
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczMxkXqlZpEAGsqwkmKuJT0ceVu9_CuV2rmiFt8xlvW9X30dcur-795F1dwSkhe9je8mMAqhnPsQMVd2q7GwOeP257Kx6k7NqVyA0w-G6l1Tq17S6upayDwz3JdLd3AQ0vM2zUx4vqhdtbQlNkFFf1aq=w1163-h400-s-no-gm?authuser=0');
+            background-size: cover;
+            border: 3px solid #2c231b;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: #FFF;
+            font-size: 11px;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        .mobile-nav-link:hover,
+        .mobile-nav-link:active {
+            transform: translateX(8px);
+            box-shadow: 0 6px 15px rgba(139, 90, 43, 0.8);
+            border-color: #8b5a2b;
+        }
+
+        /* Backdrop overlay */
+        .nav-backdrop {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1998;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .nav-backdrop.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
               
        
     </style>
+    <!-- ============================
+    RESPONSIVE STYLES GO HERE
+    ============================ -->
+    <style>
+        @media (max-width: 768px) {
+            /* Global Safety */
+            * {
+                max-width: 100%;
+            }
+
+            body {
+                overflow-x: hidden;
+            }
+
+            /* Show Hamburger, Hide Desktop Nav */
+            .hamburger-menu {
+                display: flex;
+            }
+
+            .mobile-nav-overlay,
+            .nav-backdrop {
+                display: block;
+            }
+
+            .nav-links {
+                display: none !important;
+            }
+
+            .lantern-container {
+                display: none;
+            }
+
+            .nav-container {
+                height: 60px;
+                padding: 10px 20px;
+                justify-content: center;
+            }
+
+            /* Hero */
+            .faq-hero {
+                background-attachment: scroll;
+                margin-top: -80px;
+                padding: 140px 20px 30px;
+                min-height: 45vh;
+            }
+
+            .faq-hero h1 {
+                font-size: 28px;
+                margin-bottom: 20px;
+            }
+
+            .faq-hero p {
+                font-size: 11px;
+                line-height: 1.8;
+                max-width: 90%;
+            }
+
+            /* Search */
+            .search-container {
+                max-width: 100%;
+                padding: 0 10px;
+            }
+
+            .search-box {
+                font-size: 9px;
+                padding: 16px 50px 16px 16px;
+            }
+
+            .search-icon {
+                width: 24px;
+                height: 24px;
+                right: 15px;
+            }
+
+            /* Category Filters */
+            .category-filters {
+                gap: 10px;
+                margin-bottom: 40px;
+            }
+
+            .category-btn {
+                font-size: 8px;
+                padding: 11px 16px;
+            }
+
+            /* FAQ Section */
+            .faq-section {
+                padding: 40px 12px 80px;
+            }
+
+            .faq-list {
+                gap: 16px;
+            }
+
+            .faq-item:hover {
+                transform: none;
+            }
+
+            .faq-question {
+                padding: 20px 60px 20px 20px;
+                gap: 15px;
+            }
+
+            .faq-icon {
+                width: 32px;
+                height: 32px;
+            }
+
+            .faq-question-text {
+                font-size: 10px;
+                line-height: 1.5;
+            }
+
+            .faq-toggle {
+                right: 20px;
+                font-size: 20px;
+            }
+
+            .faq-answer {
+                padding: 0 20px 0 67px;
+            }
+
+            .faq-item.active .faq-answer {
+                max-height: 600px;
+                padding: 0 20px 20px 67px;
+            }
+
+            .faq-answer p {
+                font-size: 9px;
+                line-height: 1.8;
+            }
+
+            /* No Results */
+            .no-results img {
+                width: 120px;
+                height: 120px;
+            }
+
+            .no-results h3 {
+                font-size: 18px;
+            }
+
+            .no-results p {
+                font-size: 10px;
+            }
+
+            /* Flying Entity */
+            .flying-entity {
+                width: 280px;
+                height: 280px;
+                opacity: 0.65;
+            }
+
+            /* FAB */
+            .fab {
+                width: 65px;
+                height: 65px;
+                font-size: 28px;
+                bottom: 30px;
+                right: 30px;
+            }
+
+            /* ========================================
+            FOOTER RESPONSIVE - MATCHING INDEX
+            ======================================== */
+            
+            /* FOOTER - FIXED MAP WITH LAVA FLOW */
+            .lava-border {
+                height: 80px;
+                background-size: auto 100%;
+                animation: lavaFlow 40s linear infinite;
+            }
+            
+            .footer-main {
+                padding: 30px 16px 20px;
+                height: 780px;
+                background-size: 48px 48px;
+            }       
+
+            .footer-content {
+                display: flex;
+                flex-direction: column;   /* 🔥 STACK VERTICALLY */
+                align-items: center;
+                gap: 20px;
+                max-width: 360px;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            /* LOGO SECTION */
+            .logo-section {
+                flex: none;
+                min-width: unset;
+                max-width: unset;
+            }
+
+            .acehack-logo {
+                width: 290px;
+                height: auto;
+                margin: 0 auto;
+            }
+
+            .follow-us {
+                font-size: 10px;
+                margin-top: 8px;
+            }
+
+            .socials {
+                justify-content: center;
+                gap: 10px;
+                margin-top: 10px;
+            }
+
+            .social-icon {
+                width: 22px;
+                height: 22px;
+            }
+
+            /* LINKS */
+            .links-section {
+                flex: none;
+                min-width: unset;
+                align-items: center;
+            }
+
+            .links-section h3 {
+                font-size: 12px;
+                margin-bottom: 8px;
+            }
+
+            .links-section a {
+                font-size: 11px;
+                margin-bottom: 6px;
+            }
+
+            /* CONTACT */
+            .contact-section {
+                flex: none;
+                min-width: unset;
+            }
+
+            .contact-section h3 {
+                font-size: 12px;
+                margin-bottom: 8px;
+            }
+
+            .contact-info {
+                font-size: 11px;
+                line-height: 1.6;
+            }
+
+            /* LOCATION + MAP */
+            .location-section {
+                flex: none;
+                min-width: unset;
+                width: 100%;
+                position: relative;
+            }
+
+            .location-section h3 {
+                font-size: 12px;
+                margin-bottom: 10px;
+            }
+
+            .map-overlay {
+                position: relative;     /* 🔥 INLINE MAP */
+                top: 0;
+                right: 0;
+                width: 100%;
+                height: 180px;
+                margin-top: 90px;
+                border-radius: 14px;
+                overflow: hidden;
+            }
+
+            .map-overlay::before {
+                top: -6px;
+                left: -6px;
+                right: -6px;
+                bottom: -6px;
+                background-size: 40px 40px;
+                
+                margin-bottom: -60px;
+            }
+
+            .footer-separator {
+                height: 4px;
+                margin-top: 0px;
+            }
+
+            .copyright {
+                font-size: 8.5px;
+                padding: 12px 8px;
+                text-align: center;
+            }
+
+            .hamburger-menu {
+                display: flex;
+                position: fixed;
+                top: 20px;
+                left: 5px;
+                z-index: 2000;
+                background: rgba(26, 11, 46, 0.95);
+                border: 2px solid #8b5a2b;
+                border-radius: 8px;
+                padding: 10px;  /* ← Reduced */
+                cursor: pointer;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 42px;
+                height: 42px;
+                gap: 3px;  /* ← Added for even spacing */
+            }
+
+            .hamburger-menu span {
+                display: block;
+                width: 22px;  /* ← Fits within 50px - 20px padding */
+                height: 3px;
+                background: #FFD700;
+                margin: 0;  /* ← Remove margin, using gap instead */
+                transition: all 0.3s ease;
+                box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+            }
+        }
+
+        /* ---------- MOBILE PHONES (≤480px) ---------- */
+        @media (max-width: 480px) {
+            /* Navigation */
+            .hamburger-menu {
+                display: flex;
+            }
+
+            .mobile-nav-overlay {
+                width: 260px;
+            }
+
+            .mobile-nav-content {
+                padding: 70px 15px 25px;
+            }
+
+            .mobile-nav-link {
+                font-size: 10px;
+                padding: 15px 12px;
+                margin-bottom: 10px;
+            }
+
+            /* Hero */
+            .faq-hero {
+                margin-top: -90px;
+                padding: 120px 10px 25px;
+                min-height: 40vh;
+            }
+
+            .faq-hero h1 {
+                font-size: 22px;
+                margin-bottom: 18px;
+                text-shadow: 4px 4px 0 #000;
+            }
+
+            .faq-hero p {
+                font-size: 9px;
+                line-height: 1.7;
+                max-width: 95%;
+                margin-bottom: 30px;
+                text-shadow: 2px 2px 0 #000;
+            }
+
+            /* Search */
+            .search-container {
+                margin-bottom: 20px;
+            }
+
+            .search-box {
+                font-size: 8px;
+                padding: 14px 45px 14px 14px;
+                border-width: 2px;
+            }
+
+            .search-icon {
+                width: 20px;
+                height: 20px;
+                right: 12px;
+            }
+
+            /* Category Filters */
+            .category-filters {
+                gap: 8px;
+                margin-bottom: 35px;
+                padding: 0 5px;
+            }
+
+            .category-btn {
+                font-size: 7px;
+                padding: 9px 13px;
+                border-width: 2px;
+            }
+
+            /* FAQ Section */
+            .faq-section {
+                padding: 35px 8px 70px;
+            }
+
+            .faq-list {
+                gap: 14px;
+            }
+
+            .faq-item {
+                border-width: 2px;
+            }
+
+            .faq-question {
+                padding: 16px 50px 16px 16px;
+                gap: 12px;
+            }
+
+            .faq-icon {
+                width: 28px;
+                height: 28px;
+            }
+
+            .faq-question-text {
+                font-size: 8.5px;
+                line-height: 1.5;
+            }
+
+            .faq-toggle {
+                right: 16px;
+                font-size: 18px;
+            }
+
+            .faq-answer {
+                padding: 0 16px 0 56px;
+            }
+
+            .faq-item.active .faq-answer {
+                max-height: 700px;
+                padding: 0 16px 16px 56px;
+            }
+
+            .faq-answer p {
+                font-size: 7.5px;
+                line-height: 1.8;
+            }
+
+            /* No Results */
+            .no-results {
+                padding: 60px 15px;
+            }
+
+            .no-results img {
+                width: 100px;
+                height: 100px;
+                margin-bottom: 20px;
+            }
+
+            .no-results h3 {
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+
+            .no-results p {
+                font-size: 9px;
+            }
+
+            /* Flying Entity */
+            .flying-entity {
+                width: 200px;
+                height: 200px;
+                opacity: 0.5;
+            }
+
+            /* FAB */
+            .fab {
+                width: 55px;
+                height: 55px;
+                font-size: 24px;
+                bottom: 20px;
+                right: 20px;
+                border-width: 2px;
+            }
+
+            /* ========================================
+            FOOTER RESPONSIVE
+            ======================================== */
+            
+            /* Footer ultra compact */
+            /* Lava border — reduce height & animation cost */
+            .lava-border {
+                margin-top: -200px;
+                height: 70px;
+                background-size: auto 100%;
+                animation-duration: 60s; /* smoother on low-end devices */
+            }
+
+            /* Footer container */
+            .footer-main {
+                padding: 24px 12px 16px;
+                background-size: 40px 40px;
+            }
+
+            .footer-content {
+                max-width: 320px;
+                gap: 16px;
+                padding: 0;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: -100px;
+            }
+
+            /* Logo section */
+            .logo-section {
+                width: 100%;
+                max-width: none;
+                min-width: unset;
+            }
+
+            .logo-bg {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+
+            .acehack-logo {
+                width: 220px !important;   /* 👈 CHANGE THIS VALUE */
+                max-width: none !important;
+                height: auto;
+                margin-top: 0;
+            }
+
+            .follow-us {
+                font-size: 11px;
+                margin-top: 6px;
+            }
+
+            .socials {
+                gap: 8px;
+                margin-top: 8px;
+            }
+
+            .social-icon {
+                width: 20px;
+                height: 20px;
+            }
+
+            /* Links */
+           
+            .links-section h3,
+            .contact-section h3,
+            .location-section h3 {
+                font-size: 11px;
+                margin-bottom: 6px;
+            }
+
+            .links-section a {
+                font-size: 10px;
+                margin-bottom: 5px;
+            }
+
+            /* Contact info */
+            .contact-info {
+                font-size: 9.5px;
+                line-height: 1.5;
+            }
+
+            /* Map */
+            .map-overlay {
+                margin-top: 0px;
+                margin-bottom: 95px;
+                height: 150px;
+                width: auto;
+                border-radius: 12px;
+            }
+
+            .map-overlay::before {
+                background-size: 32px 32px;
+            }
+
+            /* Footer separator */
+            .footer-separator {
+                height: 3px;
+                margin-top: 0px;
+            }
+
+            /* Copyright */
+            .copyright {
+                font-size: 6.5px;
+                line-height: 1.5;
+            }
+
+            .hamburger-menu {
+                display: flex;
+                position: fixed;
+                top: 20px;
+                left: 5px;
+                z-index: 2000;
+                background: rgba(26, 11, 46, 0.95);
+                border: 2px solid #8b5a2b;
+                border-radius: 8px;
+                padding: 10px;  /* ← Reduced */
+                cursor: pointer;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 42px;
+                height: 42px;
+                gap: 3px;  /* ← Added for even spacing */
+            }
+
+            .hamburger-menu span {
+                display: block;
+                width: 22px;  /* ← Fits within 50px - 20px padding */
+                height: 3px;
+                background: #FFD700;
+                margin: 0;  /* ← Remove margin, using gap instead */
+                transition: all 0.3s ease;
+                box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+            }
+        }
+
+        /* ---------- VERY SMALL SCREENS (≤400px) ---------- */
+        @media (max-width: 400px) {
+            /* Navigation */
+            .mobile-nav-overlay {
+                width: 240px;
+            }
+
+            .mobile-nav-link {
+                font-size: 9px;
+                padding: 13px 10px;
+            }
+
+            /* Hero */
+            .faq-hero h1 {
+                font-size: 18px;
+                margin-bottom: 15px;
+            }
+
+            .faq-hero p {
+                font-size: 8px;
+                line-height: 1.6;
+            }
+
+            /* Search */
+            .search-box {
+                font-size: 7px;
+                padding: 12px 40px 12px 12px;
+            }
+
+            .search-icon {
+                width: 18px;
+                height: 18px;
+                right: 10px;
+            }
+
+            /* Category Filters */
+            .category-btn {
+                font-size: 6.5px;
+                padding: 8px 11px;
+            }
+
+            /* FAQ Items */
+            .faq-question {
+                padding: 14px 45px 14px 14px;
+                gap: 10px;
+            }
+
+            .faq-icon {
+                width: 24px;
+                height: 24px;
+            }
+
+            .faq-question-text {
+                font-size: 7.5px;
+            }
+
+            .faq-toggle {
+                right: 14px;
+                font-size: 16px;
+            }
+
+            .faq-answer {
+                padding: 0 14px 0 48px;
+            }
+
+            .faq-item.active .faq-answer {
+                padding: 0 14px 14px 48px;
+            }
+
+            .faq-answer p {
+                font-size: 7px;
+                line-height: 1.7;
+            }
+
+            /* FAB */
+            .fab {
+                width: 50px;
+                height: 50px;
+                font-size: 22px;
+                bottom: 18px;
+                right: 18px;
+            }
+
+            /* ========================================
+            FOOTER RESPONSIVE
+            ======================================== */
+            
+            
+            /* Footer ultra compact */
+            /* Lava border — reduce height & animation cost */
+            .lava-border {
+                margin-top: 00px;
+                height: 20px;
+                background-size: auto 100%;
+                animation-duration: 60s; /* smoother on low-end devices */
+            }
+
+            /* Footer container */
+            .footer-main {
+                padding: 24px 12px 16px;
+                background-size: 40px 40px;
+            }
+
+            .footer-content {
+                max-width: 320px;
+                gap: 16px;
+                padding: 0;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: -100px;
+            }
+
+            /* Logo section */
+            .logo-section {
+                width: 100%;
+                max-width: none;
+                min-width: unset;
+            }
+
+            .logo-bg {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+
+            .acehack-logo {
+                width: 220px !important;   /* 👈 CHANGE THIS VALUE */
+                max-width: none !important;
+                height: auto;
+                margin-top: 0;
+            }
+
+            .follow-us {
+                font-size: 11px;
+                margin-top: 6px;
+            }
+
+            .socials {
+                gap: 8px;
+                margin-top: 8px;
+            }
+
+            .social-icon {
+                width: 20px;
+                height: 20px;
+            }
+
+            /* Links */
+           
+            .links-section h3,
+            .contact-section h3,
+            .location-section h3 {
+                font-size: 11px;
+                margin-bottom: 6px;
+            }
+
+            .links-section a {
+                font-size: 10px;
+                margin-bottom: 5px;
+            }
+
+            /* Contact info */
+            .contact-info {
+                font-size: 9.5px;
+                line-height: 1.5;
+            }
+
+            /* Map */
+            .map-overlay {
+                margin-top: 0px;
+                margin-bottom: 95px;
+                height: 150px;
+                width: auto;
+                border-radius: 12px;
+            }
+
+            .map-overlay::before {
+                background-size: 32px 32px;
+            }
+
+            /* Footer separator */
+            .footer-separator {
+                height: 3px;
+                margin-top: 0px;
+            }
+
+            /* Copyright */
+            .copyright {
+                font-size: 6.5px;
+                line-height: 1.5;
+            }
+
+            .hamburger-menu {
+                display: flex;
+                position: fixed;
+                top: 20px;
+                left: 5px;
+                z-index: 2000;
+                background: rgba(26, 11, 46, 0.95);
+                border: 2px solid #8b5a2b;
+                border-radius: 8px;
+                padding: 10px;  /* ← Reduced */
+                cursor: pointer;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 42px;
+                height: 42px;
+                gap: 3px;  /* ← Added for even spacing */
+            }
+
+            .hamburger-menu span {
+                display: block;
+                width: 22px;  /* ← Fits within 50px - 20px padding */
+                height: 3px;
+                background: #FFD700;
+                margin: 0;  /* ← Remove margin, using gap instead */
+                transition: all 0.3s ease;
+                box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+            }
+        }
+    </style>
+
+
+
 </head>
 <body>
     <div class="end-sky" id="endSky"></div>
@@ -1116,50 +2209,99 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- FOOTER -->
+
     <footer id="contact">
+    <!-- Lava Texture Top Border -->
+    <div class="lava-border"></div>
+
+    <!-- Main Footer Content on Soil Texture -->
+    <div class="footer-main">
         <div class="footer-content">
-            <div class="footer-section">
-                <img src="https://via.placeholder.com/200x70/228B22/FFFFFF?text=AceHack" alt="AceHack Logo" style="margin-bottom: 25px;">
-                <p style="font-size: 10px; line-height: 2;">The ultimate hackathon experience. Build the future, one block at a time.</p>
+            <!-- Logo / Tagline / Socials -->
+            <div class="footer-section logo-section">
+                <div class="logo-bg">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNcsBYJRrDQF5xc-IOD9E_9tAf-KWM-rpVcJYXr7EzNU94-PQCOFTBnrTo2AVnYqDfkW-wroeaoN8hMMf_B0vW-mqVewR_bhtGTWzxJSby3AyqlRiJmtvTrrhH1Wi6sWxqgW2K27xgdVhvhdnUMZu0q=w950-h316-s-no-gm?authuser=0" alt="AceHack Logo" class="acehack-logo">
+                </div>
+
+                <p class="follow-us">Follow us</p>
+
+                <!-- 7 Social Media Icons -->
                 <div class="socials">
-                    <a href="#" class="social-icon">f</a>
-                    <a href="#" class="social-icon">𝕏</a>
-                    <a href="#" class="social-icon">in</a>
-                    <a href="#" class="social-icon">▶</a>
+                    <a href="https://chat.whatsapp.com/FC9DCKKTe61DD3SERneNV0" class="social-icon whatsapp" aria-label="WhatsApp">
+                        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+                    </a>
+                    <a href="https://www.instagram.com/acehack__" class="social-icon instagram" aria-label="Instagram">
+                        <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram">
+                    </a>
+                    <a href="https://www.linkedin.com/company/acehack-5-0" class="social-icon linkedin" aria-label="LinkedIn">
+                        <img src="https://cdn-icons-png.flaticon.com/512/733/733561.png" alt="LinkedIn">
+                    </a>
+                    <a href="https://x.com/AceHack_uemj" class="social-icon x-twitter" aria-label="X (Twitter)">
+                        <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="X">
+                    </a>
+                    <a href="https://t.me/acehack2" class="social-icon telegram" aria-label="Telegram">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram">
+                    </a>
+                    <a href="https://discord.com/invite/yBDmQqYDMK" class="social-icon discord" aria-label="Discord">
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord">
+                    </a>
+                    <a href="https://www.youtube.com/@Acehack-hackathon" class="social-icon youtube" aria-label="YouTube">
+                        <img src="https://lh3.googleusercontent.com/pw/AP1GczMqs3zqbyvwcx128i-6pRgrMselFGbr9n3QHZAgl-Tc_8hNbR-5JYsePjBljeuR0Bxp15UB_5qum6YKi6VFMwvIIeHpTWh2GLi5sx2sN42ADUJffUS9Us5xTfx_59tg4oe0s1K-VnuSTN6lbmM9WaF7=w128-h128-s-no-gm?authuser=0" alt="YouTube">
+                    </a>
                 </div>
             </div>
-            
-            <div class="footer-section">
+
+            <!-- Quick Links -->
+            <div class="footer-section links-section">
                 <h3>Quick Links</h3>
-                <a href="index.html#home">Home</a>
-                <a href="index.html#about">About</a>
-                <a href="index.html#tracks">Tracks</a>
-                <a href="index.html#prizes">Prizes</a>
-                <a href="index.html#sponsors">Sponsors</a>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#tracks">Tracks</a>
+                <a href="#prizes">Prizes</a>
                 <a href="faq.html">FAQs</a>
             </div>
-            
-            <div class="footer-section">
-                <h3>Archives</h3>
-                <a href="#">AceHack 4.0 - 2025</a>
-                <a href="#">AceHack 3.0 - 2024</a>
-                <a href="#">AceHack 2.0 - 2023</a>
-                <a href="#">AceHack 1.0 - 2022</a>
+
+            <!-- Contact Us -->
+            <div class="footer-section contact-section">
+                <h3>Contact Us</h3>
+                <p class="contact-info">
+                    <b style="color: #fff700;">Email</b>: acehack@uem.edu.in<br>
+                    <b style="color: #fff700;">Phone</b>: +916296499137<br>
+                    <b style="color: #fff700;">Address</b>: UEM Jaipur<br>
+                    Gurukul Campus, Sikar Road<br>
+                    Rajasthan - 303807
+                </p>
             </div>
-            
-            <div class="footer-section">
-                <h3>Location</h3>
-                <p style="font-size: 10px; line-height: 2;">Your College Name<br>Address Line 1<br>City, State - 000000<br>India</p>
-                <div style="width: 100%; height: 280px; background: #654321; border: 5px solid #8B4513; margin-top: 30px;">
-                    <!-- Add Google Maps embed here -->
+
+            <!-- Archives -->
+            <div class="footer-section links-section" style="margin-left: 30px;">
+                <h3>Archives</h3>
+                <a href="https://dark-97o.github.io/AceHack4.0/">AceHack 4.0</a>
+                <a href="https://acehack3-0.vercel.app/">AceHack 3.0</a>
+                <a href="https://acehack2-0.vercel.app/">AceHack 2.0</a>
+                <a href="https://sahityaroy.github.io/ace-hack-uemj/">AceHack 1.0</a>
+            </div>
+
+            <!-- Location with Map -->
+            <div class="footer-section location-section">
+                <div class="map-overlay">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.512!2d75.7002425!3d27.2124649!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db5f1e3b7b5b5%3A0xb78e5c340c935a95!2sUniversity%20of%20Engineering%20%26%20Management%20(UEM)%2C%20Jaipur!5e0!3m2!1sen!2sin!4v1739999999999"
+                        width="100%" height="100%" style="border:0; border-radius:12px;" allowfullscreen=""
+                        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
-        
-        <div class="copyright">
-            © 2026 AceHack. All Rights Reserved. | Crafted with ❤️ by the AceHack Team
-        </div>
+    </div>
+
+    <!-- Brown separation line -->
+    <div class="footer-separator"></div>
+
+    <!-- Copyright on black background -->
+    <div class="copyright">
+        © 2026 AceHack - University of Enigeneering and Management Jaipur. All Rights Reserved.
+    </div>
     </footer>
 
     <script>
@@ -1325,179 +2467,4 @@
     </script>
      <div id="toast" class="mc-toast">Coming Soon!</div>
 </body>
-<style>
-
-/* ---------- GLOBAL SAFETY ---------- */
-* {
-  max-width: 100%;
-}
-
-body {
-  overflow-x: hidden;
-}
-
-/* ---------- NAVBAR FIX ---------- */
-@media (max-width: 1024px) {
-  .nav-container {
-    flex-direction: column;
-    align-items: center;
-    padding: 0 20px;
-  }
-
-  .nav-links {
-    position: static;
-    transform: none;
-    padding-bottom: 40px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .nav-sign-container {
-    min-width: 120px;
-  }
-}
-
-@media (max-width: 600px) {
-  .nav-sign {
-    font-size: 9px;
-    padding: 10px 14px;
-  }
-}
-
-/* ---------- FAQ HERO ---------- */
-@media (max-width: 1024px) {
-  .faq-hero {
-    background-attachment: scroll;
-    margin-top: -100px;
-    padding-top: 160px;
-  }
-}
-
-@media (max-width: 768px) {
-  .faq-hero h1 {
-    font-size: 26px;
-  }
-
-  .faq-hero p {
-    font-size: 11px;
-    line-height: 1.8;
-  }
-}
-
-/* ---------- SEARCH BOX ---------- */
-@media (max-width: 600px) {
-  .search-container {
-    max-width: 100%;
-  }
-
-  .search-box {
-    font-size: 9px;
-    padding: 16px 50px 16px 16px;
-  }
-
-  .search-icon {
-    width: 22px;
-    height: 22px;
-  }
-}
-
-/* ---------- CATEGORY BUTTONS ---------- */
-@media (max-width: 768px) {
-  .category-filters {
-    gap: 8px;
-  }
-
-  .category-btn {
-    font-size: 8px;
-    padding: 10px 14px;
-  }
-}
-
-/* ---------- FAQ ITEMS ---------- */
-@media (max-width: 768px) {
-  .faq-item:hover {
-    transform: none; /* prevent sideways scroll */
-  }
-
-  .faq-question {
-    padding: 20px;
-    gap: 12px;
-  }
-
-  .faq-icon {
-    width: 32px;
-    height: 32px;
-  }
-
-  .faq-question-text {
-    font-size: 10px;
-  }
-
-  .faq-toggle {
-    right: 15px;
-    font-size: 20px;
-  }
-
-  .faq-answer {
-    padding: 0 20px 0 20px;
-  }
-
-  .faq-item.active .faq-answer {
-    padding: 0 20px 20px 20px;
-  }
-
-  .faq-answer p {
-    font-size: 9px;
-    line-height: 1.8;
-  }
-}
-
-/* ---------- FLOATING ENTITY ---------- */
-@media (max-width: 768px) {
-  .flying-entity {
-    width: 260px;
-    height: 260px;
-    opacity: 0.6;
-  }
-}
-
-/* ---------- FAB ---------- */
-@media (max-width: 600px) {
-  .fab {
-    width: 60px;
-    height: 60px;
-    font-size: 26px;
-    bottom: 20px;
-    right: 20px;
-  }
-}
-
-/* ---------- TOAST ---------- */
-@media (max-width: 600px) {
-  .mc-toast {
-    font-size: 14px;
-    bottom: 140px;
-    padding: 10px 16px;
-  }
-}
-
-/* ---------- FOOTER ---------- */
-@media (max-width: 1024px) {
-  .footer-content {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    text-align: center;
-  }
-
-  .socials {
-    justify-content: center;
-  }
-
-  footer iframe,
-  footer div[style*="height"] {
-    height: 200px !important;
-  }
-}
-
-</style>
 </html>
