@@ -152,7 +152,7 @@ s
             z-index: -10;
             pointer-events: none;
             image-rendering: pixelated;
-            animation: fly-across 25s linear infinite;
+            animation: fly-across 9s linear infinite;
             will-change: transform, left, top;
         }
 
@@ -170,10 +170,10 @@ s
                 transform: scale(1.1) rotate(3deg);
             }
             100% {
-                left: -20%;
+                left: -100%;
                 top: 50%;
                 opacity: 1;
-                transform: scale(0.9) rotate(0deg);
+                transform: scale(0.9) rotate(2deg);
             }
         }
 
@@ -2707,6 +2707,12 @@ s
 
         /* Mobile phones (≤480px) */
         @media (max-width: 480px) {
+            .flying-entity {
+                width: 200px;
+                height: auto;
+                animation: fly-across 5s linear infinite;
+            }
+
             .hero{
                 max-height: 200px;
             }
@@ -4113,26 +4119,6 @@ s
             dragon.className = 'flying-entity';
             dragon.alt = 'Flying Dragon';
             dragon.src = 'https://lh3.googleusercontent.com/pw/AP1GczPV701QojlTPppKTU5fRn4pSw94_Yh_U6spxRgmq1I1WtR7nQjxEpirl4UNy4I53aLpKYZqULLRuoWkL58Ew3xOBkzT6XA0vjYm9GzfXZ9s7xwY_KDb3XJPUWc6S8NaByK1CEI9VvQz6aeQnSg8bEam=w1126-h938-s-no-gm';
-            
-            // Force styles inline
-            dragon.style.cssText = `
-                position: fixed !important;
-                width: 400px !important;
-                height: 400px !important;
-                z-index: -1 !important;
-                pointer-events: none !important;
-                image-rendering: pixelated !important;
-                opacity: 1 !important;
-            `;
-            
-            dragon.onload = () => {
-                console.log('✅ Dragon loaded');
-                dragon.style.animation = 'fly-across 20s ease-in-out infinite';
-            };
-            
-            dragon.onerror = () => {
-                console.error('❌ Dragon failed to load');
-            };
             
             container.appendChild(dragon);
             console.log('✓ Dragon added to DOM');
