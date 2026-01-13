@@ -346,7 +346,7 @@
             .nav-sign {
                 background-image: url('https://lh3.googleusercontent.com/pw/AP1GczMxkXqlZpEAGsqwkmKuJT0ceVu9_CuV2rmiFt8xlvW9X30dcur-795F1dwSkhe9je8mMAqhnPsQMVd2q7GwOeP257Kx6k7NqVyA0w-G6l1Tq17S6upayDwz3JdLd3AQ0vM2zUx4vqhdtbQlNkFFf1aq=w1163-h400-s-no-gm?authuser=0');
                 background-size: cover;
-                border: 3px solid #2c231b;
+                border: 0.1px solid #3b1b00;
                 padding: 15px 20px;
                 text-decoration: none;
                 color: #FFF;
@@ -358,9 +358,9 @@
                 z-index: 1000;
             }
 
-            .nav-sign:hover {
+            /* .nav-sign:hover {
                 transform: translateY(5px);
-            }
+            } */
 
             /* Hero Section */
             .hero {
@@ -586,13 +586,13 @@
                 content: "";
                 position: absolute;
                 inset: 0;
-                padding: 3px; /* border thickness */
+                padding: 4px; /* border thickness */
                 background: linear-gradient(
                     120deg,
                     #ffffff,
-                    #7e7e7e,
-                    #12002a,
-                    #666666
+                    #fcd600,
+                    #9900ff,
+                    #ffffff
                 );
                 background-size: 300% 300%;
                 animation: purpleBorderFlow 3s linear infinite;
@@ -2108,7 +2108,7 @@
                 transition: left 0.4s ease;
                 overflow-y: auto;
                 box-shadow: 5px 0 30px rgba(0, 0, 0, 0.9);
-                border-right: 4px solid #8b5a2b;
+                border-right: 1px solid #8b5a2b;
             }
 
             .mobile-nav-overlay.active {
@@ -3925,7 +3925,117 @@
                 box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
             }
         }
+
+        /* ============================================
+        TIMELINE BADGE - DESKTOP NAV ONLY
+        ============================================ */
+
+        /* Target Timeline button specifically (2nd nav item, index 1) */
+        .nav-sign-container:nth-child(6) {
+            position: relative;
+        }
+
+        .nav-sign-container:nth-child(6) .nav-sign::after {
+            content: '';
+            position: absolute;
+            top: 50px;
+            right: -14px;
+            width: 35px;
+            height: 35px;
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczOXGkE64SfWlX-_ms-OgFccOKJF2lzGLf2IP9HMvZG1QA-0LlWslZG8aKYixhaQd5w6WaTMDmN-M54TlECR0V_ITm38UyS-7ICp6bGpoIR7Uscz5Xi9-ffvIz9BHkVmgqydf4aT_614XjwHbA3gUisy=w513-h513-s-no-gm?authuser=0');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            image-rendering: pixelated;
+            z-index: 10;
+            animation: redPulse 0.5s ease-in-out infinite;
+        }
+
+        @keyframes redPulse {
+            0%, 100% {
+                filter: drop-shadow(0 0 3px rgba(255, 0, 0, 1)) 
+                        drop-shadow(0 0 6px rgba(255, 0, 0, 0.8)) 
+                        brightness(0.9);
+            }
+            50% {
+                filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.5)) 
+                        drop-shadow(0 0 10px rgba(255, 0, 0, 1)) 
+                        brightness(1.2);
+            }
+        }
+
+
+        /* ============================================
+        TIMELINE BADGE - MOBILE NAV ONLY
+        ============================================ */
+
+        /* Target Timeline in mobile nav (2nd item) */
+        .mobile-nav-item:nth-child(6) {
+            position: relative;
+        }
+
+        .mobile-nav-item:nth-child(6) .mobile-nav-link::after {
+            content: '';
+            position: absolute;
+            top: 18px;
+            right: -8px;
+            width: 30px;
+            height: 30px;
+            background-image: url('https://lh3.googleusercontent.com/pw/AP1GczOXGkE64SfWlX-_ms-OgFccOKJF2lzGLf2IP9HMvZG1QA-0LlWslZG8aKYixhaQd5w6WaTMDmN-M54TlECR0V_ITm38UyS-7ICp6bGpoIR7Uscz5Xi9-ffvIz9BHkVmgqydf4aT_614XjwHbA3gUisy=w513-h513-s-no-gm?authuser=0');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            image-rendering: pixelated;
+            z-index: 10;
+            animation: redPulse 1s ease-in-out infinite;
+        }
+
+        /* Apply to Timeline badge */
+        .nav-sign-container:nth-child(6) .nav-sign::after {
+            /* ... existing styles ... */
+            animation: redPulse 0.4s ease-in-out infinite;
+        }
+
+        .mobile-nav-item:nth-child(6) .mobile-nav-link::after {
+            /* ... existing styles ... */
+            animation: redPulse 0.4s ease-in-out infinite;
+        }
+
+        /* ============================================
+        RESPONSIVE ADJUSTMENTS
+        ============================================ */
+
+        /* Tablets (≤768px) */
+        @media (max-width: 768px) {
+            .nav-sign-container:nth-child(6) .nav-sign::after {
+                width: 38px;
+                height: 38px;
+                top: -7px;
+                right: -6px;
+            }
+        }
+
+        /* Mobile phones (≤480px) */
+        @media (max-width: 480px) {
+            .mobile-nav-item:nth-child(6) .mobile-nav-link::after {
+                width: 32px;
+                height: 32px;
+                top: 10px;
+                right: -16px;
+            }
+        }
+
+        /* Very small screens (≤400px) */
+        @media (max-width: 400px) {
+            .mobile-nav-item:nth-child(6) .mobile-nav-link::after {
+                width: 30px;
+                height: 30px;
+                top: 8px;
+                right: -12px;
+            }
+        }
     </style>
+ 
         
     </head>
     <body>
@@ -3979,6 +4089,11 @@
                 </div>
 
                 <div class="nav-sign-container" style="--index: 5">
+                    <div class="sign-chain"></div>
+                    <a href="#sponsors" class="nav-sign">Sponsors</a>
+                </div>
+
+                <div class="nav-sign-container" style="--index: 6">
                     <div class="sign-chain"></div>
                     <a href="#contact" class="nav-sign">Contact</a>
                 </div>
@@ -4835,6 +4950,7 @@
                     { href: '#guests', text: 'Guests', soon: true },
                     { href: '#tracks', text: 'Tracks' },
                     { href: '#team', text: 'DG Swags', soon: true },
+                    { href: '#sponsors', text: 'Sponsors' },
                     { href: '#contact', text: 'Contact' }
                 ];
                 
