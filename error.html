@@ -18,7 +18,7 @@
       font-family: 'Press Start 2P', cursive;
       color: #ffffff;
 
-      background: #000000 url('image.jpg') no-repeat center center fixed;
+      background: url('https://lh3.googleusercontent.com/pw/AP1GczNJR58Vc1WngsrmgsiJSVBHXrxN_qlCQnhpuwoG93AUAA3vb5z-R2Wuhkh4pbI18KPgEjqS8rnlG3UgueJeul4xM3K68jydc3fHRvB2QCacdVF3D65IleqiRn17PjjE-V8amPBg86Hlo2pe6M98pSto=w800-h450-s-no-gm?authuser=0') no-repeat center center fixed;
       background-size: cover;
 
       /* Bright and clear background */
@@ -51,14 +51,15 @@
     }
 
     h1 {
-      font-size: 3.6rem;
-      color: #ffff00;          /* Yellow color for "Oops! Lost in The End?" */
+      font-size: 40px;
+      color: #ffffff;
+      text-shadow: 5px 5px #a200ff;          /* Yellow color for "Oops! Lost in The End?" */
       margin-bottom: 25px;
-      letter-spacing: 5px;
+      letter-spacing: 2px;
     }
 
     .subtitle {
-      font-size: 1.65rem;
+      font-size: 20px;
       color: #99ff99;          /* Lighter green as before */
       margin-bottom: 45px;
       line-height: 1.6;
@@ -66,14 +67,26 @@
 
     .btn {
       display: inline-block;
-      padding: 18px 55px;
-      font-size: 1.35rem;
-      color: #000000;
-      background: #55ff55;
-      border: 5px solid #22cc22;
+      padding: 15px 45px;
+      font-size: 18px;
+      color: #ffffff;
+      text-shadow: 3px 3px #a200ff;
+      background: url('https://lh3.googleusercontent.com/pw/AP1GczMZ213EkYNghug2YDe5JlReDkV4NnHM3CGMcE9KqZfO3wC9E_mPF4fTCfvumT9HwnfLUKLq-QrhWvHSVF0b9jXjoA3SyMnZ25P4sEngOwiGw-gXURtMETzmtALESaDtVdos6rNA5r0Gn5hq25KXxsdU=w1716-h965-s-no-gm?authuser=0');
+      background-size: cover;
+      border: 2px solid #22cc22;
       text-decoration: none;
-      border-radius: 12px;
       transition: all 0.35s ease;
+    }
+
+    .btn::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
     }
 
     .btn:hover {
@@ -102,7 +115,7 @@
     <h1>Oops! Lost in The End?</h1>
 
     <p class="subtitle">
-      This page dosen't exist ot has been moved to another Dimension.
+      This page dosen't exist or has been <br> moved to another Dimension.
     </p>
 
     <a href="acehack@uem.edu.in" class="btn">Contact Support</a>
