@@ -497,12 +497,11 @@
             }
 
             .btn-icon {
-                width: 32px;
-                height: 31px;
-                border-radius: 10px;
+                width: 24px;
+                height: 24px;
                 margin-top: -75px;
                 margin-bottom: -70px;
-                margin-left: -20px;
+                margin-left: -8px;
                 margin-right: 0px;
                 vertical-align: middle;
                 image-rendering: pixelated;
@@ -546,12 +545,10 @@
             }
 
             .stone-btn {
-                background-image: url('https://lh3.googleusercontent.com/pw/AP1GczMl7-yI0IOl2szTleheXLPxPin8gtD2lESL81THaUaaUrsuTQRLcBOSV3eM8nNVKB-SyrE3AqSGZixbkZVQy9E7zVtV74XUQwCDYQiFsNPG8_B_NymQFzSNj16iFwnB3nal2DndvMKEi30M5OKtiGJP=w160-h160-s-no-gm?authuser=0');
-                /* background-color: #575757; */
-                background-size: contain ;
-                /* border: 3px solid #303030; */
+                background: linear-gradient(135deg, #6d28d9, #a855f7, #6d28d9);
+                background-size: contain;
                 border-radius: 0.1px;
-                padding:18px 30px;
+                padding: 18px 30px;
                 font-family: 'Press Start 2P', cursive;
                 color: #FFF;
                 font-size: 15px;
@@ -1524,7 +1521,7 @@
 
             /* REMOVED ZOOM - Only subtle shadow change on hover */
             .interactive-card[data-position="front"]:hover {
-                box-shadow: 0 20px 50px rgba(139, 90, 43, 0.9);
+                box-shadow: 0 20px 50px rgba(80, 43, 139, 0.9);
             }
 
             /* Responsive adjustments */
@@ -1540,11 +1537,11 @@
                 }
                 
                 .content-heading {
-                    font-size: 24px;
+                    font-size: 15px;
                 }
                 
                 .content-description {
-                    font-size: 11px;
+                    font-size: 9px;
                 }
                 
                 .interactive-cards-section {
@@ -1553,8 +1550,8 @@
                 }
                 
                 .interactive-card {
-                    width: 400px;
-                    height: 260px;
+                    width: 320px;
+                    height: 200px;
                 }
                 
                 .card-edition-label {
@@ -1583,11 +1580,11 @@
                 }
                 
                 .content-heading {
-                    font-size: 20px;
+                    font-size: 14px;
                 }
                 
                 .content-description {
-                    font-size: 10px;
+                    font-size: 8.6px;
                 }
             }
 
@@ -1654,7 +1651,11 @@
                 }
             }
 
-            .prizes {
+            /* =============================
+            PRIZES SECTION
+            ============================= */
+
+            /* .prizes {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -1662,7 +1663,7 @@
                 max-width: 1200px;
                 margin: 0 auto;
                 padding: 40px 0;
-            }
+            } */
 
             .prize-row {
                 display: flex;
@@ -1915,6 +1916,161 @@
                 z-index: 0;
             }
 
+            /* =============================
+            PRIZE POOL - NEW LAYOUT
+            ============================= */
+
+            .prizes {
+                display: flex;
+                flex-direction: row !important; /* FORCE horizontal */
+                align-items: center;
+                justify-content: space-between;
+                gap: 40px;
+                max-width: 1800px; /* INCREASE from 1600px */
+                margin: 0 auto;
+                padding: 40px 20px;
+                flex-wrap: nowrap !important; /* FORCE no wrapping */
+                width: 100%; /* ADD THIS */
+            }
+
+            /* Left character image */
+            .prize-left-image {
+                flex: 0 0 200px; /* REDUCE from 250px */
+                display: flex;
+                align-items: center;
+                justify-content: flex-start; /* CHANGE from center */
+                order: 1; /* ADD THIS - forces left position */
+            }
+
+            .prize-left-image img {
+                width: 150%;
+                height: 350px;
+                max-width: 400px;
+                margin-left: -70px;
+                image-rendering: pixelated;
+                filter: drop-shadow(0 10px 30px rgba(139, 92, 246, 0.6));
+                animation: float 3s ease-in-out infinite;
+            }
+
+            /* Center chests area */
+            .prize-chests-center {
+                flex: 1 1 auto;
+                display: flex;
+                flex-direction: column;
+                gap: 60px;
+                order: 2; /* ADD THIS - forces middle position */
+                max-width: 800px; /* ADD THIS - prevents it from being too wide */
+            }
+
+            /* Right card with rotating images */
+            .prize-right-card {
+                flex: 0 0 280px;
+                margin-top: 30px;
+                height: 480px;
+                background-image: url('...');
+                background-size: cover;
+                border: 2px solid #8d00eb;
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+                position: relative;
+                overflow: hidden;
+                order: 3; /* ADD THIS - forces right position */
+                align-self: center; /* ADD THIS - vertically centers it */
+            }
+
+            .prize-right-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.3);
+                z-index: 0;
+            }
+
+            .prize-track-showcase {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+            }
+
+            .track-prize-img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                opacity: 0;
+                transition: opacity 0.8s ease-in-out;
+                image-rendering: pixelated;
+            }
+
+            .track-prize-img.active {
+                opacity: 1;
+            }
+
+            @media (max-width: 768px) {
+                /* ... existing styles ... */
+                
+                /* Hide left and right prize images */
+                .prize-left-image {
+                    display: none;
+                }
+                
+                .prize-right-card {
+                    display: none;
+                }
+                
+                /* Make chests take full width */
+                .prize-chests-center {
+                    width: 100%;
+                    max-width: 100%;
+                }
+            }
+
+            @media (max-width: 480px) {
+                /* ... existing styles ... */
+                
+                /* Hide left and right prize images */
+                .prize-left-image {
+                    display: none !important;
+                }
+                
+                .prize-right-card {
+                    display: none !important;
+                }
+                
+                /* Make chests take full width */
+                .prize-chests-center {
+                    width: 100%;
+                    max-width: 100%;
+                    flex: 1 1 100%;
+                    margin-left: -15px;
+                }
+            }
+
+            @media (max-width: 400px) {
+                /* ... existing styles ... */
+                
+                /* Hide left and right prize images */
+                .prize-left-image {
+                    display: none !important;
+                }
+                
+                .prize-right-card {
+                    display: none !important;
+                }
+                /* Make chests take full width */
+                .prize-chests-center {
+                    width: 100%;
+                    max-width: 100%;
+                    flex: 1 1 100%;
+                    margin-left: 55px;
+                }
+            }
+
             /* FAQ Container */
             .faq-container {
                 max-width: 1000px;
@@ -2012,6 +2168,10 @@
             }
 
             @media (max-width: 480px) {
+                .faq-container {
+                    margin-bottom: 20px;
+                }
+
                 .faq-question {
                     font-size: 10px;
                     padding: 12px 15px;
@@ -2691,6 +2851,23 @@
                 .sponsor-name {
                     font-size: 15px;
                 }
+
+                /* Reduce sponsors section bottom spacing */
+                #sponsors {
+                    padding-bottom: 40px !important; /* reduced from default */
+                    /* margin-bottom: -40px; */
+                }
+                
+                /* Reduce FAQ section top spacing */
+                #faq-preview {
+                    padding-top: 40px !important; /* reduced from default */
+                    /* margin-top: -40px; */
+                }
+                
+                .sponsor-cta {
+                    margin-top: 50px;
+                    margin-bottom: 20px !important; /* reduced */
+                }
             }
 
             /* Mobile phones (≤480px) */
@@ -2869,7 +3046,7 @@
             /* Hero Section - Much smaller */
             .hero {
                 /* min-height: 60vh; */
-                height: 870px;
+                height: 700px;
             }
             
             .hero-logo {
@@ -3489,7 +3666,7 @@
             }
 
             .hero{
-                height: 870px;
+                height: 627px;
             }
 
             .hero-logo {
@@ -3775,11 +3952,97 @@
             .prize-card-elevated {
                 transform: none !important;
             }
+
+            /* =============================
+            PRIZE POOL - NEW LAYOUT
+            ============================= */
+
+            .prizes {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 40px;
+                max-width: 1600px;
+                margin: 0 auto;
+                padding: 40px 20px;
+            }
+
+            /* Left character image */
+            .prize-left-image {
+                flex: 0 0 250px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .prize-left-image img {
+                width: 100%;
+                height: auto;
+                max-width: 300px;
+                image-rendering: pixelated;
+                filter: drop-shadow(0 10px 30px rgba(139, 92, 246, 0.6));
+                animation: float 3s ease-in-out infinite;
+            }
+
+            /* Center chests area */
+            .prize-chests-center {
+                flex: 1 1 auto;
+                display: flex;
+                flex-direction: column;
+                gap: 60px;
+            }
+
+            /* Right card with rotating images */
+            .prize-right-card {
+                flex: 0 0 280px;
+                height: 600px;
+                background-image: url('https://lh3.googleusercontent.com/pw/AP1GczM_K6POKMRfjRwlMsq8bLETu21MXNZX2yRp6ek411_rFlzE5b-FuuiyAR84YQHDWto1qtSd4Z138h8YtdhwMp_9hKNkLT8Gf-fPHcRzHcpDXCb-hs71NI0CPBjw_go8N-3_Bb1_XZtic8bK4y50NoyV=w392-h392-s-no-gm?authuser=0');
+                background-size: cover;
+                border: 4px solid #8d00eb;
+                /* box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8); */
+                position: relative;
+                overflow: hidden;
+            }
+
+            .prize-right-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                /* background: rgba(0, 0, 0, 0.3); */
+                z-index: 0;
+            }
+
+            .prize-track-showcase {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+            }
+
+            .track-prize-img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 4px;
+                opacity: 0;
+                transition: opacity 0.8s ease-in-out;
+                image-rendering: pixelated;
+            }
+
+            .track-prize-img.active {
+                opacity: 1;
+            }
             
             /* Footer ultra compact */
             /* Lava border — reduce height & animation cost */
             .lava-border {
-                margin-top: -200px;
+                margin-top: 10px;
                 height: 70px;
                 background-size: auto 100%;
                 animation-duration: 60s; /* smoother on low-end devices */
@@ -3787,6 +4050,7 @@
 
             /* Footer container */
             .footer-main {
+                margin-top: -30px;
                 padding: 24px 12px 16px;
                 height: 658px;
                 background-size: 40px 40px;
@@ -4201,7 +4465,7 @@
             /* Footer ultra compact */
             /* Lava border — reduce height & animation cost */
             .lava-border {
-                margin-top: -200px;
+                margin-top: 0px;
                 height: 70px;
                 background-size: auto 100%;
                 animation-duration: 60s; /* smoother on low-end devices */
@@ -4211,6 +4475,7 @@
             .footer-main {
                 padding: 24px 12px 16px;
                 background-size: 40px 40px;
+                margin-top: -43px;
             }
 
             .footer-content {
@@ -4488,17 +4753,17 @@
                 <!-- NEW TRACKS BUTTON -->
                 <div class="nav-sign-container" style="--index: 3">
                     <div class="sign-chain"></div>
-                    <a href="#tracks" class="nav-sign">Tracks</a>
+                    <a href="index.html#tracks" class="nav-sign">Tracks</a>
                 </div>
 
                 <div class="nav-sign-container" style="--index: 4">
                     <div class="sign-chain"></div>
-                    <a href="#team" class="nav-sign" data-soon="true">DG Swags</a>
+                    <a href="index.html#sponsors" class="nav-sign">Sponsors</a>
                 </div>
 
                 <div class="nav-sign-container" style="--index: 5">
                     <div class="sign-chain"></div>
-                    <a href="#sponsors" class="nav-sign">Sponsors</a>
+                    <a href="#faq-preview" class="nav-sign">FAQs</a>
                 </div>
 
                 <div class="nav-sign-container" style="--index: 6">
@@ -4533,8 +4798,8 @@
             
             <div class="stone-buttons">
                 <div class="stone-btn-wrapper">
-                    <a href="https://acehack5.devfolio.co/overview" class="stone-btn">
-                        <img src="https://lh3.googleusercontent.com/pw/AP1GczMa3cUBO7G0J5vHfBnLUy-lkzNqvggOZgw0nwMgPQSukEg5Am7zoXUkUPH9nkmtwj_Aj69Wd6Pb6KZeeVUOyGAh2Ncb5GY8SwHxrdTQOVKGBVKeJ5zwqTEa27vqM9SfShHL61JuDGgOJJ32vJnsQMU4=w255-h255-s-no-gm?authuser=0" alt="Register Icon" class="btn-icon">
+                    <a href="https://acehack5.devfolio.co/overview" class="stone-btn" style="background-color: #1381ff; background-image: none; text-shadow:none;">
+                        <img src="https://lh3.googleusercontent.com/pw/AP1GczMdnflTxtuKLOK2QZJPY4Cqrh1eVFp514-KwGCaZsf897bZEIsEEvHaleeZNMIx0A111S9hzvf2E-y0AO829IQkw02x9aCCN72Rl1MhKQPyLTADNthJoG0l10YIO8M_v7ubGNzQO2JPUHlEzh7lLBKd=w512-h512-s-no-gm?authuser=0" alt="Register Icon" class="btn-icon">
                         Devfolio Register
                     </a>
                     <img src="https://lh3.googleusercontent.com/pw/AP1GczMeqenNSDCEYEvZ8vPHzJRrkSk9UoakdEVllKTU-kgOC1Un8F6jjOyTdJNAtB9Wp2Q3VnTpijka2PbFKWGw_1kF1nSr65_fyrqLXAG_E5RhhCxrJpnMrqWb3CZ0aDYblwLMbcQ2GBFD96rifvy11Vp3=w158-h158-s-no-gm?authuser=0" alt="Diamond" class="popup-image">
@@ -4548,8 +4813,8 @@
 
         <div class="hero-marquee">
             <div class="marquee-content">
-                <span>INNOVATE-ELEVATE-TRANSFORM • INNOVATE-ELEVATE-TRANSFORM • INNOVATE-ELEVATE-TRANSFORM • INNOVATE-ELEVATE-TRANSFORM • </span>
-                <span>INNOVATE-ELEVATE-TRANSFORM • INNOVATE-ELEVATE-TRANSFORM • INNOVATE-ELEVATE-TRANSFORM • INNOVATE-ELEVATE-TRANSFORM • </span>
+                <span>INNOVATE-ELEVATE-TRANSFORM • INNOVATE-ELEVATE-TRANSFORM • INNOVATE-ELEVATE-TRANSFORM • INNOVATE-ELEVATE-TRANSFORM •</span>
+                <span>INNOVATE-ELEVATE-TRANSFORM • INNOVATE-ELEVATE-TRANSFORM • INNOVATE-ELEVATE-TRANSFORM • INNOVATE-ELEVATE-TRANSFORM •</span>
             </div>
         </div>
 
@@ -4825,90 +5090,110 @@
             <div style="max-width: 1400px; margin: 0 auto; margin-top: -40px;">
                 <h2>Prize Pool</h2>
                 <div class="prizes">
-                    <!-- First Row - 3 chests (1st elevated in middle) -->
-                    <div class="prize-row prize-row-1">
-                        <div class="prize-card" data-index="1" data-amount="$XXXX">
-                            <div class="chest-wrapper">
-                                <img src="https://lh3.googleusercontent.com/pw/AP1GczNu_H5PVobUGKHQkuX0j_QQtF_N5AV7ezccjknQ0oHH8mRJslsN9h1DglGhHoIX_ZK6gd7nQLWTLk8anZdHajEDnFfaTDfcU8H5r4wd-Hxi7qZoH2y2BdWziMxdqBWb2Bm25twGCUwRLWSYrRbC6qUX=w273-h246-s-no-gm?authuser=0" 
-                                    alt="2nd Place Chest" 
-                                    class="chest-img chest-default">
-                                <img src="https://lh3.googleusercontent.com/pw/AP1GczOUx7jS6BjysWc4E9ccmAONBxbf0I2UMQ4c7xYwHIJiBpnpr4KgfY5DlBuW5F-_jWHFGFUyBh546ClFqFX2bhu9IW86mAYoCfYfuO1BnNfSvaTL-RXnbvyp-xvxTTLl2sDpBKeB7p6O-3kCaMk08QZL=w560-h491-s-no-gm?authuser=0" 
-                                    alt="2nd Place Hover" 
-                                    class="chest-img chest-hover">
+                    <!-- LEFT IMAGE -->
+                    <div class="prize-left-image">
+                        <img src="https://lh3.googleusercontent.com/pw/AP1GczNO-DUOMjab3NVUd_8rNuBrTnUr0aGKcAV-sQaZERpQ5TYmEH6bfGXejM3g-kqbGo_JaJ6zANG35BNiOEelBXnwYQLi7pokqbEILTavcQN_ppxxypfJDEoh5L5T6nxpPanR0ybG5WRwmLNYCnOD2D7L=w936-h938-s-no-gm?authuser=0" alt="Prize Character">
+                    </div>
+
+                    <!-- CENTER - EXISTING CHESTS -->
+                    <div class="prize-chests-center">
+                        <!-- First Row - 3 chests (1st elevated in middle) -->
+                        <div class="prize-row prize-row-1">
+                            <div class="prize-card" data-index="1" data-amount="₹X,XX,XXX">
+                                <div class="chest-wrapper">
+                                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNu_H5PVobUGKHQkuX0j_QQtF_N5AV7ezccjknQ0oHH8mRJslsN9h1DglGhHoIX_ZK6gd7nQLWTLk8anZdHajEDnFfaTDfcU8H5r4wd-Hxi7qZoH2y2BdWziMxdqBWb2Bm25twGCUwRLWSYrRbC6qUX=w273-h246-s-no-gm?authuser=0" 
+                                        alt="2nd Place Chest" 
+                                        class="chest-img chest-default">
+                                    <img src="https://lh3.googleusercontent.com/pw/AP1GczOUx7jS6BjysWc4E9ccmAONBxbf0I2UMQ4c7xYwHIJiBpnpr4KgfY5DlBuW5F-_jWHFGFUyBh546ClFqFX2bhu9IW86mAYoCfYfuO1BnNfSvaTL-RXnbvyp-xvxTTLl2sDpBKeB7p6O-3kCaMk08QZL=w560-h491-s-no-gm?authuser=0" 
+                                        alt="2nd Place Hover" 
+                                        class="chest-img chest-hover">
+                                </div>
+                                <div class="prize-label">2nd <br> Place</div>
+                                <div class="prize-amount">₹X,XX,XXX</div>
                             </div>
-                            <div class="prize-label">2nd <br> Place</div>
-                            <div class="prize-amount">₹X,XX,XXX</div>
+
+                            <div class="prize-card prize-card-elevated" data-index="0" data-amount="₹X,XX,XXX">
+                                <div class="chest-wrapper">
+                                    <img src="https://lh3.googleusercontent.com/pw/AP1GczONpnP1yvDpP72KKTsTLkeid_wP14rFywsXKG-CAMpdcdGUehQI3CRHlJ-FXZePgPxFC62sJ3XVTPwm31e-neNRWNaJOO6dHZeG4q_WOmrcyoXVA33-c2xOecGan4k7F7GNllG7qnVacuRiS2INB5SO=w346-h296-s-no-gm?authuser=0" 
+                                        alt="1st Place Chest" 
+                                        class="chest-img chest-default">
+                                    <img src="https://lh3.googleusercontent.com/pw/AP1GczPa0z9wORDhiDT9JohihWaMmxp1AQDIY8sRMyMvhwNuVhgRnoF1udYA0e1ekWUa0ROljmNK4Ouw9pPFqEOKdTT9O9St4vRoDXXnziemauSVOekiqxzwKKM04IpsTHPnPFfGHX3TGeQQCsXMx3SqDRUw=w560-h461-s-no-gm?authuser=0" 
+                                        alt="1st Place Hover" 
+                                        class="chest-img chest-hover">
+                                </div>
+                                <div class="prize-label">1st<br> Place</div>
+                                <div class="prize-amount">₹X,XX,XXX</div>
+                            </div>
+
+                            <div class="prize-card" data-index="2" data-amount="₹XX,XXX">
+                                <div class="chest-wrapper">
+                                    <img src="https://lh3.googleusercontent.com/pw/AP1GczMuquS5JtdH4UZd3pxUiWPzxjpYFXME5jWI2m2ydzr-mcbCTGDFN9AWXNLfxkPv39k-RNZd7-WPvJ07760yiIXiLOeWHxsb535QfxPRnjMpnZ3VQl1lmBsWSc0FuSm0xtt5xTVQg-tcyBnYTU1DSgcg=w366-h354-s-no-gm?authuser=0" 
+                                        alt="3rd Place Chest" 
+                                        class="chest-img chest-default">
+                                    <img src="https://lh3.googleusercontent.com/pw/AP1GczOxe138R0rw7XV-rbmWygQnSTsHRDqHcO9wvfpIy2En1Viamu2CXVAjJ-EbIl19OT8zdHmbtTu5GeIpiG3J6w71Thqd6f77csGz-aQRbn_J0N-Oxy_PDa_zsfRlpFxtt3VqezgzFJd1xveMXIw_1M3S=w566-h471-s-no-gm?authuser=0" 
+                                        alt="3rd Place Hover" 
+                                        class="chest-img chest-hover">
+                                </div>
+                                <div class="prize-label">3rd <br>Place</div>
+                                <div class="prize-amount">₹XX,XXX</div>
+                            </div>
                         </div>
 
-                        <div class="prize-card prize-card-elevated" data-index="0" data-amount="$XXXX">
-                            <div class="chest-wrapper">
-                                <img src="https://lh3.googleusercontent.com/pw/AP1GczONpnP1yvDpP72KKTsTLkeid_wP14rFywsXKG-CAMpdcdGUehQI3CRHlJ-FXZePgPxFC62sJ3XVTPwm31e-neNRWNaJOO6dHZeG4q_WOmrcyoXVA33-c2xOecGan4k7F7GNllG7qnVacuRiS2INB5SO=w346-h296-s-no-gm?authuser=0" 
-                                    alt="1st Place Chest" 
-                                    class="chest-img chest-default">
-                                <img src="https://lh3.googleusercontent.com/pw/AP1GczPa0z9wORDhiDT9JohihWaMmxp1AQDIY8sRMyMvhwNuVhgRnoF1udYA0e1ekWUa0ROljmNK4Ouw9pPFqEOKdTT9O9St4vRoDXXnziemauSVOekiqxzwKKM04IpsTHPnPFfGHX3TGeQQCsXMx3SqDRUw=w560-h461-s-no-gm?authuser=0" 
-                                    alt="1st Place Hover" 
-                                    class="chest-img chest-hover">
+                        <!-- Second Row -->
+                        <div class="prize-row prize-row-2">
+                            <div class="prize-card" data-index="0" data-amount="₹XX,XXX">
+                                <div class="chest-wrapper">
+                                    <img src="https://lh3.googleusercontent.com/pw/AP1GczO8ZGXlGbm7X7XvSdvVmmhQ8xm6qRXm2lp3MQE-t7SDlHi03j34G_pzG4lrqK5vWZ36PIA_Qx103qKP7dTN0W1NBPJocWfe0ymas-iJLPEiR-Rf7gdoOBvCL7QYQmDy0G5CkJQbjxtiTCL7foIPkl1k=w371-h364-s-no-gm?authuser=0" 
+                                        alt="Best Beginner Chest" 
+                                        class="chest-img chest-default">
+                                    <img src="https://lh3.googleusercontent.com/pw/AP1GczN9nTQaGdGy3Pp2kOllw1rFEwSplHIA_esSnMHenRQCJnbKa52nnCDvHJeD2pe2kdzkEY4TgBJm-qkddV3QLWUmUUaToLDZR86dpGcNVwv7J9innIuWOBe0lfflyV64SDFe5vcoQrVon0u3JnZcvBBW=w496-h445-s-no-gm?authuser=0" 
+                                        alt="Best Beginner Hover" 
+                                        class="chest-img chest-hover">
+                                </div>
+                                <div class="prize-label">Best Beginner<br>Team </div>
+                                <div class="prize-amount">₹XX,XXX</div>
                             </div>
-                            <div class="prize-label">1st<br> Place</div>
-                            <div class="prize-amount">₹X,XX,XXX</div>
-                        </div>
 
-                        <div class="prize-card" data-index="2" data-amount="$XXXX">
-                            <div class="chest-wrapper">
-                                <img src="https://lh3.googleusercontent.com/pw/AP1GczMuquS5JtdH4UZd3pxUiWPzxjpYFXME5jWI2m2ydzr-mcbCTGDFN9AWXNLfxkPv39k-RNZd7-WPvJ07760yiIXiLOeWHxsb535QfxPRnjMpnZ3VQl1lmBsWSc0FuSm0xtt5xTVQg-tcyBnYTU1DSgcg=w366-h354-s-no-gm?authuser=0" 
-                                    alt="3rd Place Chest" 
-                                    class="chest-img chest-default">
-                                <img src="https://lh3.googleusercontent.com/pw/AP1GczOxe138R0rw7XV-rbmWygQnSTsHRDqHcO9wvfpIy2En1Viamu2CXVAjJ-EbIl19OT8zdHmbtTu5GeIpiG3J6w71Thqd6f77csGz-aQRbn_J0N-Oxy_PDa_zsfRlpFxtt3VqezgzFJd1xveMXIw_1M3S=w566-h471-s-no-gm?authuser=0" 
-                                    alt="3rd Place Hover" 
-                                    class="chest-img chest-hover">
+                            <div class="prize-card" data-index="1" data-amount="₹XX,XXX">
+                                <div class="chest-wrapper">
+                                    <img src="https://lh3.googleusercontent.com/pw/AP1GczNNDXrSPaGnDcsLe6Frcv42JFY6v7Z_k0DRcRaFobE3vnpoPY9W1ZgrL5iG07YgJlzf4_1SvFVflW3u0SYgNk8jR2LzbeyK8-EXl6DtE2mYeF4rhyx8vZhLuaZjcucfRnARK64I_484jJ3tBqnEIkno=w377-h362-s-no-gm?authuser=0" 
+                                        alt="All Girls Team Chest" 
+                                        class="chest-img chest-default">
+                                    <img src="https://lh3.googleusercontent.com/pw/AP1GczOtxhCyJOfFGclzyqK6pPIY-JLHSjrss7V4rlf4GWdDvxmluFnDVr9KYFWK9kxtBlnVZm8oP7ebIAtFnlZ_fBstkWTMwIIWjxVUaROA2Wr1-kXITHBMryvj040TdlQh2FynZUnNLxuXxT3zNnnH6Xs0=w489-h437-s-no-gm?authuser=0" 
+                                        alt="All Girls Team Hover" 
+                                        class="chest-img chest-hover">
+                                </div>
+                                <div class="prize-label">All Girls<br> Team</div>
+                                <div class="prize-amount">₹XX,XXX</div>
                             </div>
-                            <div class="prize-label">3rd <br>Place</div>
-                            <div class="prize-amount">₹XX,XXX</div>
+
+                            <div class="prize-card" data-index="2" data-amount="₹XX,XXX">
+                                <div class="chest-wrapper">
+                                    <img src="https://lh3.googleusercontent.com/pw/AP1GczPpc9LL6lwBVY9i5iTU6ulUwGiQ40CWRAQuM4oIfI3cNg1HRv7q9fP0PV8TQOc6RvKI8yg5GsJkuljxryZ-O7dUYGbkdS7RalEbUg6PXhMZ18tvv-KdC_zKjSvmpuoLpkQJIvf6KsRi7vYsgZSw-UD7=w228-h219-s-no-gm?authuser=0" 
+                                        alt="Special Goodies Box" 
+                                        class="chest-img chest-default">
+                                    <img src="https://lh3.googleusercontent.com/pw/AP1GczOftM8eW7ImP-1-64GKKAUhX41DANBybLypZ8BPSs8t-Js7yBsLePRWG1fIlZOXVJShu5rHT-DPgNnILg0c43HGbKTP8d_FRI7OzNdiyiXCzXXtnNMxydDj2mkLCwFqnyliHkOeA5tzFF1ihI6rRGdH=w376-h347-s-no-gm?authuser=0" 
+                                        alt="Special Prize Hover" 
+                                        class="chest-img chest-hover">
+                                </div>
+                                <div class="prize-label">Special<br> Prize</div>
+                                <div class="prize-amount">₹XX,XXX</div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Second Row -->
-                    <div class="prize-row prize-row-2">
-                        <div class="prize-card" data-index="0" data-amount="$XXXX">
-                            <div class="chest-wrapper">
-                                <img src="https://lh3.googleusercontent.com/pw/AP1GczO8ZGXlGbm7X7XvSdvVmmhQ8xm6qRXm2lp3MQE-t7SDlHi03j34G_pzG4lrqK5vWZ36PIA_Qx103qKP7dTN0W1NBPJocWfe0ymas-iJLPEiR-Rf7gdoOBvCL7QYQmDy0G5CkJQbjxtiTCL7foIPkl1k=w371-h364-s-no-gm?authuser=0" 
-                                    alt="Best Beginner Chest" 
-                                    class="chest-img chest-default">
-                                <img src="https://lh3.googleusercontent.com/pw/AP1GczN9nTQaGdGy3Pp2kOllw1rFEwSplHIA_esSnMHenRQCJnbKa52nnCDvHJeD2pe2kdzkEY4TgBJm-qkddV3QLWUmUUaToLDZR86dpGcNVwv7J9innIuWOBe0lfflyV64SDFe5vcoQrVon0u3JnZcvBBW=w496-h445-s-no-gm?authuser=0" 
-                                    alt="Best Beginner Hover" 
-                                    class="chest-img chest-hover">
-                            </div>
-                            <div class="prize-label">Best Beginner<br>Team </div>
-                            <div class="prize-amount">₹XX,XXX</div>
-                        </div>
-
-                        <div class="prize-card" data-index="1" data-amount="$XXXX">
-                            <div class="chest-wrapper">
-                                <img src="https://lh3.googleusercontent.com/pw/AP1GczNNDXrSPaGnDcsLe6Frcv42JFY6v7Z_k0DRcRaFobE3vnpoPY9W1ZgrL5iG07YgJlzf4_1SvFVflW3u0SYgNk8jR2LzbeyK8-EXl6DtE2mYeF4rhyx8vZhLuaZjcucfRnARK64I_484jJ3tBqnEIkno=w377-h362-s-no-gm?authuser=0" 
-                                    alt="All Girls Team Chest" 
-                                    class="chest-img chest-default">
-                                <img src="https://lh3.googleusercontent.com/pw/AP1GczOtxhCyJOfFGclzyqK6pPIY-JLHSjrss7V4rlf4GWdDvxmluFnDVr9KYFWK9kxtBlnVZm8oP7ebIAtFnlZ_fBstkWTMwIIWjxVUaROA2Wr1-kXITHBMryvj040TdlQh2FynZUnNLxuXxT3zNnnH6Xs0=w489-h437-s-no-gm?authuser=0" 
-                                    alt="All Girls Team Hover" 
-                                    class="chest-img chest-hover">
-                            </div>
-                            <div class="prize-label">All Girls<br> Team</div>
-                            <div class="prize-amount">₹XX,XXX</div>
-                        </div>
-
-                        <div class="prize-card" data-index="2" data-amount="$XXXX">
-                            <div class="chest-wrapper">
-                                <img src="https://lh3.googleusercontent.com/pw/AP1GczPpc9LL6lwBVY9i5iTU6ulUwGiQ40CWRAQuM4oIfI3cNg1HRv7q9fP0PV8TQOc6RvKI8yg5GsJkuljxryZ-O7dUYGbkdS7RalEbUg6PXhMZ18tvv-KdC_zKjSvmpuoLpkQJIvf6KsRi7vYsgZSw-UD7=w228-h219-s-no-gm?authuser=0" 
-                                    alt="Special Goodies Box" 
-                                    class="chest-img chest-default">
-                                <img src="https://lh3.googleusercontent.com/pw/AP1GczOftM8eW7ImP-1-64GKKAUhX41DANBybLypZ8BPSs8t-Js7yBsLePRWG1fIlZOXVJShu5rHT-DPgNnILg0c43HGbKTP8d_FRI7OzNdiyiXCzXXtnNMxydDj2mkLCwFqnyliHkOeA5tzFF1ihI6rRGdH=w376-h347-s-no-gm?authuser=0" 
-                                    alt="Special Prize Hover" 
-                                    class="chest-img chest-hover">
-                            </div>
-                            <div class="prize-label">Special<br> Prize</div>
-                            <div class="prize-amount">₹XX,XXX</div>
+                    <!-- RIGHT CARD WITH ROTATING IMAGES -->
+                    <div class="prize-right-card">
+                        <div class="prize-track-showcase">
+                            <img src="https://lh3.googleusercontent.com/pw/AP1GczMuOLadq_RU50im229EyIPemqSe-x0MQnSK5wizGI9bM9v2JF4D7frffRtGrkHIPJuLKQx_17yfxHyqJ602ypejzXp87EpuXUwBt1cPUv5TrorPRPLSA1_2S0aLhPGZljFUDg5APn7cPOr1AwTD5XaT=w438-h948-s-no-gm?authuser=0" class="track-prize-img active" data-index="0" alt="Track 1">
+                            <img src="https://lh3.googleusercontent.com/pw/AP1GczNIhTtSvlVgmokkMmk7j7GDDywB0YsOwp8knWTEXUAhAFs9Aq1aBe64u5wTfK-4kSminkzhJkKxgZw_TBr2rE1mOTPil4cERT7K_yCvYbqtgRzkZC4_FjjLy4IezPUzVdzafjFr-7gwrml4fE9R8yLb=w423-h915-s-no-gm?authuser=0" class="track-prize-img" data-index="1" alt="Track 2">
+                            <img src="https://lh3.googleusercontent.com/pw/AP1GczNgDZsUvJOEz9ZFg3JuPfX103L7cHtdlpZLEwyyfsWcmicCqIgPdDH2A_d6v79M3VC85LrFU1ZXgvRFUOgi4kLhQF7mFgacSdN7ZWs3HtlsRyTSwipZ6VhZxC38RPWFkrZuqRqywlXJCSFVNUVBhHXo=w423-h915-s-no-gm?authuser=0" class="track-prize-img" data-index="2" alt="Track 3">
+                            <img src="https://lh3.googleusercontent.com/pw/AP1GczNsJF5LCGl_goCdaoNxQcp8CHlBfC5m-eneH07FWUbD-46gkstxQrxO4N3Niq-Ak-X6lmwtg_2kOWLXVKThDwUaiEf1JHuXB4tmVzBxIJ8jUVzuvbxDqf_XZwCeNNu7cM4gNemujMjZCFCUka7JQa74=w423-h915-s-no-gm?authuser=0" class="track-prize-img" data-index="3" alt="Track 4">
+                            <img src="https://lh3.googleusercontent.com/pw/AP1GczPcloJvj6_6lAEHaVpPDhnlRoXr1lLU66uYa73x969nsRsFcVw8X04o4fKEmq5MP7Sd_4BoIe9dYRfZ8SmOtQcFT7Ai22TcjX3EfZggfD4sZQuy4MDmUU8ldkr9OXiWN72hXpMWHDbVFy83zmMty1KJ=w423-h915-s-no-gm?authuser=0" class="track-prize-img" data-index="4" alt="Track 5">
                         </div>
                     </div>
                 </div>
+
                 <div class="open-innovation-banner" style="margin-top: -10px; margin-bottom: -105px;">
                         <div class="ghast-banner-wrapper">
                             <!-- Ghast Image -->
@@ -5028,7 +5313,7 @@
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>What is AceHack 5.0?</span>
-                            <span class="faq-icon">+</span>
+                            <span class="faq-icon">⛏</span>
                         </div>
                         <div class="faq-answer">
                             <p>AceHack 5.0 is a 36-hour hackathon where students and innovators create real-world tech solutions. It's a platform to learn, build, network, and compete for amazing prizes while working on projects that matter.</p>
@@ -5038,7 +5323,7 @@
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>When and where is AceHack 5.0 taking place?</span>
-                            <span class="faq-icon">+</span>
+                            <span class="faq-icon">⛏</span>
                         </div>
                         <div class="faq-answer">
                             <p>AceHack 5.0 will be held on March 7-8th, 2026. The event location will be announced soon. Stay tuned to our social media channels for updates!</p>
@@ -5048,7 +5333,7 @@
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>Who can participate in AceHack 5.0?</span>
-                            <span class="faq-icon">+</span>
+                            <span class="faq-icon">⛏</span>
                         </div>
                         <div class="faq-answer">
                             <p>AceHack 5.0 is open to all students currently enrolled in any educational institution across India. Whether you're a beginner or an experienced developer, everyone is welcome!</p>
@@ -5058,7 +5343,7 @@
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>How do I register for the hackathon?</span>
-                            <span class="faq-icon">+</span>
+                            <span class="faq-icon">⛏</span>
                         </div>
                         <div class="faq-answer">
                             <p>Click the "Register Now" button on our homepage and fill out the registration form with your details. You'll receive a confirmation email once your registration is complete.</p>
@@ -5292,18 +5577,6 @@
             })();
 
             /* ======================================================
-            SMOOTH SCROLL (UNCHANGED)
-            ====================================================== */
-            document.querySelectorAll('a[href^="#"]').forEach(a => {
-                a.addEventListener('click', e => {
-                    const t = document.querySelector(a.getAttribute('href'));
-                    if (!t) return;
-                    e.preventDefault();
-                    t.scrollIntoView({ behavior: 'smooth' });
-                });
-            });
-
-            /* ======================================================
             INTERSECTION OBSERVER (REPLACES ALL SCROLL LISTENERS)
             ====================================================== */
             const revealObserver = new IntersectionObserver(
@@ -5460,8 +5733,8 @@
                     { href: '#timeline', text: 'Timeline', soon: true },
                     { href: '#guests', text: 'Guests', soon: true },
                     { href: '#tracks', text: 'Tracks' },
-                    { href: '#team', text: 'DG Swags', soon: true },
                     { href: '#sponsors', text: 'Sponsors' },
+                    { href: 'faq.html', text: 'FAQs'},
                     { href: '#contact', text: 'Contact' }
                 ];
                 
@@ -5557,26 +5830,64 @@
                 });
             });
 
-            // SMOOTH SCROLL
-
+            /* ======================================================
+            SMOOTH SCROLL (FIXED FOR ANCHOR LINKS)
+            ====================================================== */
             let currentScroll = window.scrollY;
             let targetScroll = currentScroll;
             let ease = 0.08;
+            let isUserScrolling = false;
 
+            // Handle wheel events for smooth scrolling
             window.addEventListener("wheel", e => {
                 e.preventDefault();
                 targetScroll += e.deltaY;
                 targetScroll = Math.max(
-                0,
-                Math.min(targetScroll, document.body.scrollHeight - window.innerHeight)
+                    0,
+                    Math.min(targetScroll, document.body.scrollHeight - window.innerHeight)
                 );
+                isUserScrolling = true;
             }, { passive: false });
 
             function smoothScroll() {
-                currentScroll += (targetScroll - currentScroll) * ease;
-                window.scrollTo(0, currentScroll);
+                if (isUserScrolling) {
+                    currentScroll += (targetScroll - currentScroll) * ease;
+                    window.scrollTo(0, currentScroll);
+                    
+                    // Stop smooth scrolling when close enough to target
+                    if (Math.abs(targetScroll - currentScroll) < 0.5) {
+                        isUserScrolling = false;
+                    }
+                }
                 requestAnimationFrame(smoothScroll);
             }
+
+            smoothScroll();
+
+            // Fixed anchor link handling
+            document.querySelectorAll('a[href^="#"]').forEach(a => {
+                a.addEventListener('click', e => {
+                    const targetId = a.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (!targetElement) return;
+                    
+                    e.preventDefault();
+                    
+                    // Get target position
+                    const targetPosition = targetElement.offsetTop - 100; // 100px offset for nav
+                    
+                    // Set both scroll values to target position for instant jump
+                    targetScroll = targetPosition;
+                    currentScroll = targetPosition;
+                    
+                    // Perform the scroll
+                    window.scrollTo(0, targetPosition);
+                    
+                    // Update URL hash
+                    history.pushState(null, null, targetId);
+                });
+            });
 
             smoothScroll();
 
@@ -5630,6 +5941,32 @@
                 });
                 
                 console.log('✓ Stack cards initialized - rotating every 2 seconds');
+            })();
+
+            /* ======================================================
+            PRIZE RIGHT CARD - IMAGE ROTATION
+            ====================================================== */
+            (function initPrizeRotation() {
+                const images = document.querySelectorAll('.track-prize-img');
+                if (!images.length) return;
+                
+                let currentIndex = 0;
+                
+                function rotateImages() {
+                    // Remove active class from current image
+                    images[currentIndex].classList.remove('active');
+                    
+                    // Move to next image      
+                    currentIndex = (currentIndex + 1) % images.length;
+                    
+                    // Add active class to next image
+                    images[currentIndex].classList.add('active');
+                }
+                
+                // Rotate every 3 seconds
+                setInterval(rotateImages, 3000);
+                
+                console.log('✓ Prize track showcase initialized - rotating every 3 seconds');
             })();
 
         </script>
