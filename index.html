@@ -646,7 +646,6 @@
                 pointer-events: none;
                 opacity: 0;
                 transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-                filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.8));
                 image-rendering: pixelated;
             }
 
@@ -792,10 +791,11 @@
             }
 
             .about-image img {
-                width: 400px;
-                height: auto;
-                max-width: 200px;
+                width: 460px;
+                height: 300px;
+                /* max-width: 200px; */
                 image-rendering: pixelated;
+                filter: drop-shadow(0 6px 6px rgba(180, 0, 255, 5));
             }
 
 
@@ -4296,16 +4296,16 @@
                     <div class="about-text">
                         <p>
                         AceHack 5.0 is the next evolution of Rajasthan's biggest student-run hackathon—a 36-hour build space where students and innovators from across the country come together to create impactful, real-world tech solutions.
-                        </p>
+                        </p><br>
                         <p>
                         More than just coding, it is a platform to explore ideas, sharpen skills, and grow with a driven community—whether you are just starting out or building complex systems.
-                        </p>
+                        </p><br>
                         <p>
                         Enter AceHack 5.0 and shape the future, one idea at a time.
                         </p>
                     </div>
                     <div class="about-image">
-                        <img src="https://lh3.googleusercontent.com/pw/AP1GczNWNWiQ4kQZeKYZNto0zbPYMNi0geP_jgBiH7dOCR10sFhgEeKMm5smK3O-FATAvxv35rkMSScR6NWfBQeRo7bNHTUUSqgtY_EeHkQ-w4iyNI2OoaI8rWmH5I5OvyUkdBgIEfqDyOwl9_iL_grP143S=w188-h200-s-no-gm?authuser=0" alt="AceHack">
+                        <img src="https://lh3.googleusercontent.com/pw/AP1GczNbVu4phMEY8-C490Y4zp4PakLKp3cL_FCRjn2sYA8hFJGFiZ-T2EW7dQV5aFfcSG0hbZuslpO_js69H9zKzeL-4QKWEoMUJDVo6XY_jAnu3cC5UvaruEZeZ3UJ13iG5mZHzG4WI7xw6ejVNl7NtaaY=w1024-h617-s-no-gm?authuser=0" alt="AceHack">
                     </div>
                 </div>
                 
@@ -4322,8 +4322,8 @@
                         <span class="stat-label">Participants</span>
                     </div>
                     <div class="stat-box">
-                        <span class="stat-number">850+</span>
-                        <span class="stat-label">Teams</span>
+                        <span class="stat-number">900+</span>
+                        <span class="stat-label">Projects</span>
                     </div>
                     <div class="stat-box">
                         <span class="stat-number">70+</span>
@@ -5246,6 +5246,29 @@
                     }
                 });
             });
+
+            // SMOOTH SCROLL
+
+            let currentScroll = window.scrollY;
+            let targetScroll = currentScroll;
+            let ease = 0.08;
+
+            window.addEventListener("wheel", e => {
+                e.preventDefault();
+                targetScroll += e.deltaY;
+                targetScroll = Math.max(
+                0,
+                Math.min(targetScroll, document.body.scrollHeight - window.innerHeight)
+                );
+            }, { passive: false });
+
+            function smoothScroll() {
+                currentScroll += (targetScroll - currentScroll) * ease;
+                window.scrollTo(0, currentScroll);
+                requestAnimationFrame(smoothScroll);
+            }
+
+            smoothScroll();
 
         </script>
 
