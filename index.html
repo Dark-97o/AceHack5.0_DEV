@@ -347,10 +347,10 @@
                 background-image: url('https://lh3.googleusercontent.com/pw/AP1GczMxkXqlZpEAGsqwkmKuJT0ceVu9_CuV2rmiFt8xlvW9X30dcur-795F1dwSkhe9je8mMAqhnPsQMVd2q7GwOeP257Kx6k7NqVyA0w-G6l1Tq17S6upayDwz3JdLd3AQ0vM2zUx4vqhdtbQlNkFFf1aq=w1163-h400-s-no-gm?authuser=0');
                 background-size: cover;
                 border: 0.1px solid #2d003b;
-                padding: 15px 20px;
+                padding: 12px 15px;
                 text-decoration: none;
                 color: #FFF;
-                font-size: 11px;
+                font-size: 13.4px;
                 text-shadow: 2px 2px #6f00ff;
                 white-space: nowrap;
                 display: block;
@@ -659,6 +659,54 @@
                 z-index: 1;
             }
 
+            /* ============================================
+            HERO MARQUEE
+            ============================================ */
+            .hero-marquee {
+                width: 100%;
+                background: linear-gradient(90deg, #7700ff, #b026ff, #7700ff);
+                padding: 12px 0;
+                overflow: hidden;
+                position: relative;
+                box-shadow: 0 4px 15px rgba(119, 0, 255, 0.5);
+            }
+
+            .marquee-content {
+                display: flex;
+                white-space: nowrap;
+                animation: marqueeScroll 20s linear infinite;
+            }
+
+            .marquee-content span {
+                font-family: 'Press Start 2P', cursive;
+                font-size: 15px;
+                color: #ffffff;
+                text-shadow: 2px 2px 4px #000000;
+                padding-right: 50px;
+            }
+
+            @keyframes marqueeScroll {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(-100%);
+                }
+            }
+
+            /* Responsive */
+            @media (max-width: 768px) {
+                .marquee-content span {
+                    font-size: 14px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .marquee-content span {
+                    font-size: 11px;
+                }
+            }
+
             /* Sections with backgrounds */
             section {
                 padding: 120px 20px;
@@ -723,7 +771,7 @@
                 font-size: 36px;
                 text-align: center;
                 margin-bottom: 76px;
-                text-shadow: 5px 5px 0 #c300ff;
+                text-shadow: 5px 5px  #c300ff;
                 color: #ffffff;
             }
 
@@ -1353,10 +1401,212 @@
             }
 
             /* ============================================
-            GALLERY CAROUSEL
+            INTERACTIVE CONTENT SECTION - STACK CARDS
             ============================================ */
+            .interactive-content-wrapper {
+                display: flex;
+                gap: 60px;
+                max-width: 1300px;
+                margin: 0 auto 80px;
+                padding: 0 20px;
+                align-items: center;
+                justify-content: space-between; 
+                margin-bottom: -30px;
+            }
 
-            
+            .content-text-section {
+                flex: 1 1 65%;
+                padding-right: 40px;
+            }
+
+            .content-heading {
+                font-size: 25px;
+                color: #ffffff;
+                text-shadow: 4px 4px 0 #8d00eb;
+                margin-bottom: 30px;
+            }
+
+            .content-description {
+                font-size: 12px;
+                line-height: 2;
+                color: #FFF;
+                text-shadow: 2px 2px #000;
+                margin-bottom: 20px;
+            }
+
+            .interactive-cards-section {
+                flex: 1 1 35%;
+                height: 500px;
+                position: relative;
+                perspective: 1500px;
+            }
+
+            .interactive-card {
+                position: absolute;
+                width: 480px;  /* WIDER - was 380px */
+                height: 320px;  /* SHORTER - was 480px - makes it horizontally longer */
+                background-image: url('https://lh3.googleusercontent.com/pw/AP1GczM_K6POKMRfjRwlMsq8bLETu21MXNZX2yRp6ek411_rFlzE5b-FuuiyAR84YQHDWto1qtSd4Z138h8YtdhwMp_9hKNkLT8Gf-fPHcRzHcpDXCb-hs71NI0CPBjw_go8N-3_Bb1_XZtic8bK4y50NoyV=w392-h392-s-no-gm?authuser=0');
+                background-size: cover;
+                border: 2px solid #8d00eb;
+                cursor: pointer;
+                transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+                transform-style: preserve-3d;
+                left: 50%;
+                top: 50%;
+            }
+
+            /* Front card - NO ZOOM, just centered */
+            .interactive-card[data-position="front"] {
+                transform: translate(-50%, -50%) scale(1) translateZ(0) rotateY(0deg);
+                z-index: 30;
+                opacity: 1;
+            }
+
+            /* Middle card - MOVED UP so heading is visible */
+            .interactive-card[data-position="middle"] {
+                transform: translate(-50%, -50%) scale(0.90) translateZ(-60px) rotateY(-10deg) translateX(-50px) translateY(-80px);
+                z-index: 20;
+                opacity: 0.80;
+                filter: brightness(0.85);
+            }
+
+            /* Back card - MOVED UP MORE so heading is visible */
+            .interactive-card[data-position="back"] {
+                transform: translate(-50%, -50%) scale(0.80) translateZ(-120px) rotateY(-18deg) translateX(-100px) translateY(-140px);
+                z-index: 10;
+                opacity: 0.65;
+                filter: brightness(0.75);
+            }
+
+            /* Edition Label - positioned to be visible */
+            .card-edition-label {
+                position: absolute;
+                top: -55px;
+                left: 50%;
+                transform: translateX(-50%);
+                background-image: url('https://lh3.googleusercontent.com/pw/AP1GczMxkXqlZpEAGsqwkmKuJT0ceVu9_CuV2rmiFt8xlvW9X30dcur-795F1dwSkhe9je8mMAqhnPsQMVd2q7GwOeP257Kx6k7NqVyA0w-G6l1Tq17S6upayDwz3JdLd3AQ0vM2zUx4vqhdtbQlNkFFf1aq=w1163-h400-s-no-gm?authuser=0');
+                background-size: cover;
+                padding: 12px 35px;
+                font-size: 16px;
+                color: #FFF;
+                text-shadow: 3px 3px #000;
+                white-space: nowrap;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+                pointer-events: none;
+            }
+
+            /* Front card label */
+            .interactive-card[data-position="front"] .card-edition-label {
+                z-index: 150;
+                opacity: 1;
+            }
+
+            /* Middle card label - fully visible above front card */
+            .interactive-card[data-position="middle"] .card-edition-label {
+                z-index: 149;
+                opacity: 1;
+            }
+
+            /* Back card label - fully visible above front card */
+            .interactive-card[data-position="back"] .card-edition-label {
+                z-index: 148;
+                opacity: 1;
+            }
+
+            .interactive-card-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 6px;
+                pointer-events: none;
+            }
+
+            /* REMOVED ZOOM - Only subtle shadow change on hover */
+            .interactive-card[data-position="front"]:hover {
+                box-shadow: 0 20px 50px rgba(139, 90, 43, 0.9);
+            }
+
+            /* Responsive adjustments */
+            @media (max-width: 768px) {
+                .interactive-content-wrapper {
+                    flex-direction: column;
+                    gap: 40px;
+                    margin-bottom: 60px;
+                }
+                
+                .content-text-section {
+                    padding-right: 0;
+                }
+                
+                .content-heading {
+                    font-size: 24px;
+                }
+                
+                .content-description {
+                    font-size: 11px;
+                }
+                
+                .interactive-cards-section {
+                    flex: 0 0 450px;
+                    height: 400px;
+                }
+                
+                .interactive-card {
+                    width: 400px;
+                    height: 260px;
+                }
+                
+                .card-edition-label {
+                    font-size: 13px;
+                    padding: 10px 25px;
+                    top: -50px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .interactive-cards-section {
+                    flex: 0 0 380px;
+                    height: 350px;
+                }
+                
+                .interactive-card {
+                    width: 340px;
+                    height: 220px;
+                    border-width: 4px;
+                }
+                
+                .card-edition-label {
+                    font-size: 11px;
+                    padding: 8px 20px;
+                    top: -45px;
+                }
+                
+                .content-heading {
+                    font-size: 20px;
+                }
+                
+                .content-description {
+                    font-size: 10px;
+                }
+            }
+
+            @media (max-width: 400px) {
+                .interactive-cards-section {
+                    flex: 0 0 340px;
+                    height: 320px;
+                }
+                
+                .interactive-card {
+                    width: 300px;
+                    height: 200px;
+                }
+                
+                .card-edition-label {
+                    font-size: 10px;
+                    padding: 7px 18px;
+                }
+            }
 
             /* ============================================
             SECTION SUBHEADINGS (Stats & Gallery)
@@ -1744,6 +1994,9 @@
             }
 
             @media (max-width: 768px) {
+                .faq-container {
+                    margin-top: 0px;
+                }
                 .faq-question {
                     font-size: 11px;
                     padding: 15px 20px;
@@ -2349,6 +2602,7 @@
                 /* border: 2px solid #FFD700; */
                 border-radius: 1px;
                 padding: 30px 20px;
+                margin-bottom: -20px;
                 text-align: center;
                 box-shadow: 0 10px 25px rgba(114, 0, 190, 0.8);
                 transition: transform 0.3s ease;
@@ -2400,6 +2654,10 @@
 
             /* Tablets and smaller (≤768px) */
             @media (max-width: 768px) {
+                #sponsors-section {
+                    padding-bottom: -70px;
+                }
+
                 .sponsor-tier {
                     margin-bottom: 40px;
                 }
@@ -4288,6 +4546,13 @@
             </div>
         </section>
 
+        <div class="hero-marquee">
+            <div class="marquee-content">
+                <span>INNOVATE-ELEVATE-TRANSFORM • INNOVATE-ELEVATE-TRANSFORM • INNOVATE-ELEVATE-TRANSFORM • INNOVATE-ELEVATE-TRANSFORM • </span>
+                <span>INNOVATE-ELEVATE-TRANSFORM • INNOVATE-ELEVATE-TRANSFORM • INNOVATE-ELEVATE-TRANSFORM • INNOVATE-ELEVATE-TRANSFORM • </span>
+            </div>
+        </div>
+
         <!-- About Section -->
         <section id="about" class="section-bg">
             <div style="max-width: 1400px; margin: 0 auto;">
@@ -4457,6 +4722,53 @@
         <section id="why-attend" class="section-bg">
             <div style="max-width: 1400px; margin: 0 auto; margin-top: -50px;">
                 <h2>Why Attend?</h2>
+                
+                <!-- Interactive Content Section - Side by Side -->
+                <div class="interactive-content-wrapper">
+                    <!-- Left side - Text -->
+                    <div class="content-text-section">
+                        <h3 class="content-heading">Experience AceHack</h3>
+                        <p class="content-description">
+                            Explore AceHack’s journey through highlights from past editions. 
+                            Click the cards to relive AceHack 2.0, 3.0, and 4.0.
+                        </p>
+                        <p class="content-description">
+                            From coding marathons to keynotes and workshops, AceHack is where ideas turn into impact.
+                        </p>
+                        <p class="content-description">
+                            Each edition grows stronger. Be part of the next chapter at AceHack 5.0.
+                        </p>
+                    </div>
+
+                    <!-- Right side - Stack Cards -->
+                    <div class="interactive-cards-section">
+                        <!-- Card 1 - AceHack 4.0 (Front initially) -->
+                        <div class="interactive-card" data-index="0" data-position="front" data-youtube="https://youtu.be/1BO_oclr_PQ?si=oMtz9S0tQiopxZN0">
+                            <div class="card-edition-label">AceHack 4.0</div>
+                            <img src="https://lh3.googleusercontent.com/pw/AP1GczOWzTIBmpX4VFPtva1FBTBSrbajhc2cXxtFbWJ5LWIwnWYbracfMsRRyru6pXZEWsgBxbKGMIYPkQkKW85M8fbn08_KaXpZi8_1IEAoPpeQs3D1UeUtfnW0DdsfJYJIzNCECA7CB7zRBlLNpbpq6AhL=w1024-h627-s-no-gm?authuser=0" 
+                                alt="AceHack 4.0" 
+                                class="interactive-card-image">
+                        </div>
+
+                        <!-- Card 2 - AceHack 3.0 (Middle initially) -->
+                        <div class="interactive-card" data-index="1" data-position="middle" data-youtube="https://youtu.be/TiZbmEgvVdM?si=fnnUkpRPPsx2EyRe">
+                            <div class="card-edition-label">AceHack 3.0</div>
+                            <img src="https://lh3.googleusercontent.com/pw/AP1GczNefxasrkN8kpfsnKPi2EmNAv33wtu837yNql_VeTcjye0ceKERGPCbQxV0K_KavAA1uTpwGXi1x2yFvN1WTRXDF7uiuCqW21HNUDLxasGgYgAXcfAxX4IJTyg2wlhoiVIW3arc9dtIloQfhozlE3SS=w1024-h600-s-no-gm?authuser=0" 
+                                alt="AceHack 3.0" 
+                                class="interactive-card-image">
+                        </div>
+
+                        <!-- Card 3 - AceHack 2.0 (Back initially) -->
+                        <div class="interactive-card" data-index="2" data-position="back" data-youtube="https://youtu.be/bR_YNme5nwk?si=S8r8agsQ-kHwbCdY">
+                            <div class="card-edition-label">AceHack 2.0</div>
+                            <img src="https://lh3.googleusercontent.com/pw/AP1GczO9zbZ24LVPYmzVFRaZ5byKJ0k5aHqdAEpQ-cfHGE8_qr-M4TaqjPvRM0jTK-pFn6jtZM8_38DAOiE2TJOF7V8Sm0VgYvVY3VGAfEOJcYvbec1X11DPLmPKKDqbvuQ90HcWu4wUNpuOvcRRULpQW_hp=w1024-h566-s-no-gm?authuser=0" 
+                                alt="AceHack 2.0" 
+                                class="interactive-card-image">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bee Cards Grid - Below the side-by-side content -->
                 <div class="cards-grid">
                     <!-- Row 1 -->
                     <div class="card-wrapper" data-direction="top-left" data-index="0">
@@ -4505,8 +4817,6 @@
                         </div>
                     </div>
                 </div>
-
-                
             </div>
         </section>
 
@@ -4711,7 +5021,7 @@
         <!-- FAQ Section -->
         <section id="faq-preview" class="section-bg">
             <div style="max-width: 1400px; margin: 0 auto;">
-                <h2 style="margin-top: -100px;">FAQs</h2>
+                <h2>FAQs</h2>
                 
                 <div class="faq-container">
                     <!-- FAQ Item 1 -->
@@ -5269,6 +5579,58 @@
             }
 
             smoothScroll();
+
+
+            /* ======================================================
+            INTERACTIVE CARDS - STACK ROTATION
+            ====================================================== */
+            (function initStackCards() {
+                const cards = document.querySelectorAll('.interactive-card');
+                if (!cards.length) return;
+                
+                const positions = ['front', 'middle', 'back'];
+                let isPaused = false;
+                
+                function rotateStack() {
+                    if (isPaused) return;
+                    
+                    cards.forEach(card => {
+                        const currentPos = card.dataset.position;
+                        const currentIndex = positions.indexOf(currentPos);
+                        
+                        // Move to next position (front -> middle -> back -> front)
+                        const nextIndex = (currentIndex + 1) % positions.length;
+                        card.dataset.position = positions[nextIndex];
+                    });
+                }
+                
+                // Auto-rotate every 2 seconds
+                const autoRotate = setInterval(rotateStack, 3000);
+                
+                // Click handler - open link
+                cards.forEach(card => {
+                    card.addEventListener('click', () => {
+                        // Only allow clicking front card
+                        if (card.dataset.position === 'front') {
+                            const url = card.dataset.youtube;
+                            if (url) {
+                                window.open(url, '_blank');
+                            }
+                        }
+                    });
+                    
+                    // Pause on hover
+                    card.addEventListener('mouseenter', () => {
+                        isPaused = true;
+                    });
+                    
+                    card.addEventListener('mouseleave', () => {
+                        isPaused = false;
+                    });
+                });
+                
+                console.log('✓ Stack cards initialized - rotating every 2 seconds');
+            })();
 
         </script>
 
