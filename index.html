@@ -1356,76 +1356,7 @@
             GALLERY CAROUSEL
             ============================================ */
 
-            .gallery-carousel {
-                width: 100%;
-                overflow: hidden;
-                padding: 40px 0;
-                margin: 0 auto;
-                margin-bottom: -20px;
-                position: relative;
-            }
-
-            .carousel-track {
-                display: flex;
-                gap: 30px;
-                animation: scroll-left 30s linear infinite;
-                will-change: transform;
-            }
-
-            .carousel-image {
-                width: 300px;
-                height: 200px;
-                object-fit: cover;
-                border: 0.5px solid #8400ff;
-                flex-shrink: 0;
-                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
-                image-rendering: auto;
-                transition: transform 0.3s ease;
-            }
-
-            .carousel-image:hover {
-                transform: scale(1.05);
-            }
-
-            @keyframes scroll-left {
-                0% {
-                    transform: translateX(0);
-                }
-                100% {
-                    transform: translateX(-80%);
-                }
-            }
-
-            /* Pause on hover */
-            .gallery-carousel:hover .carousel-track {
-                animation-play-state: paused;
-            }
-
-            /* Mobile responsiveness */
-            @media (max-width: 768px) {
-                .gallery-carousel {
-                    padding-top: 75px;
-                }
-                .carousel-image {
-                    width: 250px;
-                    height: 180px;
-                }
-                
-                .carousel-track {
-                    gap: 20px;
-                }
-            }
-
-            @media (max-width: 480px) {
-                .carousel-image {
-                    width: 200px;
-                    height: 140px;
-                }
-                
-                .carousel-track {
-                    gap: 15px;
-                }
-            }
+            
 
             /* ============================================
             SECTION SUBHEADINGS (Stats & Gallery)
@@ -1734,32 +1665,108 @@
                 z-index: 0;
             }
 
-            /* FAB */
-            .fab {
-                position: fixed;
-                bottom: 40px;
-                right: 40px;
-                width: 80px;
-                height: 80px;
-                background-image: url('https://lh3.googleusercontent.com/pw/AP1GczP1lCeiQIfbd83eLG7d4f-uawftSIIHk4rpp8bQSiOR8KmmuLcCisWxTopkn-56BiB6wYDc7-qWvy0HRZyGEtrH84uz_cF9nsAcdOTuZ2ROvMVsFL4irkzZSVhIBBgpUWBvvbqa0emAaqC0yA_ekiov=w160-h160-s-no-gm?authuser=0');
-                background-size: cover;
-                border: 2px solid #8400ff;
-                border-radius: 50%;
-                cursor: pointer;
-                z-index: 999;
-                box-shadow: 0 0 40px rgba(135, 7, 255, 0.9);
-                text-decoration: none;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                overflow: hidden;
-                padding: 15px;
+            /* FAQ Container */
+            .faq-container {
+                max-width: 1000px;
+                margin: 0 auto 60px;
+                padding: 0 20px;
             }
 
-            .fab img {
-                width: 120%;
-                height: 120%;
-                object-fit: contain;
+            /* FAQ Item */
+            .faq-item {
+                background-image: url('https://lh3.googleusercontent.com/pw/AP1GczNnRMyOqLqz8uhsHKe1iXkI88f3bHaszEoNhw7jmQozRTa0ZTD7oWwhwvp95nkASVLX2PlfeAvch9nvN6va5j2kNr0QP70GWxapOg4B8MIiwkeDFDOtSuV8jWXc9jCjBREupS3MZdE0muy7tkghxgPr=w1199-h198-s-no-gm?authuser=0');
+                background-size: cover;
+                border: 2px solid #450086;
+                margin-bottom: 20px;
+                border-radius: 2px;
+                overflow: hidden;
+                position: relative;
+            }
+
+            .faq-item::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.82);
+                z-index: 0;
+                pointer-events: none;
+            }
+
+            /* FAQ Question */
+            .faq-question {
+                padding: 20px 25px;
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 13px;
+                color: #FFF;
+                text-shadow: 2px 2px #8900e4;
+                position: relative;
+                z-index: 1;
+            }
+
+            .faq-icon {
+                font-size: 24px;
+                transition: transform 0.3s;
+            }
+
+            .faq-item.active .faq-icon {
+                transform: rotate(45deg);
+            }
+
+            /* FAQ Answer */
+            .faq-answer {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                padding: 0 25px;
+                font-size: 10px;
+                line-height: 1.8;
+                color: #FFF;
+                text-shadow: 1px 1px #000;
+                position: relative;
+                z-index: 1;
+            }
+
+            .faq-item.active .faq-answer {
+                max-height: 500px;
+                padding: 0 25px 20px 25px;
+            }
+
+            /* FAQ CTA */
+            .faq-cta {
+                text-align: center;
+                margin-top: 40px;
+            }
+
+            @media (max-width: 768px) {
+                .faq-question {
+                    font-size: 11px;
+                    padding: 15px 20px;
+                }
+                
+                .faq-answer {
+                    font-size: 10px;
+                }
+                
+                .faq-icon {
+                    font-size: 20px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .faq-question {
+                    font-size: 10px;
+                    padding: 12px 15px;
+                }
+                
+                .faq-answer {
+                    font-size: 9px;
+                }
             }
 
             /* Global Footer Styles */
@@ -4499,23 +4506,7 @@
                     </div>
                 </div>
 
-                <div class="gallery-carousel">
-                    <div class="carousel-track">
-                        <img src="https://lh3.googleusercontent.com/pw/AP1GczPpCvJ5dEcy6iWf40wn0aD0JllqdjAbkFJ_f1OFBwxoxKGe247GcFvaltbRIBU_wxmBforek583pogXXDwKclY-8oS5r5Hpp7LKMkv0LVHmZo_j1nGWCUTxZib6n-LeO71SRQR9XIOkSZEBzPwXMO0b=w1422-h948-s-no-gm?authuser=0" alt="Gallery Image 1" class="carousel-image">
-                        <img src="https://lh3.googleusercontent.com/pw/AP1GczM4GGQrwCQIRBsHncdIqbNixKzyQO8OmvOqBVHcsQgkngXhZtVvUnFIAzcsg6X2KVHhzupLueuHElVDgX1fWmf0ZbTzoBaDnX_ClYhMik5VZCrlKyOnHjomOgwauwB_Tqm6Q_T0UkFo8Imnkgcu2stk=w1422-h948-s-no-gm?authuser=0" alt="Gallery Image 2" class="carousel-image">
-                        <img src="https://lh3.googleusercontent.com/pw/AP1GczMg6tuo2BxUns6aUKrm3qMpmLbCkJFNbPy-OuXh89YDp2m2JvxqpVXiA_YXhbjr3q8Utu8P0FtgSgglTkOiY-abyCscOl45NLGVnHWpmfbmjKtJwlyedxBzvSowiGaVbK6NMa8_FZlAAbPY2_1tN05T=w1422-h948-s-no-gm?authuser=0" alt="Gallery Image 3" class="carousel-image">
-                        <img src="https://lh3.googleusercontent.com/pw/AP1GczNFUC_PtyU-aDFYbP8uUM_0lXZI2dY1NCQznK715LMZqkyGmO9HuKFgVl2T-JE4WsRQfzeyG13qcbmjwFbRRTIJLOJiI0r774vb30QlTJTzhWwrAZ_u98OQgeTxD5YDuh7Yi_kfDwarM2bEWfvOdTXw=w1422-h948-s-no-gm?authuser=0" alt="Gallery Image 4" class="carousel-image">
-                        <img src="https://lh3.googleusercontent.com/pw/AP1GczMlYZIVmtnYBTY5jWNFCIPNJS-Cjom-ulRsF0L-4907yZUyRbRGj_eMvpFotwfxIJ67n-jhrtRKN6NtA6JxVyCMRWTRmd5PKhOPIIJg4ugICC1fnr5poV6zi7DWz9ztMHJ1xGaG7a9feun9eyGnkJOP=w1422-h948-s-no-gm?authuser=0" alt="Gallery Image 5" class="carousel-image">
-                        <img src="https://lh3.googleusercontent.com/pw/AP1GczMZbdTw9kvGF7FZWTOGVISHU8WKS-FIQEv6I4H24MmT4DEh8FcGAUIxmur-f2xTD342fNIANU5Ph2s_hpsx6msXjx4i0Azc44VPk4GTos5Sq5ohT2xcJeIRgholLkCueh5llKqlPCQQpm0VssSrrhlcNA=w1422-h948-s-no-gm?authuser=0" alt="Gallery Image 6" class="carousel-image">
-                        <!-- Duplicate images for seamless loop -->
-                        <img src="https://lh3.googleusercontent.com/pw/AP1GczPpCvJ5dEcy6iWf40wn0aD0JllqdjAbkFJ_f1OFBwxoxKGe247GcFvaltbRIBU_wxmBforek583pogXXDwKclY-8oS5r5Hpp7LKMkv0LVHmZo_j1nGWCUTxZib6n-LeO71SRQR9XIOkSZEBzPwXMO0b=w1422-h948-s-no-gm?authuser=0" alt="Gallery Image 1" class="carousel-image">
-                        <img src="https://lh3.googleusercontent.com/pw/AP1GczM4GGQrwCQIRBsHncdIqbNixKzyQO8OmvOqBVHcsQgkngXhZtVvUnFIAzcsg6X2KVHhzupLueuHElVDgX1fWmf0ZbTzoBaDnX_ClYhMik5VZCrlKyOnHjomOgwauwB_Tqm6Q_T0UkFo8Imnkgcu2stk=w1422-h948-s-no-gm?authuser=0" alt="Gallery Image 2" class="carousel-image">
-                        <img src="https://lh3.googleusercontent.com/pw/AP1GczMg6tuo2BxUns6aUKrm3qMpmLbCkJFNbPy-OuXh89YDp2m2JvxqpVXiA_YXhbjr3q8Utu8P0FtgSgglTkOiY-abyCscOl45NLGVnHWpmfbmjKtJwlyedxBzvSowiGaVbK6NMa8_FZlAAbPY2_1tN05T=w1422-h948-s-no-gm?authuser=0" alt="Gallery Image 3" class="carousel-image">
-                        <img src="https://lh3.googleusercontent.com/pw/AP1GczNFUC_PtyU-aDFYbP8uUM_0lXZI2dY1NCQznK715LMZqkyGmO9HuKFgVl2T-JE4WsRQfzeyG13qcbmjwFbRRTIJLOJiI0r774vb30QlTJTzhWwrAZ_u98OQgeTxD5YDuh7Yi_kfDwarM2bEWfvOdTXw=w1422-h948-s-no-gm?authuser=0" alt="Gallery Image 4" class="carousel-image">
-                        <img src="https://lh3.googleusercontent.com/pw/AP1GczMlYZIVmtnYBTY5jWNFCIPNJS-Cjom-ulRsF0L-4907yZUyRbRGj_eMvpFotwfxIJ67n-jhrtRKN6NtA6JxVyCMRWTRmd5PKhOPIIJg4ugICC1fnr5poV6zi7DWz9ztMHJ1xGaG7a9feun9eyGnkJOP=w1422-h948-s-no-gm?authuser=0" alt="Gallery Image 5" class="carousel-image">
-                        <img src="https://lh3.googleusercontent.com/pw/AP1GczMZbdTw9kvGF7FZWTOGVISHU8WKS-FIQEv6I4H24MmT4DEh8FcGAUIxmur-f2xTD342fNIANU5Ph2s_hpsx6msXjx4i0Azc44VPk4GTos5Sq5ohT2xcJeIRgholLkCueh5llKqlPCQQpm0VssSrrhlcNA=w1422-h948-s-no-gm?authuser=0" alt="Gallery Image 6" class="carousel-image">
-                    </div>
-                </div>
+                
             </div>
         </section>
 
@@ -4717,10 +4708,67 @@
             </div>
         </section>
 
-        <!-- FAB Button -->
-        <a href="faq.html" class="fab">
-            <img src="https://lh3.googleusercontent.com/pw/AP1GczN1JC7IshEcH37kyGSYZgnMowLxC9Z5zIT-r-U1wtqLjQJ3rV4R6nTxUjfdMUCLEViGhnzXMdGo8IaUsZSaMt7qSr0NxO3q_eNIh5TTFMmlzOXUMMkENrMOQlLGwXOTyscY4GCER2XbALXG1cR-uPR-=w938-h938-s-no-gm?authuser=0" alt="FAQ">
-        </a>
+        <!-- FAQ Section -->
+        <section id="faq-preview" class="section-bg">
+            <div style="max-width: 1400px; margin: 0 auto;">
+                <h2 style="margin-top: -100px;">FAQs</h2>
+                
+                <div class="faq-container">
+                    <!-- FAQ Item 1 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What is AceHack 5.0?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>AceHack 5.0 is a 36-hour hackathon where students and innovators create real-world tech solutions. It's a platform to learn, build, network, and compete for amazing prizes while working on projects that matter.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 2 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>When and where is AceHack 5.0 taking place?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>AceHack 5.0 will be held on March 7-8th, 2026. The event location will be announced soon. Stay tuned to our social media channels for updates!</p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 3 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Who can participate in AceHack 5.0?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>AceHack 5.0 is open to all students currently enrolled in any educational institution across India. Whether you're a beginner or an experienced developer, everyone is welcome!</p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 4 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How do I register for the hackathon?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Click the "Register Now" button on our homepage and fill out the registration form with your details. You'll receive a confirmation email once your registration is complete.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Repeat for FAQ items 2, 3, 4 -->
+                </div>
+                
+                <!-- Read More Button -->
+                <div class="faq-cta">
+                    <div class="stone-btn-wrapper">
+                        <a href="faq.html" class="stone-btn">
+                            Read More FAQs
+                        </a>
+                        <img src="https://lh3.googleusercontent.com/pw/AP1GczMeqenNSDCEYEvZ8vPHzJRrkSk9UoakdEVllKTU-kgOC1Un8F6jjOyTdJNAtB9Wp2Q3VnTpijka2PbFKWGw_1kF1nSr65_fyrqLXAG_E5RhhCxrJpnMrqWb3CZ0aDYblwLMbcQ2GBFD96rifvy11Vp3=w158-h158-s-no-gm?authuser=0" alt="Icon" class="popup-image">
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- FOOTER -->
 
@@ -5178,6 +5226,26 @@
                 
                 console.log('✓ Hamburger menu initialized');
             })();
+
+            /* ======================================================
+            FAQ ACCORDION
+            ====================================================== */
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.addEventListener('click', () => {
+                    const item = question.parentElement;
+                    const wasActive = item.classList.contains('active');
+                    
+                    // Close all FAQs
+                    document.querySelectorAll('.faq-item').forEach(i => {
+                        i.classList.remove('active');
+                    });
+                    
+                    // Open clicked FAQ if it wasn't active
+                    if (!wasActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
 
         </script>
 
