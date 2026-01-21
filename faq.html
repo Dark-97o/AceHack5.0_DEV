@@ -901,7 +901,8 @@
                 transition: left 0.4s ease;
                 overflow-y: auto;
                 box-shadow: 5px 0 30px rgba(0, 0, 0, 0.9);
-                /* border-right: 1px solid #ae00ff; */
+                display: flex;              /* ADD THIS */
+                flex-direction: column;      /* ADD THIS */
             }
 
             .mobile-nav-overlay.active {
@@ -913,6 +914,7 @@
                 display: flex;
                 flex-direction: column;
                 gap: 0;
+                flex: 1;
             }
 
             .mobile-nav-item {
@@ -961,8 +963,21 @@
                 pointer-events: auto;
             }
             
+            .mobile-nav-logo {
+                margin-top: auto;
+                padding: 20px;
+                text-align: center;
+                border-top: 2px solid rgba(157, 0, 255, 0.3);
+                margin-bottom: -80px;
+            }
+
+            .mobile-nav-logo img {
+                width: 200px;
+                max-width: 100%;
+                height: auto;
+                image-rendering: pixelated;
+            }
                 
-        
         </style>
         <!-- ============================
         RESPONSIVE STYLES GO HERE
@@ -2611,6 +2626,17 @@
                         item.appendChild(anchor);
                         navContent.appendChild(item);
                     });
+
+                    // Add logo at bottom
+                    const logoSection = document.createElement('div');
+                    logoSection.className = 'mobile-nav-logo';
+
+                    const logoImg = document.createElement('img');
+                    logoImg.src = 'https://lh3.googleusercontent.com/pw/AP1GczNcsBYJRrDQF5xc-IOD9E_9tAf-KWM-rpVcJYXr7EzNU94-PQCOFTBnrTo2AVnYqDfkW-wroeaoN8hMMf_B0vW-mqVewR_bhtGTWzxJSby3AyqlRiJmtvTrrhH1Wi6sWxqgW2K27xgdVhvhdnUMZu0q=w950-h316-s-no-gm?authuser=0';
+                    logoImg.alt = 'AceHack Logo';
+
+                    logoSection.appendChild(logoImg);
+                    mobileNav.appendChild(logoSection);
                     
                     mobileNav.appendChild(navContent);
                     
