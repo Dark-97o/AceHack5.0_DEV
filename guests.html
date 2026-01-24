@@ -3,30 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guests - Hackathon</title>
-    <link rel="stylesheet" href="assets/css/assests.css">
+    <title>Guests - AceHack 5.0</title>
+    <link
+        rel="icon"
+        href="https://lh3.googleusercontent.com/pw/AP1GczO1t0jxmklXeu6NqXcHVBo1c93VptbcWTrP9PQ8ljiF0-VeUfWmOp9VUfzB_LH3wjN0iWHooGAUdijyRyt7jEfopelqpw-OQrHBFxMJfWKfNsXskDZGPTfgs3Xv67IEgp24zx45HpjHe8zDfVGwzA_H=w995-h995-s-no-gm?authuser=0"
+        type="image/svg+xml"
+    />
+    <meta name="description" content="Meet the amazing mentors and judges of AceHack 5.0 - industry experts, tech leaders, and innovators guiding the next generation of hackers.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assests.css">
 </head>
 <body>
+    <!-- Minecraft End Sky Background -->
+    <div class="end-sky" id="endSky"></div>
+
+    <!-- Hamburger Menu (Mobile) -->
+    <div class="hamburger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay">
+        <div class="mobile-nav-content">
+            <div class="mobile-nav-item">
+                <a href="index.html#home" class="mobile-nav-link">Home</a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="index.html#timeline" class="mobile-nav-link" data-soon="true">Timeline</a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="guests.html" class="mobile-nav-link">Guests</a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="index.html#tracks" class="mobile-nav-link">Tracks</a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="index.html#sponsors" class="mobile-nav-link">Sponsors</a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="index.html#faq-preview" class="mobile-nav-link">FAQs</a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="index.html#contact" class="mobile-nav-link">Contact</a>
+            </div>
+        </div>
+        <div class="mobile-nav-logo">
+            <img src="https://lh3.googleusercontent.com/pw/AP1GczNcsBYJRrDQF5xc-IOD9E_9tAf-KWM-rpVcJYXr7EzNU94-PQCOFTBnrTo2AVnYqDfkW-wroeaoN8hMMf_B0vW-mqVewR_bhtGTWzxJSby3AyqlRiJmtvTrrhH1Wi6sWxqgW2K27xgdVhvhdnUMZu0q=w950-h316-s-no-gm?authuser=0" alt="AceHack Logo">
+        </div>
+    </div>
+
+    <!-- Navigation Backdrop -->
+    <div class="nav-backdrop"></div>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-texture-bar"></div>
+        <div class="nav-container">
+            <div class="lantern-container">
+                <div class="chain"></div>
+                <div class="lantern"></div>
+            </div>
+
+            <div class="nav-links">
+                <div class="nav-sign-container" style="--index: 0">
+                    <div class="sign-chain"></div>
+                    <a href="index.html#home" class="nav-sign">Home</a>
+                </div>
+                <div class="nav-sign-container" style="--index: 1">
+                    <div class="sign-chain"></div>
+                    <a href="index.html#timeline" class="nav-sign" data-soon="true">Timeline</a>
+                </div>
+                <div class="nav-sign-container" style="--index: 2">
+                    <div class="sign-chain"></div>
+                    <a href="guests.html" class="nav-sign">Guests</a>
+                </div>
+                <div class="nav-sign-container" style="--index: 3">
+                    <div class="sign-chain"></div>
+                    <a href="index.html#tracks" class="nav-sign">Tracks</a>
+                </div>
+                <div class="nav-sign-container" style="--index: 4">
+                    <div class="sign-chain"></div>
+                    <a href="index.html#sponsors" class="nav-sign">Sponsors</a>
+                </div>
+                <div class="nav-sign-container" style="--index: 5">
+                    <div class="sign-chain"></div>
+                    <a href="index.html#faq-preview" class="nav-sign">FAQs</a>
+                </div>
+                <div class="nav-sign-container" style="--index: 6">
+                    <div class="sign-chain"></div>
+                    <a href="index.html#contact" class="nav-sign">Contact</a>
+                </div>
+            </div>
+
+            <div class="lantern-container">
+                <div class="chain"></div>
+                <div class="lantern"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
     <div class="minecraft-world">
-        <!-- Header Section -->
+        <!-- Page Header -->
         <header class="page-header">
-            <h1 class="page-title">GUESTS</h1>
+            <h1 class="page-title">OUR GUESTS</h1>
             <div class="wooden-plank-header">
-                <span>Mentors, Judges & More</span>
+                <span>Meet Our Amazing Mentors & Judges</span>
             </div>
         </header>
 
-        <!-- Unified Guests Section -->
+        <!-- Guests Section -->
         <section class="guests-section">
-            <div class="section-header">
-                <h2 class="section-title">GUESTS</h2>
-            </div>
-            
             <div class="guests-grid">
-                <!-- Guest Card 1 - Mentor -->
+                <!-- Guest Card 1 -->
                 <div class="guest-card">
                     <div class="card-container">
                         <div class="card-content">
@@ -40,19 +133,26 @@
                             
                             <!-- Real Photo Layer -->
                             <div class="photo-layer">
-                                <img src="https://via.placeholder.com/300x300/2C3E50/FFFFFF?text=Mentor+1" alt="Alex Johnson" class="real-photo">
+                                <img src="https://via.placeholder.com/300x400/2C3E50/FFFFFF?text=Alex+Johnson" alt="Alex Johnson" class="real-photo">
                             </div>
                             
                             <!-- Info Overlay -->
                             <div class="info-overlay">
                                 <div class="wooden-sign-box">
                                     <h3 class="guest-name">Alex Johnson</h3>
-                                    <span class="role-badge mentor-badge">MENTOR</span>
+                                    <span class="role-badge mentor-badge">MENTOR & JUDGE</span>
+                                    <p class="guest-tagline">Empowering the next generation of innovators</p>
                                     <p class="guest-designation">Senior Software Engineer</p>
                                     <div class="social-icons">
-                                        <a href="#" class="social-link" aria-label="LinkedIn">in</a>
-                                        <a href="#" class="social-link" aria-label="GitHub">gh</a>
-                                        <a href="#" class="social-link" aria-label="Twitter">tw</a>
+                                        <a href="#" class="social-link" aria-label="LinkedIn">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/733/733561.png" alt="LinkedIn">
+                                        </a>
+                                        <a href="#" class="social-link" aria-label="GitHub">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub">
+                                        </a>
+                                        <a href="#" class="social-link" aria-label="Twitter">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter">
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -60,7 +160,7 @@
                     </div>
                 </div>
 
-                <!-- Guest Card 2 - Mentor -->
+                <!-- Guest Card 2 -->
                 <div class="guest-card">
                     <div class="card-container">
                         <div class="card-content">
@@ -71,17 +171,24 @@
                                 </div>
                             </div>
                             <div class="photo-layer">
-                                <img src="https://via.placeholder.com/300x300/34495E/FFFFFF?text=Mentor+2" alt="Sarah Mitchell" class="real-photo">
+                                <img src="https://via.placeholder.com/300x400/34495E/FFFFFF?text=Sarah+Mitchell" alt="Sarah Mitchell" class="real-photo">
                             </div>
                             <div class="info-overlay">
                                 <div class="wooden-sign-box">
                                     <h3 class="guest-name">Sarah Mitchell</h3>
-                                    <span class="role-badge mentor-badge">MENTOR</span>
+                                    <span class="role-badge mentor-badge">MENTOR & JUDGE</span>
+                                    <p class="guest-tagline">Building tomorrow's tech leaders today</p>
                                     <p class="guest-designation">Tech Lead at StartupXYZ</p>
                                     <div class="social-icons">
-                                        <a href="#" class="social-link" aria-label="LinkedIn">in</a>
-                                        <a href="#" class="social-link" aria-label="GitHub">gh</a>
-                                        <a href="#" class="social-link" aria-label="Twitter">tw</a>
+                                        <a href="#" class="social-link" aria-label="LinkedIn">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/733/733561.png" alt="LinkedIn">
+                                        </a>
+                                        <a href="#" class="social-link" aria-label="GitHub">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub">
+                                        </a>
+                                        <a href="#" class="social-link" aria-label="Twitter">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter">
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -89,7 +196,7 @@
                     </div>
                 </div>
 
-                <!-- Guest Card 3 - Judge -->
+                <!-- Guest Card 3 -->
                 <div class="guest-card">
                     <div class="card-container">
                         <div class="card-content">
@@ -100,17 +207,24 @@
                                 </div>
                             </div>
                             <div class="photo-layer">
-                                <img src="https://via.placeholder.com/300x300/9B59B6/FFFFFF?text=Judge+1" alt="Dr. James Walker" class="real-photo">
+                                <img src="https://via.placeholder.com/300x400/9B59B6/FFFFFF?text=Dr.+James" alt="Dr. James Walker" class="real-photo">
                             </div>
                             <div class="info-overlay">
                                 <div class="wooden-sign-box">
                                     <h3 class="guest-name">Dr. James Walker</h3>
-                                    <span class="role-badge judge-badge">JUDGE</span>
-                                    <p class="guest-designation">Professor of CS</p>
+                                    <span class="role-badge mentor-badge">MENTOR & JUDGE</span>
+                                    <p class="guest-tagline">Guiding hackers to build impactful solutions</p>
+                                    <p class="guest-designation">Professor of Computer Science</p>
                                     <div class="social-icons">
-                                        <a href="#" class="social-link" aria-label="LinkedIn">in</a>
-                                        <a href="#" class="social-link" aria-label="GitHub">gh</a>
-                                        <a href="#" class="social-link" aria-label="Twitter">tw</a>
+                                        <a href="#" class="social-link" aria-label="LinkedIn">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/733/733561.png" alt="LinkedIn">
+                                        </a>
+                                        <a href="#" class="social-link" aria-label="GitHub">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub">
+                                        </a>
+                                        <a href="#" class="social-link" aria-label="Twitter">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter">
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -118,7 +232,7 @@
                     </div>
                 </div>
 
-                <!-- Guest Card 4 - Mentor -->
+                <!-- Guest Card 4 -->
                 <div class="guest-card">
                     <div class="card-container">
                         <div class="card-content">
@@ -129,17 +243,24 @@
                                 </div>
                             </div>
                             <div class="photo-layer">
-                                <img src="https://via.placeholder.com/300x300/1ABC9C/FFFFFF?text=Mentor+3" alt="Marcus Chen" class="real-photo">
+                                <img src="https://via.placeholder.com/300x400/1ABC9C/FFFFFF?text=Marcus+Chen" alt="Marcus Chen" class="real-photo">
                             </div>
                             <div class="info-overlay">
                                 <div class="wooden-sign-box">
                                     <h3 class="guest-name">Marcus Chen</h3>
-                                    <span class="role-badge mentor-badge">MENTOR</span>
+                                    <span class="role-badge mentor-badge">MENTOR & JUDGE</span>
+                                    <p class="guest-tagline">Inspiring creativity in every project</p>
                                     <p class="guest-designation">Full Stack Developer</p>
                                     <div class="social-icons">
-                                        <a href="#" class="social-link" aria-label="LinkedIn">in</a>
-                                        <a href="#" class="social-link" aria-label="GitHub">gh</a>
-                                        <a href="#" class="social-link" aria-label="Twitter">tw</a>
+                                        <a href="#" class="social-link" aria-label="LinkedIn">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/733/733561.png" alt="LinkedIn">
+                                        </a>
+                                        <a href="#" class="social-link" aria-label="GitHub">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub">
+                                        </a>
+                                        <a href="#" class="social-link" aria-label="Twitter">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter">
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -147,7 +268,7 @@
                     </div>
                 </div>
 
-                <!-- Guest Card 5 - Judge -->
+                <!-- Guest Card 5 -->
                 <div class="guest-card">
                     <div class="card-container">
                         <div class="card-content">
@@ -158,17 +279,24 @@
                                 </div>
                             </div>
                             <div class="photo-layer">
-                                <img src="https://via.placeholder.com/300x300/3498DB/FFFFFF?text=Judge+2" alt="Priya Sharma" class="real-photo">
+                                <img src="https://via.placeholder.com/300x400/3498DB/FFFFFF?text=Priya+Sharma" alt="Priya Sharma" class="real-photo">
                             </div>
                             <div class="info-overlay">
                                 <div class="wooden-sign-box">
                                     <h3 class="guest-name">Priya Sharma</h3>
-                                    <span class="role-badge judge-badge">JUDGE</span>
+                                    <span class="role-badge mentor-badge">MENTOR & JUDGE</span>
+                                    <p class="guest-tagline">Championing innovation and excellence</p>
                                     <p class="guest-designation">CTO at TechCorp</p>
                                     <div class="social-icons">
-                                        <a href="#" class="social-link" aria-label="LinkedIn">in</a>
-                                        <a href="#" class="social-link" aria-label="GitHub">gh</a>
-                                        <a href="#" class="social-link" aria-label="Twitter">tw</a>
+                                        <a href="#" class="social-link" aria-label="LinkedIn">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/733/733561.png" alt="LinkedIn">
+                                        </a>
+                                        <a href="#" class="social-link" aria-label="GitHub">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub">
+                                        </a>
+                                        <a href="#" class="social-link" aria-label="Twitter">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter">
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -176,7 +304,7 @@
                     </div>
                 </div>
 
-                <!-- Guest Card 6 - Mentor & Judge -->
+                <!-- Guest Card 6 -->
                 <div class="guest-card">
                     <div class="card-container">
                         <div class="card-content">
@@ -187,17 +315,24 @@
                                 </div>
                             </div>
                             <div class="photo-layer">
-                                <img src="https://via.placeholder.com/300x300/E74C3C/FFFFFF?text=Mentor+4" alt="Emily Rodriguez" class="real-photo">
+                                <img src="https://via.placeholder.com/300x400/E74C3C/FFFFFF?text=Emily" alt="Emily Rodriguez" class="real-photo">
                             </div>
                             <div class="info-overlay">
                                 <div class="wooden-sign-box">
                                     <h3 class="guest-name">Emily Rodriguez</h3>
-                                    <span class="role-badge mentor-badge">MENTOR • JUDGE</span>
-                                    <p class="guest-designation">ML Engineer</p>
+                                    <span class="role-badge mentor-badge">MENTOR & JUDGE</span>
+                                    <p class="guest-tagline">Fostering AI-driven problem solving</p>
+                                    <p class="guest-designation">ML Engineer at DeepTech</p>
                                     <div class="social-icons">
-                                        <a href="#" class="social-link" aria-label="LinkedIn">in</a>
-                                        <a href="#" class="social-link" aria-label="GitHub">gh</a>
-                                        <a href="#" class="social-link" aria-label="Twitter">tw</a>
+                                        <a href="#" class="social-link" aria-label="LinkedIn">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/733/733561.png" alt="LinkedIn">
+                                        </a>
+                                        <a href="#" class="social-link" aria-label="GitHub">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub">
+                                        </a>
+                                        <a href="#" class="social-link" aria-label="Instagram">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram">
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -205,7 +340,7 @@
                     </div>
                 </div>
 
-                <!-- Guest Card 7 - Judge -->
+                <!-- Guest Card 7 -->
                 <div class="guest-card">
                     <div class="card-container">
                         <div class="card-content">
@@ -216,17 +351,24 @@
                                 </div>
                             </div>
                             <div class="photo-layer">
-                                <img src="https://via.placeholder.com/300x300/F39C12/FFFFFF?text=Judge+3" alt="David Kim" class="real-photo">
+                                <img src="https://via.placeholder.com/300x400/F39C12/FFFFFF?text=David+Kim" alt="David Kim" class="real-photo">
                             </div>
                             <div class="info-overlay">
                                 <div class="wooden-sign-box">
                                     <h3 class="guest-name">David Kim</h3>
-                                    <span class="role-badge judge-badge">JUDGE</span>
-                                    <p class="guest-designation">VC Partner</p>
+                                    <span class="role-badge mentor-badge">MENTOR & JUDGE</span>
+                                    <p class="guest-tagline">Connecting startups with opportunities</p>
+                                    <p class="guest-designation">VC Partner at FutureVentures</p>
                                     <div class="social-icons">
-                                        <a href="#" class="social-link" aria-label="LinkedIn">in</a>
-                                        <a href="#" class="social-link" aria-label="GitHub">gh</a>
-                                        <a href="#" class="social-link" aria-label="Twitter">tw</a>
+                                        <a href="#" class="social-link" aria-label="LinkedIn">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/733/733561.png" alt="LinkedIn">
+                                        </a>
+                                        <a href="#" class="social-link" aria-label="Twitter">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter">
+                                        </a>
+                                        <a href="#" class="social-link" aria-label="Instagram">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram">
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -234,7 +376,7 @@
                     </div>
                 </div>
 
-                <!-- Guest Card 8 - Investor -->
+                <!-- Guest Card 8 -->
                 <div class="guest-card">
                     <div class="card-container">
                         <div class="card-content">
@@ -245,17 +387,24 @@
                                 </div>
                             </div>
                             <div class="photo-layer">
-                                <img src="https://via.placeholder.com/300x300/16A085/FFFFFF?text=Investor+1" alt="Rachel Green" class="real-photo">
+                                <img src="https://via.placeholder.com/300x400/16A085/FFFFFF?text=Rachel+Green" alt="Rachel Green" class="real-photo">
                             </div>
                             <div class="info-overlay">
                                 <div class="wooden-sign-box">
                                     <h3 class="guest-name">Rachel Green</h3>
-                                    <span class="role-badge investor-badge">INVESTOR</span>
-                                    <p class="guest-designation">Angel Investor</p>
+                                    <span class="role-badge mentor-badge">MENTOR & JUDGE</span>
+                                    <p class="guest-tagline">Supporting visionary entrepreneurs</p>
+                                    <p class="guest-designation">Angel Investor & Advisor</p>
                                     <div class="social-icons">
-                                        <a href="#" class="social-link" aria-label="LinkedIn">in</a>
-                                        <a href="#" class="social-link" aria-label="GitHub">gh</a>
-                                        <a href="#" class="social-link" aria-label="Twitter">tw</a>
+                                        <a href="#" class="social-link" aria-label="LinkedIn">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/733/733561.png" alt="LinkedIn">
+                                        </a>
+                                        <a href="#" class="social-link" aria-label="Twitter">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter">
+                                        </a>
+                                        <a href="#" class="social-link" aria-label="GitHub">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub">
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -266,6 +415,83 @@
         </section>
     </div>
 
-    <script src="assets/js/assests.js"></script>
-</body>
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="lava-border"></div>
+        <div class="footer-main">
+            <div class="footer-content">
+                <div class="footer-section logo-section">
+                    <div class="logo-bg">
+                        <img src="https://lh3.googleusercontent.com/pw/AP1GczNcsBYJRrDQF5xc-IOD9E_9tAf-KWM-rpVcJYXr7EzNU94-PQCOFTBnrTo2AVnYqDfkW-wroeaoN8hMMf_B0vW-mqVewR_bhtGTWzxJSby3AyqlRiJmtvTrrhH1Wi6sWxqgW2K27xgdVhvhdnUMZu0q=w950-h316-s-no-gm?authuser=0" alt="AceHack Logo" class="acehack-logo">
+                    </div>
+                    <p class="follow-us">Follow us</p>
+                    <div class="socials">
+                        <a href="https://chat.whatsapp.com/FC9DCKKTe61DD3SERneNV0" class="social-icon whatsapp" aria-label="WhatsApp">
+                            <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+                        </a>
+                        <a href="https://www.instagram.com/acehack__" class="social-icon instagram" aria-label="Instagram">
+                            <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram">
+                        </a>
+                        <a href="https://www.linkedin.com/company/acehack-5-0" class="social-icon linkedin" aria-label="LinkedIn">
+                            <img src="https://cdn-icons-png.flaticon.com/512/733/733561.png" alt="LinkedIn">
+                        </a>
+                        <a href="https://x.com/AceHack_uemj" class="social-icon x-twitter" aria-label="X (Twitter)">
+                            <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="X">
+                        </a>
+                        <a href="https://t.me/acehack2" class="social-icon telegram" aria-label="Telegram">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram">
+                        </a>
+                        <a href="https://discord.com/invite/yBDmQqYDMK" class="social-icon discord" aria-label="Discord">
+                            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord">
+                        </a>
+                        <a href="https://www.youtube.com/@Acehack-hackathon" class="social-icon youtube" aria-label="YouTube">
+                            <img src="https://lh3.googleusercontent.com/pw/AP1GczMqs3zqbyvwcx128i-6pRgrMselFGbr9n3QHZAgl-Tc_8hNbR-5JYsePjBljeuR0Bxp15UB_5qum6YKi6VFMwvIIeHpTWh2GLi5sx2sN42ADUJffUS9Us5xTfx_59tg4oe0s1K-VnuSTN6lbmM9WaF7=w128-h128-s-no-gm?authuser=0" alt="YouTube">
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section links-section">
+                    <h3>Quick Links</h3>
+                    <a href="index.html#home">Home</a>
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#tracks">Tracks</a>
+                    <a href="index.html#prizes">Prizes</a>
+                    <a href="faq.html">FAQs</a>
+                </div>
+                <div class="footer-section contact-section">
+                    <h3>Contact Us</h3>
+                    <p class="contact-info">
+                        <b style="color: #ffffff; text-shadow: 1.5px 1.5px #9900ff;">Email</b>: acehack@uem.edu.in<br>
+                        <b style="color: #ffffff; text-shadow: 1.5px 1.5px #9900ff;">Phone</b>: +91 9887103068<br>
+                        <b style="color: #ffffff; text-shadow: 1.5px 1.5px #9900ff;">Address</b>: UEM Jaipur<br>
+                        Gurukul Campus, Sikar Road<br>
+                        Rajasthan - 303807
+                    </p>
+                </div>
+                <div class="footer-section links-section" style="margin-left: 30px;">
+                    <h3>Archives</h3>
+                    <a href="https://dark-97o.github.io/AceHack4.0/">AceHack 4.0</a>
+                    <a href="https://acehack3-0.vercel.app/">AceHack 3.0</a>
+                    <a href="https://acehack2-0.vercel.app/">AceHack 2.0</a>
+                    <a href="https://sahityaroy.github.io/ace-hack-uemj/">AceHack 1.0</a>
+                </div>
+                <div class="footer-section location-section">
+                    <div class="map-overlay">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.512!2d75.7002425!3d27.2124649!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db5f1e3b7b5b5%3A0xb78e5c340c935a95!2sUniversity%20of%20Engineering%20%26%20Management%20(UEM)%2C%20Jaipur!5e0!3m2!1sen!2sin!4v1739999999999"
+                            width="100%" height="100%" style="border:0; border-radius:12px;" allowfullscreen=""
+                            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-separator"></div>
+        <div class="copyright">
+            © 2026 AceHack - University of Engineering and Management Jaipur. All Rights Reserved.
+       </div>
+     </footer>
+       <!-- Toast Notification -->
+      <div id="toast" class="mc-toast">Coming Soon!</div>
+
+        <script src="assests.js"></script>
+  </body>
 </html>
