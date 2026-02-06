@@ -12,8 +12,15 @@
         <meta name="description" content="ACEHACK is the premier 36-hour hackathon where innovation meets creativity. Join hundreds of hackers from across the nation to build groundbreaking projects, collaborate with industry mentors, and compete for exciting rewards in an intense, high-energy environment.">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="preload" as="image" href="[hero-background-url]">    
-        <link rel="preload" as="image" href="[logo-url]">
+        <link rel="icon" type="image/png" href="/favicon.png">
+        <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        rel="stylesheet"
+        />
+        <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@400;700;900&display=swap"
+        rel="stylesheet"
+        />
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
@@ -43,6 +50,166 @@
                 overflow-y: auto;   /* Allow vertical scroll */
             }
 
+            /* ============================================
+            NEON PURPLE MOUSE TRAIL
+            ============================================ */
+            .mouse-trail {
+                position: fixed;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(186, 85, 255, 0.8) 0%, rgba(138, 43, 226, 0.4) 50%, transparent 100%);
+                pointer-events: none;
+                z-index: 9999;
+                transform: translate(-50%, -50%);
+                animation: trailFade 0.6s ease-out forwards;
+                box-shadow: 
+                    0 0 10px rgba(186, 85, 255, 0.8),
+                    0 0 20px rgba(138, 43, 226, 0.6),
+                    0 0 30px rgba(138, 43, 226, 0.4);
+            }
+
+            @keyframes trailFade {
+                0% {
+                    opacity: 1;
+                    transform: translate(-50%, -50%) scale(1);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translate(-50%, -50%) scale(0.3);
+                }
+            }
+
+            /* Music Toggle Button */
+            .music-toggle-button {
+                position: fixed;
+                bottom: 2rem;
+                right: 2rem;
+                width: 40px;
+                height: 40px;
+
+                /* Minecraft neon purple + white */
+                background:transparent;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                color: #ffffff;
+                font-size: 1.6rem;
+                text-decoration: none;
+
+                cursor: pointer;
+                z-index: 1000;
+            }
+
+            /* Hover: enchanted block effect */
+            .music-toggle-button:hover {
+                transform: scale(1.08);
+                box-shadow:
+                    0 0 12px rgba(200, 160, 255, 0.9),
+                    0 0 28px rgba(160, 40, 255, 0.8),
+                    0 0 50px rgba(140, 0, 255, 0.6);
+            }
+
+            /* Muted state = deactivated block */
+            .music-toggle-button.muted {
+                background:
+                    linear-gradient(
+                        145deg,
+                        #f5f5f5,
+                        #cfcfcf
+                    );
+                color: #555;
+                box-shadow:
+                    inset 0 0 10px rgba(0, 0, 0, 0.35);
+                animation: none;
+            }
+
+            /* Muted icon */
+            .music-toggle-button.muted i::before {
+                content: "\f6a9";
+            }
+
+            /* ===== Mobile ≤ 480px ===== */
+            @media (max-width: 480px) {
+                .music-toggle-button {
+                    width: 52px;
+                    height: 52px;
+                    bottom: 1rem;
+                    right: 1rem;
+
+                    font-size: 1.4rem;
+                    border-width: 2px;
+
+                    box-shadow:
+                        0 0 6px rgba(180, 120, 255, 0.6),
+                        0 0 16px rgba(140, 0, 255, 0.5),
+                        0 0 26px rgba(120, 0, 255, 0.4);
+                }
+            }
+
+            /* ===== Small Mobile ≤ 400px ===== */
+            @media (max-width: 400px) {
+                .music-toggle-button {
+                    width: 46px;
+                    height: 46px;
+                    bottom: 1.2rem;
+                    right: 1.2rem;
+
+                    font-size: 1.25rem;
+                    border-width: 2px;
+
+                    box-shadow:
+                        0 0 5px rgba(180, 120, 255, 0.55),
+                        0 0 12px rgba(140, 0, 255, 0.45),
+                        0 0 20px rgba(120, 0, 255, 0.35);
+                }
+            }
+
+             /* ============================================
+            GIF TRANSITION OVERLAY
+            ============================================ */
+            .transition-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 99999;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s ease;
+            }
+
+            .transition-overlay.active {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .transition-gif {
+                width: 120%;
+                height: 120%;
+                image-rendering: pixelated;
+            }
+
+            @media (max-width: 768px) {
+                .transition-gif {
+                    max-width: 300px;
+                    max-height: 300px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .transition-gif {
+                    max-width: 600px;
+                    max-height: 450px;
+                }
+            }
+
             /* Keep functionality for nav-links horizontal scroll */
             .nav-links {
                 -ms-overflow-style: none;
@@ -52,6 +219,7 @@
             .nav-links::-webkit-scrollbar {
                 display: none;
             }
+
             body {
                 font-family: 'Press Start 2P', cursive;
                 background: linear-gradient(to bottom, #0a0014 0%, #2d1b4e 45%, #1a0b2e 50%, #2d1b4e 75%,#1a0b2e 100%);
@@ -786,11 +954,11 @@
             @media (max-width: 480px) {
                 .hero-cloud-link {
                     margin-top: 0px;
-                    margin-left: 270px;
+                    margin-left: 280px;
                 }
                 
                 .cloud-img {
-                    width: 80px;
+                    width: 70px;
                     height: 120px;
                 }
                 
@@ -799,11 +967,11 @@
             @media (max-width: 400px) {
                 .hero-cloud-link {
                     margin-top: 0px;
-                    margin-left: 210px;
+                    margin-left: 220px;
                 }
                 
                 .cloud-img {
-                    width: 80px;
+                    width: 70px;
                     height: 120px;
                 }
             }
@@ -1021,7 +1189,7 @@
             #sponsors::after {
                 content: "";
                 position: absolute;
-                top: 2413px;
+                top: 2744px;
                 left: 0;
 
                 width: 100%;
@@ -1035,7 +1203,7 @@
             .sponsors-decoration-link {
                 position: absolute;
                 z-index: 100;
-                top: 2325px;
+                top: 2653px;
                 left: 300px;
                 display: block;
                 cursor: pointer;
@@ -3617,21 +3785,21 @@
             /* Responsive */
             @media (max-width: 768px) {
                 .sponsor-cta-image {
-                    max-width: 250px;
+                    max-width: 550px;
                     margin: 25px auto;
                 }
             }
 
             @media (max-width: 480px) {
                 .sponsor-cta-image {
-                    max-width: 200px;
+                    max-width: 400px;
                     margin: 20px auto;
                 }
             }
 
             @media (max-width: 400px) {
                 .sponsor-cta-image {
-                    max-width: 180px;
+                    max-width: 380px;
                     margin: 15px auto;
                 }
             }
@@ -5399,10 +5567,42 @@
             }
         }
     </style>
- 
-        
     </head>
     <body>
+
+        <audio id="background-music" loop>
+            <source
+                src="assets/music/music.mp3"
+                type="audio/mpeg"
+            />
+            Your browser does not support the audio element.
+        </audio>
+
+        <!-- Add these new audio elements -->
+        <audio id="minecart-sound" preload="auto">
+            <source src="assets/sounds/minecart.mp3" type="audio/mpeg" />
+        </audio>
+        <audio id="bee-sound" preload="auto">
+            <source src="assets/sounds/bee.mp3" type="audio/mpeg" />
+        </audio>
+        <audio id="chest-sound" preload="auto">
+            <source src="assets/sounds/chest.mp3" type="audio/mpeg" />
+        </audio>
+        <audio id="stat-sound" preload="auto">
+            <source src="assets/sounds/stat.mp3" type="audio/mpeg" />
+        </audio>
+        <audio id="about-img-sound" preload="auto">
+            <source src="assets/sounds/univ.mp3" type="audio/mpeg" />
+        </audio>
+        
+        <!-- <canvas id="background-canvas"></canvas> -->
+        <button
+        id="music-toggle"
+        class="music-toggle-button"
+        title="Toggle Background Music"
+        >
+        <i class="fas fa-volume-up"></i>
+        </button>
 
         <!-- Animated Particles -->
         <!-- Minecraft End Sky Background -->
@@ -5444,12 +5644,12 @@
                 <!-- NEW TRACKS BUTTON -->
                 <div class="nav-sign-container" style="--index: 3">
                     <div class="sign-chain"></div>
-                    <a href="index.html#tracks" class="nav-sign">Tracks</a>
+                    <a href="#tracks" class="nav-sign">Tracks</a>
                 </div>
 
                 <div class="nav-sign-container" style="--index: 4">
                     <div class="sign-chain"></div>
-                    <a href="index.html#sponsors" class="nav-sign">Sponsors</a>
+                    <a href="#sponsors" class="nav-sign">Sponsors</a>
                 </div>
 
                 <div class="nav-sign-container" style="--index: 5">
@@ -5465,7 +5665,7 @@
             </div>
             <div class="hero-cloud-link">
                     <a href="https://mlh.io/eu?utm_source=eu-hackathon&utm_medium=TrustBadge&utm_campaign=2026-season&utm_content=red" class="cloud-button">
-                        <img src="https://lh3.googleusercontent.com/pw/AP1GczMRZqvXFGLtbYxEGX2fY_v9zo1pvb4dkYlvOj1Qzi063q5cBqluvqb0bYka1pS5qrjLxVbDb5ZksYdA3sDLvAp6bDRxsljPByD8e-HcjDUxgulvllz4nS9suxRnmVV7OtDk2urlOcIjSwFoPrTvvSIh=w535-h938-s-no-gm?authuser=0" 
+                        <img src="https://s3.amazonaws.com/logged-assets/trust-badge/2026/mlh-trust-badge-2026-white.svg" 
                             alt="View Guests" 
                             class="cloud-img">
                     </a>
@@ -5861,7 +6061,7 @@
                                         alt="Best Beginner Hover" 
                                         class="chest-img chest-hover">
                                 </div>
-                                <div class="prize-label">Best Beginner<br>Team </div>
+                                <div class="prize-label">#1 Beginner<br>Team </div>
                                 <div class="prize-amount">₹XX,XXX</div>
                             </div>
 
@@ -5935,7 +6135,7 @@
                 
                 <!-- Platinum Sponsors Tier -->
                 <div class="sponsor-tier">
-                    <h3 class="tier-title">Event Sponsor</h3>
+                    <h3 class="tier-title">Event Partner</h3>
                     <div class="sponsor-row" >
                         <a href="https://mlh.io/" target="_blank" class="sponsor-card" style="height:185px;">
                             <img src="https://static.mlh.io/brand-assets/logo/official/mlh-logo-black.png" alt="Sponsor Name" class="sponsor-logo" style="width:135px; height:auto; border-radius:0px;">
@@ -5948,7 +6148,7 @@
                 <div class="sponsor-tier">
                     <h3 class="tier-title">Platform Partner</h3>
                     <div class="sponsor-row">
-                        <a href="https://devfolio.co/" target="_blank" class="sponsor-card">
+                        <a href="Https://acehack5.devfolio.co" target="_blank" class="sponsor-card">
                             <img src="https://lh3.googleusercontent.com/pw/AP1GczMa3cUBO7G0J5vHfBnLUy-lkzNqvggOZgw0nwMgPQSukEg5Am7zoXUkUPH9nkmtwj_Aj69Wd6Pb6KZeeVUOyGAh2Ncb5GY8SwHxrdTQOVKGBVKeJ5zwqTEa27vqM9SfShHL61JuDGgOJJ32vJnsQMU4=w255-h255-s-no-gm?authuser=0" alt="Sponsor Name" class="sponsor-logo">
                             <p class="sponsor-name">Devfolio</p>
                         </a>
@@ -5966,15 +6166,25 @@
                     </div>
                 </div>
 
+                <div class="sponsor-tier">
+                    <h3 class="tier-title">Travel Partner</h3>
+                    <div class="sponsor-row">
+                        <a href="https://www.abhibus.com/" target="_blank" class="sponsor-card">
+                            <img src="https://lh3.googleusercontent.com/pw/AP1GczOS4PlTmCpNiuJDuMh5ralNIj94fEqcm-EQ2ZFehyl9crINofC5FsZgqy2FL_yZi644PMAxYfur9srq9HELglT_d2TdwnLSHWCuTSEVjXtrN_4grtbJ6Wo0mF7ZetZ2BhJ6aTem41qLcFKM3ik1ZDwm=w512-h512-s-no-gm?authuser=0" alt="Sponsor Name" class="sponsor-logo">
+                            <p class="sponsor-name">Abhi Bus</p>
+                        </a>
+                    </div>
+                </div>
+
                 <!-- Platinum Sponsors Tier -->
                 <div class="sponsor-tier">
                     <h3 class="tier-title">Support Partner</h3>
                     <div class="sponsor-row">
-                        <a href="https://mlh.io/" target="_blank" class="sponsor-card">
+                        <a href="https://github.com/" target="_blank" class="sponsor-card">
                             <img src="https://lh3.googleusercontent.com/pw/AP1GczPtgt4lp288usORooj4kVkzDraqpRrv9C5LNLAGLb629M6GgWn-IZSvA6EsZyVPmTi1dq_EwJR1p66PXyXXWYncZVYkPI3EfFdzAmgKzpbk8kezvKlcfxoUfPT2--1h98GlhIgFMopJ6FwgRkILBhP7=w1038-h938-s-no-gm?authuser=0" alt="Sponsor Name" class="sponsor-logo">
                             <p class="sponsor-name">GitHub</p>
                         </a>
-                        <a href="https://mlh.io/" target="_blank" class="sponsor-card">
+                        <a href="https://mlh.link/MLH-PureButtons-hackathons" target="_blank" class="sponsor-card">
                             <img src="https://lh3.googleusercontent.com/pw/AP1GczP20lYD2QaV0qiBb1w7G1-vQjeoI23hqQN6aHVkfKmiSNVonE4UzHhiSwqom-FTiojgg4BnzdZBNbdLOxDOSiJ3qQOJPDcoDE7-frwyT4lTsEJfOL0BIa20vb03q97aGuQla0464baMUDVViBfpohfw=w877-h877-s-no-gm?authuser=0" alt="Sponsor Name" class="sponsor-logo" >
                             <p class="sponsor-name">Pure Buttons</p>
                         </a>
@@ -6284,7 +6494,7 @@
             })();
 
             /* ======================================================
-            HIDE CLOUD WHEN HERO SCROLLS AWAY
+            HIDE CLOUD WHEN HERO SCROLLS AWAY (MOBILE ONLY)
             ====================================================== */
             (function initCloudHide() {
                 const cloud = document.querySelector('.hero-cloud-link');
@@ -6293,6 +6503,13 @@
                 if (!cloud || !hero) return;
                 
                 function checkHeroVisibility() {
+                    // Only apply on mobile (768px and below)
+                    if (window.innerWidth > 768) {
+                        cloud.style.opacity = '1';
+                        cloud.style.pointerEvents = 'auto';
+                        return;
+                    }
+                    
                     const heroRect = hero.getBoundingClientRect();
                     
                     // If hero is completely scrolled past (bottom of hero is above viewport)
@@ -6308,10 +6525,13 @@
                 // Check on scroll
                 window.addEventListener('scroll', checkHeroVisibility, { passive: true });
                 
+                // Check on resize
+                window.addEventListener('resize', checkHeroVisibility, { passive: true });
+                
                 // Initial check
                 checkHeroVisibility();
                 
-                console.log('✓ Cloud hide on scroll initialized');
+                console.log('✓ Cloud hide on scroll (mobile only) initialized');
             })();
 
             /* ======================================================
@@ -6583,64 +6803,56 @@
             /* ======================================================
             SMOOTH SCROLL (FIXED FOR ANCHOR LINKS)
             ====================================================== */
-            let currentScroll = window.scrollY;
-            let targetScroll = currentScroll;
-            let ease = 0.08;
-            let isUserScrolling = false;
+            // let currentScroll = window.scrollY;
+            // let targetScroll = currentScroll;
+            // let ease = 0.08;
+            // let isUserScrolling = false;
 
-            // Handle wheel events for smooth scrolling
-            window.addEventListener("wheel", e => {
-                e.preventDefault();
-                targetScroll += e.deltaY;
-                targetScroll = Math.max(
-                    0,
-                    Math.min(targetScroll, document.body.scrollHeight - window.innerHeight)
-                );
-                isUserScrolling = true;
-            }, { passive: false });
+            // window.addEventListener("wheel", e => {
+            //     e.preventDefault();
+            //     targetScroll += e.deltaY;
+            //     targetScroll = Math.max(
+            //         0,
+            //         Math.min(targetScroll, document.body.scrollHeight - window.innerHeight)
+            //     );
+            //     isUserScrolling = true;
+            // }, { passive: false });
 
-            function smoothScroll() {
-                if (isUserScrolling) {
-                    currentScroll += (targetScroll - currentScroll) * ease;
-                    window.scrollTo(0, currentScroll);
+            // function smoothScroll() {
+            //     if (isUserScrolling) {
+            //         currentScroll += (targetScroll - currentScroll) * ease;
+            //         window.scrollTo(0, currentScroll);
                     
-                    // Stop smooth scrolling when close enough to target
-                    if (Math.abs(targetScroll - currentScroll) < 0.5) {
-                        isUserScrolling = false;
-                    }
-                }
-                requestAnimationFrame(smoothScroll);
-            }
+            //         if (Math.abs(targetScroll - currentScroll) < 0.5) {
+            //             isUserScrolling = false;
+            //         }
+            //     }
+            //     requestAnimationFrame(smoothScroll);
+            // }
 
-            smoothScroll();
+            // smoothScroll();
 
-            // Fixed anchor link handling
-            // Fixed anchor link handling (exclude MLH badge)
-            document.querySelectorAll('a[href^="#"]:not(#mlh-trust-badge)').forEach(a => {
-                a.addEventListener('click', e => {
-                    const targetId = a.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
+            // document.querySelectorAll('a[href^="#"]:not(#mlh-trust-badge)').forEach(a => {
+            //     a.addEventListener('click', e => {
+            //         const targetId = a.getAttribute('href');
+            //         const targetElement = document.querySelector(targetId);
                     
-                    if (!targetElement) return;
+            //         if (!targetElement) return;
                     
-                    e.preventDefault();
+            //         e.preventDefault();
                     
-                    // Get target position
-                    const targetPosition = targetElement.offsetTop - 100; // 100px offset for nav
+            //         const targetPosition = targetElement.offsetTop - 100; 
                     
-                    // Set both scroll values to target position for instant jump
-                    targetScroll = targetPosition;
-                    currentScroll = targetPosition;
+            //         targetScroll = targetPosition;
+            //         currentScroll = targetPosition;
                     
-                    // Perform the scroll
-                    window.scrollTo(0, targetPosition);
+            //         window.scrollTo(0, targetPosition);
                     
-                    // Update URL hash
-                    history.pushState(null, null, targetId);
-                });
-            });
+            //         history.pushState(null, null, targetId);
+            //     });
+            // });
 
-            smoothScroll();
+            // smoothScroll();
 
 
             /* ======================================================
@@ -6694,36 +6906,238 @@
                 console.log('✓ Stack cards initialized - rotating every 2 seconds');
             })();
 
+            // ==================================
+            // MUSIC BUTTON
+            // ==================================
+            
+            // Audio control
+            const audio = document.getElementById("background-music");
+            const musicToggle = document.getElementById("music-toggle");
+
+            audio.volume = 0.045; // Set initial volume to 20% to avoid being too loud
+
+            // Function to toggle music
+            function toggleMusic() {
+            if (audio.paused) {
+                audio
+                .play()
+                .then(() => {
+                    musicToggle.classList.remove("muted");
+                    musicToggle
+                    .querySelector("i")
+                    .classList.replace("fa-volume-mute", "fa-volume-up");
+                })
+                .catch((error) => {
+                    console.log("Autoplay prevented:", error);
+                });
+            } else {
+                audio.pause();
+                musicToggle.classList.add("muted");
+                musicToggle
+                .querySelector("i")
+                .classList.replace("fa-volume-up", "fa-volume-mute");
+            }
+            }
+
+            // Toggle music on button click
+            musicToggle.addEventListener("click", toggleMusic);
+
+            // Attempt to autoplay with a fallback
+            window.addEventListener("load", () => {
+            audio.play().catch(() => {
+                // Autoplay failed, require user interaction
+                musicToggle.classList.add("muted");
+                musicToggle
+                .querySelector("i")
+                .classList.replace("fa-volume-up", "fa-volume-mute");
+            });
+            });
+
+            // Play audio on first user interaction (to comply with browser policies)
+            document.addEventListener("click", function playAudioOnce() {
+            if (audio.paused) {
+                audio.play().then(() => {
+                musicToggle.classList.remove("muted");
+                musicToggle
+                    .querySelector("i")
+                    .classList.replace("fa-volume-mute", "fa-volume-up");
+                });
+            }
+            document.removeEventListener("click", playAudioOnce); // Remove after first play
+            });
+
+            // ==================================
+            // HOVER SOUND EFFECTS
+            // ==================================
+
+            // Get all audio elements
+            const sounds = {
+                minecart: document.getElementById('minecart-sound'),
+                bee: document.getElementById('bee-sound'),
+                chest: document.getElementById('chest-sound'),
+                stat: document.getElementById('stat-sound'),
+                aboutImg: document.getElementById('about-img-sound')
+            };
+
+            // Set volume for all sound effects
+            Object.values(sounds).forEach(sound => {
+                if (sound) sound.volume = 0.3;
+            });
+
+            // Function to play sound
+            function playSound(soundName) {
+                const sound = sounds[soundName];
+                if (sound) {
+                    sound.currentTime = 0; // Reset to start
+                    sound.play().catch(err => console.log('Sound play failed:', err));
+                }
+            }
+
+            // Add hover listeners to minecarts
+            document.querySelectorAll('.minecart-body').forEach(minecart => {
+                minecart.addEventListener('mouseenter', () => playSound('minecart'));
+            });
+
+            // Add hover listeners to bee cards
+            document.querySelectorAll('.card-wrapper').forEach(card => {
+                card.addEventListener('mouseenter', () => playSound('bee'));
+            });
+
+            // Add hover listeners to prize chests
+            document.querySelectorAll('.chest-wrapper').forEach(chest => {
+                chest.addEventListener('mouseenter', () => playSound('chest'));
+            });
+
+            // Add hover listeners to stat boxes
+            document.querySelectorAll('.stat-box').forEach(stat => {
+                stat.addEventListener('mouseenter', () => playSound('stat'));
+            });
+
+            // Add hover listener to about section image - ADD THIS
+            document.querySelector('.about-image img')?.addEventListener('mouseenter', () => {
+                playSound('aboutImg');
+            });
+
+            console.log('✓ Hover sound effects initialized');
+
+            // ==================================
+            // NEON PURPLE MOUSE TRAIL
+            // ==================================
+
+            (function initMouseTrail() {
+                let mouseX = 0;
+                let mouseY = 0;
+                let lastTime = 0;
+                const trailDelay = 30; // milliseconds between trail particles
+
+                // Track mouse position
+                document.addEventListener('mousemove', (e) => {
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+                });
+
+                // Create trail particles
+                function createTrail() {
+                    const now = Date.now();
+                    
+                    if (now - lastTime > trailDelay) {
+                        const trail = document.createElement('div');
+                        trail.className = 'mouse-trail';
+                        trail.style.left = mouseX + 'px';
+                        trail.style.top = mouseY + 'px';
+                        
+                        document.body.appendChild(trail);
+                        
+                        // Remove after animation completes
+                        setTimeout(() => trail.remove(), 600);
+                        
+                        lastTime = now;
+                    }
+                    
+                    requestAnimationFrame(createTrail);
+                }
+
+                createTrail();
+                console.log('✓ Mouse trail initialized');
+            })();
+
             /* ======================================================
-            PRIZE RIGHT CARD - IMAGE ROTATION
+            GIF TRANSITION EFFECT - EXTERNAL LINKS ONLY
             ====================================================== */
-            (function initPrizeRotation() {
-                const images = document.querySelectorAll('.track-prize-img');
-                if (!images.length) return;
+            document.addEventListener('DOMContentLoaded', function() {
+                const overlay = document.getElementById('transition-overlay');
                 
-                let currentIndex = 0;
-                
-                function rotateImages() {
-                    // Remove active class from current image
-                    images[currentIndex].classList.remove('active');
-                    
-                    // Move to next image      
-                    currentIndex = (currentIndex + 1) % images.length;
-                    
-                    // Add active class to next image
-                    images[currentIndex].classList.add('active');
+                if (!overlay) {
+                    console.error('❌ Transition overlay not found in DOM');
+                    return;
                 }
                 
-                // Rotate every 3 seconds
-                setInterval(rotateImages, 3000);
+                console.log('✓ Transition overlay found!');
                 
-                console.log('✓ Prize track showcase initialized - rotating every 3 seconds');
-            })();
+                const transitionDuration = 1300;
+                let isTransitioning = false;
+                
+                function showTransitionAndNavigate(url) {
+                    if (isTransitioning) return;
+                    isTransitioning = true;
+                    
+                    overlay.classList.add('active');
+                    
+                    setTimeout(() => {
+                        window.open(url, '_blank');
+                        
+                        setTimeout(() => {
+                            overlay.classList.remove('active');
+                            isTransitioning = false;
+                        }, 300);
+                    }, transitionDuration);
+                }
+                
+                document.addEventListener('click', (e) => {
+                    let target = e.target;
+                    
+                    while (target && target !== document) {
+                        if (target.tagName === 'A' || target.classList.contains('stone-btn') || 
+                            target.classList.contains('nav-sign') || target.classList.contains('mobile-nav-link') ||
+                            target.classList.contains('sponsor-card')) {
+                            
+                            // Skip special cases
+                            if (target.dataset.soon === 'true') return;
+                            if (target.id === 'music-toggle' || target.closest('#music-toggle')) return;
+                            if (target.closest('.devfolio-apply-button')) return;
+                            if (target.classList.contains('social-icon') || target.closest('.social-icon')) return;
+                            
+                            const href = target.getAttribute('href');
+                            if (!href || href === '#') return;
+                            
+                            // Check if it's an anchor link (starts with #)
+                            const isAnchor = href.startsWith('#');
+                            
+                            if (!isAnchor) {
+                                // External link - show transition
+                                e.preventDefault();
+                                e.stopPropagation();
+                                showTransitionAndNavigate(href);
+                                return;
+                            }
+                            // If it's an anchor, do nothing and let default behavior happen
+                        }
+                        
+                        target = target.parentElement;
+                    }
+                }, true);
+                
+                console.log('✓ GIF transition initialized (external links only)');
+            });
 
         </script>
 
         <div id="toast" class="mc-toast">Coming Soon!</div>
-        
+
+        <!-- GIF Transition Overlay -->
+        <div id="transition-overlay" class="transition-overlay">
+            <img src="https://lh3.googleusercontent.com/pw/AP1GczOZWA1haVOPDfSHazCSBH-ed7lNXRPSjdzqZt0HZN12ZRHINykivNhCwcCFuun1tMb0EbXofv-6iUzKc2OLAPXPcjWwrkUvDcyZKEixHYjrjWw8YKHwl593IjQe6F7OpN0vRSybXnK2PuiiikNVd3lN=w800-h450-s-no-gm?authuser=0" alt="Loading" class="transition-gif">
+        </div>
         
     </body>
 
