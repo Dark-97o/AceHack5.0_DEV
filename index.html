@@ -210,6 +210,174 @@
                 }
             }
 
+            /* ============================================
+            CREEPER CHATBOX - FIXED BOTTOM LEFT
+            ============================================ */
+
+            .creeper-chatbox {
+                position: fixed;
+                bottom: 12px;
+                left: 20px;
+                z-index: 9998;
+                display: flex;
+                align-items: flex-end;
+                gap: 15px;
+                transition: opacity 0.6s ease, transform 0.6s ease;
+            }
+
+            .creeper-container {
+                display: flex;
+                align-items: flex-end;
+                gap: 15px;
+            }
+
+            .creeper-image {
+                width: 75px;
+                height: 140px;
+                image-rendering: pixelated;
+                filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.5));
+                transition: transform 0.3s ease;
+            }
+
+            .creeper-image:hover {
+                transform: scale(1.1);
+            }
+
+            .chat-bubble {
+                background-color: #ae00ff;
+                background-size: cover;
+                border: 3px solid #ffffff;
+                padding: 15px 20px;
+                min-width: 50px;
+                max-width: 260px;
+                position: relative;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+                margin-bottom: 10px;
+                opacity: 1; /* Changed from 0 to 1 */
+                transform: translateX(0); /* Changed from -20px to 0 */
+                transition: all 0.4s ease;
+            }
+
+            .chat-bubble::before {
+                content: '';
+                position: absolute;
+                bottom: 15px;
+                left: -13px;
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent #ffffff transparent transparent;
+            }
+
+            .chat-bubble::after {
+                content: '';
+                position: absolute;
+                bottom: 16px;
+                left: -9px;
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 9px 9px 9px 0;
+                border-color: transparent #ae00ff transparent transparent;
+            }
+
+            .chat-bubble.show {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            .chat-bubble.hide {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+
+            .chat-bubble p {
+                margin: 0;
+                font-family: 'Press Start 2P', cursive;
+                font-size: 11px;
+                line-height: 1.6;
+                color: #ffffff;
+                text-shadow: 2px 2px 0 #000000;
+            }
+
+            /* Hide creeper chatbox when footer is in view */
+            .creeper-chatbox.hide-on-footer {
+                opacity: 0;
+                pointer-events: none;
+                transform: translateX(-100px);
+            }
+
+            /* Mobile Responsive */
+            @media (max-width: 768px) {
+                .creeper-chatbox {
+                    bottom: 80px;
+                    left: 10px;
+                }
+                
+                .creeper-image {
+                    width: 90px;
+                    height: 90px;
+                }
+                
+                .chat-bubble {
+                    max-width: 200px;
+                    min-width: 150px;
+                    padding: 12px 15px;
+                }
+                
+                .chat-bubble p {
+                    font-size: 9px;
+                    line-height: 1.5;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .creeper-chatbox {
+                    bottom: 10px;
+                    left: 9px;
+                }
+                
+                .creeper-image {
+                    width: 60px;
+                    height: 95px;
+                }
+                
+                .chat-bubble {
+                    max-width: 160px;
+                    min-width: 120px;
+                    padding: 10px 12px;
+                }
+                
+                .chat-bubble p {
+                    font-size: 8px;
+                    line-height: 1.4;
+                }
+            }
+
+            @media (max-width: 400px) {
+                .creeper-chatbox {
+                    bottom: 7px;
+                    left: 7px;
+                }
+                
+                .creeper-image {
+                    width: 45px;
+                    height: 75px;
+                }
+                
+                .chat-bubble {
+                    max-width: 140px;
+                    min-width: 100px;
+                    padding: 8px 10px;
+                    border-width: 2px;
+                }
+                
+                .chat-bubble p {
+                    font-size: 7px;
+                }
+            }
+
             /* Keep functionality for nav-links horizontal scroll */
             .nav-links {
                 -ms-overflow-style: none;
@@ -6376,6 +6544,19 @@
         </div>
         </footer>
 
+         <!-- Creeper Chatbox -->
+        <div id="creeper-chatbox" class="creeper-chatbox">
+            <div class="creeper-container">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczMisSr9c0bK2xlGhxKByf0vhSMsw9TGnhbqDZF_vSHoV8GdXAEA0rBey9PInXm3G3nlNulhazgUWJ1helzrZ44OBH63YsBGiDDc9hWp109XGkS8r3I9Pe28gbP0vO6kbAVb7c31aH5BGBDYUb37_O4C=w445-h938-s-no-gm?authuser=0" 
+                    alt="Creeper" 
+                    class="creeper-image"
+                    id="creeper-image">
+                <div class="chat-bubble" id="chat-bubble">
+                    <p id="chat-message"> </p>
+                </div>
+            </div>
+        </div>
+
         <script defer async src="https://apply.devfolio.co/v2/sdk.js"></script>
         <script defer>
             /* ======================================================
@@ -6803,56 +6984,56 @@
             /* ======================================================
             SMOOTH SCROLL (FIXED FOR ANCHOR LINKS)
             ====================================================== */
-            // let currentScroll = window.scrollY;
-            // let targetScroll = currentScroll;
-            // let ease = 0.08;
-            // let isUserScrolling = false;
+            let currentScroll = window.scrollY;
+            let targetScroll = currentScroll;
+            let ease = 0.08;
+            let isUserScrolling = false;
 
-            // window.addEventListener("wheel", e => {
-            //     e.preventDefault();
-            //     targetScroll += e.deltaY;
-            //     targetScroll = Math.max(
-            //         0,
-            //         Math.min(targetScroll, document.body.scrollHeight - window.innerHeight)
-            //     );
-            //     isUserScrolling = true;
-            // }, { passive: false });
+            window.addEventListener("wheel", e => {
+                e.preventDefault();
+                targetScroll += e.deltaY;
+                targetScroll = Math.max(
+                    0,
+                    Math.min(targetScroll, document.body.scrollHeight - window.innerHeight)
+                );
+                isUserScrolling = true;
+            }, { passive: false });
 
-            // function smoothScroll() {
-            //     if (isUserScrolling) {
-            //         currentScroll += (targetScroll - currentScroll) * ease;
-            //         window.scrollTo(0, currentScroll);
+            function smoothScroll() {
+                if (isUserScrolling) {
+                    currentScroll += (targetScroll - currentScroll) * ease;
+                    window.scrollTo(0, currentScroll);
                     
-            //         if (Math.abs(targetScroll - currentScroll) < 0.5) {
-            //             isUserScrolling = false;
-            //         }
-            //     }
-            //     requestAnimationFrame(smoothScroll);
-            // }
+                    if (Math.abs(targetScroll - currentScroll) < 0.5) {
+                        isUserScrolling = false;
+                    }
+                }
+                requestAnimationFrame(smoothScroll);
+            }
 
-            // smoothScroll();
+            smoothScroll();
 
-            // document.querySelectorAll('a[href^="#"]:not(#mlh-trust-badge)').forEach(a => {
-            //     a.addEventListener('click', e => {
-            //         const targetId = a.getAttribute('href');
-            //         const targetElement = document.querySelector(targetId);
+            document.querySelectorAll('a[href^="#"]:not(#mlh-trust-badge)').forEach(a => {
+                a.addEventListener('click', e => {
+                    const targetId = a.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
                     
-            //         if (!targetElement) return;
+                    if (!targetElement) return;
                     
-            //         e.preventDefault();
+                    e.preventDefault();
                     
-            //         const targetPosition = targetElement.offsetTop - 100; 
+                    const targetPosition = targetElement.offsetTop - 100; 
                     
-            //         targetScroll = targetPosition;
-            //         currentScroll = targetPosition;
+                    targetScroll = targetPosition;
+                    currentScroll = targetPosition;
                     
-            //         window.scrollTo(0, targetPosition);
+                    window.scrollTo(0, targetPosition);
                     
-            //         history.pushState(null, null, targetId);
-            //     });
-            // });
+                    history.pushState(null, null, targetId);
+                });
+            });
 
-            // smoothScroll();
+            smoothScroll();
 
 
             /* ======================================================
@@ -7129,6 +7310,154 @@
                 
                 console.log('✓ GIF transition initialized (external links only)');
             });
+
+            /* ======================================================
+            CREEPER CHATBOX - SECTION-BASED MESSAGES (DEBUG VERSION)
+            ====================================================== */
+            (function initCreeperChatbox() {
+                const chatBubble = document.getElementById('chat-bubble');
+                const chatMessage = document.getElementById('chat-message');
+                const creeperChatbox = document.getElementById('creeper-chatbox');
+                
+                console.log('🐸 Creeper elements found:', {
+                    bubble: !!chatBubble,
+                    message: !!chatMessage,
+                    chatbox: !!creeperChatbox
+                });
+                
+                if (!chatBubble || !chatMessage || !creeperChatbox) {
+                    console.warn('❌ Creeper chatbox elements not found');
+                    return;
+                }
+                
+                // Define messages for each section
+                const sectionMessages = {
+                    'home': "Welcome to AceHack 5.0! Registration closes soon!",
+                    'about': "36 hours of pure innovation awaits!",
+                    'tracks': "Choose your track and start building!",
+                    'why-attend': "Network, learn, and grow with us! Be a part of History!!",
+                    'prizes': "Win amazing prizes and swags worth lakhs!",
+                    'sponsors': "Thanks to our amazing sponsors!",
+                    'faq-preview': "Got questions? We've got answers!"
+                };
+                
+                let currentSection = '';
+                let typingTimeout;
+                let isFooterVisible = false;
+                
+                // Function to update chat message with typing effect
+                function updateChatMessage(section) {
+                    if (isFooterVisible) {
+                        console.log('⛔ Footer visible - skipping message update');
+                        return;
+                    }
+                    
+                    if (!sectionMessages[section]) {
+                        console.log('⚠️ No message for section:', section);
+                        return;
+                    }
+                    
+                    console.log('✅ UPDATING MESSAGE FOR:', section);
+                    
+                    const message = sectionMessages[section];
+                    
+                    // Clear any ongoing typing
+                    clearTimeout(typingTimeout);
+                    
+                    // Add hide class
+                    chatBubble.classList.add('hide');
+                    chatBubble.classList.remove('show');
+                    
+                    setTimeout(() => {
+                        // Clear message
+                        chatMessage.textContent = '';
+                        
+                        // Show bubble
+                        chatBubble.classList.remove('hide');
+                        chatBubble.classList.add('show');
+                        
+                        // Type out message
+                        let charIndex = 0;
+                        const typeMessage = () => {
+                            if (charIndex < message.length) {
+                                chatMessage.textContent += message[charIndex];
+                                charIndex++;
+                                typingTimeout = setTimeout(typeMessage, 50);
+                            }
+                        };
+                        
+                        typeMessage();
+                    }, 400);
+                }
+                
+                // SIMPLIFIED DETECTION
+                function checkSections() {
+                    if (isFooterVisible) {
+                        return;
+                    }
+                    
+                    // Check each section in reverse order (bottom to top)
+                    const sectionIds = Object.keys(sectionMessages).reverse();
+                    
+                    for (const sectionId of sectionIds) {
+                        const section = document.getElementById(sectionId);
+                        if (!section) continue;
+                        
+                        const rect = section.getBoundingClientRect();
+                        
+                        // Trigger when section TOP enters viewport from bottom
+                        // OR when we're already inside the section
+                        if (rect.top < window.innerHeight - 100 && rect.bottom > 0) {
+                            if (currentSection !== sectionId) {
+                                console.log(`🎯 SWITCHING TO: ${sectionId}`);
+                                currentSection = sectionId;
+                                updateChatMessage(sectionId);
+                            }
+                            return; // Stop checking once we find a match
+                        }
+                    }
+                }
+                
+                // Check on scroll (throttled)
+                let scrollTimeout;
+                window.addEventListener('scroll', () => {
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(() => {
+                        console.log('📜 SCROLL EVENT - Checking sections...');
+                        checkSections();
+                    }, 100);
+                }, { passive: true });
+                
+                // FOOTER OBSERVER
+                const footer = document.getElementById('contact');
+                if (footer) {
+                    const footerObserver = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            isFooterVisible = entry.isIntersecting;
+                            console.log('👣 Footer visibility:', isFooterVisible);
+                            
+                            if (entry.isIntersecting) {
+                                creeperChatbox.classList.add('hide-on-footer');
+                            } else {
+                                creeperChatbox.classList.remove('hide-on-footer');
+                                checkSections();
+                            }
+                        });
+                    }, {
+                        threshold: 0.01,
+                        rootMargin: '-100px'
+                    });
+                    
+                    footerObserver.observe(footer);
+                    console.log('✅ Footer observer initialized');
+                }
+                
+                // Initial check
+                console.log('🚀 Running initial check...');
+                checkSections();
+                
+                console.log('✅ Creeper chatbox fully initialized');
+            })();
 
         </script>
 
